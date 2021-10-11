@@ -1,0 +1,13 @@
+{
+    "env": { 
+        "browser": true, 
+        "es6": true,
+        "node": true 
+    },
+    "extends": ["airbnb", "plugin:prettier/recommended"],
+    "rules": {
+        "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+        "no-unused-vars": 0,
+        "no-console": 0
+    }
+}
