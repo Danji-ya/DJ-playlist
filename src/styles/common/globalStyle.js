@@ -5,6 +5,7 @@ const GlobalStyles = createGlobalStyle`
   ${reset}
 
   body {
+    color: ${({ theme }) => theme.converseColor};
     background: ${({ theme }) => theme.body};
     transition: all 0.5s linear;
   }

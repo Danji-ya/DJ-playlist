@@ -1,26 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import SearchDefaultContainer from '../containers/SearchDefaultContainer';
 import SearchFormContainer from '../containers/SearchFormContainer';
 import SearchResultContainer from '../containers/SearchResultContainer';
 
-const MainBodyContainer = styled.main`
+const SearchBodyContainer = styled.main`
   margin-left: 250px;
-  padding: 0 20vw;
+  padding: 2vh 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-
-  // debug
-  height: 100vh;
 `;
 
-function MainBody() {
+function Search() {
   return (
-    <MainBodyContainer>
+    <SearchBodyContainer>
       <SearchFormContainer />
-      <SearchResultContainer />
-    </MainBodyContainer>
+      <SearchDefaultContainer />
+      {/* <SearchResultContainer /> */}
+    </SearchBodyContainer>
   );
 }
 
-export default MainBody;
+export default Search;

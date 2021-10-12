@@ -3,28 +3,30 @@ import styled, { css } from 'styled-components';
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
-  width: 100%;
-  height: 60px;
-  padding: 0 20vw;
+  width: 250px;
+  height: 100vh;
+  padding-top: 30px;
   z-index: 100;
   background: ${props => props.theme.header};
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 
   transition: background 0.5s linear;
 
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px,
+    rgba(17, 17, 26, 0.1) 0px 16px 48px;
 `;
 
-const LogoWrapper = styled.div`
-  width: 50px;
-  height: 50px;
+const LogoImgWrapper = styled.div`
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  background: rgba(165, 165, 165, 0.2);
+  background: white;
   position: relative;
+  margin-left: 10%;
 
   img {
     width: 100%;
@@ -33,52 +35,80 @@ const LogoWrapper = styled.div`
   }
 `;
 
-const NavWrapper = styled.nav``;
+const NavWrapper = styled.nav`
+  padding: 15% 0;
+`;
 
 const NavList = styled.ol`
   display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const NavItem = styled.li`
-  margin: 0 5px;
-  width: 35px;
+  width: 90%;
   height: 35px;
-  border-radius: 50%;
+  border-radius: 5px;
+
   display: flex;
   align-items: center;
-  justify-content: center;
+  font-size: 14px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.textSecondary};
 
-  background: ${({ active, theme }) => (active ? theme.btnPrimary : theme.btnSecondary)};
-
-  ${props =>
-    !props.active &&
+  // active일 때,
+  ${({ active, theme }) =>
+    active &&
     css`
-      &:hover {
-        /* opacity: 0.3; */
-        background: ${({ theme }) => theme.btnPrimary};
-      }
+      color: ${theme.textPrimary};
+      background: ${theme.btnPrimary};
     `}
 
   &:hover {
+    color: ${({ theme }) => theme.textPrimary};
     cursor: pointer;
   }
-
+  margin: 3px 0;
   &:first-of-type {
-    margin-left: 0;
+    margin-top: 0;
   }
-
   &:last-of-type {
-    margin-right: 0;
+    margin-bottom: 0;
   }
+`;
+
+const IconWrapper = styled.div`
+  margin: 0 5%;
 `;
 
 const Icon = styled.img.attrs(props => ({
   src: props.src,
   alt: '',
 }))`
-  width: 15px;
-  height: 15px;
+  margin: 1% 10%;
+  width: 20px;
+  height: 20px;
   object-fit: cover;
 `;
 
-export { HeaderContainer, LogoWrapper, NavWrapper, NavList, NavItem, Icon };
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+
+  > img {
+    width: 120px;
+    margin-top: 5px;
+    margin-left: 15px;
+  }
+`;
+
+export {
+  HeaderContainer,
+  LogoWrapper,
+  LogoImgWrapper,
+  NavWrapper,
+  NavList,
+  NavItem,
+  IconWrapper,
+  Icon,
+};

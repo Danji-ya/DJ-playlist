@@ -1,15 +1,16 @@
 import React from 'react';
 import HeaderContainer from '../containers/HeaderContainer';
-import MainBodyContainer from '../containers/MainBodyContainer';
+import SearchContainer from '../containers/SearchContainer';
 import ToggleModeContainer from '../containers/ToggleModeContainer';
 
-function MainPage() {
+function SearchPage() {
   return (
     <>
       <HeaderContainer />
       <ToggleModeContainer />
+      <SearchContainer />
     </>
   );
 }
 
-export default MainPage;
+export default SearchPage;

@@ -18,7 +18,7 @@ const SearchResultGrid = styled.div`
   > div {
     width: 250px;
     height: 250px;
-    background: #ffcc44;
+    background: ${({ theme }) => theme.bodySecondary};
   }
 
   @media (max-width: 800px) {

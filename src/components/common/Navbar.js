@@ -1,16 +1,22 @@
 import React from 'react';
-import { icons } from '../../constatns';
-import { Icon, NavItem, NavList, NavWrapper } from '../../styles/headerStyle';
+import { FiSearch } from 'react-icons/fi';
+import { HiHome } from 'react-icons/hi';
+import styled from 'styled-components';
+import { IconWrapper, NavItem, NavList, NavWrapper } from '../../styles/headerStyle';
 
 const Navbar = ({ path, handlePath }) => {
   const navItems = [
     {
+      name: '홈',
       path: '/',
-      src: `${icons.searchW.default}`,
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      Icon: props => <HiHome {...props} />,
     },
     {
-      path: '/playlist',
-      src: `${icons.ribbonW.default}`,
+      name: '검색하기',
+      path: '/search',
+      // eslint-disable-next-line react/jsx-props-no-spreading
+      Icon: props => <FiSearch {...props} />,
     },
   ];
 
@@ -24,7 +30,10 @@ const Navbar = ({ path, handlePath }) => {
               onClick={() => handlePath(item.path)}
               key={`${item.path}`}
             >
-              <Icon src={item.src} />
+              <IconWrapper active={item.path === path}>
+                <item.Icon size={25} />
+              </IconWrapper>
+              <p>{item.name}</p>
             </NavItem>
           );
         })}
