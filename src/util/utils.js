@@ -1,6 +1,5 @@
 import { getItem, setItem } from './localstorage';
 
-// eslint-disable-next-line import/prefer-default-export
 export const getInitTheme = () => {
   const theme = getItem('theme');
 
@@ -10,4 +9,14 @@ export const getInitTheme = () => {
   }
 
   return theme;
+};
+
+export const padding = value => `00${value}`.slice(-2);
+
+export const formatTime = time => {
+  const hour = Math.floor(time / 3600);
+  const min = Math.floor((time % 3600) / 60);
+  const sec = Math.floor(time % 60);
+
+  return `${padding(hour)}:${padding(min)}:${padding(sec)}`;
 };
