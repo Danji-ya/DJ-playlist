@@ -1,10 +1,8 @@
-import React from 'react';
 import styled, { css } from 'styled-components';
 
-const SliderContainer = styled.div`
+const SliderContainer = styled.section`
   position: relative;
   overflow: hidden;
-  margin: 0 50px;
 `;
 
 const Title = styled.h2`
@@ -93,31 +91,50 @@ const NextBtn = styled(SliderBtns)`
   right: 8px;
 `;
 
-function SearchDefault({ data, handleSlider, position, imgTotalWidth }) {
-  return (
-    <SliderContainer>
-      <Title>인기 검색어</Title>
-      <PrevBtn type="button" name="prev" onClick={e => handleSlider(e)}>
-        &#10094;
-      </PrevBtn>
-      <NextBtn type="button" name="next" onClick={e => handleSlider(e)}>
-        &#10095;
-      </NextBtn>
-      <MusicListContainer position={position} imgTotalWidth={imgTotalWidth}>
-        {data.map((item, idx) => {
-          return (
-            // eslint-disable-next-line react/no-array-index-key
-            <AlbumWrapper key={`${item}-${idx}`}>
-              <AlbumImgWrapper>
-                <AlbumImg src={item.src} alt="" />
-              </AlbumImgWrapper>
-              <AlbumTitle>{item.title}</AlbumTitle>
-            </AlbumWrapper>
-          );
-        })}
-      </MusicListContainer>
-    </SliderContainer>
-  );
-}
+const SearchResultContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+`;
 
-export default SearchDefault;
+const SearchResultGrid = styled.div`
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+
+  gap: 30px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @media (max-width: 1400px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: 1250px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const SearchResultTitle = styled.h2`
+  font-weight: 600;
+  padding: 20px 0;
+`;
+
+export {
+  SliderContainer,
+  Title,
+  MusicListContainer,
+  AlbumWrapper,
+  AlbumImgWrapper,
+  AlbumImg,
+  AlbumTitle,
+  SliderBtns,
+  PrevBtn,
+  NextBtn,
+  SearchResultContainer,
+  SearchResultGrid,
+  SearchResultTitle,
+};

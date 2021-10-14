@@ -4,7 +4,7 @@ import axiosInstance from '.';
 export const fetchPlayList = async (keyword, token) => {
   const res = await axiosInstance.get('/search', {
     params: {
-      q: `${keyword} 플레이리스트`,
+      q: `${keyword}`,
       pageToken: token || '',
     },
   });

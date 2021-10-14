@@ -13,7 +13,7 @@ function PlayerProgress({ currentTime, duration, handleProgress }) {
         type="range"
         value={currentTime}
         min="0"
-        max={duration}
+        max={duration || 0}
         onClick={e => handleProgress(e.target)}
         onChange={e => handleProgress(e.target)}
       />

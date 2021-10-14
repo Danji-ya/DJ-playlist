@@ -12,6 +12,20 @@ const PlayerContainer = styled.div`
   align-items: center;
 `;
 
+const PlayerEmpty = styled.div`
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding: 2px;
+  width: 100%;
+  height: 100%;
+  letter-spacing: 5px;
+  font-size: 1.3rem;
+  font-weight: 600;
+  line-height: 60px;
+`;
+
 const Profile = styled.div`
   position: relative;
   width: 350px;
@@ -146,7 +160,7 @@ const PlayerSoundControlWrapper = styled.div`
 
 const YoutubeIframe = styled.div`
   position: fixed;
-  bottom: 300px;
+  bottom: -1000px;
 `;
 
 const PlayerSoundControl = styled.input.attrs(({ value }) => ({
@@ -181,8 +195,31 @@ const PlayerSoundControl = styled.input.attrs(({ value }) => ({
   -webkit-appearance: none;
 `;
 
+const AddButton = styled.button`
+  border: none;
+  outline: none;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: transparent;
+
+  &:hover {
+    background: rgba(165, 165, 165, 0.3);
+    cursor: pointer;
+  }
+
+  svg {
+    fill: ${({ dibs }) => (dibs ? ' #44bf9a' : 'white')};
+  }
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.32);
+`;
+
 export {
   PlayerContainer,
+  PlayerEmpty,
   Profile,
   ProfileImage,
   ProfileText,
@@ -196,4 +233,5 @@ export {
   PlayerSoundControlWrapper,
   PlayerSoundControl,
   YoutubeIframe,
+  AddButton,
 };

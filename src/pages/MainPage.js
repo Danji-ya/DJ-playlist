@@ -8,6 +8,7 @@ function MainPage() {
     <>
       <HeaderContainer />
       <ToggleModeContainer />
+      <MainBodyContainer />
     </>
   );
 }

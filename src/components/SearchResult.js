@@ -1,46 +1,16 @@
 import React from 'react';
-import styled from 'styled-components';
-import { getInitTheme } from '../util/utils';
+import { SearchResultContainer, SearchResultGrid, SearchResultTitle } from '../styles/searchStyle';
+import MusicCard from './common/MusicCard';
 
-const SearchResultContainer = styled.section`
-  width: 100%;
-  display: flex;
-  justify-content: center;
-`;
-
-const SearchResultGrid = styled.div`
-  display: grid;
-  justify-content: center;
-  align-items: center;
-
-  gap: 30px;
-  grid-template-columns: repeat(3, 1fr);
-  > div {
-    width: 250px;
-    height: 250px;
-    background: ${({ theme }) => theme.bodySecondary};
-  }
-
-  @media (max-width: 800px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
-`;
-
-function SearchResult() {
-  getInitTheme();
+function SearchResult({ musicList, handleSelectMusic }) {
   return (
     <SearchResultContainer>
+      <SearchResultTitle>검색 결과</SearchResultTitle>
       <SearchResultGrid>
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
-        <div />
+        {musicList &&
+          musicList.map(item => (
+            <MusicCard item={item} handleSelectMusic={handleSelectMusic} key={item.videoId} />
+          ))}
       </SearchResultGrid>
     </SearchResultContainer>
   );
