@@ -6,21 +6,17 @@ import { images } from '../constatns';
 const MainBodyContainer = styled.main`
   margin-left: 250px;
   margin-bottom: 80px;
-  padding: 0 10vw;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 const DjplayContainer = styled.section`
-  width: 100%;
-  max-width: 1100px;
-  min-width: 300px;
-
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  background: blue;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 270px);
+  grid-gap: 1rem;
+  justify-content: space-around;
+  width: 60vw;
 `;
 
 const PlaylistTitleWrapper = styled.div`
