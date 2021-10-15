@@ -12,7 +12,7 @@ import {
 import { setItem } from '../../util/localstorage';
 
 function* getMusicList({ payload: keyword }) {
-  console.log('음악 찾기 시작...', keyword);
+  // console.log('음악 찾기 시작...', keyword);
   try {
     const data = yield call(fetchPlayList, `${keyword} 플레이리스트`);
     yield put(getMusicListSuccess(data));

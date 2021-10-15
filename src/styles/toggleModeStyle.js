@@ -2,15 +2,13 @@ import styled from 'styled-components';
 
 const ToggleContainer = styled.button`
   background: ${({ theme }) => theme.gradient};
-  position: absolute;
-  top: 15px;
-  right: 1vw;
+  position: relative;
   width: 3.7rem;
   height: 1.8rem;
-  margin: 0 auto;
   border-radius: 30px;
   border: none;
   padding: 0.1rem;
+  margin: 0 1vw;
   overflow: hidden;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,

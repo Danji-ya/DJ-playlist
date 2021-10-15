@@ -2,8 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import MusicCard from './common/MusicCard';
 import { images } from '../constatns';
+import SideBar from './common/SideBar';
 
 const MainBodyContainer = styled.main`
+  position: relative;
   margin-left: 250px;
   margin-bottom: 80px;
   display: flex;
@@ -39,6 +41,7 @@ const PlaylistTitleWrapper = styled.div`
 function MainBody({ djPlaylist, handleSelectMusic }) {
   return (
     <MainBodyContainer>
+      <SideBar />
       <PlaylistTitleWrapper>
         <img src={images.logo.default} alt="" />
       </PlaylistTitleWrapper>

@@ -39,7 +39,6 @@ function PlayerControlContainer({ dibs, selectedMusic, handleDjplaylist }) {
   }, [player, paused]);
 
   const handleReady = target => {
-    console.log('시작');
     setPlayer(target);
     setCurrentTime(target.getCurrentTime());
     setDuration(target.getDuration());

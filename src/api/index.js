@@ -9,7 +9,7 @@ const axiosInstance = axios.create({
     part: 'snippet',
     fields: 'nextPageToken, items(id,snippet(title,channelTitle,description,thumbnails))',
     type: 'video',
-    maxResults: 5,
+    maxResults: 50,
     key: KEY,
   },
 });

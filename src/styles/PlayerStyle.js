@@ -3,7 +3,7 @@ import styled from 'styled-components';
 const PlayerContainer = styled.div`
   display: flex;
   position: fixed;
-  z-index: 999;
+  z-index: 998;
   bottom: 0;
   width: 100%;
   height: 80px;
