@@ -7,15 +7,14 @@ const HeaderContainer = styled.header`
   height: 100vh;
   padding-top: 30px;
   z-index: 100;
-  background: ${props => props.theme.header};
+  background: ${({ theme }) => theme.header};
+  border-right: ${({ theme }) => `1px solid ${theme.border}`};
   display: flex;
   flex-direction: column;
 
   transition: background 0.5s linear;
 
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
-  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 8px 24px,
-    rgba(17, 17, 26, 0.1) 0px 16px 48px;
 `;
 
 const LogoImgWrapper = styled.div`
@@ -54,18 +53,18 @@ const NavItem = styled.li`
   align-items: center;
   font-size: 14px;
   font-weight: 700;
-  color: ${({ theme }) => theme.textSecondary};
+  color: ${({ theme }) => theme.navTextSecondary};
 
   // active일 때,
   ${({ active, theme }) =>
     active &&
     css`
-      color: ${theme.textPrimary};
-      background: ${theme.btnPrimary};
+      color: ${theme.navTextPrimary};
+      background: ${theme.navBtn};
     `}
 
   &:hover {
-    color: ${({ theme }) => theme.textPrimary};
+    color: ${({ theme }) => theme.navTextPrimary};
     cursor: pointer;
   }
   margin: 3px 0;
@@ -94,10 +93,10 @@ const Icon = styled.img.attrs(props => ({
 const LogoWrapper = styled.div`
   display: flex;
   align-items: center;
-
-  > img {
-    width: 120px;
-    margin-top: 5px;
+  p {
+    font-weight: bold;
+    font-family: 'BMHANNAPro', sans-serif;
+    font-size: 1.5rem;
     margin-left: 15px;
   }
 `;

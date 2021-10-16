@@ -10,7 +10,8 @@ function Header() {
         <LogoImgWrapper>
           <img src={images.logo.default} alt="" />
         </LogoImgWrapper>
-        <img src={images.logoText.default} alt="" />
+        <p> DJ playlist </p>
+        {/* <img src={images.logoText.default} alt="" /> */}
       </LogoWrapper>
 
       <NavbarContainer />

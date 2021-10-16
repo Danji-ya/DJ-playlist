@@ -11,15 +11,15 @@ const SearchFormWrapper = styled.form`
 `;
 
 const InputBox = styled.input`
-  border: 0;
+  border: none;
   outline: none;
-  color: #8b7d77;
   color: black;
   background: white;
   width: 100%;
   height: 100%;
   padding: 14px 20px;
   font-size: 15px;
+  border: ${({ theme }) => theme.searchFormBorder};
 `;
 
 const BtnWrapper = styled.div`
@@ -36,7 +36,7 @@ const BtnWrapper = styled.div`
 
   background: ${({ theme }) => theme.converseColor};
   svg {
-    color: ${({ theme }) => theme.header};
+    color: ${({ theme }) => theme.sameColor};
   }
 
   &:hover {

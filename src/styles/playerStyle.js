@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 
 const PlayerContainer = styled.div`
+  background: ${({ theme }) => `${theme.playerBg}`};
+  border-top: ${({ theme }) => `${theme.playerBorder}`};
   display: flex;
   position: fixed;
   z-index: 998;
   bottom: 0;
   width: 100%;
   height: 80px;
-  background: rgb(34, 34, 34);
   padding: 10px 25px;
   align-items: center;
 `;
@@ -75,6 +76,7 @@ const PlayerPrevButton = styled.button`
   background: transparent;
 
   svg {
+    fill: ${({ theme }) => theme.playerBtn};
     &:hover {
       cursor: pointer;
     }
@@ -84,7 +86,7 @@ const PlayerPrevButton = styled.button`
 const PlayerNextButton = styled(PlayerPrevButton)``;
 
 const PlayerMainButton = styled.button`
-  background: rgba(255, 255, 255, 1);
+  background: ${({ theme }) => theme.playerBtnBg};
   border: none;
   outline: none;
   width: 40px;
@@ -96,13 +98,13 @@ const PlayerMainButton = styled.button`
   align-items: center;
   justify-content: center;
   svg {
-    color: black;
+    color: ${({ theme }) => theme.playerMainBtn};
   }
 
   &:hover {
     cursor: pointer;
   }
-  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.32);
+  box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.32);
 `;
 
 const PlayerProgressContainer = styled.div`
@@ -125,7 +127,9 @@ const PlayerProgressBar = styled.input.attrs(({ value, max }) => ({
   },
 }))`
   border-radius: 5px;
-  background-image: linear-gradient(#44bf9a, #44bf9a);
+  background: ${({ theme }) => `${theme.playerSubColor}`};
+  background-image: ${({ theme }) =>
+    `linear-gradient(${theme.playerMainColor}, ${theme.playerMainColor})`};
   background-repeat: no-repeat;
 
   width: 100%;
@@ -138,7 +142,7 @@ const PlayerProgressBar = styled.input.attrs(({ value, max }) => ({
     appearance: none;
     height: 12px;
     width: 12px;
-    background: #44bfa3;
+    background: ${({ theme }) => `${theme.playerMainColor}`};
     border-radius: 100%;
     opacity: 0;
   }
@@ -156,6 +160,10 @@ const PlayerSoundControlWrapper = styled.div`
   align-items: center;
   margin: 0 5%;
   cursor: pointer;
+
+  svg {
+    fill: ${({ theme }) => `${theme.playerSoundBtn}`};
+  }
 `;
 
 const YoutubeIframe = styled.div`
@@ -169,7 +177,10 @@ const PlayerSoundControl = styled.input.attrs(({ value }) => ({
   },
 }))`
   border-radius: 5px;
-  background-image: linear-gradient(#44bf9a, #44bf9a);
+  background: ${({ theme }) => `${theme.playerSubColor}`};
+  background-image: ${({ theme }) =>
+    `linear-gradient(${theme.playerMainColor}, ${theme.playerMainColor})`};
+
   background-repeat: no-repeat;
 
   width: 100px;
@@ -182,7 +193,7 @@ const PlayerSoundControl = styled.input.attrs(({ value }) => ({
     appearance: none;
     height: 12px;
     width: 12px;
-    background: #44bfa3;
+    background: ${({ theme }) => `${theme.playerMainColor}`};
     border-radius: 100%;
     opacity: 0;
   }
@@ -212,7 +223,7 @@ const AddButton = styled.button`
   }
 
   svg {
-    fill: ${({ dibs }) => (dibs ? ' #44bf9a' : 'white')};
+    fill: ${({ dibs, theme }) => (dibs ? `${theme.playerMainColor}` : `${theme.playerSubColor}`)};
   }
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.32);
 `;

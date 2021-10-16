@@ -7,7 +7,8 @@ const MusicCardContainer = styled.div`
   border-radius: 15px;
   width: 250px;
 
-  background: ${({ theme }) => theme.bodySecondary};
+  background: ${({ theme }) => theme.cardBg};
+  border: ${({ theme }) => `1px solid ${theme.border}`};
   margin: 10px;
 `;
 

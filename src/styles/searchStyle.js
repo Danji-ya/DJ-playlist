@@ -30,7 +30,8 @@ const AlbumWrapper = styled.div`
   width: 250px;
   margin: 0 15px;
   border-radius: 10px;
-  background: ${({ theme }) => theme.bodySecondary};
+  background: ${({ theme }) => theme.cardBg};
+  border: ${({ theme }) => `1px solid ${theme.border}`};
   overflow: hidden;
   flex-shrink: 0;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -78,7 +79,7 @@ const SliderBtns = styled.button`
   justify-content: center;
   transform: translateY(-50%);
   border: none;
-  color: white;
+  color: ${({ theme }) => theme.converseColor};
   font-size: 1rem;
 
   &:hover {
