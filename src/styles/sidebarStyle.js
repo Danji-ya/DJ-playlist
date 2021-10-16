@@ -1,5 +1,15 @@
 import styled from 'styled-components';
 
+const SidebarContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 1vh 50px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+`;
+
 const ToggleContainer = styled.button`
   background: ${({ theme }) => theme.gradient};
   position: relative;
@@ -32,4 +42,4 @@ const ToggleContainer = styled.button`
   }
 `;
 
-export default ToggleContainer;
+export { SidebarContainer, ToggleContainer };

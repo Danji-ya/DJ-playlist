@@ -1,5 +1,5 @@
 import React from 'react';
-import { Profile, ProfileImage, ProfileText } from '../../styles/PlayerStyle';
+import { Profile, ProfileImage, ProfileText } from '../../styles/playerStyle';
 
 function PlayerProfile({ selectedMusic }) {
   return (

@@ -1,6 +1,6 @@
 import React from 'react';
 import { icons } from '../../constatns';
-import ToggleContainer from '../../styles/toggleModeStyle';
+import { ToggleContainer } from '../../styles/sidebarStyle';
 
 function ToggleMode({ mode, toggleMode }) {
   return (

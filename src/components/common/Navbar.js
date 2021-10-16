@@ -1,7 +1,6 @@
 import React from 'react';
 import { FiSearch } from 'react-icons/fi';
 import { HiHome } from 'react-icons/hi';
-import styled from 'styled-components';
 import { IconWrapper, NavItem, NavList, NavWrapper } from '../../styles/headerStyle';
 
 const Navbar = ({ path, handlePath }) => {

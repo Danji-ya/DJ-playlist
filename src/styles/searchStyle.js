@@ -1,5 +1,13 @@
 import styled, { css } from 'styled-components';
 
+const SearchBodyContainer = styled.main`
+  position: relative;
+  margin: 0 50px 80px 300px;
+  padding: 2vh 0;
+  display: flex;
+  flex-direction: column;
+`;
+
 const SliderContainer = styled.section`
   position: relative;
   overflow: hidden;
@@ -94,28 +102,15 @@ const NextBtn = styled(SliderBtns)`
 const SearchResultContainer = styled.section`
   display: flex;
   flex-direction: column;
+  min-width: 270px;
 `;
 
 const SearchResultGrid = styled.div`
-  display: grid;
-  justify-content: center;
-  align-items: center;
   align-self: center;
-
-  gap: 30px;
-  grid-template-columns: repeat(4, 1fr);
-
-  @media (max-width: 1400px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  @media (max-width: 1250px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media (max-width: 900px) {
-    grid-template-columns: repeat(1, 1fr);
-  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-gap: 1rem;
+  width: 80%;
 `;
 
 const SearchResultTitle = styled.h2`
@@ -124,6 +119,7 @@ const SearchResultTitle = styled.h2`
 `;
 
 export {
+  SearchBodyContainer,
   SliderContainer,
   Title,
   MusicListContainer,

@@ -22,7 +22,7 @@ import {
   PlayerSoundControlWrapper,
   YoutubeIframe,
   AddButton,
-} from '../../styles/PlayerStyle';
+} from '../../styles/playerStyle';
 
 function Player({
   playerProps,

@@ -3,7 +3,7 @@ import {
   PlayerProgressBar,
   PlayerProgressContainer,
   PlayerProgressTime,
-} from '../../styles/PlayerStyle';
+} from '../../styles/playerStyle';
 import { formatTime } from '../../util/utils';
 
 function PlayerProgress({ currentTime, duration, handleProgress }) {

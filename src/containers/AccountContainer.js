@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Avatar from 'react-avatar';
 import { useSelector } from 'react-redux';
 import Modal from '../components/common/Modal';
-import { UserIconWrapper, LoginForm } from '../styles/AccountStyle';
+import { UserIconWrapper, LoginForm } from '../styles/accountStyle';
 import GoogleLoginCotainer from './GoogleLoginCotainer';
 
 function AccountContainer() {

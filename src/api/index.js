@@ -14,4 +14,13 @@ const axiosInstance = axios.create({
   },
 });
 
+export const axiosDefaultInstance = axios.create({
+  headers: {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Content-Type': 'application/json',
+  },
+  baseURL: 'http://localhost:3000/',
+});
+
 export default axiosInstance;
