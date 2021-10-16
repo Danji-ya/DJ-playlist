@@ -1,4 +1,5 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
+import { useHistory } from 'react-router-dom';
 import { fetchPlayList } from '../../api/youtube';
 import {
   addDjplaylistSuccess,
@@ -8,14 +9,22 @@ import {
   getMusicListFail,
   getMusicListSuccess,
   GET_MUSICLIST,
+  setKeyword,
 } from '../modules/music';
 import { setItem } from '../../util/localstorage';
 
-function* getMusicList({ payload: keyword }) {
-  // console.log('음악 찾기 시작...', keyword);
+function* getMusicList({ payload }) {
+  const { keyword, history } = payload;
+  const beforeKeyword = yield select(state => state.music.keyword);
+
   try {
+    if (keyword === beforeKeyword) throw new Error('동일한 키워드 검색');
+
+    console.log('음악 찾기 시작...', keyword);
+    yield put(setKeyword(keyword));
     const data = yield call(fetchPlayList, `${keyword} 플레이리스트`);
     yield put(getMusicListSuccess(data));
+    history.replace(`/search?query=${keyword}`);
   } catch (e) {
     // yield put(getMusicListFail(e));
     console.log(e);
