@@ -14,7 +14,8 @@ const PlayerContainer = styled.div`
 `;
 
 const PlayerEmpty = styled.div`
-  color: white;
+  color: ${({ theme }) => theme.converseColor};
+  font-family: 'BMHANNAPro', sans-serif;
   display: flex;
   justify-content: center;
   align-self: center;
@@ -22,7 +23,7 @@ const PlayerEmpty = styled.div`
   width: 100%;
   height: 100%;
   letter-spacing: 5px;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: 600;
   line-height: 60px;
 `;

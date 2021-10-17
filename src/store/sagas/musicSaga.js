@@ -1,5 +1,4 @@
 import { call, put, select, takeEvery } from 'redux-saga/effects';
-import { useHistory } from 'react-router-dom';
 import { fetchPlayList } from '../../api/youtube';
 import {
   addDjplaylistSuccess,
@@ -12,9 +11,9 @@ import {
   setKeyword,
 } from '../modules/music';
 import { setItem } from '../../util/localstorage';
+import history from '../../util/history';
 
-function* getMusicList({ payload }) {
-  const { keyword, history } = payload;
+function* getMusicList({ payload: keyword }) {
   const beforeKeyword = yield select(state => state.music.keyword);
 
   try {

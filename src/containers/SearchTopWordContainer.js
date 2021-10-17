@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
 import { axiosDefaultInstance } from '../api';
 import SearchTopWord from '../components/SearchTopWord';
 import { getMusicList } from '../store/modules/music';
@@ -9,7 +8,6 @@ function SearchTopWordContainer() {
   const [position, setPosition] = useState(0);
   const [topSearched, setTopSearched] = useState([]);
   const dispatch = useDispatch();
-  const history = useHistory();
 
   useEffect(() => {
     async function getData() {
@@ -46,7 +44,7 @@ function SearchTopWordContainer() {
   };
 
   const handleSearchKeyword = keyword => {
-    dispatch(getMusicList({ keyword, history }));
+    dispatch(getMusicList(keyword));
   };
 
   return (

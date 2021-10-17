@@ -16,12 +16,7 @@ export const DELETE_DJPLAYLIST_SUCCESS = 'music/DELETE_DJPLAYLIST_SUCCESS';
 // action obj 생성
 export const setSelectedMusic = createAction(SET_SELECTEDMUSIC, selectedMusic => selectedMusic);
 export const setKeyword = createAction(SET_KEYWORD, keyword => keyword);
-export const getMusicList = createAction(GET_MUSICLIST, ({ keyword, history }) => {
-  return {
-    keyword,
-    history,
-  };
-});
+export const getMusicList = createAction(GET_MUSICLIST, keyword => keyword);
 export const addDjplaylist = createAction(ADD_DJPLAYLIST, selectedMusic => selectedMusic);
 export const deleteDjplaylist = createAction(DELETE_DJPLAYLIST, selectedMusic => selectedMusic);
 
