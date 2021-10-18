@@ -40,8 +40,11 @@ function* addDjplaylist({ payload: selectedMusic }) {
     // nothing...
     console.log('이미 존재하는 음악입니다');
   } else {
-    yield call(setItem, 'djplaylist', [selectedMusic, ...djPlaylist]);
-    yield put(addDjplaylistSuccess(selectedMusic));
+    // 1 level deep copy
+    const copiedSelectedMusic = { ...selectedMusic };
+
+    yield call(setItem, 'djplaylist', [copiedSelectedMusic, ...djPlaylist]);
+    yield put(addDjplaylistSuccess(copiedSelectedMusic));
   }
 }
 

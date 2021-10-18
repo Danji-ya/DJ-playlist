@@ -29,7 +29,6 @@ function Player({
   dibs,
   selectedMusic,
   handleDjplaylist,
-  handleReady,
   handleStateChange,
   handleState,
   handleVolume,
@@ -53,7 +52,6 @@ function Player({
               volume={volume}
               muted={muted}
               autoplay
-              onReady={e => handleReady(e.target)}
               onStateChange={handleStateChange}
               enablejsapi={1}
               host="https://www.youtube.com"

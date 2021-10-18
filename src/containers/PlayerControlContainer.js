@@ -38,11 +38,11 @@ function PlayerControlContainer({ dibs, selectedMusic, handleDjplaylist }) {
     };
   }, [player, paused]);
 
-  const handleReady = target => {
-    setPlayer(target);
-    setCurrentTime(target.getCurrentTime());
-    setDuration(target.getDuration());
-  };
+  useEffect(() => {
+    if (player) {
+      player.seekTo(0);
+    }
+  }, [selectedMusic]);
 
   const handleStateChange = e => {
     const { data: state } = e;
@@ -104,7 +104,6 @@ function PlayerControlContainer({ dibs, selectedMusic, handleDjplaylist }) {
       dibs={dibs}
       selectedMusic={selectedMusic}
       handleDjplaylist={handleDjplaylist}
-      handleReady={handleReady}
       handleStateChange={handleStateChange}
       handleState={handleState}
       handleVolume={handleVolume}
