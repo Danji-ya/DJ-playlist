@@ -1,5 +1,5 @@
 import React from 'react';
-import { images } from '../../constatns';
+import { images } from '../../constants';
 import NavbarContainer from '../../containers/NavbarContainer';
 import { HeaderContainer, LogoWrapper, LogoImgWrapper } from '../../styles/headerStyle';
 

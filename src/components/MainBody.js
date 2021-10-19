@@ -1,6 +1,6 @@
 import React from 'react';
 import MusicCard from './common/MusicCard';
-import { images } from '../constatns';
+import { images } from '../constants';
 import Sidebar from './common/Sidebar';
 import { DjplayContainer, MainBodyContainer, PlaylistTitleWrapper } from '../styles/mainBodyStyle';
 
