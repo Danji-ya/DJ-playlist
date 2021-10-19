@@ -3,15 +3,17 @@ import SearchTopWordContainer from '../containers/SearchTopWordContainer';
 import SearchFormContainer from '../containers/SearchFormContainer';
 import SearchResultContainer from '../containers/SearchResultContainer';
 import Sidebar from './common/Sidebar';
-import { SearchBodyContainer } from '../styles/searchStyle';
+import { SearchBodyContainer, SearchBody } from '../styles/searchStyle';
 
 function Search() {
   return (
     <SearchBodyContainer>
-      <Sidebar />
-      <SearchFormContainer />
-      <SearchTopWordContainer />
-      <SearchResultContainer />
+      <SearchBody>
+        <Sidebar />
+        <SearchFormContainer />
+        <SearchTopWordContainer />
+        <SearchResultContainer />
+      </SearchBody>
     </SearchBodyContainer>
   );
 }

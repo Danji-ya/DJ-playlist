@@ -3,11 +3,11 @@ import styled from 'styled-components';
 const SidebarContainer = styled.div`
   position: absolute;
   top: 0;
-  right: 0;
-  margin: 1vh 50px;
+  right: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  margin: 1.5vh 0;
 `;
 
 const ToggleContainer = styled.button`
@@ -18,7 +18,6 @@ const ToggleContainer = styled.button`
   border-radius: 30px;
   border: none;
   padding: 0.1rem;
-  margin: 0 1vw;
   overflow: hidden;
   cursor: pointer;
   box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,

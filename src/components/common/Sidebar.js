@@ -7,7 +7,7 @@ function Sidebar() {
   return (
     <SidebarContainer>
       <ToggleModeContainer />
-      <AccountContainer />
+      {/* <AccountContainer /> */}
     </SidebarContainer>
   );
 }

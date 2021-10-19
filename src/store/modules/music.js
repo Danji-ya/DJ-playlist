@@ -8,6 +8,8 @@ export const GET_MUSICLIST_FAIL = 'music/GET_MUSICLIST_FAIL';
 export const SET_MUSICLIST = 'music/SET_MUSICLIST';
 export const SET_KEYWORD = 'music/SET_KEYWORD';
 export const SET_SELECTEDMUSIC = 'music/SET_SELECTEDMUSIC';
+export const NEXT_MUSIC = 'music/NEXT_MUSIC';
+export const PREV_MUSIC = 'music/PREV_MUSIC';
 export const ADD_DJPLAYLIST = 'music/ADD_DJPLAYLIST';
 export const ADD_DJPLAYLIST_SUCCESS = 'music/ADD_DJPLAYLIST_SUCCESS';
 export const DELETE_DJPLAYLIST = 'music/DELETE_DJPLAYLIST';
@@ -19,6 +21,8 @@ export const setKeyword = createAction(SET_KEYWORD, keyword => keyword);
 export const getMusicList = createAction(GET_MUSICLIST, keyword => keyword);
 export const addDjplaylist = createAction(ADD_DJPLAYLIST, selectedMusic => selectedMusic);
 export const deleteDjplaylist = createAction(DELETE_DJPLAYLIST, selectedMusic => selectedMusic);
+export const nextMusic = createAction(NEXT_MUSIC, curMusic => curMusic);
+export const prevMusic = createAction(PREV_MUSIC, curMusic => curMusic);
 
 // saga에서 호출하는 액션 객체
 export const getMusicListSuccess = createAction(GET_MUSICLIST_SUCCESS, musicList => musicList);

@@ -1,4 +1,4 @@
-import { call, put, select, takeEvery } from 'redux-saga/effects';
+import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
 import { fetchPlayList } from '../../api/youtube';
 import {
   addDjplaylistSuccess,
@@ -8,7 +8,10 @@ import {
   getMusicListFail,
   getMusicListSuccess,
   GET_MUSICLIST,
+  NEXT_MUSIC,
+  PREV_MUSIC,
   setKeyword,
+  setSelectedMusic,
 } from '../modules/music';
 import { setItem } from '../../util/localstorage';
 import history from '../../util/history';
@@ -57,8 +60,30 @@ function* deleteDjplaylist({ payload: selectedMusic }) {
   yield put(deleteDjplaylistSuccess(newList));
 }
 
+function* prevMusic({ payload: curMusic }) {
+  const djPlaylist = yield select(state => state.music.djPlaylist);
+  const djPlaylistLen = djPlaylist.length - 1;
+
+  const curPlayMusicIdx = djPlaylist.findIndex(item => item.videoId === curMusic.videoId);
+  if (curPlayMusicIdx === -1) return;
+  const prevPlayMusic = djPlaylist[curPlayMusicIdx === 0 ? djPlaylistLen : curPlayMusicIdx - 1];
+  yield put(setSelectedMusic(prevPlayMusic));
+}
+
+function* nextMusic({ payload: curMusic }) {
+  const djPlaylist = yield select(state => state.music.djPlaylist);
+  const djPlaylistLen = djPlaylist.length - 1;
+
+  const curPlayMusicIdx = djPlaylist.findIndex(item => item.videoId === curMusic.videoId);
+  if (curPlayMusicIdx === -1) return;
+  const nextPlayMusic = djPlaylist[curPlayMusicIdx === djPlaylistLen ? 0 : curPlayMusicIdx + 1];
+  yield put(setSelectedMusic(nextPlayMusic));
+}
+
 export default function* watchMusic() {
   yield takeEvery(GET_MUSICLIST, getMusicList);
   yield takeEvery(ADD_DJPLAYLIST, addDjplaylist);
   yield takeEvery(DELETE_DJPLAYLIST, deleteDjplaylist);
+  yield takeLatest(PREV_MUSIC, prevMusic);
+  yield takeLatest(NEXT_MUSIC, nextMusic);
 }

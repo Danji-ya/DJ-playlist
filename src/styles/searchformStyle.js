@@ -4,7 +4,7 @@ const SearchFormWrapper = styled.form`
   display: flex;
   position: relative;
   width: 30vw;
-  /* min-width: 300px; */
+  min-width: 300px;
 
   margin-bottom: 50px;
   overflow: hidden;

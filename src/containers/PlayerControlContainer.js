@@ -1,67 +1,79 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Player from '../components/common/Player';
+import { nextMusic, prevMusic } from '../store/modules/music';
 
 function PlayerControlContainer({ dibs, selectedMusic, handleDjplaylist }) {
-  const [player, setPlayer] = useState();
+  const dispatch = useDispatch();
+  const timer = useRef(null);
+  const player = useRef(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [isClick, setIsClick] = useState(false);
 
   // 음악이 바뀌어도 변하지 않아야할 값
   const [volume, setVolume] = useState(0.5);
   const [muted, setMuted] = useState(false);
-  const [paused, setPaused] = useState(true);
+  const [paused, setPaused] = useState(false);
 
-  const updateProgress = () => {
-    const curTime = player.getCurrentTime();
-    setCurrentTime(curTime);
+  useEffect(() => {
+    player.current?.playerInstance?.seekTo(0);
+    player.current?.playerInstance?.playVideo();
+  }, [selectedMusic]);
+
+  const handlePrevMusic = music => dispatch(prevMusic(music));
+  const handleNextMusic = music => dispatch(nextMusic(music));
+
+  const handleTimer = target => {
+    timer.current = setInterval(() => {
+      setCurrentTime(
+        target.getCurrentTime() > target.getDuration()
+          ? target.getDuration()
+          : target.getCurrentTime(),
+      );
+      setDuration(target.getDuration());
+    }, 1000);
   };
 
-  const isEnded = state => state.getPlayerState() === 0;
+  const setPlayerSeekInit = () => {
+    setPaused(true);
+    player.current?.playerInstance?.seekTo(0);
+    setCurrentTime(0);
 
-  useEffect(() => {
-    let timer;
+    // change music
+    handleNextMusic(selectedMusic);
+  };
 
-    if (player && !paused) {
-      clearInterval(timer);
-      timer = setInterval(() => {
-        updateProgress();
-      }, 1000);
-    } else if (player && paused) {
-      if (!isEnded(player)) {
-        clearInterval(timer);
-        updateProgress();
-      }
-    }
-
-    return () => {
-      clearInterval(timer);
-    };
-  }, [player, paused]);
-
-  useEffect(() => {
-    if (player) {
-      player.seekTo(0);
-    }
-  }, [selectedMusic]);
+  const handleSync = target => {
+    setCurrentTime(target.getCurrentTime());
+    setDuration(target.getDuration());
+  };
 
   const handleStateChange = e => {
     const { data: state } = e;
-    setPlayer(e.target);
-    if (state !== 0) {
-      setCurrentTime(e.target.getCurrentTime());
-      setDuration(e.target.getDuration());
-    }
-    console.log('video state', state);
+    // console.log('video state', state, isClick);
+    clearInterval(timer.current);
 
-    // -1 –시작되지 않음 0 – 종료 1 – 재생 중 2 – 일시중지 3 – 버퍼링 5 – 동영상 신호
-    if (state === 0) {
-      // ended
-      player.pauseVideo();
-      player.seekTo(0);
-      setPaused(true);
-      setCurrentTime(duration);
-    } else if (state === 1) {
+    if (state === 1) {
       setPaused(false);
+      handleSync(e.target);
+      handleTimer(e.target);
+    }
+
+    if (state === 2) setPaused(true);
+  };
+
+  const handleMouseDown = target => setIsClick(true);
+
+  const handleMouseUp = target => {
+    if (Math.floor(currentTime) >= Math.floor(duration)) setPlayerSeekInit();
+
+    setIsClick(false);
+  };
+
+  const handleEnded = () => {
+    if (!isClick) {
+      setPlayerSeekInit();
     }
   };
 
@@ -87,14 +99,14 @@ function PlayerControlContainer({ dibs, selectedMusic, handleDjplaylist }) {
   const handleProgress = target => {
     const willUpdateCurrentTime = target.value;
 
-    player.seekTo(willUpdateCurrentTime);
+    player.current?.playerInstance?.seekTo(willUpdateCurrentTime);
     setCurrentTime(willUpdateCurrentTime);
   };
 
   return (
     <Player
+      ref={player}
       playerProps={{
-        player,
         currentTime,
         duration,
         volume,
@@ -105,11 +117,16 @@ function PlayerControlContainer({ dibs, selectedMusic, handleDjplaylist }) {
       selectedMusic={selectedMusic}
       handleDjplaylist={handleDjplaylist}
       handleStateChange={handleStateChange}
+      handleMouseDown={handleMouseDown}
+      handleMouseUp={handleMouseUp}
+      handleEnded={handleEnded}
       handleState={handleState}
       handleVolume={handleVolume}
       handleTurnOnVolume={handleTurnOnVolume}
       handleTurnOffVolume={handleTurnOffVolume}
       handleProgress={handleProgress}
+      handlePrevMusic={handlePrevMusic}
+      handleNextMusic={handleNextMusic}
     />
   );
 }
