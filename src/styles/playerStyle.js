@@ -9,8 +9,13 @@ const PlayerContainer = styled.div`
   bottom: 0;
   width: 100%;
   height: 80px;
-  padding: 10px 25px;
+  padding: 10px 50px;
   align-items: center;
+  justify-content: space-around;
+
+  @media (max-width: 1024px) {
+    justify-content: space-between;
+  }
 `;
 
 const PlayerEmpty = styled.div`
@@ -34,6 +39,10 @@ const Profile = styled.div`
   display: flex;
   align-items: center;
   overflow: hidden;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
 `;
 const ProfileImage = styled.div`
   display: flex;
@@ -68,6 +77,10 @@ const PlayerControls = styled.div`
   align-items: center;
   justify-content: space-between;
   margin: 0 5%;
+
+  @media (max-width: 1024px) {
+    margin: 0 0;
+  }
 `;
 
 const PlayerPrevButton = styled.button`
@@ -110,10 +123,16 @@ const PlayerMainButton = styled.button`
 
 const PlayerProgressContainer = styled.div`
   position: relative;
-  width: 30%;
+  width: 500px;
+  min-width: 150px;
+  margin: 0 5%;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 const PlayerProgressTime = styled.p`
@@ -164,6 +183,10 @@ const PlayerSoundControlWrapper = styled.div`
 
   svg {
     fill: ${({ theme }) => `${theme.playerSoundBtn}`};
+  }
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 

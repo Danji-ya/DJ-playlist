@@ -6,7 +6,7 @@ const HeaderContainer = styled.header`
   width: 250px;
   height: 100vh;
   padding-top: 30px;
-  z-index: 100;
+  z-index: 50;
   background: ${({ theme }) => theme.header};
   border-right: ${({ theme }) => `1px solid ${theme.border}`};
   display: flex;
@@ -15,6 +15,48 @@ const HeaderContainer = styled.header`
   transition: background 0.5s linear;
 
   box-shadow: rgba(0, 0, 0, 0.15) 0px 3px 3px 0px;
+
+  @media (max-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 80px;
+    padding-top: 0px;
+    padding: 0 50px;
+
+    border-bottom: ${({ theme }) => `1px solid ${theme.border}`};
+  }
+`;
+
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  align-self: center;
+  width: 70%;
+  p {
+    font-weight: bold;
+    font-family: 'BMHANNAPro', sans-serif;
+    font-size: 1.5rem;
+    margin-left: 15px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media (max-width: 1024px) {
+    width: auto;
+    /* p {
+      display: none;
+    } */
+  }
+
+  @media (max-width: 480px) {
+    p {
+      display: none;
+    }
+  }
 `;
 
 const LogoImgWrapper = styled.div`
@@ -25,7 +67,6 @@ const LogoImgWrapper = styled.div`
   flex-shrink: 0;
   background: white;
   position: relative;
-  margin-left: 10%;
 
   img {
     width: 100%;
@@ -36,12 +77,20 @@ const LogoImgWrapper = styled.div`
 
 const NavWrapper = styled.nav`
   padding: 15% 0;
+
+  @media (max-width: 1024px) {
+    padding: 0 0;
+  }
 `;
 
 const NavList = styled.ol`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 1024px) {
+    flex-direction: row;
+  }
 `;
 
 const NavItem = styled.li`
@@ -74,6 +123,18 @@ const NavItem = styled.li`
   &:last-of-type {
     margin-bottom: 0;
   }
+
+  @media (max-width: 1024px) {
+    justify-content: center;
+    margin: 0 0;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+    p {
+      display: none;
+    }
+  }
 `;
 
 const IconWrapper = styled.div`
@@ -88,17 +149,6 @@ const Icon = styled.img.attrs(props => ({
   width: 20px;
   height: 20px;
   object-fit: cover;
-`;
-
-const LogoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  p {
-    font-weight: bold;
-    font-family: 'BMHANNAPro', sans-serif;
-    font-size: 1.5rem;
-    margin-left: 15px;
-  }
 `;
 
 export {

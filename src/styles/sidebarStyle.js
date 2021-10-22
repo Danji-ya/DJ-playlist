@@ -39,6 +39,10 @@ const ToggleContainer = styled.button`
       transform: ${({ lightTheme }) => (lightTheme ? 'translateY(-100px)' : 'translateY(0)')};
     }
   }
+
+  @media (max-width: 480px) {
+    display: none;
+  }
 `;
 
 export { SidebarContainer, ToggleContainer };

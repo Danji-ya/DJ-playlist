@@ -3,8 +3,14 @@ import styled, { css } from 'styled-components';
 const SearchBodyContainer = styled.main`
   position: relative;
   margin-left: 250px;
+  margin-bottom: 80px;
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 1024px) {
+    margin-left: 0;
+    margin-top: 80px;
+  }
 `;
 
 const SearchBody = styled.div`
