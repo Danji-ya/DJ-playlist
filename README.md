@@ -68,9 +68,9 @@
 
 ![demo](src/assets/images/demo4.gif)
 
-### 재생목록 변경 기능
+### 재생목록 편집 기능
 
-- 플레이리스트의 재생목록 순서가 마음에 들지 않을 때 drag & drop을 이용하여 재생목록을 변경할 수 있습니다.
+- 플레이리스트의 재생목록 순서가 마음에 들지 않을 때 drag & drop을 이용하여 재생목록을 편집할 수 있습니다.
   <br/>
 
 ![demo](src/assets/images/demo7.gif)
