@@ -82,9 +82,9 @@ function* nextMusic({ payload: curMusic }) {
 }
 
 function* swapMusicList({ payload: route }) {
-  const { oriIdx, desIdx } = route;
+  const { oriIdx, desIdx } = route || {};
   // 존재하지 않으면 패스
-  if (!oriIdx && !desIdx) return;
+  if (!oriIdx || !desIdx) return;
 
   const djPlaylist = yield select(state => state.music.djPlaylist);
   const newDjplaylist = [...djPlaylist];

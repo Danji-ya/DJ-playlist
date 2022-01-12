@@ -18,7 +18,7 @@ function MainBody({ djPlaylist, handleSelectMusic, handleSwapDjplayList }) {
 
   function handleDrop(e) {
     const desIdx = e.currentTarget.dataset.idx;
-    if (!desIdx && !startEl.current) return;
+    if (!desIdx || !startEl.current) return;
 
     const route = {
       oriIdx: startEl.current.dataset.idx,
