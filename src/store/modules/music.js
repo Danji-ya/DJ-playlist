@@ -14,6 +14,8 @@ export const ADD_DJPLAYLIST = 'music/ADD_DJPLAYLIST';
 export const ADD_DJPLAYLIST_SUCCESS = 'music/ADD_DJPLAYLIST_SUCCESS';
 export const DELETE_DJPLAYLIST = 'music/DELETE_DJPLAYLIST';
 export const DELETE_DJPLAYLIST_SUCCESS = 'music/DELETE_DJPLAYLIST_SUCCESS';
+export const SWAP_DJPLAYLIST = 'music/SWAP_DJPLAYLIST';
+export const SWAP_DJPLAYLIST__SUCCESS = 'music/SWAP_DJPLAYLIST_SUCCESS';
 
 // action obj 생성
 export const setSelectedMusic = createAction(SET_SELECTEDMUSIC, selectedMusic => selectedMusic);
@@ -23,6 +25,7 @@ export const addDjplaylist = createAction(ADD_DJPLAYLIST, selectedMusic => selec
 export const deleteDjplaylist = createAction(DELETE_DJPLAYLIST, selectedMusic => selectedMusic);
 export const nextMusic = createAction(NEXT_MUSIC, curMusic => curMusic);
 export const prevMusic = createAction(PREV_MUSIC, curMusic => curMusic);
+export const swapDjplaylist = createAction(SWAP_DJPLAYLIST, route => route);
 
 // saga에서 호출하는 액션 객체
 export const getMusicListSuccess = createAction(GET_MUSICLIST_SUCCESS, musicList => musicList);
@@ -32,6 +35,10 @@ export const addDjplaylistSuccess = createAction(
   selectedMusic => selectedMusic,
 );
 export const deleteDjplaylistSuccess = createAction(DELETE_DJPLAYLIST_SUCCESS, newList => newList);
+export const swapDjplaylistSuccess = createAction(
+  SWAP_DJPLAYLIST__SUCCESS,
+  newDjplaylist => newDjplaylist,
+);
 
 export const getKeyword = state => state.music.keyword;
 
@@ -74,6 +81,12 @@ const music = handleActions(
       return {
         ...state,
         djPlaylist: newList,
+      };
+    },
+    [SWAP_DJPLAYLIST__SUCCESS]: (state, { payload: newDjplaylist }) => {
+      return {
+        ...state,
+        djPlaylist: newDjplaylist,
       };
     },
   },

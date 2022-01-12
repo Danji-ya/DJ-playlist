@@ -8,9 +8,23 @@ import {
   MusicCardProfileImg,
 } from '../../styles/musicCardStyle';
 
-function MusicCard({ item, handleSelectMusic }) {
+function MusicCard({
+  item,
+  draggAble,
+  idx,
+  handleSelectMusic,
+  handleDragStart,
+  handleDragOver,
+  handleDrop,
+}) {
   return (
-    <MusicCardContainer>
+    <MusicCardContainer
+      draggable={draggAble ? 'true' : 'false'}
+      onDragStart={e => handleDragStart(e)}
+      onDragOver={e => handleDragOver(e)}
+      onDrop={e => handleDrop(e)}
+      data-idx={idx}
+    >
       <MusicCardProfileImg onClick={() => handleSelectMusic(item)}>
         <img src={item.url} alt="thumbnail" />
         <MusicCardPlayButtonWrapper>

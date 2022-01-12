@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import MainBody from '../components/MainBody';
-import { setSelectedMusic } from '../store/modules/music';
+import { setSelectedMusic, swapDjplaylist } from '../store/modules/music';
 
 function MainBodyContainer() {
   const djPlaylist = useSelector(state => state.music.djPlaylist);
@@ -9,8 +9,17 @@ function MainBodyContainer() {
   const handleSelectMusic = music => {
     dispatch(setSelectedMusic(music));
   };
+  const handleSwapDjplayList = route => {
+    dispatch(swapDjplaylist(route));
+  };
 
-  return <MainBody djPlaylist={djPlaylist} handleSelectMusic={handleSelectMusic} />;
+  return (
+    <MainBody
+      djPlaylist={djPlaylist}
+      handleSelectMusic={handleSelectMusic}
+      handleSwapDjplayList={handleSwapDjplayList}
+    />
+  );
 }
 
 export default MainBodyContainer;
