@@ -11,7 +11,6 @@ function Header({ handlePath }) {
           <img src={images.logo.default} alt="" />
         </LogoImgWrapper>
         <p> DJ playlist </p>
-        {/* <img src={images.logoText.default} alt="" /> */}
       </LogoWrapper>
 
       <NavbarContainer />
