@@ -5,7 +5,8 @@ import {
   ADD_DJPLAYLIST,
   deleteDjplaylistSuccess,
   DELETE_DJPLAYLIST,
-  getMusicListFail,
+  swapDjplaylistSuccess,
+  SWAP_DJPLAYLIST,
   getMusicListSuccess,
   GET_MUSICLIST,
   NEXT_MUSIC,
@@ -80,10 +81,27 @@ function* nextMusic({ payload: curMusic }) {
   yield put(setSelectedMusic(nextPlayMusic));
 }
 
+function* swapMusicList({ payload: route }) {
+  const { oriIdx, desIdx } = route;
+  // 존재하지 않으면 패스
+  if (!oriIdx && !desIdx) return;
+
+  const djPlaylist = yield select(state => state.music.djPlaylist);
+  const newDjplaylist = [...djPlaylist];
+
+  const temp = newDjplaylist[desIdx];
+  newDjplaylist[desIdx] = newDjplaylist[oriIdx];
+  newDjplaylist[oriIdx] = temp;
+
+  yield call(setItem, 'djplaylist', [...newDjplaylist]);
+  yield put(swapDjplaylistSuccess(newDjplaylist));
+}
+
 export default function* watchMusic() {
   yield takeEvery(GET_MUSICLIST, getMusicList);
   yield takeEvery(ADD_DJPLAYLIST, addDjplaylist);
   yield takeEvery(DELETE_DJPLAYLIST, deleteDjplaylist);
   yield takeLatest(PREV_MUSIC, prevMusic);
   yield takeLatest(NEXT_MUSIC, nextMusic);
+  yield takeLatest(SWAP_DJPLAYLIST, swapMusicList);
 }
