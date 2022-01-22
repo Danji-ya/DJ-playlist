@@ -8,6 +8,7 @@ import {
   swapDjplaylistSuccess,
   SWAP_DJPLAYLIST,
   getMusicListSuccess,
+  getMusicListFail,
   GET_MUSICLIST,
   NEXT_MUSIC,
   PREV_MUSIC,
@@ -23,14 +24,12 @@ function* getMusicList({ payload: keyword }) {
   try {
     if (keyword === beforeKeyword) throw new Error('동일한 키워드 검색');
 
-    console.log('음악 찾기 시작...', keyword);
     yield put(setKeyword(keyword));
     const data = yield call(fetchPlayList, `${keyword} 플레이리스트`);
     yield put(getMusicListSuccess(data));
     history.replace(`/search?query=${keyword}`);
   } catch (e) {
     // yield put(getMusicListFail(e));
-    console.log(e);
   }
 }
 
@@ -40,16 +39,13 @@ function* addDjplaylist({ payload: selectedMusic }) {
   const isIncludeMusic =
     djPlaylist.filter(item => item.videoId === selectedMusic.videoId).length > 0;
 
-  if (isIncludeMusic) {
-    // nothing...
-    console.log('이미 존재하는 음악입니다');
-  } else {
-    // 1 level deep copy
-    const copiedSelectedMusic = { ...selectedMusic };
+  if (isIncludeMusic) return;
 
-    yield call(setItem, 'djplaylist', [copiedSelectedMusic, ...djPlaylist]);
-    yield put(addDjplaylistSuccess(copiedSelectedMusic));
-  }
+  // 1 level deep copy
+  const copiedSelectedMusic = { ...selectedMusic };
+
+  yield call(setItem, 'djplaylist', [copiedSelectedMusic, ...djPlaylist]);
+  yield put(addDjplaylistSuccess(copiedSelectedMusic));
 }
 
 function* deleteDjplaylist({ payload: selectedMusic }) {

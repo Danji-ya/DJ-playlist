@@ -15,7 +15,7 @@ function SearchTopWordContainer() {
         const response = await axiosDefaultInstance.get('dummy/data.json');
         setTopSearched([...response.data.topSearched]);
       } catch (error) {
-        console.error(error);
+        // console.error(error);
       }
     }
     getData();

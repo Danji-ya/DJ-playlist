@@ -51,7 +51,6 @@ function PlayerControlContainer({ dibs, selectedMusic, handleDjplaylist }) {
 
   const handleStateChange = e => {
     const { data: state } = e;
-    // console.log('video state', state, isClick);
     clearInterval(timer.current);
 
     if (state === 1) {
