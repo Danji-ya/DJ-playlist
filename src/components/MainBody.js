@@ -33,7 +33,7 @@ function MainBody({ djPlaylist, handleSelectMusic, handleSwapDjplayList }) {
     <MainBodyContainer>
       <Sidebar />
       <PlaylistTitleWrapper>
-        <img src={images.logo.default} alt="" />
+        <img src={images.logo} alt="" />
       </PlaylistTitleWrapper>
 
       <DjplayContainer>

@@ -45,6 +45,7 @@ export const getKeyword = state => state.music.keyword;
 // init state
 const initialState = {
   keyword: '',
+  nextPageToken: '',
   musicList: [],
   selectedMusic: {},
   djPlaylist: getInitDjplaylist(),
@@ -53,10 +54,11 @@ const initialState = {
 // reducer 정의
 const music = handleActions(
   {
-    [GET_MUSICLIST_SUCCESS]: (state, { payload: musicList }) => {
+    [GET_MUSICLIST_SUCCESS]: (state, { payload: { nextPageToken, items } }) => {
       return {
         ...state,
-        musicList,
+        nextPageToken: nextPageToken || '',
+        musicList: [...items],
       };
     },
     [SET_KEYWORD]: (state, { payload: keyword }) => {
