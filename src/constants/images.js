@@ -1,6 +1,6 @@
-const logo = require('../assets/images/logo.png');
-const logo2 = require('../assets/images/logo2.png');
-const logoText = require('../assets/images/logoText.png');
+import logo from '../assets/images/logo.png';
+import logo2 from '../assets/images/logo2.png';
+import logoText from '../assets/images/logoText.png';
 
 export default {
   logo,

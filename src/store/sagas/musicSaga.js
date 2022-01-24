@@ -26,6 +26,7 @@ function* getMusicList({ payload: keyword }) {
 
     yield put(setKeyword(keyword));
     const data = yield call(fetchPlayList, `${keyword} 플레이리스트`);
+    console.log('data:', data);
     yield put(getMusicListSuccess(data));
     history.replace(`/search?query=${keyword}`);
   } catch (e) {

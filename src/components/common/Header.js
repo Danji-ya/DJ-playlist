@@ -8,7 +8,7 @@ function Header({ handlePath }) {
     <HeaderContainer>
       <LogoWrapper onClick={() => handlePath('/')}>
         <LogoImgWrapper>
-          <img src={images.logo.default} alt="" />
+          <img src={images.logo} alt="" />
         </LogoImgWrapper>
         <p> DJ playlist </p>
       </LogoWrapper>

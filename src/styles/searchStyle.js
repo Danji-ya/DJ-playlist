@@ -114,6 +114,7 @@ const SearchResultContainer = styled.section`
   display: flex;
   flex-direction: column;
   min-width: 270px;
+  min-height: 350px;
 `;
 
 const SearchResultGrid = styled.div`
@@ -122,11 +123,29 @@ const SearchResultGrid = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1rem;
   width: 80%;
+  min-height: 300px;
 `;
 
 const SearchResultTitle = styled.h2`
   font-weight: 600;
   padding: 20px 0;
+`;
+
+const SearchResultEmptyWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CatFaceIcon = styled.img`
+  width: 66px;
+  height: 66px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+`;
+const SearchResultEmptyText = styled.p`
+  font-size: 1rem;
 `;
 
 export {
@@ -145,4 +164,7 @@ export {
   SearchResultContainer,
   SearchResultGrid,
   SearchResultTitle,
+  SearchResultEmptyWrapper,
+  CatFaceIcon,
+  SearchResultEmptyText,
 };
