@@ -8,11 +8,19 @@ function SearchResult({ musicList, keyword, handleSelectMusic }) {
     <SearchResultContainer>
       <SearchResultTitle>검색 결과</SearchResultTitle>
       <SearchResultGrid>
-        {musicList.length < 1 && keyword && <SearchResultEmpty />}
-        {musicList &&
-          musicList.map(item => (
-            <MusicCard item={item} handleSelectMusic={handleSelectMusic} key={item.videoId} />
-          ))}
+        {musicList && (
+          <>
+            {musicList.length > 0 ? (
+              <>
+                {musicList.map(item => (
+                  <MusicCard item={item} handleSelectMusic={handleSelectMusic} key={item.videoId} />
+                ))}
+              </>
+            ) : (
+              <SearchResultEmpty />
+            )}
+          </>
+        )}
       </SearchResultGrid>
     </SearchResultContainer>
   );

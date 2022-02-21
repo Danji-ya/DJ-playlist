@@ -10,7 +10,7 @@ function SearchResultContainer() {
   const keyword = useSelector(state => state.music.keyword);
 
   const data = useMemo(() => {
-    return musicList.map(item => restructuring(item));
+    return musicList && musicList.map(item => restructuring(item));
   }, [musicList]);
 
   const handleSelectMusic = music => {

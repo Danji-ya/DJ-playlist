@@ -46,7 +46,7 @@ export const getKeyword = state => state.music.keyword;
 const initialState = {
   keyword: '',
   nextPageToken: '',
-  musicList: [],
+  musicList: null,
   selectedMusic: {},
   djPlaylist: getInitDjplaylist(),
 };
