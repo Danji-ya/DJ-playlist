@@ -7,7 +7,6 @@ import { restructuring } from '../util/utils';
 function SearchResultContainer() {
   const dispatch = useDispatch();
   const musicList = useSelector(state => state.music.musicList);
-  const keyword = useSelector(state => state.music.keyword);
 
   const data = useMemo(() => {
     return musicList && musicList.map(item => restructuring(item));
@@ -17,7 +16,7 @@ function SearchResultContainer() {
     dispatch(setSelectedMusic(music));
   };
 
-  return <SearchResult musicList={data} keyword={keyword} handleSelectMusic={handleSelectMusic} />;
+  return <SearchResult musicList={data} handleSelectMusic={handleSelectMusic} />;
 }
 
 export default SearchResultContainer;

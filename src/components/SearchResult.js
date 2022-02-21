@@ -3,7 +3,7 @@ import { SearchResultContainer, SearchResultGrid, SearchResultTitle } from '../s
 import MusicCard from './common/MusicCard';
 import SearchResultEmpty from './SearchResultEmpty';
 
-function SearchResult({ musicList, keyword, handleSelectMusic }) {
+function SearchResult({ musicList, handleSelectMusic }) {
   return (
     <SearchResultContainer>
       <SearchResultTitle>검색 결과</SearchResultTitle>
