@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 const PlayerContainer = styled.div`
   background: ${({ theme }) => `${theme.playerBg}`};
-  border-top: ${({ theme }) => `${theme.playerBorder}`};
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   display: flex;
   position: fixed;
   z-index: 998;
