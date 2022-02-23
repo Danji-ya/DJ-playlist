@@ -47,9 +47,6 @@ const LogoWrapper = styled.div`
 
   @media (max-width: 1024px) {
     width: auto;
-    /* p {
-      display: none;
-    } */
   }
 
   @media (max-width: 480px) {

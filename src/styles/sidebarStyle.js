@@ -2,46 +2,45 @@ import styled from 'styled-components';
 
 const SidebarContainer = styled.div`
   position: absolute;
-  top: 0;
-  right: 50px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  margin: 1.5vh 0;
+  top: 5px;
+  right: 15px;
+
+  /* @media (max-width: 1024px) {
+    top: -65px;
+    z-index: 9999;
+    position: absolute;
+  } */
 `;
 
 const ToggleContainer = styled.button`
-  background: ${({ theme }) => theme.gradient};
   position: relative;
-  width: 3.7rem;
-  height: 1.8rem;
-  border-radius: 30px;
   border: none;
-  padding: 0.1rem;
-  overflow: hidden;
+  background: transparent;
+  width: 50px;
+  height: 50px;
+  padding: 0;
   cursor: pointer;
-  box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
-    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
-    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+  overflow: hidden;
 
-  display: flex;
-  justify-content: space-between;
-  img {
-    max-width: 1.6rem;
-    height: auto;
-    transition: all 0.3s linear;
-
+  svg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    transition: transform 0.25s ease-in-out;
     &:first-child {
-      transform: ${({ lightTheme }) => (lightTheme ? 'translateY(0)' : 'translateY(100px)')};
+      transform: ${({ lightTheme }) =>
+        lightTheme ? 'translate3d(-50%, -50%, 0)' : 'translate3d(-50%, 100px, 0)'};
     }
 
     &:nth-child(2) {
-      transform: ${({ lightTheme }) => (lightTheme ? 'translateY(-100px)' : 'translateY(0)')};
+      transform: ${({ lightTheme }) =>
+        lightTheme ? 'translate3d(-50%, -100px, 0)' : 'translate3d(-50%, -50%, 0)'};
     }
-  }
 
-  @media (max-width: 480px) {
-    display: none;
+    path {
+      fill: ${({ theme }) => theme.navTextPrimary};
+    }
   }
 `;
 
