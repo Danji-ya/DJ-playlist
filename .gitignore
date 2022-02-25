@@ -6,3 +6,6 @@ dist/*
 
 # 비밀공간
 .env
+
+# .vscode
+.vscode
