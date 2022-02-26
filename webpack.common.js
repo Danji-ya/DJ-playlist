@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   entry: {
@@ -16,7 +17,22 @@ module.exports = {
     rules: [
       {
         test: /\.tsx?$/,
-        use: ['babel-loader', 'ts-loader'],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+              plugins: [
+                ["@babel/transform-runtime"]
+              ]
+            },
+          }, 
+          {
+            loader: 'ts-loader',
+            options: {
+              transpileOnly: true,
+            }
+          }]
       },
       {
         test: /\.(png|jpg|jpeg|gif)$/i,
@@ -33,6 +49,7 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   plugins: [
+    new Dotenv(),
     new ForkTsCheckerWebpackPlugin(),
 	  new webpack.ProvidePlugin({
       React: 'react',
