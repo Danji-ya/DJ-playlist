@@ -1,4 +1,4 @@
-## ![demo](src/assets/images/demo1.JPG)
+## ![demo](https://user-images.githubusercontent.com/53927959/155873868-460f24a8-581f-434b-8927-7035bc2258e1.jpeg)
 
 ## 🎧 DJ(Danji) Playlist 소개
 
@@ -9,7 +9,7 @@
 
 ## 🔨 기술 스택
 
-![demo](src/assets/images/demo0.png)
+![demo](https://user-images.githubusercontent.com/53927959/155873842-b7427439-a1f5-413e-99a1-9b0b458dbe64.png)
 
 ## 💻 프로젝트 폴더구조
 
@@ -50,14 +50,14 @@
 - 인기 검색어 키워드를 클릭하거나 직접 키워드를 입력하여 YOUTUBE에 존재하는 음악을 검색할 수 있습니다.
   <br/>
 
-![demo](src/assets/images/demo2.gif)
+![demo](https://user-images.githubusercontent.com/53927959/155874043-6182a74b-e9ad-46ec-bb7d-0e46e02540dd.gif)
 
 ### 찜하기 기능
 
 - 마음에 드는 음악이 있다면 플레이리스트에 추가할 수 있습니다.
   <br/>
 
-![demo](src/assets/images/demo3.gif)
+![demo](https://user-images.githubusercontent.com/53927959/155874069-bbf1029c-afa1-470c-a8d3-975623b8cd0a.gif)
 
 ### 플레이어 기능
 
@@ -66,25 +66,25 @@
 - 플레이리스트에서는 이전&다음곡 기능을 사용 할 수 있습니다.
   <br/>
 
-![demo](src/assets/images/demo4.gif)
+![demo](https://user-images.githubusercontent.com/53927959/155874083-c6adce80-f223-4b9e-a4e8-3544a4b65155.gif)
 
 ### 재생목록 편집 기능
 
 - 플레이리스트의 재생목록 순서가 마음에 들지 않을 때 drag & drop을 이용하여 재생목록을 편집할 수 있습니다.
   <br/>
 
-![demo](src/assets/images/demo7.gif)
+![demo](https://user-images.githubusercontent.com/53927959/155874183-7279c38c-ff55-4404-9789-4037059a0354.gif)
 
 ### 라이트모드 & 다크모드
 
 - 어두운 환경에서 눈의 피로도를 느끼신다면 다크모드를 사용하여 피로를 줄이실 수 있습니다.
   <br/>
 
-![demo](src/assets/images/demo5.gif)
+![demo](https://user-images.githubusercontent.com/53927959/155874200-f611c56d-3108-4973-8628-53a2f6dd966f.gif)
 
 ### 태블릿 전용 화면
 
 - 아이패드나 갤럭시탭에서도 사용할 수 있습니다.
   <br/>
 
-![demo](src/assets/images/demo6.png)
+![demo](https://user-images.githubusercontent.com/53927959/155874225-3167bb60-cd89-4635-8092-34452ca114e0.png)
