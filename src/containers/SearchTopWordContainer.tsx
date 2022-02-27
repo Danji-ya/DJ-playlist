@@ -1,9 +1,11 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ITopSearched } from '../@types/search';
 import { axiosDefaultInstance } from '../api';
 import SearchTopWord from '../components/SearchTopWord';
 import { useAppDispatch } from '../store';
 import { getMusicList } from '../store/modules/music';
+
+type BtnType = 'next' | 'prev';
 
 function SearchTopWordContainer() {
   const [position, setPosition] = useState(0);
@@ -26,7 +28,7 @@ function SearchTopWordContainer() {
 
   const imgTotalWidth = topSearched.length * 265;
 
-  const moveSlider = (type: 'next' | 'prev') => {
+  const moveSlider = (type: BtnType) => {
     const handleType = { prev: -280, next: 280 };
     let curPosition = position + handleType[type];
 
@@ -38,9 +40,11 @@ function SearchTopWordContainer() {
     setPosition(curPosition);
   };
 
-  const handleSlider = (e: any) => {
-    if (e.target.name.includes('prev') || e.target.name.includes('next')) {
-      moveSlider(e.target.name);
+  const handleSlider = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const { name } = e.target as HTMLButtonElement;
+
+    if (name.includes('prev') || name.includes('next')) {
+      moveSlider(name as BtnType);
     }
   };
 

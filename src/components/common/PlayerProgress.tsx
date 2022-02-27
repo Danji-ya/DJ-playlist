@@ -5,13 +5,21 @@ import {
 } from '../../styles/player';
 import { formatTime } from '../../utils/common';
 
+interface Props {
+  currentTime: number;
+  duration: number;
+  handleProgress: (target: HTMLInputElement) => void;
+  handleMouseDown: () => void;
+  handleMouseUp: () => void;
+}
+
 function PlayerProgress({
   currentTime,
   duration,
   handleProgress,
   handleMouseDown,
   handleMouseUp,
-}: any) {
+}: Props) {
   return (
     <PlayerProgressContainer>
       <PlayerProgressBar
@@ -20,8 +28,8 @@ function PlayerProgress({
         min="0"
         max={duration || 0}
         onChange={(e) => handleProgress(e.target)}
-        onMouseDown={(e) => handleMouseDown(e.target)}
-        onMouseUp={(e) => handleMouseUp(e.target)}
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
       />
       <PlayerProgressTime>
         {formatTime(currentTime)} / {formatTime(duration)}

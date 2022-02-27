@@ -21,6 +21,31 @@ import Next from '../../assets/icons/next.svg';
 import Heart from '../../assets/icons/heart.svg';
 import VolumeOff from '../../assets/icons/volumeOff.svg';
 import VolumeUp from '../../assets/icons/volumeUp.svg';
+import { IMusic } from '../../@types/music';
+
+interface Props {
+  playerProps: {
+    currentTime: number;
+    duration: number;
+    volume: number;
+    muted: boolean;
+    paused: boolean;
+  };
+  dibs: boolean;
+  selectedMusic: IMusic;
+  handleDjplaylist: (music: IMusic) => void;
+  handleStateChange: (e: YT.OnStateChangeEvent) => void;
+  handleMouseDown: () => void;
+  handleMouseUp: () => void;
+  handleEnded: () => void;
+  handleState: () => void;
+  handleVolume: (value: string) => void;
+  handleTurnOnVolume: () => void;
+  handleTurnOffVolume: () => void;
+  handleProgress: (target: HTMLInputElement) => void;
+  handlePrevMusic: (music: IMusic) => void;
+  handleNextMusic: (music: IMusic) => void;
+}
 
 const Player = forwardRef(
   (
@@ -40,7 +65,7 @@ const Player = forwardRef(
       handleProgress,
       handlePrevMusic,
       handleNextMusic,
-    }: any,
+    }: Props,
     ref: any,
   ) => {
     const { currentTime, duration, volume, muted, paused } = playerProps;

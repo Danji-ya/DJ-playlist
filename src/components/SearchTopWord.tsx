@@ -12,13 +12,21 @@ import {
   Title,
 } from '../styles/search';
 
+interface Props {
+  data: ITopSearched[];
+  handleSlider: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  position: number;
+  imgTotalWidth: number;
+  handleSearchKeyword: (keyword: string) => void;
+}
+
 function SearchTopWord({
   data,
   handleSlider,
   position,
   imgTotalWidth,
   handleSearchKeyword,
-}: any) {
+}: Props) {
   return (
     <SliderContainer>
       <Title>인기 검색어</Title>

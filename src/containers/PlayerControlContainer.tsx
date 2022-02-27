@@ -4,13 +4,19 @@ import Player from '../components/common/Player';
 import { useAppDispatch } from '../store';
 import { nextMusic, prevMusic } from '../store/modules/music';
 
+interface Props {
+  dibs: boolean;
+  selectedMusic: IMusic;
+  handleDjplaylist: (music: IMusic) => void;
+}
+
 function PlayerControlContainer({
   dibs,
   selectedMusic,
   handleDjplaylist,
-}: any) {
+}: Props) {
   const dispatch = useAppDispatch();
-  const timer = useRef<any>(null);
+  const timer: { current: NodeJS.Timeout | null } = useRef(null);
   const player = useRef<any>(null);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
@@ -54,9 +60,9 @@ function PlayerControlContainer({
     setDuration(target.getDuration());
   };
 
-  const handleStateChange = (e: any) => {
+  const handleStateChange = (e: YT.OnStateChangeEvent) => {
     const { data: state } = e;
-    clearInterval(timer.current);
+    clearInterval(timer.current as NodeJS.Timeout);
 
     if (state === 1) {
       setPaused(false);
@@ -85,9 +91,11 @@ function PlayerControlContainer({
     setPaused(!paused);
   };
 
-  const handleVolume = (value: any) => {
-    if (value > 0 && muted) setMuted(false);
-    setVolume(parseFloat(value));
+  const handleVolume = (value: string) => {
+    const valueToNumber = parseFloat(value);
+
+    if (valueToNumber > 0 && muted) setMuted(false);
+    setVolume(valueToNumber);
   };
 
   const handleTurnOnVolume = () => {
@@ -100,11 +108,11 @@ function PlayerControlContainer({
     setMuted(true);
   };
 
-  const handleProgress = (target: any) => {
+  const handleProgress = (target: HTMLInputElement) => {
     const willUpdateCurrentTime = target.value;
 
     player.current?.playerInstance?.seekTo(willUpdateCurrentTime);
-    setCurrentTime(willUpdateCurrentTime);
+    setCurrentTime(parseFloat(willUpdateCurrentTime));
   };
 
   return (

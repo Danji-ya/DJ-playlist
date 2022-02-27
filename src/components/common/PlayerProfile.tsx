@@ -1,6 +1,11 @@
+import { IMusic } from '../../@types/music';
 import { Profile, ProfileImage, ProfileText } from '../../styles/player';
 
-function PlayerProfile({ selectedMusic }: any) {
+interface Props {
+  selectedMusic: IMusic;
+}
+
+function PlayerProfile({ selectedMusic }: Props) {
   return (
     <Profile>
       <ProfileImage>

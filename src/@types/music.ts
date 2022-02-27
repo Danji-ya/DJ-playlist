@@ -7,5 +7,5 @@ export interface IMusic {
 
 export interface ISwapRoute {
   oriIdx: string;
-  destIdx: string;
+  desIdx: string;
 }

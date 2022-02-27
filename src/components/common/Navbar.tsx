@@ -3,7 +3,12 @@ import Search from '../../assets/icons/search.svg';
 import Home from '../../assets/icons/home.svg';
 import { IconWrapper, NavItem, NavList, NavWrapper } from '../../styles/header';
 
-function Navbar({ path, handlePath }: any) {
+interface Props {
+  path: string;
+  handlePath: (url: string) => void;
+}
+
+function Navbar({ path, handlePath }: Props) {
   const navItems = [
     {
       name: '홈',

@@ -8,7 +8,9 @@ function SearchFormContainer() {
   const [myKeyword, setMyKeyword] = useState('');
   const dispatch = useAppDispatch();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (
+    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement>,
+  ) => {
     e.preventDefault();
     if (myKeyword.length >= 1) {
       // fetch musicList

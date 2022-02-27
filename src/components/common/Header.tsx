@@ -6,7 +6,11 @@ import {
   LogoImgWrapper,
 } from '../../styles/header';
 
-function Header({ handlePath }: any) {
+interface Props {
+  handlePath: (url: string) => void;
+}
+
+function Header({ handlePath }: Props) {
   return (
     <HeaderContainer>
       <LogoWrapper onClick={() => handlePath('/')}>

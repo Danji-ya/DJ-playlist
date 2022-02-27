@@ -7,7 +7,12 @@ import {
 import MusicCard from './common/MusicCard';
 import SearchResultEmpty from './SearchResultEmpty';
 
-function SearchResult({ musicList, handleSelectMusic }: any) {
+interface Props {
+  musicList: null | IMusic[];
+  handleSelectMusic: (music: IMusic) => void;
+}
+
+function SearchResult({ musicList, handleSelectMusic }: Props) {
   return (
     <SearchResultContainer>
       <SearchResultTitle>검색 결과</SearchResultTitle>

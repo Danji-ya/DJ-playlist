@@ -10,4 +10,10 @@ module.exports = merge(common, {
       favicon: './public/favicon.ico',
     }),
   ],
+  optimization: {
+    minimize: true,
+    splitChunks: {
+      chunks: 'all',
+    },
+  },
 });

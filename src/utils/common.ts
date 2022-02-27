@@ -1,3 +1,4 @@
+import { IMusic } from '../@types/music';
 import { getItem, setItem } from './localstorage';
 
 export const getInitTheme = () => {
@@ -8,7 +9,7 @@ export const getInitTheme = () => {
     return true;
   }
 
-  return theme;
+  return !!theme;
 };
 
 export const getInitDjplaylist = () => {
@@ -16,7 +17,7 @@ export const getInitDjplaylist = () => {
 
   if (djplaylist === null) {
     setItem('djplaylist', []);
-    return [];
+    return [] as IMusic[];
   }
 
   return djplaylist;
