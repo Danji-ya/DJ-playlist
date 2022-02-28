@@ -11,9 +11,17 @@ module.exports = merge(common, {
     }),
   ],
   optimization: {
-    minimize: true,
     splitChunks: {
-      chunks: 'all',
+      cacheGroups: {
+        vendor: {
+          chunks: 'all',
+          name: 'vendor',
+          test: /[\\/]node_modules[\\/]/,
+        },
+        default: {
+          filename: 'vendor-[name].js',
+        },
+      },
     },
   },
 });
