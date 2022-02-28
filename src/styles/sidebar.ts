@@ -2,8 +2,8 @@ import styled from 'styled-components';
 
 const SidebarContainer = styled.div`
   position: absolute;
-  top: 5px;
   right: 15px;
+  margin: 2vh 0;
 `;
 
 const ToggleContainer = styled.button<{ lightTheme: boolean }>`
@@ -12,7 +12,7 @@ const ToggleContainer = styled.button<{ lightTheme: boolean }>`
   background: transparent;
   width: 50px;
   height: 50px;
-  padding: 0;
+  border-radius: 50%;
   cursor: pointer;
   overflow: hidden;
 
@@ -39,6 +39,10 @@ const ToggleContainer = styled.button<{ lightTheme: boolean }>`
     path {
       fill: ${({ theme }) => theme.navTextPrimary};
     }
+  }
+
+  &:hover {
+    background: ${({ theme }) => theme.navBtn};
   }
 `;
 
