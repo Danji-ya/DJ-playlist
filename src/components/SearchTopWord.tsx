@@ -16,7 +16,6 @@ interface Props {
   data: ITopSearched[];
   handleSlider: (e: React.MouseEvent<HTMLButtonElement>) => void;
   position: number;
-  imgTotalWidth: number;
   handleSearchKeyword: (keyword: string) => void;
 }
 
@@ -24,7 +23,6 @@ function SearchTopWord({
   data,
   handleSlider,
   position,
-  imgTotalWidth,
   handleSearchKeyword,
 }: Props) {
   return (
@@ -36,7 +34,7 @@ function SearchTopWord({
       <NextBtn type="button" name="next" onClick={(e) => handleSlider(e)}>
         &#10095;
       </NextBtn>
-      <MusicListContainer position={position} imgTotalWidth={imgTotalWidth}>
+      <MusicListContainer position={position}>
         {data.map((item: ITopSearched) => {
           return (
             <AlbumWrapper

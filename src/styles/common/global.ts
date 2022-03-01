@@ -12,6 +12,7 @@ const GlobalStyles = createGlobalStyle`
     color: ${({ theme }) => theme.converseColor};
     background: ${({ theme }) => theme.body};
     transition: all 0.5s linear;
+    user-select: none;
   }
 `;
 

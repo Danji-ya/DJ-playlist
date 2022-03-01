@@ -28,12 +28,11 @@ const Title = styled.h2`
 `;
 
 const MusicListContainer = styled.div<{
-  imgTotalWidth: number;
   position: number;
 }>`
   display: flex;
   padding: 20px 0;
-  width: ${({ imgTotalWidth }) => `${imgTotalWidth}px`};
+  width: fit-content;
   margin-left: ${({ position }) => `-${position}px`};
   transition: margin 0.5s;
 `;
@@ -46,17 +45,17 @@ const AlbumWrapper = styled.div`
   border: ${({ theme }) => `1px solid ${theme.border}`};
   overflow: hidden;
   flex-shrink: 0;
-  /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 
+  cursor: pointer;
   &:hover {
-    transform: scale(1.05);
-    cursor: pointer;
+    img {
+      transform: scale(1.1);
+    }
   }
 
   &:first-of-type {
     margin-left: 0;
   }
-
   &:last-of-type {
     margin-right: 0;
   }
@@ -65,6 +64,7 @@ const AlbumWrapper = styled.div`
 const AlbumImgWrapper = styled.div`
   width: 100%;
   height: 200px;
+  overflow: hidden;
 `;
 
 const AlbumImg = styled.img.attrs((props) => ({
@@ -73,6 +73,7 @@ const AlbumImg = styled.img.attrs((props) => ({
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 3s cubic-bezier(0.175, 0.885, 0, 1);
 `;
 
 const AlbumTitle = styled.p`
@@ -91,25 +92,26 @@ const SliderBtns = styled.button`
   justify-content: center;
   transform: translateY(-50%);
   border: none;
-  color: ${({ theme }) => theme.converseColor};
   font-size: 1rem;
+  background: ${({ theme }) => theme.searchBtn};
+  color: white;
 
   &:hover {
     cursor: pointer;
-    background: rgba(165, 165, 165, 0.3);
+    opacity: 0.5;
   }
 `;
 
 const PrevBtn = styled(SliderBtns)`
   ${SliderBtns};
   top: 20px;
-  right: 50px;
+  right: 40px;
 `;
 
 const NextBtn = styled(SliderBtns)`
   ${SliderBtns};
   top: 20px;
-  right: 8px;
+  right: 0;
 `;
 
 const SearchResultContainer = styled.section`
