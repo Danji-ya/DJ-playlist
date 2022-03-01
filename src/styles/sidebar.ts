@@ -10,8 +10,8 @@ const ToggleContainer = styled.button<{ lightTheme: boolean }>`
   position: relative;
   border: none;
   background: transparent;
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
   cursor: pointer;
   overflow: hidden;

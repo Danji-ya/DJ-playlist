@@ -26,8 +26,8 @@ const DjplayContainer = styled.section`
 `;
 
 const PlaylistTitleWrapper = styled.div`
-  width: 85px;
-  height: 85px;
+  width: 65px;
+  height: 65px;
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;

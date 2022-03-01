@@ -35,7 +35,7 @@ export const darkTheme = {
   header: 'rgb(0,0,0)',
   body: 'rgb(18, 18, 18)',
   bodySecondary: 'rgb(24,24,24)',
-  border: 'rgb(24,24,24)',
+  border: 'rgb(48, 54, 61)',
   text: '#FAFAFA',
   toggleBorder: '#fff',
   gradient: '#868E96',

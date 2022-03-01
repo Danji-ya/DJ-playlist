@@ -14,8 +14,7 @@ const SearchBodyContainer = styled.main`
 `;
 
 const SearchBody = styled.div`
-  padding: 2vh 0;
-  margin: 0 50px;
+  margin: 2vh 50px;
 `;
 
 const SliderContainer = styled.section`

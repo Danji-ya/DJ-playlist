@@ -5,6 +5,7 @@ const SearchFormWrapper = styled.form`
   position: relative;
   width: 30vw;
   min-width: 300px;
+  max-width: 400px;
 
   margin-bottom: 50px;
   overflow: hidden;

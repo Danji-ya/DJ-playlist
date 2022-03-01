@@ -7,8 +7,8 @@ import { SearchBodyContainer, SearchBody } from '../styles/search';
 function Search() {
   return (
     <SearchBodyContainer>
+      <Sidebar />
       <SearchBody>
-        <Sidebar />
         <SearchFormContainer />
         <SearchTopWordContainer />
         <SearchResultContainer />
