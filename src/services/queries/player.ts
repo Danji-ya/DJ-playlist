@@ -33,6 +33,9 @@ const getPlaylist = async (query: string, token: string | undefined) => {
         },
       ],
     };
+    // const data = {
+    //   items: [],
+    // };
 
     return data;
   } catch (err) {
