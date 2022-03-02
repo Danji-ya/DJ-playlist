@@ -1,18 +1,35 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { ITopSearched } from '../@types/search';
 import SearchTopWord from '../components/SearchTopWord';
 import { SLIDER } from '../constants/slider';
-import { useAppDispatch } from '../store';
-import { getMusicList } from '../store/modules/music';
+import { useGetPlaylist } from '../services/queries/player';
+import { useAppDispatch, useAppSelector } from '../store';
+import { getMusicListSuccess, setKeyword } from '../store/modules/music';
 
 type BtnType = 'next' | 'prev';
 
 function SearchTopWordContainer() {
+  const keyword = useAppSelector((state) => state.music.keyword);
   const [position, setPosition] = useState(0);
   const [topSearched, setTopSearched] = useState<ITopSearched[]>(
     SLIDER.INIT_DATA,
   );
   const dispatch = useAppDispatch();
+  const history = useHistory();
+
+  const { refetch } = useGetPlaylist({
+    query: keyword,
+    onSuccess: (data) => {
+      // TODO: 바꿔야 할 부분
+      console.log(data);
+      dispatch(getMusicListSuccess(data));
+    },
+    onError: () => {
+      // TODO: 에러핸들링
+      console.log('실패시');
+    },
+  });
 
   const imgTotalWidth = topSearched.length * SLIDER.ITEM_WIDTH;
 
@@ -36,8 +53,9 @@ function SearchTopWordContainer() {
     }
   };
 
-  const handleSearchKeyword = (keyword: string) => {
-    dispatch(getMusicList(keyword));
+  const handleSearchKeyword = (query: string) => {
+    dispatch(setKeyword(query));
+    history.replace(`/search?query=${query}`);
   };
 
   return (

@@ -8,6 +8,7 @@ function SearchContainer() {
   const history = useHistory();
   const { search } = useLocation();
 
+  // url 유지
   useEffect(() => {
     const searchParams = new URLSearchParams(search);
     if (keyword && !searchParams.get('query')) {

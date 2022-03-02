@@ -1,5 +1,5 @@
 import { createAction, handleActions } from 'redux-actions';
-import { getInitDjplaylist } from '../../utils/common';
+import { getInitDjplaylist, restructuring } from '../../utils/common';
 import { IMusic, ISwapRoute } from '../../@types/music';
 
 // action 정의
@@ -87,7 +87,7 @@ const music = handleActions<any>(
       return {
         ...state,
         nextPageToken: nextPageToken || '',
-        musicList: [...items],
+        musicList: [...items.map((item: any) => restructuring(item))],
       };
     },
     [SET_KEYWORD]: (state, { payload: keyword }) => {
