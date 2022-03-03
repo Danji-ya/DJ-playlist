@@ -18,24 +18,6 @@ const getPlaylist = async (query: string, token: string | undefined) => {
       },
     });
 
-    // const data = {
-    //   items: [
-    //     {
-    //       id: { videoId: 'YlY2CJaErdE' },
-    //       snippet: {
-    //         title: '아이유 노래모음 30곡 (가사포함)',
-    //         channelTitle: '밤공원 𝙋𝙇𝘼𝙔𝙇𝙄𝙎𝙏',
-    //         thumbnails: {
-    //           high: { url: 'https://i.ytimg.com/vi/YlY2CJaErdE/hqdefault.jpg' },
-    //         },
-    //       },
-    //     },
-    //   ],
-    // };
-    // const data = {
-    //   items: [],
-    // };
-
     return data;
   } catch (err) {
     throw new Error('fetch playlist error');
@@ -50,6 +32,12 @@ export const useGetPlaylist = ({
   return useQuery<any>(
     [QUERY_KEYS.PLAYLIST, query],
     () => getPlaylist(query, token),
-    { enabled: !!query, retry: false, ...option },
+    {
+      enabled: !!query,
+      staleTime: 60 * 1000 * 5,
+      refetchOnWindowFocus: false,
+      retry: false,
+      ...option,
+    },
   );
 };

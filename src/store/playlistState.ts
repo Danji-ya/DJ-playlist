@@ -17,7 +17,6 @@ const localStorageEffect =
 
     // Subscribe to changes in the atom value.
     onSet((newValue: T, _: any, isReset: boolean): void => {
-      console.log('onChange playlist');
       isReset ? removeState(key) : setItem(key, newValue);
     });
   };

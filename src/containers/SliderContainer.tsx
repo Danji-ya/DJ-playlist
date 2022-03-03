@@ -6,7 +6,7 @@ import { SLIDER } from '../constants/slider';
 type BtnType = 'next' | 'prev';
 
 interface Props {
-  handleSearchKeyword: (value: string) => void;
+  handleSearchKeyword: (value: string, isAutoKeyword?: boolean) => void;
 }
 
 function SliderContainer({ handleSearchKeyword }: Props) {

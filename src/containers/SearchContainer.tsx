@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useRef } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { IMusic } from '../@types/music';
@@ -15,17 +15,12 @@ import SliderContainer from './SliderContainer';
 function SearchContainer() {
   const [keyword, setKeyword] = useRecoilState(keywordState);
   const setPlayer = useSetRecoilState(playerState);
-  const [query, setQuery] = useState(keyword);
+  const searchFormRef = useRef<React.ElementRef<typeof SearchForm>>(null);
   const history = useHistory();
   const { search } = useLocation();
 
   const { data } = useGetPlaylist({
     query: keyword,
-    staleTime: 60 * 1000 * 5,
-    onSuccess: (res) => {
-      // TODO: 바꿔야 할 부분
-      console.log(res);
-    },
     onError: () => {
       // TODO: 에러핸들링
       console.log('실패시');
@@ -43,25 +38,11 @@ function SearchContainer() {
     if (searchParams.get('query') && !keyword) history.replace(`/search`);
   }, [keyword, search, history]);
 
-  const handleSearchKeyword = (value: string) => {
-    setQuery(value);
+  const handleSearchKeyword = (value: string, isAutoKeyword?: boolean) => {
+    if (isAutoKeyword) searchFormRef.current?.handleQuery(value);
+
     setKeyword(value);
     history.replace(`/search?query=${value}`);
-  };
-
-  const handleSubmit = (
-    e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement>,
-  ) => {
-    e.preventDefault();
-
-    if (query.length === 0) return;
-    if (keyword === query) return;
-
-    handleSearchKeyword(query);
-  };
-
-  const handleChange = (value: string) => {
-    setQuery(value);
   };
 
   const handleSelectMusic = (selectedMusic: IMusic) => {
@@ -80,9 +61,9 @@ function SearchContainer() {
       <Sidebar />
       <SearchBody>
         <SearchForm
-          keyword={query}
-          handleChange={handleChange}
-          handleSubmit={handleSubmit}
+          keyword={keyword}
+          ref={searchFormRef}
+          handleSearchKeyword={handleSearchKeyword}
         />
         <SliderContainer handleSearchKeyword={handleSearchKeyword} />
         <SearchResult
