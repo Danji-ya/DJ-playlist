@@ -1,14 +1,13 @@
+import { useRecoilState } from 'recoil';
 import ToggleMode from '../components/common/ToggleMode';
-import { useAppDispatch, useAppSelector } from '../store';
-import { setMode } from '../store/modules/common';
+import { themeState } from '../store/themeState';
 
 function ToggleModeContainer() {
-  const mode = useAppSelector((state) => state.common.mode);
-  const dispatch = useAppDispatch();
+  const [theme, setTheme] = useRecoilState<boolean>(themeState);
 
-  const toggleMode = () => dispatch(setMode());
+  const toggleMode = () => setTheme((prevTheme) => !prevTheme);
 
-  return <ToggleMode mode={mode} toggleMode={toggleMode} />;
+  return <ToggleMode mode={theme} toggleMode={toggleMode} />;
 }
 
 export default ToggleModeContainer;

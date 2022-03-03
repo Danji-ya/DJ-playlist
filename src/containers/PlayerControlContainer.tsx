@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { IMusic } from '../@types/music';
 import Player from '../components/common/Player';
-import { useAppDispatch } from '../store';
-import { nextMusic, prevMusic } from '../store/modules/music';
+import { playerState } from '../store/playerState';
+import { playlistState } from '../store/playlistState';
 
 interface Props {
   dibs: boolean;
@@ -15,7 +16,8 @@ function PlayerControlContainer({
   selectedMusic,
   handleDjplaylist,
 }: Props) {
-  const dispatch = useAppDispatch();
+  const playlist = useRecoilValue(playlistState);
+  const setPlayer = useSetRecoilState(playerState);
   const timer: { current: NodeJS.Timeout | null } = useRef(null);
   const player = useRef<any>(null);
   const [currentTime, setCurrentTime] = useState(0);
@@ -32,8 +34,42 @@ function PlayerControlContainer({
     player.current?.playerInstance?.playVideo();
   }, [selectedMusic]);
 
-  const handlePrevMusic = (music: IMusic) => dispatch(prevMusic(music));
-  const handleNextMusic = (music: IMusic) => dispatch(nextMusic(music));
+  // TODO: 중복된 코드 합치기
+  const handlePrevMusic = (music: IMusic) => {
+    const playlistLen = playlist.length - 1;
+
+    const curPlayMusicIdx = playlist.findIndex(
+      (item) => item.videoId === music.videoId,
+    );
+
+    if (curPlayMusicIdx === -1) return;
+
+    const nextMusic =
+      playlist[curPlayMusicIdx === 0 ? playlistLen : curPlayMusicIdx - 1];
+
+    setPlayer((prev) => ({
+      ...prev,
+      selectedMusic: nextMusic,
+    }));
+  };
+
+  const handleNextMusic = (music: IMusic) => {
+    const playlistLen = playlist.length - 1;
+
+    const curPlayMusicIdx = playlist.findIndex(
+      (item) => item.videoId === music.videoId,
+    );
+
+    if (curPlayMusicIdx === -1) return;
+
+    const nextMusic =
+      playlist[curPlayMusicIdx === playlistLen ? 0 : curPlayMusicIdx + 1];
+
+    setPlayer((prev) => ({
+      ...prev,
+      selectedMusic: nextMusic,
+    }));
+  };
 
   const handleTimer = (target: any) => {
     timer.current = setInterval(() => {

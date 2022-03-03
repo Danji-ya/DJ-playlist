@@ -32,11 +32,12 @@ function MainBody({
 
   const handleDrop = useCallback(
     (e: React.DragEvent<HTMLDivElement>) => {
-      const desIdx = e.currentTarget.dataset.idx;
-      if (!desIdx || !startEl.current) return;
+      const desIdx = Number(e.currentTarget.dataset.idx);
+
+      if (desIdx == null || !startEl.current) return;
 
       const route = {
-        oriIdx: startEl.current.dataset.idx,
+        oriIdx: Number(startEl.current.dataset.idx),
         desIdx,
       };
 

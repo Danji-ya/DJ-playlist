@@ -1,16 +1,15 @@
 import ReactDOM from 'react-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
-import { Provider } from 'react-redux';
+import { RecoilRoot } from 'recoil';
 import App from './App';
-import { store } from './store';
 
 const queryClient = new QueryClient();
 
 ReactDOM.render(
-  <Provider store={store}>
+  <RecoilRoot>
     <QueryClientProvider client={queryClient}>
       <App />
     </QueryClientProvider>
-  </Provider>,
+  </RecoilRoot>,
   document.getElementById('root'),
 );

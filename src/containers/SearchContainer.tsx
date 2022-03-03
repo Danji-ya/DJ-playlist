@@ -1,22 +1,23 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useHistory } from 'react-router-dom';
+import { useRecoilState, useSetRecoilState } from 'recoil';
 import { IMusic } from '../@types/music';
 import Sidebar from '../components/common/Sidebar';
 import SearchForm from '../components/SearchForm';
 import SearchResult from '../components/SearchResult';
 import { useGetPlaylist } from '../services/queries/player';
-import { useAppDispatch, useAppSelector } from '../store';
-import { setKeyword, setSelectedMusic } from '../store/modules/music';
+import { keywordState } from '../store/keywordState';
+import { playerState } from '../store/playerState';
 import { SearchBody, SearchBodyContainer } from '../styles/search';
 import { restructuring } from '../utils/common';
 import SliderContainer from './SliderContainer';
 
 function SearchContainer() {
-  const keyword = useAppSelector((state) => state.music.keyword);
+  const [keyword, setKeyword] = useRecoilState(keywordState);
+  const setPlayer = useSetRecoilState(playerState);
   const [query, setQuery] = useState(keyword);
   const history = useHistory();
   const { search } = useLocation();
-  const dispatch = useAppDispatch();
 
   const { data } = useGetPlaylist({
     query: keyword,
@@ -44,7 +45,7 @@ function SearchContainer() {
 
   const handleSearchKeyword = (value: string) => {
     setQuery(value);
-    dispatch(setKeyword(value));
+    setKeyword(value);
     history.replace(`/search?query=${value}`);
   };
 
@@ -63,8 +64,11 @@ function SearchContainer() {
     setQuery(value);
   };
 
-  const handleSelectMusic = (music: IMusic) => {
-    dispatch(setSelectedMusic(music));
+  const handleSelectMusic = (selectedMusic: IMusic) => {
+    setPlayer((prev) => ({
+      ...prev,
+      selectedMusic,
+    }));
   };
 
   const musicList = useMemo(() => {

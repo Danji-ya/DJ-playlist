@@ -2,7 +2,7 @@ export const getItem = (key: string): string | null => {
   try {
     return JSON.parse(localStorage.getItem(key) as string);
   } catch (err) {
-    return '';
+    return null;
   }
 };
 
