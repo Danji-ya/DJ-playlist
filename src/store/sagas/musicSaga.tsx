@@ -1,5 +1,5 @@
 import { call, put, select, takeEvery, takeLatest } from 'redux-saga/effects';
-import { fetchPlayList } from '../../api/youtube';
+// import { fetchPlayList } from '../../api/youtube';
 import {
   addDjplaylistSuccess,
   ADD_DJPLAYLIST,
@@ -7,16 +7,16 @@ import {
   DELETE_DJPLAYLIST,
   swapDjplaylistSuccess,
   SWAP_DJPLAYLIST,
-  getMusicListSuccess,
-  getMusicListFail,
-  GET_MUSICLIST,
+  // getMusicListSuccess,
+  // getMusicListFail,
+  // GET_MUSICLIST,
   NEXT_MUSIC,
   PREV_MUSIC,
-  setKeyword,
+  // setKeyword,
   setSelectedMusic,
 } from '../modules/music';
 import { setItem } from '../../utils/localstorage';
-import history from '../../utils/history';
+// import history from '../../utils/history';
 import { IMusic } from '../../@types/music';
 
 // function* getMusicList({ payload: keyword }: any) {

@@ -2,7 +2,7 @@
 import { useQuery, UseQueryOptions } from 'react-query';
 import { IMusic } from '../../@types/music';
 import { QUERY_KEYS } from '../../constants/queryKeys';
-import axiosInstance from '../../api';
+import axiosInstance from '.';
 
 interface CustomQueryOption extends UseQueryOptions<IMusic[]> {
   query: string;
