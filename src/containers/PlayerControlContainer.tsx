@@ -34,8 +34,7 @@ function PlayerControlContainer({
     player.current?.playerInstance?.playVideo();
   }, [selectedMusic]);
 
-  // TODO: 중복된 코드 합치기
-  const handlePrevMusic = (music: IMusic) => {
+  const handlePrevMusic = (music: IMusic, isNext?: boolean) => {
     const playlistLen = playlist.length - 1;
 
     const curPlayMusicIdx = playlist.findIndex(
@@ -44,8 +43,9 @@ function PlayerControlContainer({
 
     if (curPlayMusicIdx === -1) return;
 
-    const nextMusic =
-      playlist[curPlayMusicIdx === 0 ? playlistLen : curPlayMusicIdx - 1];
+    const nextMusic = isNext
+      ? playlist[curPlayMusicIdx === playlistLen ? 0 : curPlayMusicIdx + 1]
+      : playlist[curPlayMusicIdx === 0 ? playlistLen : curPlayMusicIdx - 1];
 
     setPlayer((prev) => ({
       ...prev,
@@ -53,23 +53,7 @@ function PlayerControlContainer({
     }));
   };
 
-  const handleNextMusic = (music: IMusic) => {
-    const playlistLen = playlist.length - 1;
-
-    const curPlayMusicIdx = playlist.findIndex(
-      (item) => item.videoId === music.videoId,
-    );
-
-    if (curPlayMusicIdx === -1) return;
-
-    const nextMusic =
-      playlist[curPlayMusicIdx === playlistLen ? 0 : curPlayMusicIdx + 1];
-
-    setPlayer((prev) => ({
-      ...prev,
-      selectedMusic: nextMusic,
-    }));
-  };
+  const handleNextMusic = (music: IMusic) => handlePrevMusic(music, true);
 
   const handleTimer = (target: any) => {
     timer.current = setInterval(() => {
