@@ -2,6 +2,7 @@ import { Router, Route, Switch } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import PlayerContainer from './containers/PlayerContainer';
+import ToastContainer from './containers/ToastContainer';
 import MainPage from './pages/MainPage';
 import NotFoundPage from './pages/NotFoundPage';
 import SearchPage from './pages/SearchPage';
@@ -24,6 +25,7 @@ function App() {
         </Switch>
       </Router>
       <PlayerContainer />
+      <ToastContainer />
     </ThemeProvider>
   );
 }
