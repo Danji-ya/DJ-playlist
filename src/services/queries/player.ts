@@ -1,17 +1,23 @@
-import { useQuery, UseQueryOptions } from 'react-query';
-import { IMusic } from '../../@types/music';
+import { useQuery } from 'react-query';
+import { IMusicData } from '../../@types/music';
 import { QUERY_KEYS } from '../../constants/queryKeys';
 import axiosInstance from '.';
+import CustomError from '../../utils/customError';
+import { MESSAGE } from '../../constants/messages';
 
-interface CustomQueryOption extends UseQueryOptions<IMusic[]> {
+interface CustomQueryParams {
   query: string;
   token?: string;
+  errorHandler: (message: string) => void;
 }
 
-const getPlaylist = async (query: string, token: string | undefined) => {
+const getPlaylist = async (
+  query: string,
+  token: string | undefined,
+  errorHandler: (message: string) => void,
+) => {
   try {
-    console.log('실제 fetch', query);
-    const { data } = await axiosInstance.get('/search', {
+    const { data } = await axiosInstance.get<IMusicData>('/search', {
       params: {
         q: `${query} 플레이리스트`,
         pageToken: token || '',
@@ -20,24 +26,24 @@ const getPlaylist = async (query: string, token: string | undefined) => {
 
     return data;
   } catch (err) {
-    throw new Error('fetch playlist error');
+    throw new CustomError(MESSAGE.FETCH_YOUTUBE_FAIL, errorHandler);
   }
 };
 
 export const useGetPlaylist = ({
   query,
   token,
-  ...option
-}: CustomQueryOption) => {
-  return useQuery<any>(
+  errorHandler,
+}: CustomQueryParams) => {
+  return useQuery<IMusicData | undefined>(
     [QUERY_KEYS.PLAYLIST, query],
-    () => getPlaylist(query, token),
+    () => getPlaylist(query, token, errorHandler),
     {
       enabled: !!query,
       staleTime: 60 * 1000 * 5,
       refetchOnWindowFocus: false,
       retry: false,
-      ...option,
+      useErrorBoundary: true,
     },
   );
 };

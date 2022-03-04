@@ -1,6 +1,8 @@
 import { Router, Route, Switch } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { ThemeProvider } from 'styled-components';
+import Error from './components/common/Error';
+import ErrorBoundary from './components/common/ErrorBoundary';
 import PlayerContainer from './containers/PlayerContainer';
 import ToastContainer from './containers/ToastContainer';
 import MainPage from './pages/MainPage';
@@ -17,14 +19,20 @@ function App() {
   return (
     <ThemeProvider theme={theme ? lightTheme : darkTheme}>
       <GlobalStyles />
-      <Router history={history}>
-        <Switch>
-          <Route exact path={['/', '/main']} component={MainPage} />
-          <Route path="/search" component={SearchPage} />
-          <Route path="*" component={NotFoundPage} />
-        </Switch>
-      </Router>
-      <PlayerContainer />
+      <ErrorBoundary fallback={<Error history={history} />}>
+        <Router history={history}>
+          <Switch>
+            <Route exact path={['/', '/main']} component={MainPage} />
+            <Route path="/search" component={SearchPage} />
+            <Route path="*" component={NotFoundPage} />
+          </Switch>
+          <Route
+            exact
+            path={['/', '/main', '/search']}
+            component={PlayerContainer}
+          />
+        </Router>
+      </ErrorBoundary>
       <ToastContainer />
     </ThemeProvider>
   );

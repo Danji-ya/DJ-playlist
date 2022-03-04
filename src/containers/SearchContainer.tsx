@@ -5,6 +5,7 @@ import { IMusic } from '../@types/music';
 import Sidebar from '../components/common/Sidebar';
 import SearchForm from '../components/SearchForm';
 import SearchResult from '../components/SearchResult';
+import useToast from '../services/hooks/useToast';
 import { useGetPlaylist } from '../services/queries/player';
 import { keywordState } from '../store/keywordState';
 import { playerState } from '../store/playerState';
@@ -18,13 +19,12 @@ function SearchContainer() {
   const searchFormRef = useRef<React.ElementRef<typeof SearchForm>>(null);
   const history = useHistory();
   const { search } = useLocation();
+  const toast = useToast();
 
   const { data } = useGetPlaylist({
     query: keyword,
-    onError: () => {
-      // TODO: 에러핸들링
-      console.log('실패시');
-    },
+    errorHandler: (message) =>
+      toast({ title: '', message, type: 'error', duration: 100000 }),
   });
 
   // url 유지
@@ -53,7 +53,7 @@ function SearchContainer() {
   };
 
   const musicList = useMemo(() => {
-    return data?.items.map((item: any) => restructuring(item));
+    return data?.items.map((item: object) => restructuring(item));
   }, [data]);
 
   return (

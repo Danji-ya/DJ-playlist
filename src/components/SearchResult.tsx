@@ -8,7 +8,7 @@ import MusicCard from './common/MusicCard';
 import SearchResultEmpty from './SearchResultEmpty';
 
 interface Props {
-  musicList: null | IMusic[];
+  musicList: undefined | IMusic[];
   handleSelectMusic: (music: IMusic) => void;
 }
 

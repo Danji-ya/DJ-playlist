@@ -89,7 +89,10 @@ const Body = styled.div`
   }
 `;
 
-const Contents = styled.div``;
+const Contents = styled.div`
+  flex: 1;
+  padding-right: 5px;
+`;
 
 const Title = styled.h3`
   font-size: 1rem;
