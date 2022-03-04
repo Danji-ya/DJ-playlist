@@ -6,6 +6,11 @@ export interface IMusic {
 }
 
 export interface ISwapRoute {
-  oriIdx: string;
-  desIdx: string;
+  oriIdx: number;
+  desIdx: number;
+}
+
+export interface IMusicData {
+  nextPageToken: string;
+  items: IMusic[];
 }

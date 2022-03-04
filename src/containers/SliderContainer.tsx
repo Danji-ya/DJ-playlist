@@ -2,17 +2,18 @@ import React, { useState } from 'react';
 import { ITopSearched } from '../@types/search';
 import SearchTopWord from '../components/SearchTopWord';
 import { SLIDER } from '../constants/slider';
-import { useAppDispatch } from '../store';
-import { getMusicList } from '../store/modules/music';
 
 type BtnType = 'next' | 'prev';
 
-function SearchTopWordContainer() {
+interface Props {
+  handleSearchKeyword: (value: string, isAutoKeyword?: boolean) => void;
+}
+
+function SliderContainer({ handleSearchKeyword }: Props) {
   const [position, setPosition] = useState(0);
   const [topSearched, setTopSearched] = useState<ITopSearched[]>(
     SLIDER.INIT_DATA,
   );
-  const dispatch = useAppDispatch();
 
   const imgTotalWidth = topSearched.length * SLIDER.ITEM_WIDTH;
 
@@ -36,10 +37,6 @@ function SearchTopWordContainer() {
     }
   };
 
-  const handleSearchKeyword = (keyword: string) => {
-    dispatch(getMusicList(keyword));
-  };
-
   return (
     <SearchTopWord
       data={topSearched}
@@ -50,4 +47,4 @@ function SearchTopWordContainer() {
   );
 }
 
-export default SearchTopWordContainer;
+export default SliderContainer;

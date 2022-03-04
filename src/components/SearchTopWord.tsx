@@ -16,7 +16,7 @@ interface Props {
   data: ITopSearched[];
   handleSlider: (e: React.MouseEvent<HTMLButtonElement>) => void;
   position: number;
-  handleSearchKeyword: (keyword: string) => void;
+  handleSearchKeyword: (keyword: string, isAutoKeyword?: boolean) => void;
 }
 
 function SearchTopWord({
@@ -39,7 +39,7 @@ function SearchTopWord({
           return (
             <AlbumWrapper
               key={`${item.id}`}
-              onClick={() => handleSearchKeyword(item.title)}
+              onClick={() => handleSearchKeyword(item.title, true)}
             >
               <AlbumImgWrapper>
                 <AlbumImg src={item.src} alt="" />

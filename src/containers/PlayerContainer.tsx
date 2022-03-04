@@ -1,23 +1,41 @@
+import { useRecoilState, useRecoilValue } from 'recoil';
 import { IMusic } from '../@types/music';
-import { useAppDispatch, useAppSelector } from '../store';
-import { addDjplaylist, deleteDjplaylist } from '../store/modules/music';
+import { MESSAGE } from '../constants/messages';
+import useToast from '../services/hooks/useToast';
+import { playerState } from '../store/playerState';
+import { playlistState } from '../store/playlistState';
 import PlayerControlContainer from './PlayerControlContainer';
 
 function PlayerContainer() {
-  const dispatch = useAppDispatch();
-  const selectedMusic = useAppSelector((state) => state.music.selectedMusic);
-  const djPlaylist = useAppSelector((state) => state.music.djPlaylist);
+  const [playlist, setPlaylist] = useRecoilState(playlistState);
+  const player = useRecoilValue(playerState);
+  const toast = useToast();
+  const { selectedMusic } = player;
 
   const isIncludeDjplaylist =
-    djPlaylist.filter((item: IMusic) => item.videoId === selectedMusic.videoId)
+    Object.keys(selectedMusic).length !== 0 &&
+    playlist.filter((item: IMusic) => item.videoId === selectedMusic.videoId)
       .length > 0;
 
   const handleDjplaylist = (music: IMusic) => {
+    let newPlaylist: IMusic[];
     if (isIncludeDjplaylist) {
-      dispatch(deleteDjplaylist(music));
+      newPlaylist = playlist.filter((item) => item.videoId !== music.videoId);
+      toast({
+        type: 'error',
+        title: '',
+        message: MESSAGE.DELETE_MUSIC_SUCCESS,
+      });
     } else {
-      dispatch(addDjplaylist(music));
+      // 1 level deep copy
+      newPlaylist = [{ ...music }, ...playlist];
+      toast({
+        title: '',
+        message: MESSAGE.ADD_MUSIC_SUCCESS,
+      });
     }
+
+    setPlaylist(newPlaylist);
   };
 
   return (
