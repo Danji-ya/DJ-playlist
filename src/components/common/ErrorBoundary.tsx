@@ -1,10 +1,10 @@
 /* eslint-disable react/state-in-constructor */
 import { Component, ErrorInfo, ReactNode } from 'react';
 import CustomError from '../../utils/customError';
+import Error from './Error';
 
 interface Props {
   children: ReactNode;
-  fallback: ReactNode;
 }
 
 interface State {
@@ -26,10 +26,10 @@ class ErrorBoundary extends Component<Props, State> {
 
   render() {
     const { hasError } = this.state;
-    const { children, fallback } = this.props;
+    const { children } = this.props;
 
     if (hasError) {
-      return fallback;
+      return <Error />;
     }
 
     return children;

@@ -1,10 +1,10 @@
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Header from '../components/common/Header';
 
 function HeaderContainer() {
-  const history = useHistory();
+  const navigate = useNavigate();
 
-  const handlePath = (url: string) => history.push(url);
+  const handlePath = (url: string) => navigate(url);
 
   return <Header handlePath={handlePath} />;
 }

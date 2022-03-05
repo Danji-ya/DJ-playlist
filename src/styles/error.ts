@@ -8,14 +8,14 @@ const Background = styled.div`
   justify-content: center;
 `;
 
-const NoResultsWrapper = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 
-const NoResultsImg = styled.img`
+const Img = styled.img`
   width: 450px;
   height: 450px;
 
@@ -25,7 +25,7 @@ const NoResultsImg = styled.img`
   }
 `;
 
-const NoResultsTitle = styled.h2`
+const Title = styled.h2`
   margin-top: 15px;
   font-size: 1.5rem;
   font-weight: 600;
@@ -35,7 +35,7 @@ const NoResultsTitle = styled.h2`
   }
 `;
 
-const GotoButton = styled.button`
+const Button = styled.button`
   margin-top: 10px;
   padding: 15px 25px;
   border-radius: 10px;
@@ -56,10 +56,4 @@ const GotoButton = styled.button`
   }
 `;
 
-export {
-  Background,
-  NoResultsWrapper,
-  NoResultsImg,
-  NoResultsTitle,
-  GotoButton,
-};
+export { Background, Container, Img, Title, Button };

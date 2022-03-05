@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useRef } from 'react';
-import { useLocation, useHistory } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { IMusic } from '../@types/music';
 import Sidebar from '../components/common/Sidebar';
 import SearchForm from '../components/SearchForm';
 import SearchResult from '../components/SearchResult';
+import { PATH } from '../constants/path';
 import useToast from '../services/hooks/useToast';
 import { useGetPlaylist } from '../services/queries/player';
 import { keywordState } from '../store/keywordState';
@@ -17,7 +18,7 @@ function SearchContainer() {
   const [keyword, setKeyword] = useRecoilState(keywordState);
   const setPlayer = useSetRecoilState(playerState);
   const searchFormRef = useRef<React.ElementRef<typeof SearchForm>>(null);
-  const history = useHistory();
+  const navigate = useNavigate();
   const { search } = useLocation();
   const toast = useToast();
 
@@ -31,18 +32,19 @@ function SearchContainer() {
   useEffect(() => {
     const searchParams = new URLSearchParams(search);
     if (keyword && !searchParams.get('query')) {
-      history.replace(`/search?query=${keyword}`);
+      navigate(`${PATH.SEARCH}?query=${keyword}`, { replace: true });
       return;
     }
 
-    if (searchParams.get('query') && !keyword) history.replace(`/search`);
-  }, [keyword, search, history]);
+    if (searchParams.get('query') && !keyword)
+      navigate(PATH.SEARCH, { replace: true });
+  }, [keyword, search, navigate]);
 
   const handleSearchKeyword = (value: string, isAutoKeyword?: boolean) => {
     if (isAutoKeyword) searchFormRef.current?.handleQuery(value);
 
     setKeyword(value);
-    history.replace(`/search?query=${value}`);
+    navigate(`${PATH.SEARCH}?query=${value}`, { replace: true });
   };
 
   const handleSelectMusic = (selectedMusic: IMusic) => {
