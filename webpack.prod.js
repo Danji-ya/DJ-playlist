@@ -17,9 +17,7 @@ module.exports = merge(common, {
           chunks: 'all',
           name: 'vendor',
           test: /[\\/]node_modules[\\/]/,
-        },
-        default: {
-          filename: 'vendor-[name].js',
+          filename: '[name].[chunkhash].js',
         },
       },
     },
