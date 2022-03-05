@@ -1,23 +1,21 @@
 import styled from 'styled-components';
 
 const Background = styled.div`
-  width: 100%;
-  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
 `;
 
-const NoResultsWrapper = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 `;
 
-const NoResultsImg = styled.img`
-  width: 450px;
-  height: 450px;
+const Img = styled.img`
+  width: 300px;
+  height: 300px;
 
   @media screen and (max-width: 768px) {
     width: 250px;
@@ -25,9 +23,9 @@ const NoResultsImg = styled.img`
   }
 `;
 
-const NoResultsTitle = styled.h2`
+const Title = styled.h2`
   margin-top: 15px;
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 600;
 
   @media screen and (max-width: 768px) {
@@ -35,9 +33,9 @@ const NoResultsTitle = styled.h2`
   }
 `;
 
-const GotoButton = styled.button`
+const Button = styled.button`
   margin-top: 10px;
-  padding: 15px 25px;
+  padding: 10px 20px;
   border-radius: 10px;
   outline: none;
   border: none;
@@ -46,8 +44,8 @@ const GotoButton = styled.button`
   font-size: 1rem;
 
   @media screen and (max-width: 768px) {
-    padding: 10px 20px;
-    font-size: 0.5rem;
+    padding: 5px 15px;
+    font-size: 0.8rem;
   }
 
   &:hover {
@@ -56,10 +54,4 @@ const GotoButton = styled.button`
   }
 `;
 
-export {
-  Background,
-  NoResultsWrapper,
-  NoResultsImg,
-  NoResultsTitle,
-  GotoButton,
-};
+export { Background, Container, Img, Title, Button };

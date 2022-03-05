@@ -1,22 +1,18 @@
 import { images } from '../../constants';
-import {
-  Background,
-  GotoButton,
-  NoResultsImg,
-  NoResultsTitle,
-  NoResultsWrapper,
-} from '../../styles/error';
+import { Background, Button, Container, Img, Title } from '../../styles/error';
 
-export default function Error({ history }: any) {
-  const handleClick = () => history.go(0);
+interface Props {
+  refresh: () => void;
+}
 
+export default function Error({ refresh }: Props) {
   return (
     <Background>
-      <NoResultsWrapper>
-        <NoResultsImg src={images.cat} />
-        <NoResultsTitle>에러가 발생했습니다</NoResultsTitle>
-        <GotoButton onClick={handleClick}>돌아가기</GotoButton>
-      </NoResultsWrapper>
+      <Container>
+        <Img src={images.cat} />
+        <Title>에러가 발생했습니다</Title>
+        <Button onClick={() => refresh()}>새로고침</Button>
+      </Container>
     </Background>
   );
 }

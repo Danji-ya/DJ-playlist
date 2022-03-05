@@ -2,6 +2,7 @@
 import Search from '../../assets/icons/search.svg';
 import Home from '../../assets/icons/home.svg';
 import { IconWrapper, NavItem, NavList, NavWrapper } from '../../styles/header';
+import { PATH } from '../../constants/path';
 
 interface Props {
   path: string;
@@ -12,12 +13,12 @@ function Navbar({ path, handlePath }: Props) {
   const navItems = [
     {
       name: '홈',
-      path: '/',
+      path: PATH.MAIN,
       Icon: (props: { width: string; height: string }) => <Home {...props} />,
     },
     {
       name: '검색하기',
-      path: '/search',
+      path: PATH.SEARCH,
       Icon: (props: { width: string; height: string }) => <Search {...props} />,
     },
   ];
