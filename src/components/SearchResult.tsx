@@ -1,9 +1,5 @@
 import { IMusic } from '../@types/music';
-import {
-  SearchResultContainer,
-  SearchResultGrid,
-  SearchResultTitle,
-} from '../styles/search';
+import { SearchResultContainer, SearchResultGrid } from '../styles/search';
 import MusicCard from './common/MusicCard';
 import SearchResultEmpty from './SearchResultEmpty';
 
@@ -15,7 +11,6 @@ interface Props {
 function SearchResult({ musicList, handleSelectMusic }: Props) {
   return (
     <SearchResultContainer>
-      <SearchResultTitle>검색 결과</SearchResultTitle>
       <SearchResultGrid>
         {musicList && (
           <>

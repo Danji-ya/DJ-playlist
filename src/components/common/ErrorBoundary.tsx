@@ -29,7 +29,13 @@ class ErrorBoundary extends Component<Props, State> {
     const { children } = this.props;
 
     if (hasError) {
-      return <Error />;
+      return (
+        <Error
+          refresh={() => {
+            this.setState({ hasError: false });
+          }}
+        />
+      );
     }
 
     return children;

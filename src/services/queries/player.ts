@@ -17,15 +17,14 @@ const getPlaylist = async (
   errorHandler: (message: string) => void,
 ) => {
   try {
-    // const { data } = await axiosInstance.get<IMusicData>('/search', {
-    //   params: {
-    //     q: `${query} 플레이리스트`,
-    //     pageToken: token || '',
-    //   },
-    // });
+    const { data } = await axiosInstance.get<IMusicData>('/search', {
+      params: {
+        q: `${query} 플레이리스트`,
+        pageToken: token || '',
+      },
+    });
 
-    // return data;
-    throw new Error('hello');
+    return data;
   } catch (err) {
     throw new CustomError(MESSAGE.FETCH_YOUTUBE_FAIL, errorHandler);
   }

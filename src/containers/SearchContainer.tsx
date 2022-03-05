@@ -1,17 +1,19 @@
-import { useEffect, useMemo, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { IMusic } from '../@types/music';
+import ErrorBoundary from '../components/common/ErrorBoundary';
 import Sidebar from '../components/common/Sidebar';
 import SearchForm from '../components/SearchForm';
-import SearchResult from '../components/SearchResult';
 import { PATH } from '../constants/path';
-import useToast from '../services/hooks/useToast';
-import { useGetPlaylist } from '../services/queries/player';
 import { keywordState } from '../store/keywordState';
 import { playerState } from '../store/playerState';
-import { SearchBody, SearchBodyContainer } from '../styles/search';
-import { restructuring } from '../utils/common';
+import {
+  SearchBody,
+  SearchBodyContainer,
+  SearchResultTitle,
+} from '../styles/search';
+import SearchResultContainer from './SearchResultContainer';
 import SliderContainer from './SliderContainer';
 
 function SearchContainer() {
@@ -20,13 +22,6 @@ function SearchContainer() {
   const searchFormRef = useRef<React.ElementRef<typeof SearchForm>>(null);
   const navigate = useNavigate();
   const { search } = useLocation();
-  const toast = useToast();
-
-  const { data } = useGetPlaylist({
-    query: keyword,
-    errorHandler: (message) =>
-      toast({ title: '', message, type: 'error', duration: 100000 }),
-  });
 
   // url 유지
   useEffect(() => {
@@ -54,10 +49,6 @@ function SearchContainer() {
     }));
   };
 
-  const musicList = useMemo(() => {
-    return data?.items.map((item: object) => restructuring(item));
-  }, [data]);
-
   return (
     <SearchBodyContainer>
       <Sidebar />
@@ -68,10 +59,13 @@ function SearchContainer() {
           handleSearchKeyword={handleSearchKeyword}
         />
         <SliderContainer handleSearchKeyword={handleSearchKeyword} />
-        <SearchResult
-          musicList={musicList}
-          handleSelectMusic={handleSelectMusic}
-        />
+        <SearchResultTitle>검색 결과</SearchResultTitle>
+        <ErrorBoundary>
+          <SearchResultContainer
+            keyword={keyword}
+            handleSelectMusic={handleSelectMusic}
+          />
+        </ErrorBoundary>
       </SearchBody>
     </SearchBodyContainer>
   );
