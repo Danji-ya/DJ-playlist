@@ -1,4 +1,7 @@
-## ![demo](https://user-images.githubusercontent.com/53927959/155873868-460f24a8-581f-434b-8927-7035bc2258e1.jpeg)
+<div align="center" >
+  <img width="80px;" src="https://user-images.githubusercontent.com/53927959/156761961-e410b204-1795-4577-8038-f45524e8bde2.png"/>
+</div>
+<br>
 
 ## 🎧 DJ(Danji) Playlist 소개
 
@@ -7,41 +10,40 @@
 - 라이트모드와 다크모드 중 선호하는 모드를 선택할 수 있습니다.
 - 플레이리스트와 선호하는 모드는 페이지가 닫히더라도 사라지지 않습니다.
 
+<br>
+
 ## 🔨 기술 스택
 
-![demo](https://user-images.githubusercontent.com/53927959/155873842-b7427439-a1f5-413e-99a1-9b0b458dbe64.png)
+![demo](https://user-images.githubusercontent.com/53927959/156761659-36bcbbd4-8f95-4196-8aea-994e8891f9b7.png)
+
+<br>
 
 ## 💻 프로젝트 폴더구조
 
 ```
-📦 src
- ┣ 📂 api
- ┃ ┣ 📄 index.js
- ┃ ┗ 📄 youtube.js
- ┣ 📂 assets
- ┃ ┣ 📂 fonts
- ┃ ┣ 📂 icons
- ┃ ┗ 📂 images
- ┣ 📂 components
- ┣ 📂 constants
- ┃ ┣ 📄 icons.js
- ┃ ┣ 📄 images.js
- ┃ ┣ 📄 theme.js
- ┃ ┗ 📄 index.js
- ┣ 📂 containers
- ┣ 📂 pages
- ┣ 📂 store
- ┃ ┣ 📂 modules
- ┃ ┣ 📂 sagas
- ┃ ┗ 📄 index.js
- ┣ 📂 styles
- ┣ 📂 util
- ┃ ┣ 📄 history.js
- ┃ ┣ 📄 localstorage.js
- ┃ ┗ 📄 utils.js
- ┣ 📜 App.js
- ┗ 📜 index.js
+📦src
+ ┣ 📂@types
+ ┣ 📂assets
+ ┃ ┣ 📂icons
+ ┃ ┗ 📂images
+ ┣ 📂components
+ ┃ ┣ 📂common
+ ┃ ┃ ┣ 📂Toast
+ ┣ 📂constants
+ ┣ 📂containers
+ ┣ 📂pages
+ ┣ 📂services
+ ┃ ┣ 📂hooks
+ ┃ ┗ 📂queries
+ ┣ 📂store
+ ┣ 📂styles
+ ┃ ┣ 📂common
+ ┣ 📂utils
+ ┣ 📜App.tsx
+ ┗ 📜index.tsx
 ```
+
+<br>
 
 ## 📢 구현기능
 
@@ -73,18 +75,18 @@
 - 플레이리스트의 재생목록 순서가 마음에 들지 않을 때 drag & drop을 이용하여 재생목록을 편집할 수 있습니다.
   <br/>
 
-![demo](https://user-images.githubusercontent.com/53927959/155874183-7279c38c-ff55-4404-9789-4037059a0354.gif)
+![demo](https://user-images.githubusercontent.com/53927959/156770780-7da7e2ae-4ad2-418d-81a6-88f7eba5034c.gif)
 
 ### 라이트모드 & 다크모드
 
 - 어두운 환경에서 눈의 피로도를 느끼신다면 다크모드를 사용하여 피로를 줄이실 수 있습니다.
   <br/>
 
-![demo](https://user-images.githubusercontent.com/53927959/155874200-f611c56d-3108-4973-8628-53a2f6dd966f.gif)
+![demo](https://user-images.githubusercontent.com/53927959/156765865-aade0468-2e27-4891-8789-58bab4daa487.gif)
 
 ### 태블릿 전용 화면
 
 - 아이패드나 갤럭시탭에서도 사용할 수 있습니다.
   <br/>
 
-![demo](https://user-images.githubusercontent.com/53927959/155874225-3167bb60-cd89-4635-8092-34452ca114e0.png)
+![demo](https://user-images.githubusercontent.com/53927959/156762854-be5648cf-21be-4d5c-9c2d-bb581c943fd5.png)
