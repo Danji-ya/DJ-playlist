@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { DEVICE } from '../constants/device';
+import { DEVICE, SIZE } from '../constants/device';
 
 const SearchBodyContainer = styled.main`
   position: relative;
@@ -7,6 +7,7 @@ const SearchBodyContainer = styled.main`
   margin-bottom: 80px;
   display: flex;
   flex-direction: column;
+  min-width: ${SIZE.MOBILE};
 
   @media ${DEVICE.DESKTOP} {
     margin-left: 0;

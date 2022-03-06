@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { SIZE } from '../../constants/device';
 import reset from './reset';
 
 const GlobalStyles = createGlobalStyle`
@@ -6,6 +7,10 @@ const GlobalStyles = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+  }
+
+  html, body {
+    min-width: ${SIZE.MOBILE};
   }
   
   body {

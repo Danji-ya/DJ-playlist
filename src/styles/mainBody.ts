@@ -8,6 +8,7 @@ const MainBodyContainer = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: ${SIZE.MOBILE};
 
   @media ${DEVICE.DESKTOP} {
     margin-left: 0;
@@ -19,11 +20,10 @@ const DjplayContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   grid-gap: 1rem;
-  width: 60vw;
+  width: 60%;
 
   @media ${DEVICE.DESKTOP} {
-    width: 70vw;
-    min-width: ${SIZE.MOBILE};
+    width: 70%;
   }
 `;
 
