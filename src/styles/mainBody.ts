@@ -25,11 +25,7 @@ const DjplayContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   grid-gap: 1rem;
-  width: 60%;
-
-  @media ${DEVICE.DESKTOP} {
-    width: 70%;
-  }
+  width: 80%;
 `;
 
 const PlaylistTitleWrapper = styled.div`
@@ -42,11 +38,8 @@ const PlaylistTitleWrapper = styled.div`
   position: relative;
   margin: 2vh 0;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+  background: ${({ theme }) => theme.navTextPrimary};
+  fill: ${({ theme }) => theme.body};
 `;
 
 const EmptyContainer = styled.div`

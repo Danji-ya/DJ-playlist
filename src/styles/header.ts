@@ -41,14 +41,12 @@ const LogoImgWrapper = styled.div`
   border-radius: 50%;
   overflow: hidden;
   flex-shrink: 0;
-  background: white;
-  position: relative;
+  background: ${({ theme }) => theme.navTextPrimary};
+  fill: ${({ theme }) => theme.body};
+`;
 
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
+const LogoText = styled.p`
+  color: ${({ theme }) => theme.navTextPrimary};
 `;
 
 const LogoWrapper = styled.div`
@@ -160,6 +158,7 @@ const Icon = styled.img.attrs((props) => ({
 export {
   HeaderContainer,
   LogoWrapper,
+  LogoText,
   LogoImgWrapper,
   NavWrapper,
   NavList,

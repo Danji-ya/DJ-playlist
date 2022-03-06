@@ -12,6 +12,7 @@ import {
 } from '../styles/mainBody';
 import { IMusic, ISwapRoute } from '../@types/music';
 import { MESSAGE } from '../constants/messages';
+import Logo from '../assets/icons/logo.svg';
 
 interface Props {
   djPlaylist: IMusic[];
@@ -55,7 +56,7 @@ function MainBody({
     <MainBodyContainer>
       <Sidebar />
       <PlaylistTitleWrapper>
-        <img src={images.logo} alt="로고" />
+        <Logo width={65} height={65} />
       </PlaylistTitleWrapper>
 
       {djPlaylist.length > 0 ? (

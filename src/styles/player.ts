@@ -24,7 +24,7 @@ const PlayerContainer = styled.div`
 `;
 
 const PlayerEmpty = styled.div`
-  color: ${({ theme }) => theme.converseColor};
+  color: ${({ theme }) => theme.navTextPrimary};
   font-family: 'BMHANNAPro', sans-serif;
   display: flex;
   justify-content: center;
