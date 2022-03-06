@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE, SIZE } from '../constants/device';
 
 const MainBodyContainer = styled.main`
   position: relative;
@@ -8,7 +9,7 @@ const MainBodyContainer = styled.main`
   flex-direction: column;
   align-items: center;
 
-  @media (max-width: 1024px) {
+  @media ${DEVICE.DESKTOP} {
     margin-left: 0;
     margin-top: 80px;
   }
@@ -20,8 +21,9 @@ const DjplayContainer = styled.section`
   grid-gap: 1rem;
   width: 60vw;
 
-  @media (max-width: 1024px) {
+  @media ${DEVICE.DESKTOP} {
     width: 70vw;
+    min-width: ${SIZE.MOBILE};
   }
 `;
 
@@ -40,10 +42,6 @@ const PlaylistTitleWrapper = styled.div`
     height: 100%;
     object-fit: cover;
   }
-
-  /* @media (max-width: 1024px) {
-    display: none;
-  } */
 `;
 
 const EmptyContainer = styled.div`

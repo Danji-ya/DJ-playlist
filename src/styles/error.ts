@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE } from '../constants/device';
 
 const Background = styled.div`
   display: flex;
@@ -17,7 +18,7 @@ const Img = styled.img`
   width: 300px;
   height: 300px;
 
-  @media screen and (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     width: 250px;
     height: 250px;
   }
@@ -28,7 +29,7 @@ const Title = styled.h2`
   font-size: 1rem;
   font-weight: 600;
 
-  @media screen and (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     font-size: 0.8rem;
   }
 `;
@@ -43,7 +44,7 @@ const Button = styled.button`
   color: white;
   font-size: 1rem;
 
-  @media screen and (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     padding: 5px 15px;
     font-size: 0.8rem;
   }

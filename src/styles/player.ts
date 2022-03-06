@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { DEVICE } from '../constants/device';
 
 const PlayerContainer = styled.div`
   background: ${({ theme }) => `${theme.playerBg}`};
@@ -13,7 +14,7 @@ const PlayerContainer = styled.div`
   align-items: center;
   justify-content: space-around;
 
-  @media (max-width: 1024px) {
+  @media ${DEVICE.DESKTOP} {
     justify-content: space-between;
   }
 `;
@@ -40,7 +41,7 @@ const Profile = styled.div`
   align-items: center;
   overflow: hidden;
 
-  @media (max-width: 1024px) {
+  @media ${DEVICE.DESKTOP} {
     display: none;
   }
 `;
@@ -78,7 +79,7 @@ const PlayerControls = styled.div`
   justify-content: space-between;
   margin: 0 5%;
 
-  @media (max-width: 1024px) {
+  @media ${DEVICE.DESKTOP} {
     margin: 0 0;
   }
 `;
@@ -125,7 +126,7 @@ const PlayerProgressContainer = styled.div`
   flex-direction: column;
   align-items: flex-end;
 
-  @media (max-width: 480px) {
+  @media ${DEVICE.MOBILE} {
     display: none;
   }
 `;
@@ -180,7 +181,7 @@ const PlayerSoundControlWrapper = styled.div`
     fill: ${({ theme }) => `${theme.playerSoundBtn}`};
   }
 
-  @media (max-width: 768px) {
+  @media ${DEVICE.TABLET} {
     display: none;
   }
 `;

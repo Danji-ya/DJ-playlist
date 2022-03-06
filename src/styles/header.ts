@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { DEVICE } from '../constants/device';
 
 const HeaderContainer = styled.header`
   position: fixed;
@@ -10,45 +11,24 @@ const HeaderContainer = styled.header`
   background: ${({ theme }) => theme.header};
   display: flex;
   flex-direction: column;
-
   transition: background 0.5s linear;
-  @media (max-width: 1024px) {
+
+  @media ${DEVICE.DESKTOP} {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    width: 100vw;
+    width: 100%;
+    min-width: 420px;
     height: 80px;
     padding-top: 0px;
     padding: 0 50px;
 
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  }
-`;
 
-const LogoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  align-self: center;
-  justify-content: center;
-  p {
-    font-weight: bold;
-    font-family: 'BMHANNAPro', sans-serif;
-    font-size: 1.5rem;
-    margin-left: 15px;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  @media (max-width: 1024px) {
-    width: auto;
-  }
-
-  @media (max-width: 480px) {
-    p {
-      display: none;
-    }
+    left: 0;
+    right: 0;
+    top: 0;
+    overflow-x: auto;
   }
 `;
 
@@ -68,10 +48,37 @@ const LogoImgWrapper = styled.div`
   }
 `;
 
+const LogoWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  align-self: center;
+  justify-content: center;
+  p {
+    font-weight: bold;
+    font-family: 'BMHANNAPro', sans-serif;
+    font-size: 1.5rem;
+    margin-left: 15px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  @media ${DEVICE.DESKTOP} {
+    width: auto;
+  }
+
+  @media ${DEVICE.MOBILE} {
+    p {
+      display: none;
+    }
+  }
+`;
+
 const NavWrapper = styled.nav`
   padding: 15% 0;
 
-  @media (max-width: 1024px) {
+  @media ${DEVICE.DESKTOP} {
     padding: 0 0;
   }
 `;
@@ -81,7 +88,7 @@ const NavList = styled.ol`
   flex-direction: column;
   align-items: center;
 
-  @media (max-width: 1024px) {
+  @media ${DEVICE.DESKTOP} {
     flex-direction: row;
   }
 `;
@@ -120,7 +127,7 @@ const NavItem = styled.li<{ active: boolean }>`
     margin-bottom: 0;
   }
 
-  @media (max-width: 1024px) {
+  @media ${DEVICE.DESKTOP} {
     justify-content: center;
     margin: 0 0;
     width: 50px;
