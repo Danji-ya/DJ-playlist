@@ -4,10 +4,14 @@ import { images } from '../constants';
 import Sidebar from './common/Sidebar';
 import {
   DjplayContainer,
+  EmptyContainer,
+  EmptyImg,
+  EmptyTitle,
   MainBodyContainer,
   PlaylistTitleWrapper,
 } from '../styles/mainBody';
 import { IMusic, ISwapRoute } from '../@types/music';
+import { MESSAGE } from '../constants/messages';
 
 interface Props {
   djPlaylist: IMusic[];
@@ -54,20 +58,27 @@ function MainBody({
         <img src={images.logo} alt="로고" />
       </PlaylistTitleWrapper>
 
-      <DjplayContainer>
-        {djPlaylist.map((item: IMusic, idx: number) => (
-          <MusicCard
-            key={item.videoId}
-            item={item}
-            draggAble
-            handleSelectMusic={handleSelectMusic}
-            handleDragStart={handleDragStart}
-            handleDragOver={handleDragOver}
-            handleDrop={handleDrop}
-            idx={idx}
-          />
-        ))}
-      </DjplayContainer>
+      {djPlaylist.length > 0 ? (
+        <DjplayContainer>
+          {djPlaylist.map((item: IMusic, idx: number) => (
+            <MusicCard
+              key={item.videoId}
+              item={item}
+              draggAble
+              handleSelectMusic={handleSelectMusic}
+              handleDragStart={handleDragStart}
+              handleDragOver={handleDragOver}
+              handleDrop={handleDrop}
+              idx={idx}
+            />
+          ))}
+        </DjplayContainer>
+      ) : (
+        <EmptyContainer>
+          <EmptyImg src={images.cat2} alt="빈 목록" />
+          <EmptyTitle>{MESSAGE.EMPTY_PLAYLIST}</EmptyTitle>
+        </EmptyContainer>
+      )}
     </MainBodyContainer>
   );
 }

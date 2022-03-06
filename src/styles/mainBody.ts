@@ -46,4 +46,30 @@ const PlaylistTitleWrapper = styled.div`
   } */
 `;
 
-export { MainBodyContainer, DjplayContainer, PlaylistTitleWrapper };
+const EmptyContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 15vh;
+`;
+
+const EmptyImg = styled.img`
+  width: 250px;
+  height: 250px;
+  border-radius: 15px;
+  margin-bottom: 25px;
+`;
+
+const EmptyTitle = styled.h3`
+  font-size: 1.5rem;
+  font-family: 'BMHANNAPro', sans-serif;
+`;
+
+export {
+  MainBodyContainer,
+  DjplayContainer,
+  PlaylistTitleWrapper,
+  EmptyContainer,
+  EmptyImg,
+  EmptyTitle,
+};
