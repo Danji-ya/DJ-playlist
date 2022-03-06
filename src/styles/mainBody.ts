@@ -3,16 +3,21 @@ import { DEVICE, SIZE } from '../constants/device';
 
 const MainBodyContainer = styled.main`
   position: relative;
-  margin-left: 250px;
-  margin-bottom: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-left: 250px;
   min-width: ${SIZE.MOBILE};
+  min-height: 100vh;
+  padding-bottom: 80px;
 
   @media ${DEVICE.DESKTOP} {
     margin-left: 0;
-    margin-top: 80px;
+    padding-top: 80px;
+  }
+
+  @media ${DEVICE.MOBILE} {
+    padding-top: 0;
   }
 `;
 

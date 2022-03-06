@@ -29,6 +29,10 @@ const HeaderContainer = styled.header`
     top: 0;
     overflow-x: auto;
   }
+
+  @media ${DEVICE.MOBILE} {
+    position: sticky;
+  }
 `;
 
 const LogoImgWrapper = styled.div`

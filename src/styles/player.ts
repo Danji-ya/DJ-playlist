@@ -17,6 +17,10 @@ const PlayerContainer = styled.div`
   @media ${DEVICE.DESKTOP} {
     justify-content: space-between;
   }
+
+  @media ${DEVICE.MOBILE} {
+    position: sticky;
+  }
 `;
 
 const PlayerEmpty = styled.div`
