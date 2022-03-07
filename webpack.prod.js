@@ -13,12 +13,13 @@ module.exports = merge(common, {
   optimization: {
     splitChunks: {
       cacheGroups: {
+        default: false,
         vendor: {
           chunks: 'all',
           name: 'vendor',
-          test: /[\\/]node_modules[\\/]/,
+          test: /[\\/]node_modules[\\/](react-dom|recoil|react-query\/es)[\\/]/,
           filename: '[name].[chunkhash].js',
-        },
+        }
       },
     },
   },

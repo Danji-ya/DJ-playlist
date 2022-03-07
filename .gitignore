@@ -3,6 +3,7 @@ node_modules
 
 # webpack build 관련
 dist/*
+build/*
 
 # 비밀공간
 .env
