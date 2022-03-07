@@ -13,7 +13,7 @@ interface Props {
 function SearchResultContainer({ keyword, handleSelectMusic }: Props) {
   const toast = useToast();
 
-  const { data } = useGetPlaylist({
+  const { data, isLoading } = useGetPlaylist({
     query: keyword,
     errorHandler: (message) =>
       toast({ title: '', message, type: 'error', duration: 5000 }),
@@ -24,7 +24,11 @@ function SearchResultContainer({ keyword, handleSelectMusic }: Props) {
   }, [data]);
 
   return (
-    <SearchResult musicList={musicList} handleSelectMusic={handleSelectMusic} />
+    <SearchResult
+      isLoading={isLoading}
+      musicList={musicList}
+      handleSelectMusic={handleSelectMusic}
+    />
   );
 }
 
