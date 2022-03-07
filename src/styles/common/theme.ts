@@ -27,6 +27,10 @@ export const lightTheme = {
   /* searchForm */
   searchBtn: '#07689f',
 
+  /* skeleton */
+  skeletonBg: '#f2f2f2',
+  skeletonLoading: 'linear-gradient(to right, #f2f2f2, #e6e6e6, #f2f2f2)',
+
   sameColor: 'white',
   converseColor: 'black',
 };
@@ -59,6 +63,10 @@ export const darkTheme = {
 
   /* searchForm */
   searchBtn: '#696969',
+
+  /* skeleton */
+  skeletonBg: '#414247',
+  skeletonLoading: 'linear-gradient(to right, #414247, #4D4E53, #414247)',
 
   sameColor: 'black',
   converseColor: 'white',

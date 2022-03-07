@@ -30,6 +30,10 @@ declare module 'styled-components' {
     /* searchForm */
     searchBtn: string;
 
+    /* skeleton */
+    skeletonBg: string;
+    skeletonLoading: string;
+
     sameColor: string;
     converseColor: string;
   }
