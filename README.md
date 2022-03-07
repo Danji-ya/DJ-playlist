@@ -82,7 +82,7 @@
 - 어두운 환경에서 눈의 피로도를 느끼신다면 다크모드를 사용하여 피로를 줄이실 수 있습니다.
   <br/>
 
-![demo](https://user-images.githubusercontent.com/53927959/156765865-aade0468-2e27-4891-8789-58bab4daa487.gif)
+![demo](https://user-images.githubusercontent.com/53927959/156982466-2d45b783-1586-40f6-a5d8-7b9daf86faf4.gif)
 
 ### 태블릿 전용 화면
 
