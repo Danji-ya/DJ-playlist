@@ -27,6 +27,7 @@ const SearchBody = styled.div`
 const SliderContainer = styled.section`
   position: relative;
   overflow: hidden;
+  margin-top: 50px;
 `;
 
 const Title = styled.h2`

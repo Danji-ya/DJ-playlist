@@ -11,14 +11,14 @@ interface Props {
   handleSearchKeyword: (value: string, isAutoKeyword?: boolean) => void;
   delSearchHistory: (idx: number) => void;
   serachHistory: string[];
-  isFocus: boolean;
+  isShow: boolean;
 }
 
 function SearchHistory({
   handleSearchKeyword,
   delSearchHistory,
   serachHistory,
-  isFocus,
+  isShow,
 }: Props) {
   const handleClick = (e: React.MouseEvent<HTMLLIElement>, keyword: string) => {
     const element = e.target as HTMLLIElement;
@@ -31,9 +31,9 @@ function SearchHistory({
   const handleClose = (idx: number) => {
     delSearchHistory(idx);
   };
-  // TODO: hidden show
+
   return (
-    <HistoryContainer isFocus>
+    <HistoryContainer isShow={isShow}>
       <Title>최근 검색어</Title>
       {serachHistory &&
         serachHistory.map((keyword, idx) => (

@@ -1,4 +1,4 @@
-import React, { useImperativeHandle, useState } from 'react';
+import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import {
   Container,
   BtnWrapper,
@@ -22,7 +22,8 @@ interface ModalHandle {
 const SearchForm = React.forwardRef<ModalHandle, Props>(
   ({ keyword, serachHistory, handleSearchKeyword, delSearchHistory }, ref) => {
     const [query, setQuery] = useState(keyword);
-    const [inputFocus, setInputFocus] = useState<boolean>(false);
+    const [isShow, setIsShow] = useState(false);
+    const inputRef = useRef<HTMLDivElement>(null);
 
     const handleChange = (value: string) => {
       setQuery(value);
@@ -41,19 +42,33 @@ const SearchForm = React.forwardRef<ModalHandle, Props>(
       if (query.length === 0) return;
       if (keyword === query) return;
 
+      // TODO: 빈 공백 처리
       handleSearchKeyword(query);
     };
 
+    useEffect(() => {
+      const handleOutofRange = (e: MouseEvent) => {
+        if (!inputRef.current?.contains(e.target as Node)) {
+          setIsShow(false);
+        }
+      };
+
+      window.addEventListener('mousedown', handleOutofRange);
+
+      return () => {
+        window.removeEventListener('mousedown', handleOutofRange);
+      };
+    }, [inputRef, query]);
+
     return (
-      <Container>
+      <Container ref={inputRef}>
         <SearchFormWrapper onSubmit={(e) => handleSubmit(e)}>
           <InputBox
             type="text"
             placeholder="검색어를 입력해주세요"
             value={query}
             onChange={(e) => handleChange(e.target.value)}
-            onFocus={() => setInputFocus(true)}
-            onBlur={() => setInputFocus(false)}
+            onFocus={() => setIsShow(true)}
           />
           <BtnWrapper onClick={(e) => handleSubmit(e)}>
             <Search />
@@ -63,7 +78,7 @@ const SearchForm = React.forwardRef<ModalHandle, Props>(
           handleSearchKeyword={handleSearchKeyword}
           delSearchHistory={delSearchHistory}
           serachHistory={serachHistory}
-          isFocus={inputFocus}
+          isShow={isShow && query === ''}
         />
       </Container>
     );

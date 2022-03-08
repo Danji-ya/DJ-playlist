@@ -1,19 +1,16 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  display: flex;
   position: relative;
   width: 30vw;
   min-width: 280px;
   max-width: 400px;
+  display: inline-block;
 `;
 
 const SearchFormWrapper = styled.form`
-  display: flex;
   position: relative;
   width: 100%;
-
-  margin-bottom: 50px;
 `;
 
 const InputBox = styled.input`
@@ -49,7 +46,7 @@ const BtnWrapper = styled.div`
   }
 `;
 
-const HistoryContainer = styled.ul<{ isFocus: boolean }>`
+const HistoryContainer = styled.ul<{ isShow: boolean }>`
   position: absolute;
   width: 100%;
   top: 50px;
@@ -61,7 +58,7 @@ const HistoryContainer = styled.ul<{ isFocus: boolean }>`
   box-shadow: 0 4px 6px 0 rgb(82 91 97 / 18%);
   z-index: 10;
 
-  display: ${({ isFocus }) => (isFocus ? 'block' : 'none')};
+  display: ${({ isShow }) => (isShow ? 'block' : 'none')};
 `;
 
 const List = styled.li`
