@@ -42,8 +42,8 @@ const SearchForm = React.forwardRef<ModalHandle, Props>(
       if (query.length === 0) return;
       if (keyword === query) return;
 
-      // TODO: 빈 공백 처리
-      handleSearchKeyword(query);
+      const trimedValue = query.trim();
+      handleSearchKeyword(trimedValue);
     };
 
     useEffect(() => {
