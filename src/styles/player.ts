@@ -141,11 +141,13 @@ const PlayerProgressTime = styled.p`
   margin: 1vh 0;
 `;
 
-const PlayerProgressBar = styled.input.attrs(({ value, max }: any) => ({
-  style: {
-    backgroundSize: `${(value / max) * 100}% 100%`,
-  },
-}))`
+const PlayerProgressBar = styled.input.attrs(
+  ({ value, max }: { value: number; max: number }) => ({
+    style: {
+      backgroundSize: `${(value / max) * 100}% 100%`,
+    },
+  }),
+)`
   border-radius: 5px;
   background: ${({ theme }) => `${theme.playerSubColor}`};
   background-image: ${({ theme }) =>
@@ -195,11 +197,13 @@ const YoutubeIframe = styled.div`
   bottom: -1000px;
 `;
 
-const PlayerSoundControl = styled.input.attrs(({ value }: any) => ({
-  style: {
-    backgroundSize: `${value * 100}% 100%`,
-  },
-}))`
+const PlayerSoundControl = styled.input.attrs(
+  ({ value }: { value: number }) => ({
+    style: {
+      backgroundSize: `${value * 100}% 100%`,
+    },
+  }),
+)`
   border-radius: 5px;
   background: ${({ theme }) => `${theme.playerSubColor}`};
   background-image: ${({ theme }) =>

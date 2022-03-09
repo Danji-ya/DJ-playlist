@@ -1,11 +1,12 @@
+import { Ref } from 'react';
 import { useRecoilState } from 'recoil';
-import SearchForm from '../components/SearchForm';
+import SearchForm, { ModalHandle } from '../components/SearchForm';
 import { searchHistoryState } from '../store/searchHistoryState';
 
 interface Props {
   keyword: string;
   handleSearchKeyword: (value: string, isAutoKeyword?: boolean) => void;
-  refProp: React.RefObject<any>;
+  refProp: Ref<ModalHandle>;
 }
 
 function SearchFormContainer({

@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import { forwardRef, LegacyRef } from 'react';
 import YouTube from '@u-wave/react-youtube';
 import PlayerProfile from './PlayerProfile';
 import PlayerProgress from './PlayerProgress';
@@ -66,7 +66,7 @@ const Player = forwardRef(
       handlePrevMusic,
       handleNextMusic,
     }: Props,
-    ref: any,
+    ref: LegacyRef<YouTube>,
   ) => {
     const { currentTime, duration, volume, muted, paused } = playerProps;
 

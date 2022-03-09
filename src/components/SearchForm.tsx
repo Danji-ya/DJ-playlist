@@ -15,7 +15,7 @@ interface Props {
   delSearchHistory: (idx: number) => void;
 }
 
-interface ModalHandle {
+export interface ModalHandle {
   handleQuery: (value: string) => void;
 }
 
@@ -58,7 +58,7 @@ const SearchForm = React.forwardRef<ModalHandle, Props>(
       return () => {
         window.removeEventListener('mousedown', handleOutofRange);
       };
-    }, [inputRef, query]);
+    }, []);
 
     return (
       <Container ref={inputRef}>
