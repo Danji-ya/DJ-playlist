@@ -58,3 +58,9 @@ export const uuidv4 = () => {
     return v.toString(16);
   });
 };
+
+export const customSearchHistory = (newItem: string, list: string[]) => {
+  const newList = [newItem, ...list.filter((item) => item !== newItem)];
+
+  return newList.slice(0, 5);
+};

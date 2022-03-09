@@ -8,16 +8,20 @@ import SearchForm from '../components/SearchForm';
 import { PATH } from '../constants/path';
 import { keywordState } from '../store/keywordState';
 import { playerState } from '../store/playerState';
+import { searchHistoryState } from '../store/searchHistoryState';
 import {
   SearchBody,
   SearchBodyContainer,
   SearchResultTitle,
 } from '../styles/search';
+import { customSearchHistory } from '../utils/common';
+import SearchFormContainer from './SearchFormContainer';
 import SearchResultContainer from './SearchResultContainer';
 import SliderContainer from './SliderContainer';
 
 function SearchContainer() {
   const [keyword, setKeyword] = useRecoilState(keywordState);
+  const setSearchHistory = useSetRecoilState(searchHistoryState);
   const setPlayer = useSetRecoilState(playerState);
   const searchFormRef = useRef<React.ElementRef<typeof SearchForm>>(null);
   const navigate = useNavigate();
@@ -39,6 +43,7 @@ function SearchContainer() {
     if (isAutoKeyword) searchFormRef.current?.handleQuery(value);
 
     setKeyword(value);
+    setSearchHistory((prevHistory) => customSearchHistory(value, prevHistory));
     navigate(`${PATH.SEARCH}?query=${value}`, { replace: true });
   };
 
@@ -53,9 +58,9 @@ function SearchContainer() {
     <SearchBodyContainer>
       <Sidebar />
       <SearchBody>
-        <SearchForm
+        <SearchFormContainer
           keyword={keyword}
-          ref={searchFormRef}
+          refProp={searchFormRef}
           handleSearchKeyword={handleSearchKeyword}
         />
         <SliderContainer handleSearchKeyword={handleSearchKeyword} />

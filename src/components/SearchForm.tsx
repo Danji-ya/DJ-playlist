@@ -1,10 +1,18 @@
-import React, { useImperativeHandle, useState } from 'react';
-import { BtnWrapper, InputBox, SearchFormWrapper } from '../styles/searchForm';
+import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
+import {
+  Container,
+  BtnWrapper,
+  InputBox,
+  SearchFormWrapper,
+} from '../styles/searchForm';
 import Search from '../assets/icons/search.svg';
+import SearchHistory from './common/SearchHistory';
 
 interface Props {
   keyword: string;
+  serachHistory: string[];
   handleSearchKeyword: (value: string, isAutoKeyword?: boolean) => void;
+  delSearchHistory: (idx: number) => void;
 }
 
 interface ModalHandle {
@@ -12,8 +20,10 @@ interface ModalHandle {
 }
 
 const SearchForm = React.forwardRef<ModalHandle, Props>(
-  ({ keyword, handleSearchKeyword }, ref) => {
+  ({ keyword, serachHistory, handleSearchKeyword, delSearchHistory }, ref) => {
     const [query, setQuery] = useState(keyword);
+    const [isShow, setIsShow] = useState(false);
+    const inputRef = useRef<HTMLDivElement>(null);
 
     const handleChange = (value: string) => {
       setQuery(value);
@@ -32,21 +42,45 @@ const SearchForm = React.forwardRef<ModalHandle, Props>(
       if (query.length === 0) return;
       if (keyword === query) return;
 
-      handleSearchKeyword(query);
+      const trimedValue = query.trim();
+      handleSearchKeyword(trimedValue);
     };
 
+    useEffect(() => {
+      const handleOutofRange = (e: MouseEvent) => {
+        if (!inputRef.current?.contains(e.target as Node)) {
+          setIsShow(false);
+        }
+      };
+
+      window.addEventListener('mousedown', handleOutofRange);
+
+      return () => {
+        window.removeEventListener('mousedown', handleOutofRange);
+      };
+    }, [inputRef, query]);
+
     return (
-      <SearchFormWrapper onSubmit={(e) => handleSubmit(e)}>
-        <InputBox
-          type="text"
-          placeholder="검색어를 입력해주세요"
-          value={query}
-          onChange={(e) => handleChange(e.target.value)}
+      <Container ref={inputRef}>
+        <SearchFormWrapper onSubmit={(e) => handleSubmit(e)}>
+          <InputBox
+            type="text"
+            placeholder="검색어를 입력해주세요"
+            value={query}
+            onChange={(e) => handleChange(e.target.value)}
+            onFocus={() => setIsShow(true)}
+          />
+          <BtnWrapper onClick={(e) => handleSubmit(e)}>
+            <Search />
+          </BtnWrapper>
+        </SearchFormWrapper>
+        <SearchHistory
+          handleSearchKeyword={handleSearchKeyword}
+          delSearchHistory={delSearchHistory}
+          serachHistory={serachHistory}
+          isShow={isShow && query === ''}
         />
-        <BtnWrapper onClick={(e) => handleSubmit(e)}>
-          <Search />
-        </BtnWrapper>
-      </SearchFormWrapper>
+      </Container>
     );
   },
 );
