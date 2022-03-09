@@ -35,7 +35,7 @@ export const useGetPlaylist = ({
   token,
   errorHandler,
 }: CustomQueryParams) => {
-  return useQuery<any>(
+  return useQuery<IMusicData | undefined>(
     [QUERY_KEYS.PLAYLIST, query],
     () => getPlaylist(query, token, errorHandler),
     {
@@ -47,21 +47,3 @@ export const useGetPlaylist = ({
     },
   );
 };
-
-// export const useGetPlaylist = ({
-//   query,
-//   token,
-//   errorHandler,
-// }: CustomQueryParams) => {
-//   return useQuery<IMusicData | undefined>(
-//     [QUERY_KEYS.PLAYLIST, query],
-//     () => getPlaylist(query, token, errorHandler),
-//     {
-//       enabled: !!query,
-//       staleTime: 60 * 1000 * 5,
-//       refetchOnWindowFocus: false,
-//       retry: false,
-//       useErrorBoundary: true,
-//     },
-//   );
-// };
