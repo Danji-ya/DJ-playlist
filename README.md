@@ -90,3 +90,29 @@
   <br/>
 
 ![demo](https://user-images.githubusercontent.com/53927959/156762854-be5648cf-21be-4d5c-9c2d-bb581c943fd5.png)
+
+<br>
+
+## 📢 부가기능
+
+### 최근검색어
+- 사용자의 검색기록이 남겨집니다.
+<br/>
+
+![demo](https://user-images.githubusercontent.com/53927959/157567579-657ac139-0120-4588-a6a9-1187e3ba1ae1.gif)
+
+
+### Skeleton UI
+- 데이터를 가져오는동안 빈화면 대신 Skeleton UI가 보여지게 됩니다.
+<br/>
+
+![demo](https://user-images.githubusercontent.com/53927959/157567704-b2e858de-62c7-4891-a90d-510e7c3849b6.gif)
+
+
+### Toast Message
+- 사용자는 액션에 대한 반응을 알 수 있습니다.
+<br/>
+
+![demo](https://user-images.githubusercontent.com/53927959/157567752-b31395a0-3dfd-4fac-9a66-774c50d1dffc.gif)
+
+
