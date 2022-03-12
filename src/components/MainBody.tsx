@@ -1,6 +1,6 @@
 import React, { useCallback, useRef } from 'react';
 import MusicCard from './common/MusicCard';
-import { images } from '../constants';
+import { icons, images } from '../constants';
 import Sidebar from './common/Sidebar';
 import {
   DjplayContainer,
@@ -12,7 +12,6 @@ import {
 } from '../styles/mainBody';
 import { IMusic, ISwapRoute } from '../@types/music';
 import { MESSAGE } from '../constants/messages';
-import Logo from '../assets/icons/logo.svg';
 
 interface Props {
   djPlaylist: IMusic[];
@@ -56,7 +55,7 @@ function MainBody({
     <MainBodyContainer>
       <Sidebar />
       <PlaylistTitleWrapper>
-        <Logo width={65} height={65} />
+        <icons.Logo width={65} height={65} />
       </PlaylistTitleWrapper>
 
       {djPlaylist.length > 0 ? (

@@ -1,11 +1,11 @@
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { icons } from '../constants';
 import {
   Container,
   BtnWrapper,
   InputBox,
   SearchFormWrapper,
 } from '../styles/searchForm';
-import Search from '../assets/icons/search.svg';
 import SearchHistory from './common/SearchHistory';
 
 interface Props {
@@ -71,7 +71,7 @@ const SearchForm = React.forwardRef<ModalHandle, Props>(
             onFocus={() => setIsShow(true)}
           />
           <BtnWrapper onClick={(e) => handleSubmit(e)}>
-            <Search />
+            <icons.Search />
           </BtnWrapper>
         </SearchFormWrapper>
         <SearchHistory

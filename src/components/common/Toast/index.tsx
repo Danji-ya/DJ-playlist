@@ -1,4 +1,4 @@
-import Close from '../../../assets/icons/close.svg';
+import { icons } from '../../../constants';
 import {
   Body,
   Contents,
@@ -41,7 +41,7 @@ function Toast({
           <Title>{title}</Title>
           <Message>{message}</Message>
         </Contents>
-        <Close onClick={handleClick} />
+        <icons.Close onClick={handleClick} />
       </Body>
       <Progress duration={duration} onAnimationEnd={handleAnimationEnd} />
     </ToastWrapper>

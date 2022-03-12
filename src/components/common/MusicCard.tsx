@@ -1,5 +1,5 @@
 import { IMusic } from '../../@types/music';
-import Play from '../../assets/icons/play.svg';
+import { icons } from '../../constants';
 import {
   MusicCardContainer,
   MusicCardPlayButtonWrapper,
@@ -38,7 +38,7 @@ function MusicCard({
       <MusicCardProfileImg onClick={() => handleSelectMusic(item)}>
         <img src={item.url} alt="thumbnail" />
         <MusicCardPlayButtonWrapper>
-          <Play width="45px" height="45px" />
+          <icons.PlayBtn width="45px" height="45px" />
         </MusicCardPlayButtonWrapper>
       </MusicCardProfileImg>
 

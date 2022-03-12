@@ -14,13 +14,7 @@ import {
   YoutubeIframe,
   AddButton,
 } from '../../styles/player';
-import Play from '../../assets/icons/play2.svg';
-import Pause from '../../assets/icons/pause.svg';
-import Prev from '../../assets/icons/prev.svg';
-import Next from '../../assets/icons/next.svg';
-import Heart from '../../assets/icons/heart.svg';
-import VolumeOff from '../../assets/icons/volumeOff.svg';
-import VolumeUp from '../../assets/icons/volumeUp.svg';
+import { icons } from '../../constants';
 import { IMusic } from '../../@types/music';
 
 interface Props {
@@ -60,7 +54,6 @@ const Player = forwardRef(
   ) => {
     const { currentTime, duration, volume, muted, paused } = playerProps;
 
-    // player와 props 통일 필수
     return (
       <PlayerContainer>
         {Object.keys(selectedMusic).length === 0 ? (
@@ -88,21 +81,21 @@ const Player = forwardRef(
               <PlayerPrevButton
                 onClick={() => handleChangeMusic(selectedMusic)}
               >
-                <Prev size={30} />
+                <icons.Prev size={30} />
               </PlayerPrevButton>
 
               <PlayerMainButton onClick={handleState}>
                 {paused ? (
-                  <Play width="35px" height="35px" />
+                  <icons.Play width="35px" height="35px" />
                 ) : (
-                  <Pause width="35px" height="35px" />
+                  <icons.Pause width="35px" height="35px" />
                 )}
               </PlayerMainButton>
 
               <PlayerNextButton
                 onClick={() => handleChangeMusic(selectedMusic, true)}
               >
-                <Next />
+                <icons.Next />
               </PlayerNextButton>
             </PlayerControls>
 
@@ -116,9 +109,9 @@ const Player = forwardRef(
 
             <PlayerSoundControlWrapper>
               {muted || volume === 0 ? (
-                <VolumeOff onClick={() => handleVolume('', false)} />
+                <icons.VolumeOff onClick={() => handleVolume('', false)} />
               ) : (
-                <VolumeUp onClick={() => handleVolume('', true)} />
+                <icons.VolumeUp onClick={() => handleVolume('', true)} />
               )}
               <PlayerSoundControl
                 type="range"
@@ -134,7 +127,7 @@ const Player = forwardRef(
               dibs={dibs}
               onClick={() => handleDjplaylist(selectedMusic)}
             >
-              <Heart />
+              <icons.Heart />
             </AddButton>
           </>
         )}

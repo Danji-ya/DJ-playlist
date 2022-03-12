@@ -1,8 +1,7 @@
 /* eslint-disable react/no-unstable-nested-components */
-import Search from '../../assets/icons/search.svg';
-import Home from '../../assets/icons/home.svg';
 import { IconWrapper, NavItem, NavList, NavWrapper } from '../../styles/header';
 import { PATH } from '../../constants/path';
+import { icons } from '../../constants';
 
 interface Props {
   path: string;
@@ -14,12 +13,16 @@ function Navbar({ path, handlePath }: Props) {
     {
       name: '홈',
       path: PATH.MAIN,
-      Icon: (props: { width: string; height: string }) => <Home {...props} />,
+      Icon: (props: { width: string; height: string }) => (
+        <icons.Home {...props} />
+      ),
     },
     {
       name: '검색하기',
       path: PATH.SEARCH,
-      Icon: (props: { width: string; height: string }) => <Search {...props} />,
+      Icon: (props: { width: string; height: string }) => (
+        <icons.Search {...props} />
+      ),
     },
   ];
 
