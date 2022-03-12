@@ -42,7 +42,7 @@ function Toast({
           <Title>{title}</Title>
           <Message>{message}</Message>
         </Contents>
-        <CloseBtn onClick={handleClick}>
+        <CloseBtn onClick={handleClick} aria-label="close">
           <icons.Close />
         </CloseBtn>
       </Body>

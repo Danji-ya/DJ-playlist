@@ -70,7 +70,10 @@ const SearchForm = React.forwardRef<ModalHandle, Props>(
             onChange={(e) => handleChange(e.target.value)}
             onFocus={() => setIsShow(true)}
           />
-          <BtnWrapper onClick={(e) => handleSubmit(e)}>
+          <BtnWrapper
+            onClick={(e) => handleSubmit(e)}
+            aria-label="search button"
+          >
             <icons.Search />
           </BtnWrapper>
         </SearchFormWrapper>

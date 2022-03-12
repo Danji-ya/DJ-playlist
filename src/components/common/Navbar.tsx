@@ -32,9 +32,10 @@ function Navbar({ path, handlePath }: Props) {
         {navItems.map((item) => {
           return (
             <NavItem
+              key={`${item.path}`}
               active={item.path === path}
               onClick={() => handlePath(item.path)}
-              key={`${item.path}`}
+              aria-label="navigation button"
             >
               <IconWrapper>
                 <item.Icon width="25px" height="25px" />

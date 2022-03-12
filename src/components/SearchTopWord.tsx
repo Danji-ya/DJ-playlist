@@ -28,10 +28,20 @@ function SearchTopWord({
   return (
     <SliderContainer>
       <Title>인기 검색어</Title>
-      <PrevBtn type="button" name="prev" onClick={(e) => handleSlider(e)}>
+      <PrevBtn
+        type="button"
+        name="prev"
+        onClick={(e) => handleSlider(e)}
+        aria-label="slider prev button"
+      >
         &#10094;
       </PrevBtn>
-      <NextBtn type="button" name="next" onClick={(e) => handleSlider(e)}>
+      <NextBtn
+        type="button"
+        name="next"
+        onClick={(e) => handleSlider(e)}
+        aria-label="slider next button"
+      >
         &#10095;
       </NextBtn>
       <MusicListContainer position={position}>
@@ -40,6 +50,7 @@ function SearchTopWord({
             <AlbumWrapper
               key={`${item.id}`}
               onClick={() => handleSearchKeyword(item.title, true)}
+              aria-label="music play button"
             >
               <AlbumImgWrapper>
                 <AlbumImg src={item.src} alt="" />

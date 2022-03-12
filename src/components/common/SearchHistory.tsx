@@ -40,9 +40,10 @@ function SearchHistory({
           <List
             key={`${keyword}-${idx}`}
             onClick={(e) => handleClick(e, keyword)}
+            aria-label="keyword"
           >
             {keyword}
-            <CloseBtn onClick={() => handleClose(idx)}>
+            <CloseBtn onClick={() => handleClose(idx)} aria-label="close">
               <icons.Close />
             </CloseBtn>
           </List>

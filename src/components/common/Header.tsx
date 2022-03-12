@@ -14,7 +14,7 @@ interface Props {
 function Header({ handlePath }: Props) {
   return (
     <HeaderContainer>
-      <LogoWrapper onClick={() => handlePath('/')}>
+      <LogoWrapper onClick={() => handlePath('/')} aria-label="home">
         <LogoImgWrapper>
           <icons.Logo height={45} width={45} />
         </LogoImgWrapper>

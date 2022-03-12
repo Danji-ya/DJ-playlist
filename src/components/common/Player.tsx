@@ -64,11 +64,15 @@ const Player = forwardRef(
             <PlayerControls>
               <PlayerPrevButton
                 onClick={() => handleChangeMusic(selectedMusic)}
+                aria-label="music play prev button"
               >
                 <icons.Prev size={30} />
               </PlayerPrevButton>
 
-              <PlayerMainButton onClick={handleState}>
+              <PlayerMainButton
+                onClick={handleState}
+                aria-label="music play state button"
+              >
                 {paused ? (
                   <icons.Play width="35px" height="35px" />
                 ) : (
@@ -78,6 +82,7 @@ const Player = forwardRef(
 
               <PlayerNextButton
                 onClick={() => handleChangeMusic(selectedMusic, true)}
+                aria-label="music play next button"
               >
                 <icons.Next />
               </PlayerNextButton>
@@ -93,9 +98,15 @@ const Player = forwardRef(
 
             <PlayerSoundControlWrapper>
               {muted || volume === 0 ? (
-                <icons.VolumeOff onClick={() => handleVolume('', false)} />
+                <icons.VolumeOff
+                  onClick={() => handleVolume('', false)}
+                  aria-label="music volumeUp button"
+                />
               ) : (
-                <icons.VolumeUp onClick={() => handleVolume('', true)} />
+                <icons.VolumeUp
+                  onClick={() => handleVolume('', true)}
+                  aria-label="music volumeOff button"
+                />
               )}
               <PlayerSoundControl
                 type="range"
@@ -110,6 +121,7 @@ const Player = forwardRef(
             <AddButton
               dibs={dibs}
               onClick={() => handleDjplaylist(selectedMusic)}
+              aria-label="dibs button"
             >
               <icons.Heart />
             </AddButton>

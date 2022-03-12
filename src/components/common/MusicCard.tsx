@@ -35,7 +35,10 @@ function MusicCard({
       onDrop={(e) => handleDrop && handleDrop(e)}
       data-idx={idx}
     >
-      <MusicCardProfileImg onClick={() => handleSelectMusic(item)}>
+      <MusicCardProfileImg
+        onClick={() => handleSelectMusic(item)}
+        aria-label="music play button"
+      >
         <img src={item.url} alt="thumbnail" />
         <MusicCardPlayButtonWrapper>
           <icons.PlayBtn width="45px" height="45px" />
