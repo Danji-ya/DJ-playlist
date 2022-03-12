@@ -25,7 +25,7 @@ const toastContainer = keyframes`
 
 const Container = styled.div`
   position: fixed;
-  top: 35px;
+  top: 40px;
   right: 0;
   width: 280px;
   z-index: 99999;
@@ -52,7 +52,7 @@ const ToastWrapper = styled.div<{
 }>`
   position: relative;
   border-radius: 5px;
-  margin: 15px;
+  margin-bottom: 15px;
   transition: all 1s;
   transform: translateY(15%);
   overflow: hidden;
@@ -75,7 +75,7 @@ const ToastWrapper = styled.div<{
 
 const Body = styled.div`
   width: 100%;
-  padding: 10px 5px;
+  padding: 0 5px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -115,4 +115,29 @@ const Progress = styled.div<{
   `};
 `;
 
-export { Container, ToastWrapper, Body, Contents, Title, Message, Progress };
+const CloseBtn = styled.button`
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+
+  &:hover {
+    cursor: pointer;
+    path {
+      fill: #757575;
+    }
+  }
+`;
+
+export {
+  Container,
+  ToastWrapper,
+  Body,
+  Contents,
+  Title,
+  Message,
+  Progress,
+  CloseBtn,
+};
