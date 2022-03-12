@@ -15,10 +15,12 @@ const MusicCardContainer = styled.div`
 const MusicCardProfileImg = styled.div`
   position: relative;
   display: flex;
+  height: 200px;
 
   img {
     width: 100%;
-    height: 200px;
+    height: 100%;
+    object-fit: cover;
   }
 
   cursor: pointer;
