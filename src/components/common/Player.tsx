@@ -60,22 +60,6 @@ const Player = forwardRef(
           <PlayerEmpty>재생중인 음악이 없습니다</PlayerEmpty>
         ) : (
           <>
-            <YoutubeIframe>
-              <YouTube
-                ref={ref}
-                video={selectedMusic.videoId}
-                paused={paused}
-                volume={volume}
-                muted={muted}
-                autoplay
-                onStateChange={handleStateChange}
-                onReady={(event) => {
-                  event.target.playVideo();
-                }}
-                playsInline
-              />
-            </YoutubeIframe>
-
             <PlayerProfile selectedMusic={selectedMusic} />
             <PlayerControls>
               <PlayerPrevButton
@@ -131,6 +115,21 @@ const Player = forwardRef(
             </AddButton>
           </>
         )}
+        <YoutubeIframe>
+          <YouTube
+            ref={ref}
+            video={selectedMusic.videoId}
+            paused={paused}
+            volume={volume}
+            muted={muted}
+            autoplay
+            onStateChange={handleStateChange}
+            onReady={(event) => {
+              event.target.playVideo();
+            }}
+            playsInline
+          />
+        </YoutubeIframe>
       </PlayerContainer>
     );
   },
