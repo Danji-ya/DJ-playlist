@@ -10,6 +10,7 @@ const axiosInstance = axios.create({
       'nextPageToken, items(id,snippet(title,channelTitle,description,thumbnails))',
     type: 'video',
     maxResults: 50,
+    videoEmbeddable: true,
     key: process.env.YOUTUBE_DATA_KEY,
   },
 });
