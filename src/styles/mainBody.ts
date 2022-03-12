@@ -7,7 +7,7 @@ const MainBodyContainer = styled.main`
   flex-direction: column;
   align-items: center;
   margin-left: 250px;
-  min-width: ${SIZE.MOBILE};
+  min-width: ${SIZE.MIN_MOBILE};
   min-height: 100vh;
   padding-bottom: 80px;
 

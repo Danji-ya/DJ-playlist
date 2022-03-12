@@ -17,8 +17,8 @@ const GlobalStyles = createGlobalStyle`
   }
 
   html, body {
-    min-width: ${SIZE.MOBILE};
     min-height: 100vh;
+    min-width: ${SIZE.MIN_MOBILE};
   }
   
   body {

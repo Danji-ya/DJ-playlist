@@ -1,11 +1,15 @@
 import styled from 'styled-components';
+import { DEVICE } from '../constants/device';
 
 const Container = styled.div`
   position: relative;
   width: 30vw;
-  min-width: 280px;
+  min-width: 250px;
   max-width: 400px;
-  display: inline-block;
+
+  @media ${DEVICE.MOBILE} {
+    margin: auto;
+  }
 `;
 
 const SearchFormWrapper = styled.form`

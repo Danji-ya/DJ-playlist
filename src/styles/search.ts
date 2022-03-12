@@ -5,8 +5,8 @@ const SearchBodyContainer = styled.main`
   position: relative;
   display: flex;
   flex-direction: column;
+  min-width: ${SIZE.MIN_MOBILE};
   margin-left: 250px;
-  min-width: ${SIZE.MOBILE};
   min-height: 100vh;
   padding-bottom: 80px;
 

@@ -1,9 +1,14 @@
 import styled from 'styled-components';
+import { DEVICE } from '../constants/device';
 
 const SidebarContainer = styled.div`
   position: absolute;
   right: 15px;
   margin: 2vh 0;
+
+  @media ${DEVICE.MOBILE} {
+    right: 5px;
+  }
 `;
 
 const ToggleContainer = styled.button<{ lightTheme: boolean }>`
