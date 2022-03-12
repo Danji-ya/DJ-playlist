@@ -73,7 +73,7 @@ const Player = forwardRef(
     // player와 props 통일 필수
     return (
       <PlayerContainer>
-        {JSON.stringify(selectedMusic) === '{}' ? (
+        {Object.keys(selectedMusic).length === 0 ? (
           <PlayerEmpty>재생중인 음악이 없습니다</PlayerEmpty>
         ) : (
           <>
@@ -87,6 +87,10 @@ const Player = forwardRef(
                 autoplay
                 onStateChange={handleStateChange}
                 onEnd={handleEnded}
+                onReady={(event) => {
+                  event.target.playVideo();
+                }}
+                controls
               />
             </YoutubeIframe>
 
