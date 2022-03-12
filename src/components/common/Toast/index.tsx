@@ -1,6 +1,7 @@
-import Close from '../../../assets/icons/close.svg';
+import { icons } from '../../../constants';
 import {
   Body,
+  CloseBtn,
   Contents,
   Message,
   Progress,
@@ -29,7 +30,7 @@ function Toast({
     hideToast(id);
   };
 
-  const handleClick = (e: MouseEvent) => {
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
     hideToast(id);
   };
@@ -41,7 +42,9 @@ function Toast({
           <Title>{title}</Title>
           <Message>{message}</Message>
         </Contents>
-        <Close onClick={handleClick} />
+        <CloseBtn onClick={handleClick}>
+          <icons.Close />
+        </CloseBtn>
       </Body>
       <Progress duration={duration} onAnimationEnd={handleAnimationEnd} />
     </ToastWrapper>

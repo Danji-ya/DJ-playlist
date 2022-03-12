@@ -1,5 +1,5 @@
 /* eslint-disable react/no-array-index-key */
-import Close from '../../assets/icons/close.svg';
+import { icons } from '../../constants';
 import {
   CloseBtn,
   HistoryContainer,
@@ -43,7 +43,7 @@ function SearchHistory({
           >
             {keyword}
             <CloseBtn onClick={() => handleClose(idx)}>
-              <Close />
+              <icons.Close />
             </CloseBtn>
           </List>
         ))}

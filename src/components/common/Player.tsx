@@ -14,13 +14,7 @@ import {
   YoutubeIframe,
   AddButton,
 } from '../../styles/player';
-import Play from '../../assets/icons/play2.svg';
-import Pause from '../../assets/icons/pause.svg';
-import Prev from '../../assets/icons/prev.svg';
-import Next from '../../assets/icons/next.svg';
-import Heart from '../../assets/icons/heart.svg';
-import VolumeOff from '../../assets/icons/volumeOff.svg';
-import VolumeUp from '../../assets/icons/volumeUp.svg';
+import { icons } from '../../constants';
 import { IMusic } from '../../@types/music';
 
 interface Props {
@@ -35,16 +29,11 @@ interface Props {
   selectedMusic: IMusic;
   handleDjplaylist: (music: IMusic) => void;
   handleStateChange: (e: YT.OnStateChangeEvent) => void;
-  handleMouseDown: () => void;
-  handleMouseUp: () => void;
-  handleEnded: () => void;
+  handleMouse: (isDown?: boolean) => void;
   handleState: () => void;
-  handleVolume: (value: string) => void;
-  handleTurnOnVolume: () => void;
-  handleTurnOffVolume: () => void;
+  handleVolume: (value: string, isTurnOff?: boolean) => void;
   handleProgress: (target: HTMLInputElement) => void;
-  handlePrevMusic: (music: IMusic) => void;
-  handleNextMusic: (music: IMusic) => void;
+  handleChangeMusic: (music: IMusic, isNext?: boolean) => void;
 }
 
 const Player = forwardRef(
@@ -55,25 +44,19 @@ const Player = forwardRef(
       selectedMusic,
       handleDjplaylist,
       handleStateChange,
-      handleMouseDown,
-      handleMouseUp,
-      handleEnded,
+      handleMouse,
       handleState,
       handleVolume,
-      handleTurnOnVolume,
-      handleTurnOffVolume,
       handleProgress,
-      handlePrevMusic,
-      handleNextMusic,
+      handleChangeMusic,
     }: Props,
     ref: LegacyRef<YouTube>,
   ) => {
     const { currentTime, duration, volume, muted, paused } = playerProps;
 
-    // player와 props 통일 필수
     return (
       <PlayerContainer>
-        {JSON.stringify(selectedMusic) === '{}' ? (
+        {Object.keys(selectedMusic).length === 0 ? (
           <PlayerEmpty>재생중인 음악이 없습니다</PlayerEmpty>
         ) : (
           <>
@@ -86,26 +69,33 @@ const Player = forwardRef(
                 muted={muted}
                 autoplay
                 onStateChange={handleStateChange}
-                onEnd={handleEnded}
+                onReady={(event) => {
+                  event.target.playVideo();
+                }}
+                playsInline
               />
             </YoutubeIframe>
 
             <PlayerProfile selectedMusic={selectedMusic} />
             <PlayerControls>
-              <PlayerPrevButton onClick={() => handlePrevMusic(selectedMusic)}>
-                <Prev size={30} />
+              <PlayerPrevButton
+                onClick={() => handleChangeMusic(selectedMusic)}
+              >
+                <icons.Prev size={30} />
               </PlayerPrevButton>
 
               <PlayerMainButton onClick={handleState}>
                 {paused ? (
-                  <Play width="35px" height="35px" />
+                  <icons.Play width="35px" height="35px" />
                 ) : (
-                  <Pause width="35px" height="35px" />
+                  <icons.Pause width="35px" height="35px" />
                 )}
               </PlayerMainButton>
 
-              <PlayerNextButton onClick={() => handleNextMusic(selectedMusic)}>
-                <Next />
+              <PlayerNextButton
+                onClick={() => handleChangeMusic(selectedMusic, true)}
+              >
+                <icons.Next />
               </PlayerNextButton>
             </PlayerControls>
 
@@ -113,15 +103,15 @@ const Player = forwardRef(
               duration={duration}
               currentTime={currentTime}
               handleProgress={handleProgress}
-              handleMouseDown={handleMouseDown}
-              handleMouseUp={handleMouseUp}
+              handleMouseDown={() => handleMouse(true)}
+              handleMouseUp={() => handleMouse()}
             />
 
             <PlayerSoundControlWrapper>
               {muted || volume === 0 ? (
-                <VolumeOff onClick={handleTurnOnVolume} />
+                <icons.VolumeOff onClick={() => handleVolume('', false)} />
               ) : (
-                <VolumeUp onClick={handleTurnOffVolume} />
+                <icons.VolumeUp onClick={() => handleVolume('', true)} />
               )}
               <PlayerSoundControl
                 type="range"
@@ -137,7 +127,7 @@ const Player = forwardRef(
               dibs={dibs}
               onClick={() => handleDjplaylist(selectedMusic)}
             >
-              <Heart />
+              <icons.Heart />
             </AddButton>
           </>
         )}

@@ -1,3 +1,4 @@
+import { icons } from '../../constants';
 import NavbarContainer from '../../containers/NavbarContainer';
 import {
   HeaderContainer,
@@ -5,8 +6,6 @@ import {
   LogoImgWrapper,
   LogoText,
 } from '../../styles/header';
-
-import Logo from '../../assets/icons/logo.svg';
 
 interface Props {
   handlePath: (url: string) => void;
@@ -17,7 +16,7 @@ function Header({ handlePath }: Props) {
     <HeaderContainer>
       <LogoWrapper onClick={() => handlePath('/')}>
         <LogoImgWrapper>
-          <Logo height={45} width={45} />
+          <icons.Logo height={45} width={45} />
         </LogoImgWrapper>
         <LogoText>DJ playlist</LogoText>
       </LogoWrapper>
