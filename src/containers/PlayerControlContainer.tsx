@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { IMusic } from '../@types/music';
 import Player from '../components/common/Player';
+import { PLAYER_STATE } from '../constants/player';
 import { playerState } from '../store/playerState';
 import { playlistState } from '../store/playlistState';
 
@@ -16,25 +17,29 @@ function PlayerControlContainer({
   selectedMusic,
   handleDjplaylist,
 }: Props) {
+  const player = useRef<any>(null);
+  const timer: { current: NodeJS.Timeout | null } = useRef(null);
+  const isClick = useRef<boolean>(false);
   const playlist = useRecoilValue(playlistState);
   const setPlayer = useSetRecoilState(playerState);
-  const timer: { current: NodeJS.Timeout | null } = useRef(null);
-  const player = useRef<any>(null);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
-  const [isClick, setIsClick] = useState(false);
 
-  // 음악이 바뀌어도 변하지 않아야할 값
   const [volume, setVolume] = useState(0.5);
   const [muted, setMuted] = useState(false);
   const [paused, setPaused] = useState(false);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   useEffect(() => {
-    player.current?.playerInstance?.seekTo(0);
-    player.current?.playerInstance?.playVideo();
+    if (!player.current?.playerInstance) return undefined;
+    player.current.playerInstance.seekTo(0);
+    player.current.playerInstance.playVideo();
+
+    return () => {
+      clearInterval(timer.current as NodeJS.Timeout);
+    };
   }, [selectedMusic]);
 
-  const handlePrevMusic = (music: IMusic, isNext?: boolean) => {
+  const handleChangeMusic = (music: IMusic, isNext?: boolean) => {
     const playlistLen = playlist.length - 1;
 
     const curPlayMusicIdx = playlist.findIndex(
@@ -53,9 +58,7 @@ function PlayerControlContainer({
     }));
   };
 
-  const handleNextMusic = (music: IMusic) => handlePrevMusic(music, true);
-
-  const handleTimer = (target: any) => {
+  const handleTimer = (target: YT.Player) => {
     timer.current = setInterval(() => {
       setCurrentTime(
         target.getCurrentTime() > target.getDuration()
@@ -71,11 +74,10 @@ function PlayerControlContainer({
     player.current?.playerInstance?.seekTo(0);
     setCurrentTime(0);
 
-    // change music
-    handleNextMusic(selectedMusic);
+    handleChangeMusic(selectedMusic, true);
   };
 
-  const handleSync = (target: any) => {
+  const handleSync = (target: YT.Player) => {
     setCurrentTime(target.getCurrentTime());
     setDuration(target.getDuration());
   };
@@ -84,55 +86,69 @@ function PlayerControlContainer({
     const { data: state } = e;
     clearInterval(timer.current as NodeJS.Timeout);
 
-    if (state === 1) {
-      setPaused(false);
-      handleSync(e.target);
-      handleTimer(e.target);
-    }
+    switch (state) {
+      case PLAYER_STATE.PLAYING: {
+        setPaused(false);
+        handleSync(e.target);
+        handleTimer(e.target);
+        break;
+      }
 
-    if (state === 2) setPaused(true);
+      case PLAYER_STATE.PAUSED: {
+        setPaused(true);
+        break;
+      }
+
+      case PLAYER_STATE.ENDED: {
+        if (isClick.current) break;
+
+        setPlayerSeekInit();
+        break;
+      }
+
+      default:
+    }
   };
 
-  const handleMouseDown = () => setIsClick(true);
+  const handleMouse = (isDown?: boolean) => {
+    if (isDown) {
+      isClick.current = true;
+      return;
+    }
 
-  const handleMouseUp = () => {
     if (Math.floor(currentTime) >= Math.floor(duration)) setPlayerSeekInit();
 
-    setIsClick(false);
-  };
-
-  const handleEnded = () => {
-    if (!isClick) {
-      setPlayerSeekInit();
-    }
+    isClick.current = false;
   };
 
   const handleState = () => {
-    setPaused(!paused);
+    setPaused((prev) => !prev);
   };
 
-  const handleVolume = (value: string) => {
+  const handleVolume = (value: string, isTurnOff?: boolean) => {
+    if (isTurnOff) {
+      setVolume(0);
+      setMuted(true);
+      return;
+    }
+
+    if (isTurnOff === false) {
+      setVolume(0.5);
+      setMuted(false);
+      return;
+    }
+
     const valueToNumber = parseFloat(value);
 
     if (valueToNumber > 0 && muted) setMuted(false);
     setVolume(valueToNumber);
   };
 
-  const handleTurnOnVolume = () => {
-    setVolume(0.5);
-    setMuted(false);
-  };
-
-  const handleTurnOffVolume = () => {
-    setVolume(0);
-    setMuted(true);
-  };
-
   const handleProgress = (target: HTMLInputElement) => {
-    const willUpdateCurrentTime = target.value;
+    const willUpdateCurrentTime = parseFloat(target.value);
 
     player.current?.playerInstance?.seekTo(willUpdateCurrentTime);
-    setCurrentTime(parseFloat(willUpdateCurrentTime));
+    setCurrentTime(willUpdateCurrentTime);
   };
 
   return (
@@ -149,16 +165,11 @@ function PlayerControlContainer({
       selectedMusic={selectedMusic}
       handleDjplaylist={handleDjplaylist}
       handleStateChange={handleStateChange}
-      handleMouseDown={handleMouseDown}
-      handleMouseUp={handleMouseUp}
-      handleEnded={handleEnded}
+      handleMouse={handleMouse}
       handleState={handleState}
       handleVolume={handleVolume}
-      handleTurnOnVolume={handleTurnOnVolume}
-      handleTurnOffVolume={handleTurnOffVolume}
       handleProgress={handleProgress}
-      handlePrevMusic={handlePrevMusic}
-      handleNextMusic={handleNextMusic}
+      handleChangeMusic={handleChangeMusic}
     />
   );
 }

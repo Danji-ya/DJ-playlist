@@ -35,16 +35,11 @@ interface Props {
   selectedMusic: IMusic;
   handleDjplaylist: (music: IMusic) => void;
   handleStateChange: (e: YT.OnStateChangeEvent) => void;
-  handleMouseDown: () => void;
-  handleMouseUp: () => void;
-  handleEnded: () => void;
+  handleMouse: (isDown?: boolean) => void;
   handleState: () => void;
-  handleVolume: (value: string) => void;
-  handleTurnOnVolume: () => void;
-  handleTurnOffVolume: () => void;
+  handleVolume: (value: string, isTurnOff?: boolean) => void;
   handleProgress: (target: HTMLInputElement) => void;
-  handlePrevMusic: (music: IMusic) => void;
-  handleNextMusic: (music: IMusic) => void;
+  handleChangeMusic: (music: IMusic, isNext?: boolean) => void;
 }
 
 const Player = forwardRef(
@@ -55,16 +50,11 @@ const Player = forwardRef(
       selectedMusic,
       handleDjplaylist,
       handleStateChange,
-      handleMouseDown,
-      handleMouseUp,
-      handleEnded,
+      handleMouse,
       handleState,
       handleVolume,
-      handleTurnOnVolume,
-      handleTurnOffVolume,
       handleProgress,
-      handlePrevMusic,
-      handleNextMusic,
+      handleChangeMusic,
     }: Props,
     ref: LegacyRef<YouTube>,
   ) => {
@@ -86,17 +76,18 @@ const Player = forwardRef(
                 muted={muted}
                 autoplay
                 onStateChange={handleStateChange}
-                onEnd={handleEnded}
                 onReady={(event) => {
                   event.target.playVideo();
                 }}
-                controls
+                playsInline
               />
             </YoutubeIframe>
 
             <PlayerProfile selectedMusic={selectedMusic} />
             <PlayerControls>
-              <PlayerPrevButton onClick={() => handlePrevMusic(selectedMusic)}>
+              <PlayerPrevButton
+                onClick={() => handleChangeMusic(selectedMusic)}
+              >
                 <Prev size={30} />
               </PlayerPrevButton>
 
@@ -108,7 +99,9 @@ const Player = forwardRef(
                 )}
               </PlayerMainButton>
 
-              <PlayerNextButton onClick={() => handleNextMusic(selectedMusic)}>
+              <PlayerNextButton
+                onClick={() => handleChangeMusic(selectedMusic, true)}
+              >
                 <Next />
               </PlayerNextButton>
             </PlayerControls>
@@ -117,15 +110,15 @@ const Player = forwardRef(
               duration={duration}
               currentTime={currentTime}
               handleProgress={handleProgress}
-              handleMouseDown={handleMouseDown}
-              handleMouseUp={handleMouseUp}
+              handleMouseDown={() => handleMouse(true)}
+              handleMouseUp={() => handleMouse()}
             />
 
             <PlayerSoundControlWrapper>
               {muted || volume === 0 ? (
-                <VolumeOff onClick={handleTurnOnVolume} />
+                <VolumeOff onClick={() => handleVolume('', false)} />
               ) : (
-                <VolumeUp onClick={handleTurnOffVolume} />
+                <VolumeUp onClick={() => handleVolume('', true)} />
               )}
               <PlayerSoundControl
                 type="range"
