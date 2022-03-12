@@ -75,7 +75,7 @@ function MainBody({
         </DjplayContainer>
       ) : (
         <EmptyContainer>
-          <EmptyImg src={images.cat2} alt="빈 목록" />
+          <EmptyImg src={images.cat2} alt="cat" />
           <EmptyTitle>{MESSAGE.EMPTY_PLAYLIST}</EmptyTitle>
         </EmptyContainer>
       )}

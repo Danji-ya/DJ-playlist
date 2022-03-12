@@ -53,7 +53,7 @@ function SearchTopWord({
               aria-label="music play button"
             >
               <AlbumImgWrapper>
-                <AlbumImg src={item.src} alt="" />
+                <AlbumImg src={item.src} alt="Album Image" />
               </AlbumImgWrapper>
               <AlbumTitle>{item.title}</AlbumTitle>
             </AlbumWrapper>
