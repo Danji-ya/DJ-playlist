@@ -26,6 +26,7 @@ declare module 'styled-components' {
 
     /* card */
     cardBg: string;
+    cardSubTitle: string;
 
     /* searchForm */
     searchBtn: string;

@@ -48,7 +48,7 @@ const MusicCardPlayTitle = styled.p`
 
 const MusicCardPlaySubtitle = styled.p`
   font-weight: lighter;
-  color: gray;
+  color: ${({ theme }) => theme.cardSubTitle};
   font-size: 0.8rem;
   display: -webkit-box;
   -webkit-line-clamp: 1;

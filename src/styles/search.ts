@@ -87,6 +87,7 @@ const AlbumImg = styled.img.attrs((props) => ({
 const AlbumTitle = styled.p`
   padding: 15px 8px;
   font-weight: 600;
+  font-size: 0.9rem;
 `;
 
 const SliderBtns = styled.button`

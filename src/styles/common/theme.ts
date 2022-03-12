@@ -22,7 +22,8 @@ export const lightTheme = {
   playerSoundBtn: '#07689f',
 
   /* card */
-  cardBg: 'none',
+  cardBg: 'white',
+  cardSubTitle: 'gray',
 
   /* searchForm */
   searchBtn: '#07689f',
@@ -59,7 +60,8 @@ export const darkTheme = {
   playerSoundBtn: 'white',
 
   /* card */
-  cardBg: 'rgb(24,24,24)',
+  cardBg: 'rgb(42,42,42)',
+  cardSubTitle: 'white',
 
   /* searchForm */
   searchBtn: '#696969',
