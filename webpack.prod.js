@@ -10,6 +10,7 @@ module.exports = merge(common, {
       favicon: './public/favicon.ico',
     }),
   ],
+  devtool: 'source-map',
   optimization: {
     splitChunks: {
       cacheGroups: {
