@@ -11,6 +11,7 @@ import Search from '../assets/icons/search.svg';
 import PlayBtn from '../assets/icons/play.svg';
 import Home from '../assets/icons/home.svg';
 import Close from '../assets/icons/close.svg';
+import Error from '../assets/icons/error.svg';
 
 export default {
   Play,
@@ -26,4 +27,5 @@ export default {
   PlayBtn,
   Home,
   Close,
+  Error,
 };

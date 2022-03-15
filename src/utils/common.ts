@@ -64,3 +64,28 @@ export const customSearchHistory = (newItem: string, list: string[]) => {
 
   return newList.slice(0, 5);
 };
+
+export const debounce = (callback: () => void, waitTime = 500) => {
+  let timer: NodeJS.Timeout;
+
+  return () => {
+    if (timer) clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      callback();
+    }, waitTime);
+  };
+};
+
+export const thorttle = (callback: () => void, waitTime = 1000) => {
+  let timer: NodeJS.Timeout | null;
+
+  return () => {
+    if (!timer) {
+      timer = setTimeout(() => {
+        callback();
+        timer = null;
+      }, waitTime);
+    }
+  };
+};
