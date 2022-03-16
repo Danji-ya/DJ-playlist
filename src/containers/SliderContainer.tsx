@@ -15,16 +15,15 @@ function SliderContainer({ handleSearchKeyword }: Props) {
     SLIDER.INIT_DATA,
   );
 
-  const imgTotalWidth = topSearched.length * SLIDER.ITEM_WIDTH;
-
-  const isMinMaxSlider = (pos: number) => pos >= imgTotalWidth || pos < 0;
+  const isMinMaxSlider = (pos: number) =>
+    pos >= topSearched.length - 1 || pos < 0;
 
   const moveSlider = (type: BtnType) => {
-    const handleType = { prev: -SLIDER.ITEM_WIDTH, next: SLIDER.ITEM_WIDTH };
+    const handleType = { prev: SLIDER.PREV, next: SLIDER.NEXT };
     let nextPosition = position + handleType[type];
 
     if (isMinMaxSlider(nextPosition))
-      nextPosition = type === 'prev' ? 0 : nextPosition - SLIDER.ITEM_WIDTH;
+      nextPosition = type === 'prev' ? 0 : topSearched.length - 1;
 
     setPosition(nextPosition);
   };

@@ -35,37 +35,49 @@ const Title = styled.h2`
   padding: 10px 0;
 `;
 
-const MusicListContainer = styled.div<{
+const MusicListContainer = styled.ul<{
   position: number;
 }>`
+  position: relative;
   display: flex;
-  padding: 20px 0;
-  width: fit-content;
-  margin-left: ${({ position }) => `-${position}px`};
-  transition: margin 0.5s;
+  transition: all 0.3s ease;
+  margin: 15px 0;
+  transform: ${({ position }) => `translateX(calc(-33.4%*${position}))`};
+
+  @media ${DEVICE.TABLET} {
+    transform: ${({ position }) => `translateX(calc(-50%*${position}))`};
+  }
+
+  @media ${DEVICE.MOBILE} {
+    transform: ${({ position }) => `translateX(calc(-100%*${position}))`};
+  }
 `;
 
-const AlbumWrapper = styled.div`
-  width: 250px;
-  margin: 0 15px;
+const AlbumWrapper = styled.li`
+  flex-shrink: 0;
+  padding: 0 1rem;
+  width: 33.4%;
+
+  @media ${DEVICE.TABLET} {
+    width: 50%;
+  }
+
+  @media ${DEVICE.MOBILE} {
+    width: 100%;
+  }
+`;
+
+const AlbumDiv = styled.div`
   border-radius: 10px;
   background: ${({ theme }) => theme.cardBg};
-  border: ${({ theme }) => `1px solid ${theme.border}`};
   overflow: hidden;
-  flex-shrink: 0;
 
+  border: ${({ theme }) => `1px solid ${theme.border}`};
   cursor: pointer;
   &:hover {
     img {
       transform: scale(1.1);
     }
-  }
-
-  &:first-of-type {
-    margin-left: 0;
-  }
-  &:last-of-type {
-    margin-right: 0;
   }
 `;
 
@@ -168,6 +180,7 @@ export {
   Title,
   MusicListContainer,
   AlbumWrapper,
+  AlbumDiv,
   AlbumImgWrapper,
   AlbumImg,
   AlbumTitle,

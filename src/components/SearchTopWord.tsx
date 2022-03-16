@@ -1,6 +1,7 @@
 import React from 'react';
 import { ITopSearched } from '../@types/search';
 import {
+  AlbumDiv,
   AlbumImg,
   AlbumImgWrapper,
   AlbumTitle,
@@ -47,15 +48,16 @@ function SearchTopWord({
       <MusicListContainer position={position}>
         {data.map((item: ITopSearched) => {
           return (
-            <AlbumWrapper
-              key={`${item.id}`}
-              onClick={() => handleSearchKeyword(item.title, true)}
-              aria-label="music play button"
-            >
-              <AlbumImgWrapper>
-                <AlbumImg src={item.src} alt="Album Image" />
-              </AlbumImgWrapper>
-              <AlbumTitle>{item.title}</AlbumTitle>
+            <AlbumWrapper key={`${item.id}`}>
+              <AlbumDiv
+                onClick={() => handleSearchKeyword(item.title, true)}
+                aria-label="music play button"
+              >
+                <AlbumImgWrapper>
+                  <AlbumImg src={item.src} alt="Album Image" />
+                </AlbumImgWrapper>
+                <AlbumTitle>{item.title}</AlbumTitle>
+              </AlbumDiv>
             </AlbumWrapper>
           );
         })}

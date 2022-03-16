@@ -1,5 +1,6 @@
 const SLIDER = {
-  ITEM_WIDTH: 280, // width 250 + margin 30
+  PREV: -1,
+  NEXT: 1,
   INIT_DATA: [
     {
       id: 'pXhSwzz1JtQU',
