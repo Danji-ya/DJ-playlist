@@ -7,7 +7,7 @@ const Container = styled.div`
   min-width: 250px;
   max-width: 400px;
 
-  @media ${DEVICE.MOBILE} {
+  @media ${DEVICE.DESKTOP} {
     margin: auto;
   }
 `;

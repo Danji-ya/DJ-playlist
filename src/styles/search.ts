@@ -44,7 +44,7 @@ const MusicListContainer = styled.ul<{
   margin: 15px 0;
   transform: ${({ position }) => `translateX(calc(-33.4%*${position}))`};
 
-  @media ${DEVICE.TABLET} {
+  @media ${DEVICE.DESKTOP} {
     transform: ${({ position }) => `translateX(calc(-50%*${position}))`};
   }
 
@@ -58,7 +58,7 @@ const AlbumWrapper = styled.li`
   padding: 0 1rem;
   width: 33.4%;
 
-  @media ${DEVICE.TABLET} {
+  @media ${DEVICE.DESKTOP} {
     width: 50%;
   }
 
@@ -68,11 +68,13 @@ const AlbumWrapper = styled.li`
 `;
 
 const AlbumDiv = styled.div`
+  display: flex;
+  flex-direction: column;
   border-radius: 10px;
   background: ${({ theme }) => theme.cardBg};
+  border: ${({ theme }) => `1px solid ${theme.border}`};
   overflow: hidden;
 
-  border: ${({ theme }) => `1px solid ${theme.border}`};
   cursor: pointer;
   &:hover {
     img {
@@ -82,9 +84,17 @@ const AlbumDiv = styled.div`
 `;
 
 const AlbumImgWrapper = styled.div`
-  width: 100%;
-  height: 200px;
   overflow: hidden;
+  height: 20vw;
+  max-height: 250px;
+
+  @media ${DEVICE.DESKTOP} {
+    height: 25vw;
+  }
+
+  @media ${DEVICE.MOBILE} {
+    height: 40vw;
+  }
 `;
 
 const AlbumImg = styled.img.attrs((props) => ({
@@ -93,13 +103,13 @@ const AlbumImg = styled.img.attrs((props) => ({
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 3s cubic-bezier(0.175, 0.885, 0, 1);
 `;
 
 const AlbumTitle = styled.p`
-  padding: 15px 8px;
   font-weight: 600;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  margin: 15px auto;
+  white-space: nowrap;
 `;
 
 const SliderBtns = styled.button`
