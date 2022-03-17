@@ -2,18 +2,13 @@ import { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { IMusic } from '../@types/music';
-import ErrorBoundary from '../components/common/ErrorBoundary';
 import Sidebar from '../components/common/Sidebar';
 import SearchForm from '../components/SearchForm';
 import { PATH } from '../constants/path';
 import { keywordState } from '../store/keywordState';
 import { playerState } from '../store/playerState';
 import { searchHistoryState } from '../store/searchHistoryState';
-import {
-  SearchBody,
-  SearchBodyContainer,
-  SearchResultTitle,
-} from '../styles/search';
+import { SearchBody, SearchBodyContainer } from '../styles/search';
 import { customSearchHistory } from '../utils/common';
 import SearchFormContainer from './SearchFormContainer';
 import SearchResultContainer from './SearchResultContainer';
@@ -64,13 +59,10 @@ function SearchContainer() {
           handleSearchKeyword={handleSearchKeyword}
         />
         <SliderContainer handleSearchKeyword={handleSearchKeyword} />
-        <SearchResultTitle>검색 결과</SearchResultTitle>
-        <ErrorBoundary>
-          <SearchResultContainer
-            keyword={keyword}
-            handleSelectMusic={handleSelectMusic}
-          />
-        </ErrorBoundary>
+        <SearchResultContainer
+          keyword={keyword}
+          handleSelectMusic={handleSelectMusic}
+        />
       </SearchBody>
     </SearchBodyContainer>
   );

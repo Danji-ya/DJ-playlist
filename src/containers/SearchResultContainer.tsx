@@ -1,8 +1,10 @@
 import { useMemo } from 'react';
 import { IMusic } from '../@types/music';
+import ErrorBoundary from '../components/common/ErrorBoundary';
 import SearchResult from '../components/SearchResult';
 import useToast from '../services/hooks/useToast';
 import { useGetPlaylist } from '../services/queries/player';
+import { SearchResultSection, SearchResultTitle } from '../styles/search';
 import { restructuring } from '../utils/common';
 
 interface Props {
@@ -24,11 +26,16 @@ function SearchResultContainer({ keyword, handleSelectMusic }: Props) {
   }, [data]);
 
   return (
-    <SearchResult
-      isLoading={isLoading}
-      musicList={musicList}
-      handleSelectMusic={handleSelectMusic}
-    />
+    <SearchResultSection>
+      <SearchResultTitle>검색 결과</SearchResultTitle>
+      <ErrorBoundary>
+        <SearchResult
+          isLoading={isLoading}
+          musicList={musicList}
+          handleSelectMusic={handleSelectMusic}
+        />
+      </ErrorBoundary>
+    </SearchResultSection>
   );
 }
 

@@ -1,6 +1,7 @@
 const SLIDER = {
   PREV: -1,
   NEXT: 1,
+  DEFAULT_WIDTH: '33.4%',
   INIT_DATA: [
     {
       id: 'pXhSwzz1JtQU',

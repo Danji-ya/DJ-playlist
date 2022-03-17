@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ITopSearched } from '../@types/search';
-import SearchTopWord from '../components/SearchTopWord';
+import Slider from '../components/Slider';
 import { SLIDER } from '../constants/slider';
 
 type BtnType = 'next' | 'prev';
@@ -37,7 +37,7 @@ function SliderContainer({ handleSearchKeyword }: Props) {
   };
 
   return (
-    <SearchTopWord
+    <Slider
       data={topSearched}
       position={position}
       handleSlider={handleSlider}

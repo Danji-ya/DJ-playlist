@@ -1,17 +1,20 @@
 import styled from 'styled-components';
 import { DEVICE, SIZE } from '../constants/device';
+import { SLIDER } from '../constants/slider';
 
 const SearchBodyContainer = styled.main`
   position: relative;
   display: flex;
   flex-direction: column;
   min-width: ${SIZE.MIN_MOBILE};
-  margin-left: 250px;
+  max-width: 1400px;
   min-height: 100vh;
   padding-bottom: 80px;
+  padding-left: 250px;
+  margin: 0 auto;
 
   @media ${DEVICE.DESKTOP} {
-    margin-left: 0;
+    padding-left: 0;
     padding-top: 80px;
   }
 
@@ -24,31 +27,45 @@ const SearchBody = styled.div`
   margin: 2vh 50px;
 `;
 
-const SliderContainer = styled.section`
+const Container = styled.section`
   position: relative;
   overflow: hidden;
-  margin-top: 50px;
 `;
 
-const Title = styled.h2`
+const SliderHeader = styled.h3`
+  margin-top: 50px;
   font-weight: 600;
   padding: 10px 0;
 `;
 
-const MusicListContainer = styled.ul<{
-  position: number;
-}>`
+const SliderContent = styled.div`
   position: relative;
+
+  &:hover {
+    button {
+      opacity: 1;
+    }
+  }
+
+  @media ${DEVICE.MAX_MOBILE} {
+    button {
+      opacity: 1;
+    }
+  }
+`;
+
+const SliderItemsContainer = styled.ul<{ position: number }>`
   display: flex;
   transition: all 0.3s ease;
   margin: 15px 0;
-  transform: ${({ position }) => `translateX(calc(-33.4%*${position}))`};
+  transform: ${({ position }) =>
+    `translateX(calc(-${SLIDER.DEFAULT_WIDTH}*${position}))`};
 
-  @media ${DEVICE.DESKTOP} {
+  @media screen and (max-width: ${'820px'}) {
     transform: ${({ position }) => `translateX(calc(-50%*${position}))`};
   }
 
-  @media ${DEVICE.MOBILE} {
+  @media screen and (max-width: ${'600px'}) {
     transform: ${({ position }) => `translateX(calc(-100%*${position}))`};
   }
 `;
@@ -56,15 +73,16 @@ const MusicListContainer = styled.ul<{
 const AlbumWrapper = styled.li`
   flex-shrink: 0;
   padding: 0 1rem;
-  width: 33.4%;
+  width: ${SLIDER.DEFAULT_WIDTH};
 
-  @media ${DEVICE.DESKTOP} {
+  @media screen and (max-width: ${'820px'}) {
     width: 50%;
   }
 
-  @media ${DEVICE.MOBILE} {
+  @media screen and (max-width: ${'600px'}) {
     width: 100%;
   }
+  display: flex;
 `;
 
 const AlbumDiv = styled.div`
@@ -84,17 +102,8 @@ const AlbumDiv = styled.div`
 `;
 
 const AlbumImgWrapper = styled.div`
+  flex-grow: 1;
   overflow: hidden;
-  height: 20vw;
-  max-height: 250px;
-
-  @media ${DEVICE.DESKTOP} {
-    height: 25vw;
-  }
-
-  @media ${DEVICE.MOBILE} {
-    height: 40vw;
-  }
 `;
 
 const AlbumImg = styled.img.attrs((props) => ({
@@ -103,52 +112,55 @@ const AlbumImg = styled.img.attrs((props) => ({
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 3s cubic-bezier(0.175, 0.885, 0, 1);
 `;
 
 const AlbumTitle = styled.p`
   font-weight: 600;
   font-size: 0.85rem;
-  margin: 15px auto;
-  white-space: nowrap;
+  margin: 4% 2%;
 `;
 
 const SliderBtns = styled.button`
-  position: absolute;
-  background: transparent;
-  width: 30px;
-  height: 30px;
+  position: relative;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transform: translateY(-50%);
   border: none;
   font-size: 1rem;
   background: ${({ theme }) => theme.searchBtn};
   color: white;
+  opacity: 0;
+  pointer-events: visible;
+  cursor: pointer;
 
-  &:hover {
-    cursor: pointer;
-    opacity: 0.5;
+  &:hover::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    opacity: 0.2;
+    background: #222222;
   }
 `;
 
 const PrevBtn = styled(SliderBtns)`
   ${SliderBtns};
-  top: 20px;
-  right: 40px;
 `;
 
 const NextBtn = styled(SliderBtns)`
   ${SliderBtns};
-  top: 20px;
-  right: 0;
 `;
 
-const SearchResultContainer = styled.section`
+const SearchResultSection = styled.section``;
+
+const SearchResultContainer = styled.div`
   display: flex;
   flex-direction: column;
-  min-width: 270px;
   min-height: 350px;
 `;
 
@@ -157,8 +169,13 @@ const SearchResultGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   grid-gap: 1rem;
-  width: 80%;
   min-height: 300px;
+
+  width: 80%;
+
+  @media ${DEVICE.MOBILE} {
+    width: 100%;
+  }
 `;
 
 const SearchResultTitle = styled.h2`
@@ -183,12 +200,26 @@ const SearchResultEmptyText = styled.p`
   font-size: 1rem;
 `;
 
+const ControlContainer = styled.div`
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+`;
+
 export {
   SearchBodyContainer,
   SearchBody,
-  SliderContainer,
-  Title,
-  MusicListContainer,
+  Container,
+  SliderHeader,
+  SliderContent,
+  SliderItemsContainer,
+  ControlContainer,
   AlbumWrapper,
   AlbumDiv,
   AlbumImgWrapper,
@@ -197,6 +228,7 @@ export {
   SliderBtns,
   PrevBtn,
   NextBtn,
+  SearchResultSection,
   SearchResultContainer,
   SearchResultGrid,
   SearchResultTitle,
