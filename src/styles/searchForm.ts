@@ -3,12 +3,13 @@ import { DEVICE } from '../constants/device';
 
 const Container = styled.div`
   position: relative;
+  display: flex;
   width: 30vw;
   min-width: 250px;
   max-width: 400px;
 
   @media ${DEVICE.DESKTOP} {
-    margin: auto;
+    align-self: center;
   }
 `;
 

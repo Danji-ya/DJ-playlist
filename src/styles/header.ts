@@ -1,10 +1,11 @@
 import styled, { css } from 'styled-components';
+import { STYLE } from '../constants';
 import { DEVICE } from '../constants/device';
 
 const HeaderContainer = styled.header`
   position: fixed;
   top: 0;
-  width: 250px;
+  width: ${STYLE.HEADER_WIDTH};
   height: 100vh;
   padding-top: 30px;
   z-index: 50;
@@ -18,20 +19,11 @@ const HeaderContainer = styled.header`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: 80px;
+    height: ${STYLE.HEADER_HEIGHT};
     padding-top: 0px;
     padding: 0 50px;
 
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-
-    left: 0;
-    right: 0;
-    top: 0;
-    overflow-x: auto;
-  }
-
-  @media ${DEVICE.MOBILE} {
-    position: sticky;
   }
 `;
 

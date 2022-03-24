@@ -4,6 +4,7 @@ const SIZE = {
   MAX_MOBILE: '480px',
   TABLET: '768px',
   DESKTOP: '1024px',
+  MAX_DESKTOP: '1440px',
 };
 
 const DEVICE = {

@@ -12,22 +12,13 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
-
-const Img = styled.img`
-  width: 300px;
-  height: 300px;
-
-  @media ${DEVICE.TABLET} {
-    width: 250px;
-    height: 250px;
-  }
+  fill: ${({ theme }) => theme.navTextPrimary};
+  color: ${({ theme }) => theme.navTextPrimary};
 `;
 
 const Title = styled.h2`
-  margin-top: 15px;
   font-size: 1rem;
-  font-weight: 600;
+  font-family: 'BMHANNAPro', sans-serif;
 
   @media ${DEVICE.TABLET} {
     font-size: 0.8rem;
@@ -35,7 +26,7 @@ const Title = styled.h2`
 `;
 
 const Button = styled.button`
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 10px 20px;
   border-radius: 10px;
   outline: none;
@@ -55,4 +46,4 @@ const Button = styled.button`
   }
 `;
 
-export { Background, Container, Img, Title, Button };
+export { Background, Container, Title, Button };

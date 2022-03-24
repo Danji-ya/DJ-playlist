@@ -8,7 +8,6 @@ import { PATH } from '../constants/path';
 import { keywordState } from '../store/keywordState';
 import { playerState } from '../store/playerState';
 import { searchHistoryState } from '../store/searchHistoryState';
-import { SearchBody, SearchBodyContainer } from '../styles/search';
 import { customSearchHistory } from '../utils/common';
 import SearchFormContainer from './SearchFormContainer';
 import SearchResultContainer from './SearchResultContainer';
@@ -50,21 +49,19 @@ function SearchContainer() {
   };
 
   return (
-    <SearchBodyContainer>
+    <>
       <Sidebar />
-      <SearchBody>
-        <SearchFormContainer
-          keyword={keyword}
-          refProp={searchFormRef}
-          handleSearchKeyword={handleSearchKeyword}
-        />
-        <SliderContainer handleSearchKeyword={handleSearchKeyword} />
-        <SearchResultContainer
-          keyword={keyword}
-          handleSelectMusic={handleSelectMusic}
-        />
-      </SearchBody>
-    </SearchBodyContainer>
+      <SearchFormContainer
+        keyword={keyword}
+        refProp={searchFormRef}
+        handleSearchKeyword={handleSearchKeyword}
+      />
+      <SliderContainer handleSearchKeyword={handleSearchKeyword} />
+      <SearchResultContainer
+        keyword={keyword}
+        handleSelectMusic={handleSelectMusic}
+      />
+    </>
   );
 }
 

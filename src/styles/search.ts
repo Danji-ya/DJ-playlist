@@ -1,31 +1,6 @@
 import styled from 'styled-components';
-import { DEVICE, SIZE } from '../constants/device';
+import { DEVICE } from '../constants/device';
 import { SLIDER } from '../constants/slider';
-
-const SearchBodyContainer = styled.main`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: ${SIZE.MIN_MOBILE};
-  max-width: 1400px;
-  min-height: 100vh;
-  padding-bottom: 80px;
-  padding-left: 250px;
-  margin: 0 auto;
-
-  @media ${DEVICE.DESKTOP} {
-    padding-left: 0;
-    padding-top: 80px;
-  }
-
-  @media ${DEVICE.MOBILE} {
-    padding-top: 0;
-  }
-`;
-
-const SearchBody = styled.div`
-  margin: 2vh 50px;
-`;
 
 const Container = styled.section`
   position: relative;
@@ -61,28 +36,28 @@ const SliderItemsContainer = styled.ul<{ position: number }>`
   transform: ${({ position }) =>
     `translateX(calc(-${SLIDER.DEFAULT_WIDTH}*${position}))`};
 
-  @media screen and (max-width: ${'820px'}) {
+  @media ${DEVICE.TABLET} {
     transform: ${({ position }) => `translateX(calc(-50%*${position}))`};
   }
 
-  @media screen and (max-width: ${'600px'}) {
+  @media screen and (max-width: ${'550px'}) {
     transform: ${({ position }) => `translateX(calc(-100%*${position}))`};
   }
 `;
 
 const AlbumWrapper = styled.li`
+  display: flex;
   flex-shrink: 0;
   padding: 0 1rem;
   width: ${SLIDER.DEFAULT_WIDTH};
 
-  @media screen and (max-width: ${'820px'}) {
+  @media ${DEVICE.TABLET} {
     width: 50%;
   }
 
-  @media screen and (max-width: ${'600px'}) {
+  @media screen and (max-width: ${'550px'}) {
     width: 100%;
   }
-  display: flex;
 `;
 
 const AlbumDiv = styled.div`
@@ -213,8 +188,6 @@ const ControlContainer = styled.div`
 `;
 
 export {
-  SearchBodyContainer,
-  SearchBody,
   Container,
   SliderHeader,
   SliderContent,

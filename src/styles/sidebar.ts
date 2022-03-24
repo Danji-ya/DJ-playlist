@@ -4,7 +4,7 @@ import { DEVICE } from '../constants/device';
 const SidebarContainer = styled.div`
   position: absolute;
   right: 15px;
-  margin: 2vh 0;
+  margin-bottom: 50px;
 
   @media ${DEVICE.MOBILE} {
     right: 5px;

@@ -5,9 +5,7 @@ import Sidebar from './common/Sidebar';
 import {
   DjplayContainer,
   EmptyContainer,
-  EmptyImg,
   EmptyTitle,
-  MainBodyContainer,
   PlaylistTitleWrapper,
 } from '../styles/mainBody';
 import { IMusic, ISwapRoute } from '../@types/music';
@@ -52,7 +50,7 @@ function MainBody({
   );
 
   return (
-    <MainBodyContainer>
+    <>
       <Sidebar />
       <PlaylistTitleWrapper>
         <icons.Logo width={65} height={65} />
@@ -75,11 +73,11 @@ function MainBody({
         </DjplayContainer>
       ) : (
         <EmptyContainer>
-          <EmptyImg src={images.cat2} alt="cat" />
+          <images.Cat2 width={350} height={350} />
           <EmptyTitle>{MESSAGE.EMPTY_PLAYLIST}</EmptyTitle>
         </EmptyContainer>
       )}
-    </MainBodyContainer>
+    </>
   );
 }
 

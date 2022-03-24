@@ -1,7 +1,5 @@
-import cat from '../assets/images/cat.png';
-import cat2 from '../assets/images/cat2.jpg';
+import Cat2 from '../assets/images/cat2.svg';
 
 export default {
-  cat,
-  cat2,
+  Cat2,
 };

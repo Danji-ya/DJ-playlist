@@ -1,12 +1,11 @@
-import HeaderContainer from '../containers/HeaderContainer';
+import Layout from '../components/common/Layout';
 import MainBodyContainer from '../containers/MainBodyContainer';
 
 function MainPage() {
   return (
-    <>
-      <HeaderContainer />
+    <Layout>
       <MainBodyContainer />
-    </>
+    </Layout>
   );
 }
 

@@ -1,12 +1,11 @@
-import HeaderContainer from '../containers/HeaderContainer';
+import Layout from '../components/common/Layout';
 import SearchContainer from '../containers/SearchContainer';
 
 function SearchPage() {
   return (
-    <>
-      <HeaderContainer />
+    <Layout>
       <SearchContainer />
-    </>
+    </Layout>
   );
 }
 
