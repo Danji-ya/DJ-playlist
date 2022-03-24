@@ -7,6 +7,7 @@ import {
   MusicCardPlayTitle,
   MusicCardProfileImg,
 } from '../../styles/musicCard';
+import LazyImage from './LazyImage';
 
 interface Props {
   item: IMusic;
@@ -39,7 +40,7 @@ function MusicCard({
         onClick={() => handleSelectMusic(item)}
         aria-label="music play button"
       >
-        <img src={item.url} alt="thumbnail" />
+        <LazyImage src={item.url} alt="thumbnail" />
         <MusicCardPlayButtonWrapper>
           <icons.PlayBtn width="45px" height="45px" />
         </MusicCardPlayButtonWrapper>
