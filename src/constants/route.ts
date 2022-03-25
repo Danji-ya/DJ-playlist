@@ -1,9 +1,9 @@
-import { lazy } from 'react';
+import customLazy from '../utils/customLazy';
 import { PATH } from './path';
 
-const Main = lazy(() => import('../pages/MainPage'));
-const Search = lazy(() => import('../pages/SearchPage'));
-const Notfound = lazy(() => import('../pages/NotFoundPage'));
+const Main = customLazy(() => import('../pages/MainPage'));
+const Search = customLazy(() => import('../pages/SearchPage'));
+const Notfound = customLazy(() => import('../pages/NotFoundPage'));
 
 const ROUTE = [
   { path: PATH.MAIN, Component: Main, auth: false },
