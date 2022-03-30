@@ -66,7 +66,7 @@ export default class CustomYoutube extends Component<Props, State> {
 
   async createYoutubePlayer() {
     const {
-      videoId = 'M7lc1UVf-VE',
+      videoId = '',
       width = '360',
       height = '360',
       autoplay,

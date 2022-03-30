@@ -25,7 +25,7 @@ function PlayerControlContainer({
 
   const [volume, setVolume] = useState(0.5);
   const [muted, setMuted] = useState(false);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
