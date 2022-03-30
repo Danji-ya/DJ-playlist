@@ -54,11 +54,11 @@ const Player = forwardRef(
     ref: any,
   ) => {
     const { currentTime, duration, volume, muted, paused } = playerProps;
-    console.log(ref);
 
+    // TODO: 음악 바꾸기 !== -> ===
     return (
       <PlayerContainer>
-        {Object.keys(selectedMusic).length === 0 ? (
+        {Object.keys(selectedMusic).length !== 0 ? (
           <PlayerEmpty>재생중인 음악이 없습니다</PlayerEmpty>
         ) : (
           <>
@@ -135,7 +135,10 @@ const Player = forwardRef(
             videoId={selectedMusic.videoId}
             volume={volume}
             muted={muted}
+            paused={paused}
+            customStateChange={handleStateChange}
             autoplay
+            playsInline
           />
           {/* <YouTube
             ref={ref}

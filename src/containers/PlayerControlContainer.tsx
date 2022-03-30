@@ -30,9 +30,9 @@ function PlayerControlContainer({
   const [duration, setDuration] = useState(0);
 
   useEffect(() => {
-    if (!player.current?.playerInstance) return undefined;
-    player.current.playerInstance.seekTo(0);
-    player.current.playerInstance.playVideo();
+    if (!player.current?.player) return undefined;
+    player.current.player.seekTo(0);
+    player.current.player.playVideo();
 
     return () => {
       clearInterval(timer.current as NodeJS.Timeout);
@@ -71,7 +71,7 @@ function PlayerControlContainer({
 
   const setPlayerSeekInit = () => {
     setPaused(true);
-    player.current?.playerInstance?.seekTo(0);
+    player.current?.player?.seekTo(0);
     setCurrentTime(0);
 
     handleChangeMusic(selectedMusic, true);
@@ -147,7 +147,7 @@ function PlayerControlContainer({
   const handleProgress = (target: HTMLInputElement) => {
     const willUpdateCurrentTime = parseFloat(target.value);
 
-    player.current?.playerInstance?.seekTo(willUpdateCurrentTime);
+    player.current?.player?.seekTo(willUpdateCurrentTime);
     setCurrentTime(willUpdateCurrentTime);
   };
 

@@ -9,9 +9,11 @@ interface Props {
   height?: string;
   volume: number;
   muted: boolean;
+  paused: boolean;
   autoplay?: boolean;
   // for iOS inline
   playsInline?: boolean;
+  customStateChange: (event: YT.OnStateChangeEvent) => void;
 }
 
 interface State {}
@@ -24,22 +26,22 @@ export default class CustomYoutube extends Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.onPlayerReady = this.onPlayerReady.bind(this);
-    this.onPlayerStateChange = this.onPlayerStateChange.bind(this);
   }
 
   componentDidMount() {
     this.createYoutubePlayer();
   }
 
+  componentWillUnmount() {
+    this.player?.destroy();
+  }
+
   onPlayerReady() {
-    const { volume, muted } = this.props;
+    const { volume, muted, paused } = this.props;
 
     if (typeof volume !== 'undefined') this.setVolume(volume);
     if (typeof muted !== 'undefined') this.setMute(muted);
-  }
-
-  onPlayerStateChange(event: any) {
-    console.log('state change', event);
+    if (typeof paused !== 'undefined') this.setPaused(paused);
   }
 
   setVolume(volume: number) {
@@ -54,6 +56,14 @@ export default class CustomYoutube extends Component<Props, State> {
     }
   }
 
+  setPaused(isPaused: boolean) {
+    if (isPaused) {
+      this.player.pauseVideo();
+    } else {
+      this.player.playVideo();
+    }
+  }
+
   async createYoutubePlayer() {
     const {
       videoId = 'M7lc1UVf-VE',
@@ -61,6 +71,7 @@ export default class CustomYoutube extends Component<Props, State> {
       height = '360',
       autoplay,
       playsInline,
+      customStateChange,
     } = this.props;
 
     try {
@@ -77,7 +88,7 @@ export default class CustomYoutube extends Component<Props, State> {
         },
         events: {
           onReady: this.onPlayerReady,
-          onStateChange: this.onPlayerStateChange,
+          onStateChange: customStateChange,
         },
       });
 
