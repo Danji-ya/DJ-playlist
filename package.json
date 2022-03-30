@@ -8,6 +8,7 @@
   "dependencies": {
     "@u-wave/react-youtube": "^0.7.2",
     "axios": "^0.26.0",
+    "load-script": "^2.0.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-query": "^3.34.16",

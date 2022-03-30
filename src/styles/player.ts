@@ -193,7 +193,8 @@ const PlayerSoundControlWrapper = styled.div`
 
 const YoutubeIframe = styled.div`
   position: fixed;
-  bottom: -1000px;
+  // TODO: change position
+  bottom: 200px;
 `;
 
 const PlayerSoundControl = styled.input.attrs(

@@ -1,5 +1,5 @@
 import { forwardRef, LegacyRef } from 'react';
-import YouTube from '@u-wave/react-youtube';
+// import YouTube from '@u-wave/react-youtube';
 import PlayerProfile from './PlayerProfile';
 import PlayerProgress from './PlayerProgress';
 import {
@@ -16,6 +16,7 @@ import {
 } from '../../styles/player';
 import { icons } from '../../constants';
 import { IMusic } from '../../@types/music';
+import CustomYoutube from './CustomYoutube';
 
 interface Props {
   playerProps: {
@@ -50,9 +51,10 @@ const Player = forwardRef(
       handleProgress,
       handleChangeMusic,
     }: Props,
-    ref: LegacyRef<YouTube>,
+    ref: any,
   ) => {
     const { currentTime, duration, volume, muted, paused } = playerProps;
+    console.log(ref);
 
     return (
       <PlayerContainer>
@@ -128,7 +130,14 @@ const Player = forwardRef(
           </>
         )}
         <YoutubeIframe>
-          <YouTube
+          <CustomYoutube
+            ref={ref}
+            videoId={selectedMusic.videoId}
+            volume={volume}
+            muted={muted}
+            autoplay
+          />
+          {/* <YouTube
             ref={ref}
             video={selectedMusic.videoId}
             paused={paused}
@@ -140,7 +149,7 @@ const Player = forwardRef(
               event.target.playVideo();
             }}
             playsInline
-          />
+          /> */}
         </YoutubeIframe>
       </PlayerContainer>
     );
