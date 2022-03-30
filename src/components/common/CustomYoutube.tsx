@@ -3,17 +3,21 @@
 import React, { Component } from 'react';
 import loadIframeApi from '../../utils/loadIframeApi';
 
-interface Props {
+interface CustomProps {
   videoId: string;
-  width?: string;
-  height?: string;
   volume: number;
   muted: boolean;
   paused: boolean;
+}
+
+interface Props {
+  width?: string;
+  height?: string;
+  customProps: CustomProps;
   autoplay?: boolean;
   // for iOS inline
   playsInline?: boolean;
-  customStateChange: (event: YT.OnStateChangeEvent) => void;
+  stateChangeHandler: (event: YT.OnStateChangeEvent) => void;
 }
 
 interface State {}
@@ -32,12 +36,22 @@ export default class CustomYoutube extends Component<Props, State> {
     this.createYoutubePlayer();
   }
 
+  componentDidUpdate(prevProps: Props) {
+    // TODO: props change handle
+    const { customProps } = this.props;
+    if (this.shouldUpdatePlayer(prevProps.customProps, customProps)) {
+      this.updatePlayer();
+    }
+  }
+
   componentWillUnmount() {
     this.player?.destroy();
   }
 
   onPlayerReady() {
-    const { volume, muted, paused } = this.props;
+    const {
+      customProps: { volume, muted, paused },
+    } = this.props;
 
     if (typeof volume !== 'undefined') this.setVolume(volume);
     if (typeof muted !== 'undefined') this.setMute(muted);
@@ -64,21 +78,32 @@ export default class CustomYoutube extends Component<Props, State> {
     }
   }
 
+  shouldUpdatePlayer(prev: CustomProps, next: CustomProps) {
+    return (
+      prev.videoId !== next.videoId ||
+      prev.volume !== next.volume ||
+      prev.muted !== next.muted
+    );
+  }
+
+  updatePlayer() {
+    console.log('update가 필요');
+  }
+
   async createYoutubePlayer() {
     const {
-      videoId = '',
       width = '360',
       height = '360',
       autoplay,
       playsInline,
-      customStateChange,
+      stateChangeHandler,
     } = this.props;
 
     try {
       const YT = await loadIframeApi();
 
       this.player = new YT.Player(this.myRef.current, {
-        videoId,
+        videoId: 'bHQqvYy5KYo',
         height,
         width,
         playerVars: {
@@ -88,11 +113,9 @@ export default class CustomYoutube extends Component<Props, State> {
         },
         events: {
           onReady: this.onPlayerReady,
-          onStateChange: customStateChange,
+          onStateChange: stateChangeHandler,
         },
       });
-
-      // TODO: 이벤트 리스너 추가
     } catch (err) {
       console.log('Player를 생성할 수 없습니다.');
     }
