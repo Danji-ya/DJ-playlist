@@ -22,8 +22,6 @@ interface Props {
 interface State {}
 
 class Youtube extends Component<Props, State> {
-  private myRef = React.createRef<HTMLDivElement>();
-
   public player: YT.Player | undefined = undefined;
 
   constructor(props: Props) {
@@ -134,7 +132,7 @@ class Youtube extends Component<Props, State> {
     try {
       const YT = await loadIFrameApi();
 
-      this.player = new YT.Player(this.myRef.current, {
+      this.player = new YT.Player('DJ-playlist-player', {
         videoId,
         height,
         width,
@@ -153,7 +151,7 @@ class Youtube extends Component<Props, State> {
   }
 
   render() {
-    return <div ref={this.myRef} />;
+    return <div id="DJ-playlist-player" />;
   }
 }
 
