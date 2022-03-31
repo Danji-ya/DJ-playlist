@@ -1,10 +1,22 @@
-import load from 'load-script';
-
 const PROTOCOL = window.location.protocol === 'http:' ? 'http:' : 'https:';
 
-export type IframeApiType = {
-  Player: (...args: any[]) => void;
-};
+function load(src: string, cb: (err: Error) => void) {
+  const firstScript = document.getElementsByTagName('script')[0];
+  const script = document.createElement('script');
+  script.src = src;
+  script.async = true;
+
+  script.onerror = function () {
+    this.onload = null;
+    this.onerror = null;
+    cb(new Error(`Failed to load ${this.src}`));
+  };
+
+  if (firstScript) firstScript.parentNode?.insertBefore(script, firstScript);
+  else {
+    document.head.appendChild(script);
+  }
+}
 
 function loadIFrameApi(): Promise<typeof YT> {
   return new Promise((resolve, reject) => {
