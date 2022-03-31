@@ -137,7 +137,7 @@ const PlayerProgressContainer = styled.div`
 const PlayerProgressTime = styled.p`
   position: absolute;
   font-size: 0.8rem;
-  margin: 1vh 0;
+  margin-top: 15px;
 `;
 
 const PlayerProgressBar = styled.input.attrs(
@@ -193,8 +193,7 @@ const PlayerSoundControlWrapper = styled.div`
 
 const YoutubeIframe = styled.div`
   position: fixed;
-  // TODO: change position
-  bottom: 200px;
+  bottom: -1000px;
 `;
 
 const PlayerSoundControl = styled.input.attrs(

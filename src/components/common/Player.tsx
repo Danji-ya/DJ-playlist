@@ -15,7 +15,7 @@ import {
 } from '../../styles/player';
 import { icons } from '../../constants';
 import { IMusic } from '../../@types/music';
-import CustomYoutube from './CustomYoutube';
+import Youtube from './Youtube';
 
 interface Props {
   playerProps: {
@@ -50,7 +50,7 @@ const Player = forwardRef(
       handleProgress,
       handleChangeMusic,
     }: Props,
-    ref: LegacyRef<CustomYoutube>,
+    ref: LegacyRef<Youtube>,
   ) => {
     const { currentTime, duration, volume, muted, paused } = playerProps;
     const customProps = {
@@ -60,10 +60,9 @@ const Player = forwardRef(
       paused,
     };
 
-    // TODO: 음악 바꾸기 !== -> ===
     return (
       <PlayerContainer>
-        {Object.keys(selectedMusic).length !== 0 ? (
+        {Object.keys(selectedMusic).length === 0 ? (
           <PlayerEmpty>재생중인 음악이 없습니다</PlayerEmpty>
         ) : (
           <>
@@ -135,12 +134,11 @@ const Player = forwardRef(
           </>
         )}
         <YoutubeIframe>
-          <CustomYoutube
+          <Youtube
             ref={ref}
             customProps={customProps}
             stateChangeHandler={handleStateChange}
             autoplay
-            playsInline
           />
         </YoutubeIframe>
       </PlayerContainer>

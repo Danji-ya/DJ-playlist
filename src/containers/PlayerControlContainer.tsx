@@ -32,7 +32,7 @@ function PlayerControlContainer({
   useEffect(() => {
     if (!player.current?.player) return undefined;
     player.current.player.seekTo(0);
-    player.current.player.playVideo();
+    setCurrentTime(0);
 
     return () => {
       clearInterval(timer.current as NodeJS.Timeout);
@@ -73,7 +73,6 @@ function PlayerControlContainer({
     setPaused(true);
     player.current?.player?.seekTo(0);
     setCurrentTime(0);
-
     handleChangeMusic(selectedMusic, true);
   };
 
@@ -94,14 +93,8 @@ function PlayerControlContainer({
         break;
       }
 
-      case PLAYER_STATE.PAUSED: {
-        setPaused(true);
-        break;
-      }
-
       case PLAYER_STATE.ENDED: {
         if (isClick.current) break;
-
         setPlayerSeekInit();
         break;
       }
