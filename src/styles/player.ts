@@ -137,7 +137,7 @@ const PlayerProgressContainer = styled.div`
 const PlayerProgressTime = styled.p`
   position: absolute;
   font-size: 0.8rem;
-  margin: 1vh 0;
+  margin-top: 15px;
 `;
 
 const PlayerProgressBar = styled.input.attrs(

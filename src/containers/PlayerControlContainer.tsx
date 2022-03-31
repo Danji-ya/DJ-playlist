@@ -25,14 +25,14 @@ function PlayerControlContainer({
 
   const [volume, setVolume] = useState(0.5);
   const [muted, setMuted] = useState(false);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
   useEffect(() => {
-    if (!player.current?.playerInstance) return undefined;
-    player.current.playerInstance.seekTo(0);
-    player.current.playerInstance.playVideo();
+    if (!player.current?.player) return undefined;
+    player.current.player.seekTo(0);
+    setCurrentTime(0);
 
     return () => {
       clearInterval(timer.current as NodeJS.Timeout);
@@ -71,9 +71,8 @@ function PlayerControlContainer({
 
   const setPlayerSeekInit = () => {
     setPaused(true);
-    player.current?.playerInstance?.seekTo(0);
+    player.current?.player?.seekTo(0);
     setCurrentTime(0);
-
     handleChangeMusic(selectedMusic, true);
   };
 
@@ -94,14 +93,8 @@ function PlayerControlContainer({
         break;
       }
 
-      case PLAYER_STATE.PAUSED: {
-        setPaused(true);
-        break;
-      }
-
       case PLAYER_STATE.ENDED: {
         if (isClick.current) break;
-
         setPlayerSeekInit();
         break;
       }
@@ -147,7 +140,7 @@ function PlayerControlContainer({
   const handleProgress = (target: HTMLInputElement) => {
     const willUpdateCurrentTime = parseFloat(target.value);
 
-    player.current?.playerInstance?.seekTo(willUpdateCurrentTime);
+    player.current?.player?.seekTo(willUpdateCurrentTime);
     setCurrentTime(willUpdateCurrentTime);
   };
 

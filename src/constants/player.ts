@@ -7,4 +7,12 @@ const PLAYER_STATE = {
   CUED: 5,
 };
 
-export { PLAYER_STATE };
+const PLAYER_DEFAULT_OPTS = {
+  playsinline: 1,
+  disablekb: 1,
+  fs: 0,
+  controls: 0,
+  iv_load_policy: 3,
+};
+
+export { PLAYER_STATE, PLAYER_DEFAULT_OPTS };
