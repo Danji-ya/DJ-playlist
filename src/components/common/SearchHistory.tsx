@@ -1,4 +1,5 @@
 /* eslint-disable react/no-array-index-key */
+import { ISearchKeyword } from '../../@types/search';
 import { icons } from '../../constants';
 import {
   CloseBtn,
@@ -8,7 +9,7 @@ import {
 } from '../../styles/searchForm';
 
 interface Props {
-  handleSearchKeyword: (value: string, isAutoKeyword?: boolean) => void;
+  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
   delSearchHistory: (idx: number) => void;
   serachHistory: string[];
   isShow: boolean;
@@ -24,7 +25,7 @@ function SearchHistory({
     const element = e.target as HTMLLIElement;
 
     if (element.tagName === 'LI') {
-      handleSearchKeyword(keyword, true);
+      handleSearchKeyword({ value: keyword, isAutoKeyword: true });
     }
   };
 

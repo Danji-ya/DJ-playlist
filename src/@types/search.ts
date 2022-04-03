@@ -3,3 +3,8 @@ export interface ITopSearched {
   src: string;
   title: string;
 }
+
+export interface ISearchKeyword {
+  value: string;
+  isAutoKeyword?: boolean;
+}

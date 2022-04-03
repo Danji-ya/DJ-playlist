@@ -1,4 +1,5 @@
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
+import { ISearchKeyword } from '../@types/search';
 import { icons } from '../constants';
 import {
   Container,
@@ -11,7 +12,7 @@ import SearchHistory from './common/SearchHistory';
 interface Props {
   keyword: string;
   serachHistory: string[];
-  handleSearchKeyword: (value: string, isAutoKeyword?: boolean) => void;
+  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
   delSearchHistory: (idx: number) => void;
 }
 
@@ -43,7 +44,7 @@ const SearchForm = React.forwardRef<ModalHandle, Props>(
       if (keyword === query) return;
 
       const trimedValue = query.trim();
-      handleSearchKeyword(trimedValue);
+      handleSearchKeyword({ value: trimedValue });
     };
 
     useEffect(() => {

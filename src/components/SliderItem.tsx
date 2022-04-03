@@ -1,4 +1,4 @@
-import { ITopSearched } from '../@types/search';
+import { ISearchKeyword, ITopSearched } from '../@types/search';
 import {
   AlbumDiv,
   AlbumImg,
@@ -9,14 +9,16 @@ import {
 
 interface Props {
   item: ITopSearched;
-  handleSearchKeyword: (keyword: string, isAutoKeyword?: boolean) => void;
+  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
 }
 
 function SliderItem({ item, handleSearchKeyword }: Props) {
   return (
     <AlbumWrapper key={`${item.id}`}>
       <AlbumDiv
-        onClick={() => handleSearchKeyword(item.title, true)}
+        onClick={() =>
+          handleSearchKeyword({ value: item.title, isAutoKeyword: true })
+        }
         aria-label="music play button"
       >
         <AlbumImgWrapper>

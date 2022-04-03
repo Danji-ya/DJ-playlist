@@ -2,6 +2,7 @@ import { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { IMusic } from '../@types/music';
+import { ISearchKeyword } from '../@types/search';
 import Sidebar from '../components/common/Sidebar';
 import SearchForm from '../components/SearchForm';
 import { PATH } from '../constants/path';
@@ -33,7 +34,7 @@ function SearchContainer() {
       navigate(PATH.SEARCH, { replace: true });
   }, [keyword, search, navigate]);
 
-  const handleSearchKeyword = (value: string, isAutoKeyword?: boolean) => {
+  const handleSearchKeyword = ({ value, isAutoKeyword }: ISearchKeyword) => {
     if (isAutoKeyword) searchFormRef.current?.handleQuery(value);
 
     setKeyword(value);

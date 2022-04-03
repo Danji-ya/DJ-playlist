@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { ITopSearched } from '../@types/search';
+import { ISearchKeyword, ITopSearched } from '../@types/search';
 import Slider from '../components/Slider';
 import { SLIDER } from '../constants/slider';
 
 type BtnType = 'next' | 'prev';
 
 interface Props {
-  handleSearchKeyword: (value: string, isAutoKeyword?: boolean) => void;
+  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
 }
 
 function SliderContainer({ handleSearchKeyword }: Props) {

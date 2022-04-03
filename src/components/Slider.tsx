@@ -1,5 +1,5 @@
 import React from 'react';
-import { ITopSearched } from '../@types/search';
+import { ISearchKeyword, ITopSearched } from '../@types/search';
 import {
   Container,
   ControlContainer,
@@ -15,7 +15,7 @@ interface Props {
   data: ITopSearched[];
   handleSlider: (e: React.MouseEvent<HTMLButtonElement>) => void;
   position: number;
-  handleSearchKeyword: (keyword: string, isAutoKeyword?: boolean) => void;
+  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
 }
 
 function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
