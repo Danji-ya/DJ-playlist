@@ -7,9 +7,10 @@ const GlobalStyles = createGlobalStyle`
 
   @font-face {
     font-family: 'BMHANNAPro';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_seven@1.0/BMHANNAPro.woff') format('woff');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/woowahan/BMHannaPro.woff2') format('woff2');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
   }
 
   * {
