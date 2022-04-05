@@ -1,10 +1,17 @@
+import styled from 'styled-components';
 import useIntersection from '../../services/hooks/useIntersection';
-import loading from '../../assets/icons/loading.gif';
 
 interface Props {
   src: string;
   alt: string;
 }
+
+const Img = styled.img`
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  visibility: hidden;
+`;
 
 function LazyImage({ src, alt }: Props) {
   const ref = useIntersection({
@@ -14,8 +21,11 @@ function LazyImage({ src, alt }: Props) {
     ) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
-          const lazyImage = entry.target;
+          const lazyImage = entry.target as HTMLElement;
           lazyImage.setAttribute('src', src);
+          lazyImage.setAttribute('alt', alt);
+          lazyImage.style.visibility = 'visible';
+
           io.unobserve(entry.target);
         }
       });
@@ -23,7 +33,7 @@ function LazyImage({ src, alt }: Props) {
     threshold: 0.5,
   });
 
-  return <img ref={ref} src={loading} alt={alt} />;
+  return <Img ref={ref} />;
 }
 
 export default LazyImage;
