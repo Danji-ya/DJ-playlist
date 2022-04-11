@@ -14,3 +14,13 @@ export interface IMusicData {
   nextPageToken: string;
   items: IMusic[];
 }
+
+export interface IMusicChange {
+  music: IMusic;
+  isNext?: boolean;
+}
+
+export interface IMusicVolume {
+  value: string;
+  isTurnOff?: boolean;
+}

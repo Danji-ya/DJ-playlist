@@ -3,7 +3,7 @@ import PlayerProfile from './PlayerProfile';
 import PlayerProgress from './PlayerProgress';
 import * as S from '../../../styles/player';
 import { icons } from '../../../constants';
-import { IMusic } from '../../../@types/music';
+import { IMusic, IMusicChange, IMusicVolume } from '../../../@types/music';
 import Youtube from '../Youtube';
 
 interface Props {
@@ -20,9 +20,9 @@ interface Props {
   handleStateChange: (e: YT.OnStateChangeEvent) => void;
   handleMouse: (isDown?: boolean) => void;
   handleState: () => void;
-  handleVolume: (value: string, isTurnOff?: boolean) => void;
+  handleVolume: ({ value, isTurnOff }: IMusicVolume) => void;
   handleProgress: (target: HTMLInputElement) => void;
-  handleChangeMusic: (music: IMusic, isNext?: boolean) => void;
+  handleChangeMusic: ({ music, isNext }: IMusicChange) => void;
 }
 
 const Player = forwardRef(
@@ -58,7 +58,7 @@ const Player = forwardRef(
             <PlayerProfile selectedMusic={selectedMusic} />
             <S.PlayerControls>
               <S.PlayerPrevButton
-                onClick={() => handleChangeMusic(selectedMusic)}
+                onClick={() => handleChangeMusic({ music: selectedMusic })}
                 aria-label="music play prev button"
               >
                 <icons.Prev size={30} />
@@ -76,7 +76,9 @@ const Player = forwardRef(
               </S.PlayerMainButton>
 
               <S.PlayerNextButton
-                onClick={() => handleChangeMusic(selectedMusic, true)}
+                onClick={() =>
+                  handleChangeMusic({ music: selectedMusic, isNext: true })
+                }
                 aria-label="music play next button"
               >
                 <icons.Next />
@@ -94,12 +96,12 @@ const Player = forwardRef(
             <S.PlayerSoundControlWrapper>
               {muted || volume === 0 ? (
                 <icons.VolumeOff
-                  onClick={() => handleVolume('', false)}
+                  onClick={() => handleVolume({ value: '', isTurnOff: false })}
                   aria-label="music volumeUp button"
                 />
               ) : (
                 <icons.VolumeUp
-                  onClick={() => handleVolume('', true)}
+                  onClick={() => handleVolume({ value: '', isTurnOff: true })}
                   aria-label="music volumeOff button"
                 />
               )}
@@ -110,7 +112,7 @@ const Player = forwardRef(
                 min="0"
                 max="1"
                 step="0.05"
-                onChange={(e) => handleVolume(e.target.value)}
+                onChange={(e) => handleVolume({ value: e.target.value })}
               />
             </S.PlayerSoundControlWrapper>
             <S.AddButton

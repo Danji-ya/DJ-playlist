@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { IMusic } from '../@types/music';
+import { IMusic, IMusicChange, IMusicVolume } from '../@types/music';
 import Player from '../components/common/Player';
 import { PLAYER_STATE } from '../constants/player';
 import { playerState } from '../store/playerState';
@@ -39,7 +39,7 @@ function PlayerControlContainer({
     };
   }, [selectedMusic]);
 
-  const handleChangeMusic = (music: IMusic, isNext?: boolean) => {
+  const handleChangeMusic = ({ music, isNext }: IMusicChange) => {
     const playlistLen = playlist.length - 1;
 
     const curPlayMusicIdx = playlist.findIndex(
@@ -73,7 +73,7 @@ function PlayerControlContainer({
     setPaused(true);
     player.current?.player?.seekTo(0);
     setCurrentTime(0);
-    handleChangeMusic(selectedMusic, true);
+    handleChangeMusic({ music: selectedMusic, isNext: true });
   };
 
   const handleSync = (target: YT.Player) => {
@@ -118,7 +118,7 @@ function PlayerControlContainer({
     setPaused((prev) => !prev);
   };
 
-  const handleVolume = (value: string, isTurnOff?: boolean) => {
+  const handleVolume = ({ value, isTurnOff }: IMusicVolume) => {
     if (isTurnOff) {
       setVolume(0);
       setMuted(true);
