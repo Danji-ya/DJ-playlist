@@ -1,5 +1,5 @@
-import { IMusic } from '../../@types/music';
-import { Profile, ProfileImage, ProfileText } from '../../styles/player';
+import { IMusic } from '../../../@types/music';
+import { Profile, ProfileImage, ProfileText } from '../../../styles/player';
 
 interface Props {
   selectedMusic: IMusic;

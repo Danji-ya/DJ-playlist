@@ -2,8 +2,8 @@ import {
   PlayerProgressBar,
   PlayerProgressContainer,
   PlayerProgressTime,
-} from '../../styles/player';
-import { formatTime } from '../../utils/common';
+} from '../../../styles/player';
+import { formatTime } from '../../../utils/common';
 
 interface Props {
   currentTime: number;
