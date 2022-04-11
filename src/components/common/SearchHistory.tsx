@@ -1,12 +1,7 @@
 /* eslint-disable react/no-array-index-key */
 import { ISearchKeyword } from '../../@types/search';
 import { icons } from '../../constants';
-import {
-  CloseBtn,
-  HistoryContainer,
-  List,
-  Title,
-} from '../../styles/searchForm';
+import * as Styled from '../../styles/searchForm';
 
 interface Props {
   handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
@@ -34,22 +29,25 @@ function SearchHistory({
   };
 
   return (
-    <HistoryContainer isShow={isShow}>
-      <Title>최근 검색어</Title>
+    <Styled.HistoryContainer isShow={isShow}>
+      <Styled.Title>최근 검색어</Styled.Title>
       {serachHistory &&
         serachHistory.map((keyword, idx) => (
-          <List
+          <Styled.List
             key={`${keyword}-${idx}`}
             onClick={(e) => handleClick(e, keyword)}
             aria-label="keyword"
           >
             {keyword}
-            <CloseBtn onClick={() => handleClose(idx)} aria-label="close">
+            <Styled.CloseBtn
+              onClick={() => handleClose(idx)}
+              aria-label="close"
+            >
               <icons.Close />
-            </CloseBtn>
-          </List>
+            </Styled.CloseBtn>
+          </Styled.List>
         ))}
-    </HistoryContainer>
+    </Styled.HistoryContainer>
   );
 }
 

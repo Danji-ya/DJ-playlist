@@ -4,7 +4,7 @@ import ErrorBoundary from '../components/common/ErrorBoundary';
 import SearchResult from '../components/SearchResult';
 import useToast from '../services/hooks/useToast';
 import { useGetPlaylist } from '../services/queries/player';
-import { SearchResultSection, SearchResultTitle } from '../styles/search';
+import * as Styled from '../styles/search';
 import { restructuring } from '../utils/common';
 
 interface Props {
@@ -26,8 +26,8 @@ function SearchResultContainer({ keyword, handleSelectMusic }: Props) {
   }, [data]);
 
   return (
-    <SearchResultSection>
-      <SearchResultTitle>검색 결과</SearchResultTitle>
+    <Styled.SearchResultSection>
+      <Styled.SearchResultTitle>검색 결과</Styled.SearchResultTitle>
       <ErrorBoundary>
         <SearchResult
           isLoading={isLoading}
@@ -35,7 +35,7 @@ function SearchResultContainer({ keyword, handleSelectMusic }: Props) {
           handleSelectMusic={handleSelectMusic}
         />
       </ErrorBoundary>
-    </SearchResultSection>
+    </Styled.SearchResultSection>
   );
 }
 

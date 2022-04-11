@@ -1,11 +1,5 @@
 import { ISearchKeyword, ITopSearched } from '../@types/search';
-import {
-  AlbumDiv,
-  AlbumImg,
-  AlbumImgWrapper,
-  AlbumTitle,
-  AlbumWrapper,
-} from '../styles/search';
+import * as Styled from '../styles/search';
 
 interface Props {
   item: ITopSearched;
@@ -14,19 +8,19 @@ interface Props {
 
 function SliderItem({ item, handleSearchKeyword }: Props) {
   return (
-    <AlbumWrapper key={`${item.id}`}>
-      <AlbumDiv
+    <Styled.AlbumWrapper key={`${item.id}`}>
+      <Styled.AlbumDiv
         onClick={() =>
           handleSearchKeyword({ value: item.title, isAutoKeyword: true })
         }
         aria-label="music play button"
       >
-        <AlbumImgWrapper>
-          <AlbumImg src={item.src} alt="Album Image" />
-        </AlbumImgWrapper>
-        <AlbumTitle>{item.title}</AlbumTitle>
-      </AlbumDiv>
-    </AlbumWrapper>
+        <Styled.AlbumImgWrapper>
+          <Styled.AlbumImg src={item.src} alt="Album Image" />
+        </Styled.AlbumImgWrapper>
+        <Styled.AlbumTitle>{item.title}</Styled.AlbumTitle>
+      </Styled.AlbumDiv>
+    </Styled.AlbumWrapper>
   );
 }
 

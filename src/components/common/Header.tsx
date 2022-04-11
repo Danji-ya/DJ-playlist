@@ -1,11 +1,6 @@
 import { icons } from '../../constants';
 import NavbarContainer from '../../containers/NavbarContainer';
-import {
-  HeaderContainer,
-  LogoWrapper,
-  LogoImgWrapper,
-  LogoText,
-} from '../../styles/header';
+import * as Styled from '../../styles/header';
 
 interface Props {
   handlePath: (url: string) => void;
@@ -13,16 +8,16 @@ interface Props {
 
 function Header({ handlePath }: Props) {
   return (
-    <HeaderContainer>
-      <LogoWrapper onClick={() => handlePath('/')} aria-label="home">
-        <LogoImgWrapper>
+    <Styled.HeaderContainer>
+      <Styled.LogoWrapper onClick={() => handlePath('/')} aria-label="home">
+        <Styled.LogoImgWrapper>
           <icons.Logo height={45} width={45} />
-        </LogoImgWrapper>
-        <LogoText>DJ playlist</LogoText>
-      </LogoWrapper>
+        </Styled.LogoImgWrapper>
+        <Styled.LogoText>DJ playlist</Styled.LogoText>
+      </Styled.LogoWrapper>
 
       <NavbarContainer />
-    </HeaderContainer>
+    </Styled.HeaderContainer>
   );
 }
 

@@ -1,4 +1,4 @@
-import { ToggleContainer } from '../../styles/sidebar';
+import * as Styled from '../../styles/sidebar';
 
 interface Props {
   mode: boolean;
@@ -7,7 +7,7 @@ interface Props {
 
 function ToggleMode({ mode, toggleMode }: Props) {
   return (
-    <ToggleContainer
+    <Styled.ToggleContainer
       lightTheme={mode}
       onClick={toggleMode}
       aria-label="theme toggle"
@@ -18,7 +18,7 @@ function ToggleMode({ mode, toggleMode }: Props) {
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <path d="M16.5,14.9 M12,3c-5,0-9,4-9,9s4,9,9,9s9-4,9-9c0-0.5,0-0.9-0.1-1.4c-1,1.4-2.6,2.3-4.4,2.3c-3,0-5.4-2.4-5.4-5.4  c0-1.8,0.9-3.4,2.3-4.4C12.9,3,12.5,3,12,3L12,3z" />
       </svg>
-    </ToggleContainer>
+    </Styled.ToggleContainer>
   );
 }
 

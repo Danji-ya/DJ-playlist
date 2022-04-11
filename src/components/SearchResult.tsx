@@ -1,5 +1,5 @@
 import { IMusic } from '../@types/music';
-import { SearchResultContainer, SearchResultGrid } from '../styles/search';
+import * as Styled from '../styles/search';
 import MusicCard from './common/MusicCard';
 import SearchResultEmpty from './SearchResultEmpty';
 import Skeleton from './Skeleton';
@@ -12,8 +12,8 @@ interface Props {
 
 function SearchResult({ musicList, handleSelectMusic, isLoading }: Props) {
   return (
-    <SearchResultContainer>
-      <SearchResultGrid>
+    <Styled.SearchResultContainer>
+      <Styled.SearchResultGrid>
         {isLoading ? (
           Array.from({ length: 8 }, (_v, i) => i + 1).map((item) => (
             <Skeleton key={item} />
@@ -35,8 +35,8 @@ function SearchResult({ musicList, handleSelectMusic, isLoading }: Props) {
             )}
           </>
         )}
-      </SearchResultGrid>
-    </SearchResultContainer>
+      </Styled.SearchResultGrid>
+    </Styled.SearchResultContainer>
   );
 }
 

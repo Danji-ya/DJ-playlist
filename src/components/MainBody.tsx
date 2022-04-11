@@ -2,12 +2,7 @@ import React, { useCallback, useRef } from 'react';
 import MusicCard from './common/MusicCard';
 import { icons, images } from '../constants';
 import Sidebar from './common/Sidebar';
-import {
-  DjplayContainer,
-  EmptyContainer,
-  EmptyTitle,
-  PlaylistTitleWrapper,
-} from '../styles/mainBody';
+import * as Styled from '../styles/mainBody';
 import { IMusic, ISwapRoute } from '../@types/music';
 import { MESSAGE } from '../constants/messages';
 
@@ -52,12 +47,12 @@ function MainBody({
   return (
     <>
       <Sidebar />
-      <PlaylistTitleWrapper>
+      <Styled.PlaylistTitleWrapper>
         <icons.Logo width={65} height={65} />
-      </PlaylistTitleWrapper>
+      </Styled.PlaylistTitleWrapper>
 
       {djPlaylist.length > 0 ? (
-        <DjplayContainer>
+        <Styled.DjplayContainer>
           {djPlaylist.map((item: IMusic, idx: number) => (
             <MusicCard
               key={item.videoId}
@@ -70,12 +65,12 @@ function MainBody({
               idx={idx}
             />
           ))}
-        </DjplayContainer>
+        </Styled.DjplayContainer>
       ) : (
-        <EmptyContainer>
+        <Styled.EmptyContainer>
           <images.Cat2 width={350} height={350} />
-          <EmptyTitle>{MESSAGE.EMPTY_PLAYLIST}</EmptyTitle>
-        </EmptyContainer>
+          <Styled.EmptyTitle>{MESSAGE.EMPTY_PLAYLIST}</Styled.EmptyTitle>
+        </Styled.EmptyContainer>
       )}
     </>
   );

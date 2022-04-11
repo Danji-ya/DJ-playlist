@@ -1,12 +1,6 @@
 import { IMusic } from '../../@types/music';
 import { icons } from '../../constants';
-import {
-  MusicCardContainer,
-  MusicCardPlayButtonWrapper,
-  MusicCardPlaySubtitle,
-  MusicCardPlayTitle,
-  MusicCardProfileImg,
-} from '../../styles/musicCard';
+import * as Styled from '../../styles/musicCard';
 import LazyImage from './LazyImage';
 
 interface Props {
@@ -29,26 +23,26 @@ function MusicCard({
   handleDrop,
 }: Props) {
   return (
-    <MusicCardContainer
+    <Styled.Container
       draggable={draggAble ? 'true' : 'false'}
       onDragStart={(e) => handleDragStart && handleDragStart(e)}
       onDragOver={(e) => handleDragOver && handleDragOver(e)}
       onDrop={(e) => handleDrop && handleDrop(e)}
       data-idx={idx}
     >
-      <MusicCardProfileImg
+      <Styled.ProfileImg
         onClick={() => handleSelectMusic(item)}
         aria-label="music play button"
       >
         <LazyImage src={item.url} alt="thumbnail" />
-        <MusicCardPlayButtonWrapper>
+        <Styled.PlayButtonWrapper>
           <icons.PlayBtn width="45px" height="45px" />
-        </MusicCardPlayButtonWrapper>
-      </MusicCardProfileImg>
+        </Styled.PlayButtonWrapper>
+      </Styled.ProfileImg>
 
-      <MusicCardPlayTitle>{item.title}</MusicCardPlayTitle>
-      <MusicCardPlaySubtitle>{item.subtitle}</MusicCardPlaySubtitle>
-    </MusicCardContainer>
+      <Styled.PlayTitle>{item.title}</Styled.PlayTitle>
+      <Styled.PlaySubtitle>{item.subtitle}</Styled.PlaySubtitle>
+    </Styled.Container>
   );
 }
 

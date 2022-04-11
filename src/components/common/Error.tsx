@@ -1,5 +1,5 @@
 import { images } from '../../constants';
-import { Background, Button, Container, Title } from '../../styles/error';
+import * as Styled from '../../styles/error';
 
 interface Props {
   refresh: () => void;
@@ -7,14 +7,14 @@ interface Props {
 
 export default function Error({ refresh }: Props) {
   return (
-    <Background>
-      <Container>
+    <Styled.Background>
+      <Styled.Container>
         <images.Cat2 width={350} height={350} />
-        <Title>에러가 발생했습니다</Title>
-        <Button onClick={() => refresh()} aria-label="reload">
+        <Styled.Title>에러가 발생했습니다</Styled.Title>
+        <Styled.Button onClick={() => refresh()} aria-label="reload">
           새로고침
-        </Button>
-      </Container>
-    </Background>
+        </Styled.Button>
+      </Styled.Container>
+    </Styled.Background>
   );
 }

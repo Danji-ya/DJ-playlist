@@ -4,7 +4,7 @@ import { IToastState } from '../@types/toast';
 import Toast from '../components/common/Toast';
 import CreateToastPortal from '../components/common/Toast/CreateToastPotal';
 import { toastState } from '../store/toastState';
-import { Container } from '../styles/toast';
+import * as Styled from '../styles/toast';
 
 function ToastContainer() {
   const [toasts, setToasts] = useRecoilState<IToastState[]>(toastState);
@@ -15,11 +15,11 @@ function ToastContainer() {
 
   return (
     <CreateToastPortal>
-      <Container>
+      <Styled.Container>
         {toasts.map((toast) => (
           <Toast key={toast.id} hideToast={hideToast} {...toast} />
         ))}
-      </Container>
+      </Styled.Container>
     </CreateToastPortal>
   );
 }

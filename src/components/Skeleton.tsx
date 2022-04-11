@@ -1,12 +1,12 @@
-import { Card, SubTitle, Thumnail, Title } from '../styles/skeleton';
+import * as Styled from '../styles/skeleton';
 
 function Skeleton() {
   return (
-    <Card>
-      <Thumnail />
-      <Title />
-      <SubTitle />
-    </Card>
+    <Styled.Card>
+      <Styled.Thumnail />
+      <Styled.Title />
+      <Styled.SubTitle />
+    </Styled.Card>
   );
 }
 

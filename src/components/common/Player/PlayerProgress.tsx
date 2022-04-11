@@ -1,8 +1,4 @@
-import {
-  PlayerProgressBar,
-  PlayerProgressContainer,
-  PlayerProgressTime,
-} from '../../../styles/player';
+import * as Styled from '../../../styles/player';
 import { formatTime } from '../../../utils/common';
 
 interface Props {
@@ -21,8 +17,8 @@ function PlayerProgress({
   handleMouseUp,
 }: Props) {
   return (
-    <PlayerProgressContainer>
-      <PlayerProgressBar
+    <Styled.PlayerProgressContainer>
+      <Styled.PlayerProgressBar
         type="range"
         value={currentTime}
         min="0"
@@ -31,10 +27,10 @@ function PlayerProgress({
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
       />
-      <PlayerProgressTime>
+      <Styled.PlayerProgressTime>
         {formatTime(currentTime)} / {formatTime(duration)}
-      </PlayerProgressTime>
-    </PlayerProgressContainer>
+      </Styled.PlayerProgressTime>
+    </Styled.PlayerProgressContainer>
   );
 }
 

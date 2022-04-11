@@ -1,5 +1,5 @@
 import { IMusic } from '../../../@types/music';
-import { Profile, ProfileImage, ProfileText } from '../../../styles/player';
+import * as Styled from '../../../styles/player';
 
 interface Props {
   selectedMusic: IMusic;
@@ -7,16 +7,16 @@ interface Props {
 
 function PlayerProfile({ selectedMusic }: Props) {
   return (
-    <Profile>
-      <ProfileImage>
+    <Styled.Profile>
+      <Styled.ProfileImage>
         <img src={selectedMusic.url} alt="thumbnail" />
-      </ProfileImage>
+      </Styled.ProfileImage>
 
-      <ProfileText>
+      <Styled.ProfileText>
         <p>{selectedMusic.title}</p>
         <p>{selectedMusic.subtitle}</p>
-      </ProfileText>
-    </Profile>
+      </Styled.ProfileText>
+    </Styled.Profile>
   );
 }
 

@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { IconWrapper, NavItem, NavList, NavWrapper } from '../../styles/header';
+import * as Styled from '../../styles/header';
 import { PATH } from '../../constants/path';
 import { icons } from '../../constants';
 
@@ -27,25 +27,25 @@ function Navbar({ path, handlePath }: Props) {
   ];
 
   return (
-    <NavWrapper>
-      <NavList>
+    <Styled.NavWrapper>
+      <Styled.NavList>
         {navItems.map((item) => {
           return (
-            <NavItem
+            <Styled.NavItem
               key={`${item.path}`}
               active={item.path === path}
               onClick={() => handlePath(item.path)}
               aria-label="navigation button"
             >
-              <IconWrapper>
+              <Styled.IconWrapper>
                 <item.Icon width="25px" height="25px" />
-              </IconWrapper>
+              </Styled.IconWrapper>
               <p>{item.name}</p>
-            </NavItem>
+            </Styled.NavItem>
           );
         })}
-      </NavList>
-    </NavWrapper>
+      </Styled.NavList>
+    </Styled.NavWrapper>
   );
 }
 

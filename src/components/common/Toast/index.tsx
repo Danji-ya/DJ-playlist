@@ -1,13 +1,5 @@
 import { icons } from '../../../constants';
-import {
-  Body,
-  CloseBtn,
-  Contents,
-  Message,
-  Progress,
-  Title,
-  ToastWrapper,
-} from '../../../styles/toast';
+import * as Styled from '../../../styles/toast';
 
 interface Props {
   id: string;
@@ -36,18 +28,21 @@ function Toast({
   };
 
   return (
-    <ToastWrapper type={type} duration={duration} role="alert">
-      <Body>
-        <Contents>
-          <Title>{title}</Title>
-          <Message>{message}</Message>
-        </Contents>
-        <CloseBtn onClick={handleClick} aria-label="close">
+    <Styled.ToastWrapper type={type} duration={duration} role="alert">
+      <Styled.Body>
+        <Styled.Contents>
+          <Styled.Title>{title}</Styled.Title>
+          <Styled.Message>{message}</Styled.Message>
+        </Styled.Contents>
+        <Styled.CloseBtn onClick={handleClick} aria-label="close">
           <icons.Close />
-        </CloseBtn>
-      </Body>
-      <Progress duration={duration} onAnimationEnd={handleAnimationEnd} />
-    </ToastWrapper>
+        </Styled.CloseBtn>
+      </Styled.Body>
+      <Styled.Progress
+        duration={duration}
+        onAnimationEnd={handleAnimationEnd}
+      />
+    </Styled.ToastWrapper>
   );
 }
 

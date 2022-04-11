@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-const MusicCardContainer = styled.div`
+const Container = styled.div`
   justify-self: center;
   align-self: center;
   padding: 10px;
@@ -12,7 +12,7 @@ const MusicCardContainer = styled.div`
   margin: 10px;
 `;
 
-const MusicCardProfileImg = styled.div`
+const ProfileImg = styled.div`
   position: relative;
   display: flex;
   height: 200px;
@@ -30,7 +30,7 @@ const MusicCardProfileImg = styled.div`
   }
 `;
 
-const MusicCardPlayTitle = styled.p`
+const PlayTitle = styled.p`
   font-weight: bolder;
   font-size: 0.9rem;
   width: 100%;
@@ -42,7 +42,7 @@ const MusicCardPlayTitle = styled.p`
   margin: 7px 0;
 `;
 
-const MusicCardPlaySubtitle = styled.p`
+const PlaySubtitle = styled.p`
   font-weight: lighter;
   color: ${({ theme }) => theme.cardSubTitle};
   font-size: 0.8rem;
@@ -53,7 +53,7 @@ const MusicCardPlaySubtitle = styled.p`
   margin: 5px 0;
 `;
 
-const MusicCardPlayButtonWrapper = styled.button`
+const PlayButtonWrapper = styled.button`
   position: absolute;
   visibility: hidden;
   outline: none;
@@ -68,10 +68,4 @@ const MusicCardPlayButtonWrapper = styled.button`
   fill: #fff;
 `;
 
-export {
-  MusicCardContainer,
-  MusicCardProfileImg,
-  MusicCardPlayTitle,
-  MusicCardPlaySubtitle,
-  MusicCardPlayButtonWrapper,
-};
+export { Container, ProfileImg, PlayTitle, PlaySubtitle, PlayButtonWrapper };

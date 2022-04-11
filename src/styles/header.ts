@@ -76,7 +76,7 @@ const NavWrapper = styled.nav`
   }
 `;
 
-const NavList = styled.ol`
+const NavList = styled.ul`
   display: flex;
   flex-direction: column;
   align-items: center;

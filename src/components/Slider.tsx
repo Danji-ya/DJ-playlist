@@ -1,14 +1,6 @@
 import React from 'react';
 import { ISearchKeyword, ITopSearched } from '../@types/search';
-import {
-  Container,
-  ControlContainer,
-  NextBtn,
-  PrevBtn,
-  SliderContent,
-  SliderHeader,
-  SliderItemsContainer,
-} from '../styles/search';
+import * as Styled from '../styles/search';
 import SliderItem from './SliderItem';
 
 interface Props {
@@ -20,10 +12,10 @@ interface Props {
 
 function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
   return (
-    <Container>
-      <SliderHeader>인기 검색어</SliderHeader>
-      <SliderContent>
-        <SliderItemsContainer position={position}>
+    <Styled.Container>
+      <Styled.SliderHeader>인기 검색어</Styled.SliderHeader>
+      <Styled.SliderContent>
+        <Styled.SliderItemsContainer position={position}>
           {data.map((item: ITopSearched) => (
             <SliderItem
               key={item.id}
@@ -31,27 +23,27 @@ function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
               handleSearchKeyword={handleSearchKeyword}
             />
           ))}
-        </SliderItemsContainer>
-        <ControlContainer>
-          <PrevBtn
+        </Styled.SliderItemsContainer>
+        <Styled.ControlContainer>
+          <Styled.PrevBtn
             type="button"
             name="prev"
             onClick={(e) => handleSlider(e)}
             aria-label="slider prev button"
           >
             &#10094;
-          </PrevBtn>
-          <NextBtn
+          </Styled.PrevBtn>
+          <Styled.NextBtn
             type="button"
             name="next"
             onClick={(e) => handleSlider(e)}
             aria-label="slider next button"
           >
             &#10095;
-          </NextBtn>
-        </ControlContainer>
-      </SliderContent>
-    </Container>
+          </Styled.NextBtn>
+        </Styled.ControlContainer>
+      </Styled.SliderContent>
+    </Styled.Container>
   );
 }
 

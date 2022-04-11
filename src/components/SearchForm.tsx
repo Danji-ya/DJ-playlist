@@ -1,12 +1,7 @@
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { ISearchKeyword } from '../@types/search';
 import { icons } from '../constants';
-import {
-  Container,
-  BtnWrapper,
-  InputBox,
-  SearchFormWrapper,
-} from '../styles/searchForm';
+import * as Styled from '../styles/searchForm';
 import SearchHistory from './common/SearchHistory';
 
 interface Props {
@@ -62,29 +57,29 @@ const SearchForm = React.forwardRef<ModalHandle, Props>(
     }, []);
 
     return (
-      <Container ref={inputRef}>
-        <SearchFormWrapper onSubmit={(e) => handleSubmit(e)}>
-          <InputBox
+      <Styled.Container ref={inputRef}>
+        <Styled.SearchFormWrapper onSubmit={(e) => handleSubmit(e)}>
+          <Styled.InputBox
             type="text"
             placeholder="검색어를 입력해주세요"
             value={query}
             onChange={(e) => handleChange(e.target.value)}
             onFocus={() => setIsShow(true)}
           />
-          <BtnWrapper
+          <Styled.BtnWrapper
             onClick={(e) => handleSubmit(e)}
             aria-label="search button"
           >
             <icons.Search />
-          </BtnWrapper>
-        </SearchFormWrapper>
+          </Styled.BtnWrapper>
+        </Styled.SearchFormWrapper>
         <SearchHistory
           handleSearchKeyword={handleSearchKeyword}
           delSearchHistory={delSearchHistory}
           serachHistory={serachHistory}
           isShow={isShow && query === ''}
         />
-      </Container>
+      </Styled.Container>
     );
   },
 );

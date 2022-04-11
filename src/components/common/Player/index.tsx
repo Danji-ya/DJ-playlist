@@ -1,7 +1,7 @@
 import { forwardRef, LegacyRef } from 'react';
 import PlayerProfile from './PlayerProfile';
 import PlayerProgress from './PlayerProgress';
-import * as S from '../../../styles/player';
+import * as Styled from '../../../styles/player';
 import { icons } from '../../../constants';
 import { IMusic, IMusicChange, IMusicVolume } from '../../../@types/music';
 import Youtube from '../Youtube';
@@ -50,21 +50,21 @@ const Player = forwardRef(
     };
 
     return (
-      <S.PlayerContainer>
+      <Styled.PlayerContainer>
         {Object.keys(selectedMusic).length === 0 ? (
-          <S.PlayerEmpty>재생중인 음악이 없습니다</S.PlayerEmpty>
+          <Styled.PlayerEmpty>재생중인 음악이 없습니다</Styled.PlayerEmpty>
         ) : (
           <>
             <PlayerProfile selectedMusic={selectedMusic} />
-            <S.PlayerControls>
-              <S.PlayerPrevButton
+            <Styled.PlayerControls>
+              <Styled.PlayerPrevButton
                 onClick={() => handleChangeMusic({ music: selectedMusic })}
                 aria-label="music play prev button"
               >
                 <icons.Prev size={30} />
-              </S.PlayerPrevButton>
+              </Styled.PlayerPrevButton>
 
-              <S.PlayerMainButton
+              <Styled.PlayerMainButton
                 onClick={handleState}
                 aria-label="music play state button"
               >
@@ -73,17 +73,17 @@ const Player = forwardRef(
                 ) : (
                   <icons.Pause width="35px" height="35px" />
                 )}
-              </S.PlayerMainButton>
+              </Styled.PlayerMainButton>
 
-              <S.PlayerNextButton
+              <Styled.PlayerNextButton
                 onClick={() =>
                   handleChangeMusic({ music: selectedMusic, isNext: true })
                 }
                 aria-label="music play next button"
               >
                 <icons.Next />
-              </S.PlayerNextButton>
-            </S.PlayerControls>
+              </Styled.PlayerNextButton>
+            </Styled.PlayerControls>
 
             <PlayerProgress
               duration={duration}
@@ -93,7 +93,7 @@ const Player = forwardRef(
               handleMouseUp={() => handleMouse()}
             />
 
-            <S.PlayerSoundControlWrapper>
+            <Styled.PlayerSoundControlWrapper>
               {muted || volume === 0 ? (
                 <icons.VolumeOff
                   onClick={() => handleVolume({ value: '', isTurnOff: false })}
@@ -105,7 +105,7 @@ const Player = forwardRef(
                   aria-label="music volumeOff button"
                 />
               )}
-              <S.PlayerSoundControl
+              <Styled.PlayerSoundControl
                 type="range"
                 name="volume"
                 value={volume}
@@ -114,25 +114,25 @@ const Player = forwardRef(
                 step="0.05"
                 onChange={(e) => handleVolume({ value: e.target.value })}
               />
-            </S.PlayerSoundControlWrapper>
-            <S.AddButton
+            </Styled.PlayerSoundControlWrapper>
+            <Styled.AddButton
               dibs={dibs}
               onClick={() => handleDjplaylist(selectedMusic)}
               aria-label="dibs button"
             >
               <icons.Heart />
-            </S.AddButton>
+            </Styled.AddButton>
           </>
         )}
-        <S.YoutubeIframe>
+        <Styled.YoutubeIframe>
           <Youtube
             ref={ref}
             customProps={customProps}
             stateChangeHandler={handleStateChange}
             autoplay
           />
-        </S.YoutubeIframe>
-      </S.PlayerContainer>
+        </Styled.YoutubeIframe>
+      </Styled.PlayerContainer>
     );
   },
 );
