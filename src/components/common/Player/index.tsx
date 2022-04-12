@@ -1,10 +1,12 @@
 import { forwardRef, LegacyRef } from 'react';
-import PlayerProfile from './PlayerProfile';
-import PlayerProgress from './PlayerProgress';
+import Profile from './Profile';
+import Progress from './Progress';
 import * as Styled from '../../../styles/player';
-import { icons } from '../../../constants';
 import { IMusic, IMusicChange, IMusicVolume } from '../../../@types/music';
 import Youtube from '../Youtube';
+import Controls from './Controls';
+import Sound from './Sound';
+import Dibs from './Dibs';
 
 interface Props {
   playerProps: {
@@ -59,44 +61,18 @@ const Player = forwardRef(
           <Styled.Empty>재생중인 음악이 없습니다</Styled.Empty>
         ) : (
           <>
-            <PlayerProfile selectedMusic={selectedMusic} />
-            <Styled.Controls>
-              <Styled.PrevButton
-                onClick={() => handleChangeMusic({ music: selectedMusic })}
-                aria-label="music play prev button"
-              >
-                <icons.Prev size={30} />
-              </Styled.PrevButton>
+            <Profile selectedMusic={selectedMusic} />
 
-              <Styled.MainButton
-                onClick={handleState}
-                aria-label="music play state button"
-              >
-                {paused ? (
-                  <icons.Play width="35px" height="35px" />
-                ) : (
-                  <icons.Pause width="35px" height="35px" />
-                )}
-              </Styled.MainButton>
+            <Controls
+              paused={paused}
+              selectedMusic={selectedMusic}
+              shuffle={shuffle}
+              handleChangeMusic={handleChangeMusic}
+              handleState={handleState}
+              handleShuffle={handleShuffle}
+            />
 
-              <Styled.NextButton
-                onClick={() =>
-                  handleChangeMusic({ music: selectedMusic, isNext: true })
-                }
-                aria-label="music play next button"
-              >
-                <icons.Next />
-              </Styled.NextButton>
-              <Styled.ShuffleButton
-                shuffle={shuffle}
-                onClick={() => handleShuffle()}
-                aria-label="shuffle button"
-              >
-                <icons.Shuffle width={25} height={25} />
-              </Styled.ShuffleButton>
-            </Styled.Controls>
-
-            <PlayerProgress
+            <Progress
               duration={duration}
               currentTime={currentTime}
               handleProgress={handleProgress}
@@ -104,35 +80,13 @@ const Player = forwardRef(
               handleMouseUp={() => handleMouse()}
             />
 
-            <Styled.SoundControl>
-              {muted || volume === 0 ? (
-                <icons.VolumeOff
-                  onClick={() => handleVolume({ value: '', isTurnOff: false })}
-                  aria-label="music volumeUp button"
-                />
-              ) : (
-                <icons.VolumeUp
-                  onClick={() => handleVolume({ value: '', isTurnOff: true })}
-                  aria-label="music volumeOff button"
-                />
-              )}
-              <Styled.Input
-                type="range"
-                name="volume"
-                value={volume}
-                min="0"
-                max="1"
-                step="0.05"
-                onChange={(e) => handleVolume({ value: e.target.value })}
-              />
-            </Styled.SoundControl>
-            <Styled.AddButton
+            <Sound volume={volume} muted={muted} handleVolume={handleVolume} />
+
+            <Dibs
               dibs={dibs}
-              onClick={() => handleDjplaylist(selectedMusic)}
-              aria-label="dibs button"
-            >
-              <icons.Heart />
-            </Styled.AddButton>
+              selectedMusic={selectedMusic}
+              handleDjplaylist={handleDjplaylist}
+            />
           </>
         )}
         <Styled.YoutubeIframe>

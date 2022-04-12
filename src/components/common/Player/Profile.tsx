@@ -5,7 +5,7 @@ interface Props {
   selectedMusic: IMusic;
 }
 
-function PlayerProfile({ selectedMusic }: Props) {
+function Profile({ selectedMusic }: Props) {
   return (
     <Styled.Profile>
       <Styled.ProfileImage>
@@ -20,4 +20,4 @@ function PlayerProfile({ selectedMusic }: Props) {
   );
 }
 
-export default PlayerProfile;
+export default Profile;

@@ -9,7 +9,7 @@ interface Props {
   handleMouseUp: () => void;
 }
 
-function PlayerProgress({
+function Progress({
   currentTime,
   duration,
   handleProgress,
@@ -34,4 +34,4 @@ function PlayerProgress({
   );
 }
 
-export default PlayerProgress;
+export default Progress;
