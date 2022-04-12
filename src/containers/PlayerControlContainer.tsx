@@ -2,17 +2,19 @@ import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { IMusic, IMusicChange, IMusicVolume } from '../@types/music';
 import Player from '../components/common/Player';
-import { PLAYER_STATE } from '../constants/player';
+import { NOT_INCLUDE_DJPLAYLIST, PLAYER_STATE } from '../constants/player';
 import { playerState } from '../store/playerState';
 import { playlistState } from '../store/playlistState';
 
 interface Props {
+  shuffle: boolean;
   dibs: boolean;
   selectedMusic: IMusic;
   handleDjplaylist: (music: IMusic) => void;
 }
 
 function PlayerControlContainer({
+  shuffle,
   dibs,
   selectedMusic,
   handleDjplaylist,
@@ -39,18 +41,50 @@ function PlayerControlContainer({
     };
   }, [selectedMusic]);
 
+  const shufflePlaylist = (oriPlaylist: IMusic[]) => {
+    const copiedPlaylist = [...oriPlaylist];
+
+    for (let i = copiedPlaylist.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+
+      [copiedPlaylist[i], copiedPlaylist[j]] = [
+        copiedPlaylist[j],
+        copiedPlaylist[i],
+      ];
+    }
+
+    return copiedPlaylist;
+  };
+
+  const handleShuffle = () => {
+    setPlayer((prev) => ({
+      ...prev,
+      shuffle: !prev.shuffle,
+    }));
+  };
+
+  const getCurrentMusicIdx = ({
+    newPlaylist,
+    curMusic,
+  }: {
+    newPlaylist: IMusic[];
+    curMusic: IMusic;
+  }) => newPlaylist.findIndex((item) => item.videoId === curMusic.videoId);
+
   const handleChangeMusic = ({ music, isNext }: IMusicChange) => {
     const playlistLen = playlist.length - 1;
+    const newPlaylist = shuffle ? shufflePlaylist(playlist) : playlist;
 
-    const curPlayMusicIdx = playlist.findIndex(
-      (item) => item.videoId === music.videoId,
-    );
+    const curPlayMusicIdx = getCurrentMusicIdx({
+      newPlaylist,
+      curMusic: music,
+    });
 
-    if (curPlayMusicIdx === -1) return;
+    if (curPlayMusicIdx === NOT_INCLUDE_DJPLAYLIST) return;
 
     const nextMusic = isNext
-      ? playlist[curPlayMusicIdx === playlistLen ? 0 : curPlayMusicIdx + 1]
-      : playlist[curPlayMusicIdx === 0 ? playlistLen : curPlayMusicIdx - 1];
+      ? newPlaylist[curPlayMusicIdx === playlistLen ? 0 : curPlayMusicIdx + 1]
+      : newPlaylist[curPlayMusicIdx === 0 ? playlistLen : curPlayMusicIdx - 1];
 
     setPlayer((prev) => ({
       ...prev,
@@ -155,6 +189,7 @@ function PlayerControlContainer({
         paused,
       }}
       dibs={dibs}
+      shuffle={shuffle}
       selectedMusic={selectedMusic}
       handleDjplaylist={handleDjplaylist}
       handleStateChange={handleStateChange}
@@ -163,6 +198,7 @@ function PlayerControlContainer({
       handleVolume={handleVolume}
       handleProgress={handleProgress}
       handleChangeMusic={handleChangeMusic}
+      handleShuffle={handleShuffle}
     />
   );
 }

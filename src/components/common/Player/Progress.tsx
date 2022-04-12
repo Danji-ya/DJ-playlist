@@ -9,7 +9,7 @@ interface Props {
   handleMouseUp: () => void;
 }
 
-function PlayerProgress({
+function Progress({
   currentTime,
   duration,
   handleProgress,
@@ -17,8 +17,8 @@ function PlayerProgress({
   handleMouseUp,
 }: Props) {
   return (
-    <Styled.PlayerProgressContainer>
-      <Styled.PlayerProgressBar
+    <Styled.ProgressContainer>
+      <Styled.ProgressBar
         type="range"
         value={currentTime}
         min="0"
@@ -27,11 +27,11 @@ function PlayerProgress({
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
       />
-      <Styled.PlayerProgressTime>
+      <Styled.ProgressTime>
         {formatTime(currentTime)} / {formatTime(duration)}
-      </Styled.PlayerProgressTime>
-    </Styled.PlayerProgressContainer>
+      </Styled.ProgressTime>
+    </Styled.ProgressContainer>
   );
 }
 
-export default PlayerProgress;
+export default Progress;

@@ -10,7 +10,7 @@ function PlayerContainer() {
   const [playlist, setPlaylist] = useRecoilState(playlistState);
   const player = useRecoilValue(playerState);
   const toast = useToast();
-  const { selectedMusic } = player;
+  const { selectedMusic, shuffle } = player;
 
   const isIncludeDjplaylist =
     Object.keys(selectedMusic).length !== 0 &&
@@ -40,6 +40,7 @@ function PlayerContainer() {
 
   return (
     <PlayerControlContainer
+      shuffle={shuffle}
       dibs={isIncludeDjplaylist}
       selectedMusic={selectedMusic}
       handleDjplaylist={handleDjplaylist}

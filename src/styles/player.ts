@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { STYLE } from '../constants';
 import { DEVICE } from '../constants/device';
 
-const PlayerContainer = styled.div`
+const Container = styled.div`
   background: ${({ theme }) => `${theme.playerBg}`};
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   display: flex;
@@ -20,7 +20,7 @@ const PlayerContainer = styled.div`
   }
 `;
 
-const PlayerEmpty = styled.div`
+const Empty = styled.div`
   color: ${({ theme }) => theme.navTextPrimary};
   font-family: 'BMHANNAPro', sans-serif;
   display: flex;
@@ -76,7 +76,7 @@ const ProfileText = styled.div`
   }
 `;
 
-const PlayerControls = styled.div`
+const Controls = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -87,7 +87,7 @@ const PlayerControls = styled.div`
   }
 `;
 
-const PlayerPrevButton = styled.button`
+const PrevButton = styled.button`
   border: none;
   outline: none;
   color: white;
@@ -101,9 +101,25 @@ const PlayerPrevButton = styled.button`
   }
 `;
 
-const PlayerNextButton = styled(PlayerPrevButton)``;
+const NextButton = styled(PrevButton)``;
 
-const PlayerMainButton = styled.button`
+const ShuffleButton = styled.button<{ shuffle: boolean }>`
+  border: none;
+  outline: none;
+  color: white;
+  background: transparent;
+
+  svg {
+    fill: ${({ shuffle, theme }) =>
+      shuffle ? `${theme.playerMainColor}` : `${theme.playerSubColor}`};
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+`;
+
+const MainButton = styled.button`
   border: none;
   outline: none;
   width: 35px;
@@ -120,7 +136,7 @@ const PlayerMainButton = styled.button`
   }
 `;
 
-const PlayerProgressContainer = styled.div`
+const ProgressContainer = styled.div`
   position: relative;
   width: 500px;
   min-width: 150px;
@@ -134,13 +150,13 @@ const PlayerProgressContainer = styled.div`
   }
 `;
 
-const PlayerProgressTime = styled.p`
+const ProgressTime = styled.p`
   position: absolute;
   font-size: 0.8rem;
   margin-top: 15px;
 `;
 
-const PlayerProgressBar = styled.input.attrs(
+const ProgressBar = styled.input.attrs(
   ({ value, max }: { value: number; max: number }) => ({
     style: {
       backgroundSize: `${(value / max) * 100}% 100%`,
@@ -176,7 +192,7 @@ const PlayerProgressBar = styled.input.attrs(
   -webkit-appearance: none;
 `;
 
-const PlayerSoundControlWrapper = styled.div`
+const SoundControl = styled.div`
   display: flex;
   align-items: center;
   margin: 0 5%;
@@ -196,13 +212,11 @@ const YoutubeIframe = styled.div`
   bottom: -1000px;
 `;
 
-const PlayerSoundControl = styled.input.attrs(
-  ({ value }: { value: number }) => ({
-    style: {
-      backgroundSize: `${value * 100}% 100%`,
-    },
-  }),
-)`
+const Input = styled.input.attrs(({ value }: { value: number }) => ({
+  style: {
+    backgroundSize: `${value * 100}% 100%`,
+  },
+}))`
   border-radius: 5px;
   background: ${({ theme }) => `${theme.playerSubColor}`};
   background-image: ${({ theme }) =>
@@ -256,20 +270,21 @@ const AddButton = styled.button<{ dibs: boolean }>`
 `;
 
 export {
-  PlayerContainer,
-  PlayerEmpty,
+  Container,
+  Empty,
   Profile,
   ProfileImage,
   ProfileText,
-  PlayerControls,
-  PlayerPrevButton,
-  PlayerNextButton,
-  PlayerMainButton,
-  PlayerProgressContainer,
-  PlayerProgressBar,
-  PlayerProgressTime,
-  PlayerSoundControlWrapper,
-  PlayerSoundControl,
+  Controls,
+  PrevButton,
+  NextButton,
+  ShuffleButton,
+  MainButton,
+  ProgressContainer,
+  ProgressBar,
+  ProgressTime,
+  SoundControl,
+  Input,
   YoutubeIframe,
   AddButton,
 };
