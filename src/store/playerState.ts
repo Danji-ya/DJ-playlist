@@ -6,5 +6,6 @@ export const playerState = atom({
   default: {
     selectedMusic: {} as IMusic,
     volume: 0.5,
+    shuffle: false,
   },
 });
