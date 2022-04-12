@@ -12,6 +12,7 @@ import PlayBtn from '../assets/icons/play.svg';
 import Home from '../assets/icons/home.svg';
 import Close from '../assets/icons/close.svg';
 import Error from '../assets/icons/error.svg';
+import Shuffle from '../assets/icons/shuffle.svg';
 
 export default {
   Play,
@@ -28,4 +29,5 @@ export default {
   Home,
   Close,
   Error,
+  Shuffle,
 };

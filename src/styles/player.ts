@@ -103,14 +103,16 @@ const PrevButton = styled.button`
 
 const NextButton = styled(PrevButton)``;
 
-const ShuffleButton = styled.button`
+const ShuffleButton = styled.button<{ shuffle: boolean }>`
   border: none;
   outline: none;
   color: white;
   background: transparent;
 
   svg {
-    fill: ${({ theme }) => theme.playerBtn};
+    fill: ${({ shuffle, theme }) =>
+      shuffle ? `${theme.playerMainColor}` : `${theme.playerSubColor}`};
+
     &:hover {
       cursor: pointer;
     }

@@ -87,6 +87,13 @@ const Player = forwardRef(
               >
                 <icons.Next />
               </Styled.NextButton>
+              <Styled.ShuffleButton
+                shuffle={shuffle}
+                onClick={() => handleShuffle()}
+                aria-label="shuffle button"
+              >
+                <icons.Shuffle width={25} height={25} />
+              </Styled.ShuffleButton>
             </Styled.Controls>
 
             <PlayerProgress
