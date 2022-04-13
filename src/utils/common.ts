@@ -60,7 +60,7 @@ export const uuidv4 = () => {
 };
 
 export const customSearchHistory = (newItem: string, list: string[]) => {
-  const newList = [newItem, ...list.filter((item) => item !== newItem)];
+  const newList = [...new Set([newItem, ...list])];
 
   return newList.slice(0, 5);
 };
