@@ -1,7 +1,7 @@
 import { Ref } from 'react';
 import { useRecoilState } from 'recoil';
 import { ISearchKeyword } from '../@types/search';
-import SearchForm, { ModalHandle } from '../components/SearchForm';
+import Form, { ModalHandle } from '../components/Search/Form';
 import { searchHistoryState } from '../store/searchHistoryState';
 
 interface Props {
@@ -25,7 +25,7 @@ function SearchFormContainer({
   };
 
   return (
-    <SearchForm
+    <Form
       keyword={keyword}
       serachHistory={serachHistory}
       ref={searchFormRef}

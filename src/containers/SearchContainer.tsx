@@ -3,8 +3,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { IMusic } from '../@types/music';
 import { ISearchKeyword } from '../@types/search';
-import Sidebar from '../components/common/Sidebar';
-import SearchForm from '../components/SearchForm';
+import Form from '../components/Search/Form';
 import { PATH } from '../constants/path';
 import { keywordState } from '../store/keywordState';
 import { playerState } from '../store/playerState';
@@ -18,7 +17,7 @@ function SearchContainer() {
   const [keyword, setKeyword] = useRecoilState(keywordState);
   const setSearchHistory = useSetRecoilState(searchHistoryState);
   const setPlayer = useSetRecoilState(playerState);
-  const searchFormRef = useRef<React.ElementRef<typeof SearchForm>>(null);
+  const FormRef = useRef<React.ElementRef<typeof Form>>(null);
   const navigate = useNavigate();
   const { search } = useLocation();
 
@@ -35,7 +34,7 @@ function SearchContainer() {
   }, [keyword, search, navigate]);
 
   const handleSearchKeyword = ({ value, isAutoKeyword }: ISearchKeyword) => {
-    if (isAutoKeyword) searchFormRef.current?.handleQuery(value);
+    if (isAutoKeyword) FormRef.current?.handleQuery(value);
 
     setKeyword(value);
     setSearchHistory((prevHistory) => customSearchHistory(value, prevHistory));
@@ -51,10 +50,9 @@ function SearchContainer() {
 
   return (
     <>
-      <Sidebar />
       <SearchFormContainer
         keyword={keyword}
-        refProp={searchFormRef}
+        refProp={FormRef}
         handleSearchKeyword={handleSearchKeyword}
       />
       <SliderContainer handleSearchKeyword={handleSearchKeyword} />

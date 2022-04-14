@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { IMusic, IMusicChange, IMusicVolume } from '../@types/music';
-import Player from '../components/common/Player';
+import Player from '../components/Player';
 import { NOT_INCLUDE_DJPLAYLIST, PLAYER_STATE } from '../constants/player';
 import { playerState } from '../store/playerState';
 import { playlistState } from '../store/playlistState';

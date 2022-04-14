@@ -1,5 +1,5 @@
 import { useRecoilState } from 'recoil';
-import ToggleMode from '../components/common/ToggleMode';
+import ToggleMode from '../components/ToggleMode';
 import { themeState } from '../store/themeState';
 
 function ToggleModeContainer() {
