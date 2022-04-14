@@ -8,8 +8,8 @@ import { ROUTE } from './constants/route';
 import PlayerContainer from './containers/PlayerContainer';
 import ToastContainer from './containers/ToastContainer';
 import { themeState } from './store/themeState';
-import GlobalStyles from './styles/common/global';
-import { darkTheme, lightTheme } from './styles/common/theme';
+import GlobalStyles from './styles/global';
+import { darkTheme, lightTheme } from './styles/theme';
 
 function App() {
   const theme = useRecoilValue<boolean>(themeState);

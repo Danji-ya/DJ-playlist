@@ -1,17 +1,6 @@
 import styled from 'styled-components';
-import { DEVICE } from '../constants/device';
 
-const SidebarContainer = styled.div`
-  position: absolute;
-  right: 15px;
-  margin-bottom: 50px;
-
-  @media ${DEVICE.MOBILE} {
-    right: 5px;
-  }
-`;
-
-const ToggleContainer = styled.button<{ lightTheme: boolean }>`
+const Container = styled.button<{ lightTheme: boolean }>`
   position: relative;
   border: none;
   background: transparent;
@@ -51,4 +40,4 @@ const ToggleContainer = styled.button<{ lightTheme: boolean }>`
   }
 `;
 
-export { SidebarContainer, ToggleContainer };
+export default { Container };

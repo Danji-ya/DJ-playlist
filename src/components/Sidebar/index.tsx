@@ -1,11 +1,11 @@
 import ToggleModeContainer from '../../containers/ToggleModeContainer';
-import * as Styled from '../../styles/sidebar';
+import Styled from './Sidebar.style';
 
 function Sidebar() {
   return (
-    <Styled.SidebarContainer>
+    <Styled.Container>
       <ToggleModeContainer />
-    </Styled.SidebarContainer>
+    </Styled.Container>
   );
 }
 

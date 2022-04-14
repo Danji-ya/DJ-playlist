@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { DEVICE } from '../constants/device';
-import { SLIDER } from '../constants/slider';
+import { DEVICE } from '../../constants/device';
+import { SLIDER } from '../../constants/slider';
 
 const Container = styled.section`
   position: relative;
@@ -131,50 +131,6 @@ const NextBtn = styled(SliderBtns)`
   ${SliderBtns};
 `;
 
-const SearchResultSection = styled.section``;
-
-const SearchResultContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 350px;
-`;
-
-const SearchResultGrid = styled.div`
-  align-self: center;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1rem;
-  min-height: 300px;
-
-  width: 80%;
-
-  @media ${DEVICE.MOBILE} {
-    width: 100%;
-  }
-`;
-
-const SearchResultTitle = styled.h2`
-  font-weight: 600;
-  padding: 20px 0;
-`;
-
-const SearchResultEmptyWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
-
-const CatFaceIcon = styled.img`
-  width: 66px;
-  height: 66px;
-  border-radius: 15px;
-  margin-bottom: 15px;
-`;
-const SearchResultEmptyText = styled.p`
-  font-size: 1rem;
-`;
-
 const ControlContainer = styled.div`
   position: absolute;
   display: flex;
@@ -187,7 +143,7 @@ const ControlContainer = styled.div`
   pointer-events: none;
 `;
 
-export {
+export default {
   Container,
   SliderHeader,
   SliderContent,
@@ -201,11 +157,4 @@ export {
   SliderBtns,
   PrevBtn,
   NextBtn,
-  SearchResultSection,
-  SearchResultContainer,
-  SearchResultGrid,
-  SearchResultTitle,
-  SearchResultEmptyWrapper,
-  CatFaceIcon,
-  SearchResultEmptyText,
 };

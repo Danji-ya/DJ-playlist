@@ -1,17 +1,10 @@
-import styled from 'styled-components';
+import Styled from './LazyImage.style';
 import useIntersection from '../../../services/hooks/useIntersection';
 
 interface Props {
   src: string;
   alt: string;
 }
-
-const Img = styled.img`
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  visibility: hidden;
-`;
 
 function LazyImage({ src, alt }: Props) {
   const ref = useIntersection({
@@ -33,7 +26,7 @@ function LazyImage({ src, alt }: Props) {
     threshold: 0.5,
   });
 
-  return <Img ref={ref} />;
+  return <Styled.Img ref={ref} />;
 }
 
 export default LazyImage;

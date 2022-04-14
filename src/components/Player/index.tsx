@@ -1,7 +1,7 @@
 import { forwardRef, LegacyRef } from 'react';
 import Profile from './Profile';
 import Progress from './Progress';
-import * as Styled from '../../styles/player';
+import Styled from './Player.style';
 import { IMusic, IMusicChange, IMusicVolume } from '../../@types/music';
 import Youtube from '../common/Youtube';
 import Controls from './Controls';

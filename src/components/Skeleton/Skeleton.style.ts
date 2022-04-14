@@ -59,4 +59,4 @@ const SubTitle = styled.p`
   ${Element}
 `;
 
-export { Card, Thumnail, Title, SubTitle };
+export default { Card, Thumnail, Title, SubTitle };

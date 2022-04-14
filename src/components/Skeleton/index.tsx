@@ -1,4 +1,4 @@
-import * as Styled from '../../styles/skeleton';
+import Styled from './Skeleton.style';
 
 function Skeleton() {
   return (

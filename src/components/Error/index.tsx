@@ -1,5 +1,5 @@
 import { images } from '../../constants';
-import * as Styled from '../../styles/error';
+import Styled from './Error.style';
 
 interface Props {
   refresh: () => void;

@@ -1,6 +1,6 @@
 import MusicCard from '../common/MusicCard';
 import { images } from '../../constants';
-import * as Styled from '../../styles/mainBody';
+import Styled from './Playlist.style';
 import { IMusic } from '../../@types/music';
 import { MESSAGE } from '../../constants/messages';
 
@@ -22,7 +22,7 @@ function Playlist({
   return (
     <>
       {djPlaylist.length > 0 ? (
-        <Styled.DjplayContainer>
+        <Styled.Container>
           {djPlaylist.map((item: IMusic, idx: number) => (
             <MusicCard
               key={item.videoId}
@@ -35,12 +35,12 @@ function Playlist({
               idx={idx}
             />
           ))}
-        </Styled.DjplayContainer>
+        </Styled.Container>
       ) : (
-        <Styled.EmptyContainer>
+        <Styled.EmptyWrapper>
           <images.Cat2 width={350} height={350} />
           <Styled.EmptyTitle>{MESSAGE.EMPTY_PLAYLIST}</Styled.EmptyTitle>
-        </Styled.EmptyContainer>
+        </Styled.EmptyWrapper>
       )}
     </>
   );

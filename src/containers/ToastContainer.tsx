@@ -3,7 +3,7 @@ import { IToastState } from '../@types/toast';
 import Toast from '../components/Toast';
 import CreateToastPortal from '../components/Toast/CreateToastPotal';
 import { toastState } from '../store/toastState';
-import * as Styled from '../styles/toast';
+import Styled from '../components/Toast/Toast.style';
 
 function ToastContainer() {
   const [toasts, setToasts] = useRecoilState<IToastState[]>(toastState);

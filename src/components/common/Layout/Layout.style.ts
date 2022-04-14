@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import { STYLE } from '../constants';
-import { DEVICE, SIZE } from '../constants/device';
+import { STYLE } from '../../../constants';
+import { DEVICE, SIZE } from '../../../constants/device';
 
-const ContentContainer = styled.div`
+const Container = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -19,4 +19,4 @@ const ContentContainer = styled.div`
   }
 `;
 
-export { ContentContainer };
+export default { Container };

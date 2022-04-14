@@ -1,7 +1,7 @@
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { ISearchKeyword } from '../../@types/search';
 import { icons } from '../../constants';
-import * as Styled from '../../styles/searchForm';
+import Styled from './Search.style';
 import History from './History';
 
 interface Props {

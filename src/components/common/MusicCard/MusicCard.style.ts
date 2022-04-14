@@ -12,7 +12,7 @@ const Container = styled.div`
   margin: 10px;
 `;
 
-const ProfileImg = styled.div`
+const Profile = styled.div`
   position: relative;
   display: flex;
   height: 200px;
@@ -30,7 +30,7 @@ const ProfileImg = styled.div`
   }
 `;
 
-const PlayTitle = styled.p`
+const Title = styled.p`
   font-weight: bolder;
   font-size: 0.9rem;
   width: 100%;
@@ -42,7 +42,7 @@ const PlayTitle = styled.p`
   margin: 7px 0;
 `;
 
-const PlaySubtitle = styled.p`
+const Subtitle = styled.p`
   font-weight: lighter;
   color: ${({ theme }) => theme.cardSubTitle};
   font-size: 0.8rem;
@@ -53,7 +53,7 @@ const PlaySubtitle = styled.p`
   margin: 5px 0;
 `;
 
-const PlayButtonWrapper = styled.button`
+const Button = styled.button`
   position: absolute;
   visibility: hidden;
   outline: none;
@@ -68,4 +68,10 @@ const PlayButtonWrapper = styled.button`
   fill: #fff;
 `;
 
-export { Container, ProfileImg, PlayTitle, PlaySubtitle, PlayButtonWrapper };
+export default {
+  Container,
+  Profile,
+  Title,
+  Subtitle,
+  Button,
+};

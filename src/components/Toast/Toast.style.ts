@@ -131,7 +131,7 @@ const CloseBtn = styled.button`
   }
 `;
 
-export {
+export default {
   Container,
   ToastWrapper,
   Body,

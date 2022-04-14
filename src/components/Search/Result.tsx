@@ -1,5 +1,5 @@
 import { IMusic } from '../../@types/music';
-import * as Styled from '../../styles/search';
+import Styled from './Search.style';
 import MusicCard from '../common/MusicCard';
 import ResultEmpty from './ResultEmpty';
 import Skeleton from '../Skeleton';

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { DEVICE } from '../constants/device';
+import { DEVICE } from '../../constants/device';
 
 const Container = styled.div`
   position: relative;
@@ -104,7 +104,49 @@ const Title = styled.h3`
   color: #757575;
 `;
 
-export {
+const SearchResultSection = styled.section``;
+
+const SearchResultContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+`;
+
+const SearchResultGrid = styled.div`
+  align-self: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-gap: 1rem;
+  min-height: 300px;
+  width: 80%;
+  @media ${DEVICE.MOBILE} {
+    width: 100%;
+  }
+`;
+
+const SearchResultTitle = styled.h2`
+  font-weight: 600;
+  padding: 20px 0;
+`;
+
+const SearchResultEmptyWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
+const CatFaceIcon = styled.img`
+  width: 66px;
+  height: 66px;
+  border-radius: 15px;
+  margin-bottom: 15px;
+`;
+const SearchResultEmptyText = styled.p`
+  font-size: 1rem;
+`;
+
+export default {
   Container,
   SearchFormWrapper,
   InputBox,
@@ -113,4 +155,11 @@ export {
   List,
   CloseBtn,
   Title,
+  SearchResultSection,
+  SearchResultContainer,
+  SearchResultGrid,
+  SearchResultTitle,
+  SearchResultEmptyWrapper,
+  CatFaceIcon,
+  SearchResultEmptyText,
 };

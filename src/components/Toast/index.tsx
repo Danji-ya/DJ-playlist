@@ -1,5 +1,5 @@
 import { icons } from '../../constants';
-import * as Styled from '../../styles/toast';
+import Styled from './Toast.style';
 
 interface Props {
   id: string;

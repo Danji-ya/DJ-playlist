@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import HeaderContainer from '../../../containers/HeaderContainer';
-import * as Styled from '../../../styles/layout';
+import Styled from './Layout.style';
 
 interface Props {
   children: ReactNode;
@@ -10,7 +10,7 @@ function Layout({ children }: Props) {
   return (
     <>
       <HeaderContainer />
-      <Styled.ContentContainer>{children}</Styled.ContentContainer>
+      <Styled.Container>{children}</Styled.Container>
     </>
   );
 }

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
 
-const DjplayContainer = styled.section`
+const Container = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   grid-gap: 1rem;
   width: 100%;
 `;
 
-const PlaylistTitleWrapper = styled.div`
+const Title = styled.div`
   width: 65px;
   height: 65px;
   border-radius: 50%;
@@ -22,7 +22,7 @@ const PlaylistTitleWrapper = styled.div`
   fill: ${({ theme }) => theme.body};
 `;
 
-const EmptyContainer = styled.div`
+const EmptyWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -35,4 +35,4 @@ const EmptyTitle = styled.h3`
   font-family: 'BMHANNAPro', sans-serif;
 `;
 
-export { DjplayContainer, PlaylistTitleWrapper, EmptyContainer, EmptyTitle };
+export default { Container, Title, EmptyWrapper, EmptyTitle };

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { STYLE } from '../constants';
-import { DEVICE } from '../constants/device';
+import { STYLE } from '../../constants';
+import { DEVICE } from '../../constants/device';
 
 const Container = styled.div`
   background: ${({ theme }) => `${theme.playerBg}`};
@@ -269,7 +269,7 @@ const AddButton = styled.button<{ dibs: boolean }>`
   box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.32);
 `;
 
-export {
+export default {
   Container,
   Empty,
   Profile,

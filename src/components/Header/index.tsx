@@ -1,6 +1,6 @@
 import { icons } from '../../constants';
 import GnbContainer from '../../containers/GnbContainer';
-import * as Styled from '../../styles/header';
+import Styled from './Header.style';
 
 interface Props {
   handlePath: (url: string) => void;
@@ -8,7 +8,7 @@ interface Props {
 
 function Header({ handlePath }: Props) {
   return (
-    <Styled.HeaderContainer>
+    <Styled.Container>
       <Styled.LogoWrapper onClick={() => handlePath('/')} aria-label="home">
         <Styled.LogoImgWrapper>
           <icons.Logo height={45} width={45} />
@@ -17,7 +17,7 @@ function Header({ handlePath }: Props) {
       </Styled.LogoWrapper>
 
       <GnbContainer />
-    </Styled.HeaderContainer>
+    </Styled.Container>
   );
 }
 

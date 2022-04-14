@@ -1,4 +1,4 @@
-import * as Styled from '../../styles/player';
+import Styled from './Player.style';
 import { formatTime } from '../../utils/common';
 
 interface Props {

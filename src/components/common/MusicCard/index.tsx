@@ -1,6 +1,6 @@
 import { IMusic } from '../../../@types/music';
 import { icons } from '../../../constants';
-import * as Styled from '../../../styles/musicCard';
+import Styled from './MusicCard.style';
 import LazyImage from '../LazyImage';
 
 interface Props {
@@ -30,18 +30,18 @@ function MusicCard({
       onDrop={(e) => handleDrop && handleDrop(e)}
       data-idx={idx}
     >
-      <Styled.ProfileImg
+      <Styled.Profile
         onClick={() => handleSelectMusic(item)}
         aria-label="music play button"
       >
         <LazyImage src={item.url} alt="thumbnail" />
-        <Styled.PlayButtonWrapper>
+        <Styled.Button>
           <icons.PlayBtn width="45px" height="45px" />
-        </Styled.PlayButtonWrapper>
-      </Styled.ProfileImg>
+        </Styled.Button>
+      </Styled.Profile>
 
-      <Styled.PlayTitle>{item.title}</Styled.PlayTitle>
-      <Styled.PlaySubtitle>{item.subtitle}</Styled.PlaySubtitle>
+      <Styled.Title>{item.title}</Styled.Title>
+      <Styled.Subtitle>{item.subtitle}</Styled.Subtitle>
     </Styled.Container>
   );
 }

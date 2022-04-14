@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { DEVICE } from '../constants/device';
+import { DEVICE } from '../../constants/device';
 
 const Background = styled.div`
   display: flex;
@@ -46,4 +46,4 @@ const Button = styled.button`
   }
 `;
 
-export { Background, Container, Title, Button };
+export default { Background, Container, Title, Button };

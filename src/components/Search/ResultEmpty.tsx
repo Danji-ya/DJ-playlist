@@ -1,5 +1,5 @@
 import { icons } from '../../constants';
-import * as Styled from '../../styles/search';
+import Styled from './Search.style';
 
 function ResultEmpty() {
   return (

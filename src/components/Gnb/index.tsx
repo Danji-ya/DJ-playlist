@@ -1,5 +1,5 @@
 /* eslint-disable react/no-unstable-nested-components */
-import * as Styled from '../../styles/header';
+import Styled from './Gnb.style';
 import { PATH } from '../../constants/path';
 import { icons } from '../../constants';
 
@@ -27,11 +27,11 @@ function Gnb({ path, handlePath }: Props) {
   ];
 
   return (
-    <Styled.NavWrapper>
-      <Styled.NavList>
+    <Styled.Container>
+      <Styled.List>
         {navItems.map((item) => {
           return (
-            <Styled.NavItem
+            <Styled.Item
               key={`${item.path}`}
               active={item.path === path}
               onClick={() => handlePath(item.path)}
@@ -41,11 +41,11 @@ function Gnb({ path, handlePath }: Props) {
                 <item.Icon width="25px" height="25px" />
               </Styled.IconWrapper>
               <p>{item.name}</p>
-            </Styled.NavItem>
+            </Styled.Item>
           );
         })}
-      </Styled.NavList>
-    </Styled.NavWrapper>
+      </Styled.List>
+    </Styled.Container>
   );
 }
 

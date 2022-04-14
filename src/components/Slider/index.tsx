@@ -1,6 +1,6 @@
 import React from 'react';
 import { ISearchKeyword, ITopSearched } from '../../@types/search';
-import * as Styled from '../../styles/search';
+import Styled from './Slider.style';
 import Item from './Item';
 
 interface Props {
