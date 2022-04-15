@@ -2,11 +2,6 @@ import styled from 'styled-components';
 import { DEVICE } from '../../constants/device';
 import { SLIDER } from '../../constants/slider';
 
-const Container = styled.section`
-  position: relative;
-  overflow: hidden;
-`;
-
 const SliderHeader = styled.h3`
   margin-top: 50px;
   font-weight: 600;
@@ -144,7 +139,6 @@ const ControlContainer = styled.div`
 `;
 
 export default {
-  Container,
   SliderHeader,
   SliderContent,
   SliderItemsContainer,

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useRecoilValue } from 'recoil';
 import { ThemeProvider } from 'styled-components';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import Error from './components/Error';
 import { PATH } from './constants/path';
 import { ROUTE } from './constants/route';
 import PlayerContainer from './containers/PlayerContainer';
@@ -24,7 +25,7 @@ function App() {
               key={path}
               path={path}
               element={
-                <ErrorBoundary>
+                <ErrorBoundary fallback={<Error />} isReload>
                   <Suspense fallback={null}>
                     <Component />
                     {path !== PATH.NOT_FOUND && <PlayerContainer />}

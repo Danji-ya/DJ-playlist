@@ -13,6 +13,11 @@ const Container = styled.div`
   }
 `;
 
+const SliderWrapper = styled.section`
+  position: relative;
+  overflow: hidden;
+`;
+
 const SearchFormWrapper = styled.form`
   position: relative;
   width: 100%;
@@ -104,7 +109,7 @@ const Title = styled.h3`
   color: #757575;
 `;
 
-const SearchResultSection = styled.section``;
+const SearchResultWrapper = styled.section``;
 
 const SearchResultContainer = styled.div`
   display: flex;
@@ -124,7 +129,7 @@ const SearchResultGrid = styled.div`
   }
 `;
 
-const SearchResultTitle = styled.h2`
+const MainTitle = styled.h2`
   font-weight: 600;
   padding: 20px 0;
 `;
@@ -148,6 +153,7 @@ const SearchResultEmptyText = styled.p`
 
 export default {
   Container,
+  SliderWrapper,
   SearchFormWrapper,
   InputBox,
   BtnWrapper,
@@ -155,10 +161,10 @@ export default {
   List,
   CloseBtn,
   Title,
-  SearchResultSection,
+  SearchResultWrapper,
   SearchResultContainer,
   SearchResultGrid,
-  SearchResultTitle,
+  MainTitle,
   SearchResultEmptyWrapper,
   CatFaceIcon,
   SearchResultEmptyText,

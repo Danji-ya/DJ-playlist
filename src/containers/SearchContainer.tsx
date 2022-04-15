@@ -3,15 +3,13 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
 import { IMusic } from '../@types/music';
 import { ISearchKeyword } from '../@types/search';
+import Search from '../components/Search';
 import Form from '../components/Search/Form';
 import { PATH } from '../constants/path';
 import { keywordState } from '../store/keywordState';
 import { playerState } from '../store/playerState';
 import { searchHistoryState } from '../store/searchHistoryState';
 import { customSearchHistory } from '../utils/common';
-import SearchFormContainer from './SearchFormContainer';
-import SearchResultContainer from './SearchResultContainer';
-import SliderContainer from './SliderContainer';
 
 function SearchContainer() {
   const [keyword, setKeyword] = useRecoilState(keywordState);
@@ -49,18 +47,12 @@ function SearchContainer() {
   };
 
   return (
-    <>
-      <SearchFormContainer
-        keyword={keyword}
-        refProp={FormRef}
-        handleSearchKeyword={handleSearchKeyword}
-      />
-      <SliderContainer handleSearchKeyword={handleSearchKeyword} />
-      <SearchResultContainer
-        keyword={keyword}
-        handleSelectMusic={handleSelectMusic}
-      />
-    </>
+    <Search
+      keyword={keyword}
+      refProp={FormRef}
+      handleSearchKeyword={handleSearchKeyword}
+      handleSelectMusic={handleSelectMusic}
+    />
   );
 }
 

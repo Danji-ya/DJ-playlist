@@ -1,10 +1,12 @@
+/* eslint-disable class-methods-use-this */
 /* eslint-disable react/state-in-constructor */
-import { Component, ErrorInfo, ReactNode } from 'react';
+import React, { Component, ErrorInfo, ReactElement, ReactNode } from 'react';
 import CustomError from '../../../utils/customError';
-import Error from '../../Error';
 
 interface Props {
   children: ReactNode;
+  fallback: ReactElement;
+  isReload?: boolean;
 }
 
 interface State {
@@ -24,19 +26,20 @@ class ErrorBoundary extends Component<Props, State> {
     if (error instanceof CustomError) error.activateHandler();
   }
 
+  resetBoundary = () => {
+    this.setState({ hasError: false });
+  };
+
+  reloadBoundary = () => window.location.reload();
+
   render() {
     const { hasError } = this.state;
-    const { children } = this.props;
+    const { children, fallback, isReload } = this.props;
 
-    if (hasError) {
-      return (
-        <Error
-          refresh={() => {
-            this.setState({ hasError: false });
-          }}
-        />
-      );
-    }
+    if (hasError)
+      return React.cloneElement(fallback, {
+        refresh: isReload ? this.reloadBoundary : this.resetBoundary,
+      });
 
     return children;
   }
