@@ -16,25 +16,6 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-              plugins: [
-                ["@babel/transform-runtime"]
-              ]
-            },
-          }, 
-          {
-            loader: 'ts-loader',
-            options: {
-              transpileOnly: true,
-            }
-          }]
-      },
-      {
         test: /\.(png|jpg|jpeg|gif)$/i,
         type: "asset/resource",
         generator: {
@@ -53,7 +34,6 @@ module.exports = {
   },
   plugins: [
     new Dotenv(),
-    new ForkTsCheckerWebpackPlugin(),
 	  new webpack.ProvidePlugin({
       React: 'react',
     })

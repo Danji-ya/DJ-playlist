@@ -4,6 +4,24 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = merge(common, {
   mode: "production",
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
+              plugins: [
+                ["@babel/transform-runtime"]
+              ]
+            },
+          },
+        ]
+      },
+    ],
+  },
   plugins: [
     new HtmlWebpackPlugin({
       template: './public/index.html',
