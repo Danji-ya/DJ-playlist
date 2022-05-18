@@ -1,6 +1,6 @@
 const { merge } = require('webpack-merge');
 const common = require('./webpack.common.js');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = merge(common, {
   mode: "production",
@@ -23,12 +23,11 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      template: './public/index.html',
-      favicon: './public/favicon.ico',
-    }),
+    // REMOVE: production 디버깅
+    // new BundleAnalyzerPlugin()
   ],
-  devtool: 'source-map',
+  // REMOVE: production 디버깅
+  // devtool: 'source-map',
   optimization: {
     splitChunks: {
       cacheGroups: {
@@ -36,7 +35,7 @@ module.exports = merge(common, {
         vendor: {
           chunks: 'all',
           name: 'vendor',
-          test: /[\\/]node_modules[\\/](react-dom|recoil|react-query\/es)[\\/]/,
+          test: /[\\/]node_modules[\\/](react|react-dom|react-router)[\\/]/,
           filename: '[name].[chunkhash].js',
         }
       },
