@@ -2,6 +2,7 @@
 import Styled from './Gnb.style';
 import { PATH } from '../../constants/path';
 import { icons } from '../../constants';
+import { H2A11Y } from '../../styles/common';
 
 interface Props {
   path: string;
@@ -28,6 +29,7 @@ function Gnb({ path, handlePath }: Props) {
 
   return (
     <Styled.Container>
+      <H2A11Y>메뉴</H2A11Y>
       <Styled.List>
         {navItems.map((item) => {
           return (

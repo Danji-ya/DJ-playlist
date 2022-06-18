@@ -3,7 +3,7 @@ import { images } from '../../constants';
 import Styled from './Playlist.style';
 import { IMusic } from '../../@types/music';
 import { MESSAGE } from '../../constants/messages';
-import { H2A11Y } from '../../styles/common';
+import { H3A11Y } from '../../styles/common';
 
 interface Props {
   djPlaylist: IMusic[];
@@ -22,7 +22,7 @@ function Playlist({
 }: Props) {
   return (
     <Styled.Container>
-      <H2A11Y>플레이리스트</H2A11Y>
+      <H3A11Y>플레이리스트</H3A11Y>
       {djPlaylist.length > 0 ? (
         <Styled.Playlist>
           {djPlaylist.map((item: IMusic, idx: number) => (

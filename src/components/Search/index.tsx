@@ -22,7 +22,7 @@ function Search({
   handleSelectMusic,
 }: Props) {
   return (
-    <article>
+    <>
       <SearchFormContainer
         keyword={keyword}
         refProp={refProp}
@@ -41,7 +41,7 @@ function Search({
           />
         </ErrorBoundary>
       </Styled.SearchResultWrapper>
-    </article>
+    </>
   );
 }
 

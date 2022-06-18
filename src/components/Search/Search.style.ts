@@ -121,7 +121,7 @@ const SearchResultGrid = styled.ul`
   padding: 0 15px;
 `;
 
-const MainTitle = styled.h2`
+const MainTitle = styled.h3`
   font-weight: 600;
   padding: 20px 0;
 `;
