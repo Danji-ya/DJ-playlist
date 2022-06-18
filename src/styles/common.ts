@@ -13,4 +13,8 @@ const H1A11Y = styled.h1`
   ${a11y}
 `;
 
-export { a11y, H1A11Y };
+const H2A11Y = styled.h2`
+  ${a11y}
+`;
+
+export { a11y, H1A11Y, H2A11Y };

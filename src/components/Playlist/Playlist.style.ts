@@ -5,8 +5,9 @@ const Container = styled.section``;
 const Playlist = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
-  grid-gap: 1rem;
+  grid-gap: 3rem;
   width: 100%;
+  justify-items: center;
 `;
 
 const Title = styled.div`

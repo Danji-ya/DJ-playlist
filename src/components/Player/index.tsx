@@ -8,6 +8,7 @@ import Controls from './Controls';
 import Sound from './Sound';
 import Dibs from './Dibs';
 import { isEmptyObj } from '../../utils/common';
+import { H2A11Y } from '../../styles/common';
 
 interface Props {
   playerProps: {
@@ -58,6 +59,7 @@ const Player = forwardRef(
 
     return (
       <Styled.Container>
+        <H2A11Y>플레이어</H2A11Y>
         {isEmptyObj(selectedMusic) ? (
           <Styled.Empty>재생중인 음악이 없습니다</Styled.Empty>
         ) : (

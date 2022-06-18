@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+const Container = styled.li``;
+
+const Contents = styled.div`
   justify-self: center;
   align-self: center;
   padding: 10px;
@@ -9,7 +11,6 @@ const Container = styled.div`
 
   background: ${({ theme }) => theme.cardBg};
   border: ${({ theme }) => `1px solid ${theme.border}`};
-  margin: 10px;
 `;
 
 const Profile = styled.div`
@@ -70,6 +71,7 @@ const Button = styled.button`
 
 export default {
   Container,
+  Contents,
   Profile,
   Title,
   Subtitle,

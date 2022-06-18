@@ -23,14 +23,14 @@ function MusicCard({
   handleDrop,
 }: Props) {
   return (
-    <li
+    <Styled.Container
       draggable={draggAble ? 'true' : 'false'}
       onDragStart={(e) => handleDragStart && handleDragStart(e)}
       onDragOver={(e) => handleDragOver && handleDragOver(e)}
       onDrop={(e) => handleDrop && handleDrop(e)}
       data-idx={idx}
     >
-      <Styled.Container>
+      <Styled.Contents>
         <Styled.Profile
           onClick={() => handleSelectMusic(item)}
           aria-label="music play button"
@@ -43,8 +43,8 @@ function MusicCard({
 
         <Styled.Title>{item.title}</Styled.Title>
         <Styled.Subtitle>{item.subtitle}</Styled.Subtitle>
-      </Styled.Container>
-    </li>
+      </Styled.Contents>
+    </Styled.Container>
   );
 }
 

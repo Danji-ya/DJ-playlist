@@ -111,22 +111,14 @@ const Title = styled.h3`
 
 const SearchResultWrapper = styled.section``;
 
-const SearchResultContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 350px;
-`;
-
-const SearchResultGrid = styled.div`
+const SearchResultGrid = styled.ul`
   align-self: center;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1rem;
+  justify-items: center;
+  grid-gap: 3rem;
   min-height: 300px;
-  width: 80%;
-  @media ${DEVICE.MOBILE} {
-    width: 100%;
-  }
+  padding: 0 15px;
 `;
 
 const MainTitle = styled.h2`
@@ -162,7 +154,6 @@ export default {
   CloseBtn,
   Title,
   SearchResultWrapper,
-  SearchResultContainer,
   SearchResultGrid,
   MainTitle,
   SearchResultEmptyWrapper,
