@@ -1,5 +1,9 @@
 /* eslint-disable eqeqeq */
 /* eslint-disable no-bitwise */
+type Partial<T> = {
+  [P in keyof T]?: T[P];
+};
+
 export const padding = (value: number) => `00${value}`.slice(-2);
 
 export const formatTime = (time: number) => {
@@ -63,3 +67,5 @@ export const thorttle = (callback: () => void, waitTime = 1000) => {
     }
   };
 };
+
+export const isEmptyObj = <T>(obj: Partial<T>) => Object.keys(obj).length === 0;

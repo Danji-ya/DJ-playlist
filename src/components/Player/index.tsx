@@ -7,6 +7,7 @@ import Youtube from '../common/Youtube';
 import Controls from './Controls';
 import Sound from './Sound';
 import Dibs from './Dibs';
+import { isEmptyObj } from '../../utils/common';
 
 interface Props {
   playerProps: {
@@ -57,7 +58,7 @@ const Player = forwardRef(
 
     return (
       <Styled.Container>
-        {Object.keys(selectedMusic).length === 0 ? (
+        {isEmptyObj(selectedMusic) ? (
           <Styled.Empty>재생중인 음악이 없습니다</Styled.Empty>
         ) : (
           <>
