@@ -7,9 +7,9 @@ import { MESSAGE } from '../../constants/messages';
 interface Props {
   djPlaylist: IMusic[];
   handleSelectMusic: (music: IMusic) => void;
-  handleDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
-  handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
-  handleDrop: (e: React.DragEvent<HTMLDivElement>) => void;
+  handleDragStart: (e: React.DragEvent<HTMLLIElement>) => void;
+  handleDragOver: (e: React.DragEvent<HTMLLIElement>) => void;
+  handleDrop: (e: React.DragEvent<HTMLLIElement>) => void;
 }
 
 function Playlist({
@@ -20,9 +20,9 @@ function Playlist({
   handleDrop,
 }: Props) {
   return (
-    <>
+    <Styled.Container>
       {djPlaylist.length > 0 ? (
-        <Styled.Container>
+        <Styled.Playlist>
           {djPlaylist.map((item: IMusic, idx: number) => (
             <MusicCard
               key={item.videoId}
@@ -35,14 +35,14 @@ function Playlist({
               idx={idx}
             />
           ))}
-        </Styled.Container>
+        </Styled.Playlist>
       ) : (
         <Styled.EmptyWrapper>
           <images.Cat2 width={350} height={350} />
           <Styled.EmptyTitle>{MESSAGE.EMPTY_PLAYLIST}</Styled.EmptyTitle>
         </Styled.EmptyWrapper>
       )}
-    </>
+    </Styled.Container>
   );
 }
 

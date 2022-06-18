@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { STYLE } from '../../../constants';
 import { DEVICE, SIZE } from '../../../constants/device';
 
-const Container = styled.div`
+const Container = styled.main`
   position: relative;
   display: flex;
   flex-direction: column;

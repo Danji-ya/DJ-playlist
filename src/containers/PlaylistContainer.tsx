@@ -33,16 +33,16 @@ function PlaylistContainer() {
     [playlist, setPlaylist],
   );
 
-  const handleDragStart = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+  const handleDragStart = useCallback((e: React.DragEvent<HTMLLIElement>) => {
     startEl.current = e.target;
   }, []);
 
-  const handleDragOver = useCallback((e: React.DragEvent<HTMLDivElement>) => {
+  const handleDragOver = useCallback((e: React.DragEvent<HTMLLIElement>) => {
     e.preventDefault();
   }, []);
 
   const handleDrop = useCallback(
-    (e: React.DragEvent<HTMLDivElement>) => {
+    (e: React.DragEvent<HTMLLIElement>) => {
       const desIdx = Number(e.currentTarget.dataset.idx);
 
       if (desIdx == null || !startEl.current) return;

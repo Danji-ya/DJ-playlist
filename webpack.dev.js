@@ -15,6 +15,14 @@ module.exports = merge(common, {
         test: /\.tsx?$/,
         use: [
           {
+            loader: 'babel-loader',
+            options: {
+              plugins: [
+                ["babel-plugin-styled-components"]
+              ]
+            },
+          },
+          {
             loader: 'ts-loader',
             options: {
               transpileOnly: true,

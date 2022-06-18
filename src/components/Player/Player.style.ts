@@ -2,12 +2,13 @@ import styled from 'styled-components';
 import { STYLE } from '../../constants';
 import { DEVICE } from '../../constants/device';
 
-const Container = styled.div`
+const Container = styled.article`
   background: ${({ theme }) => `${theme.playerBg}`};
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   display: flex;
   position: fixed;
   z-index: 998;
+  left: 0;
   bottom: 0;
   width: 100%;
   height: ${STYLE.PLAYER_HEIGHT};
@@ -20,7 +21,7 @@ const Container = styled.div`
   }
 `;
 
-const Empty = styled.div`
+const Empty = styled.p`
   color: ${({ theme }) => theme.navTextPrimary};
   font-family: 'BMHANNAPro', sans-serif;
   display: flex;

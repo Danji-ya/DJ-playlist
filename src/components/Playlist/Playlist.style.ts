@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const Container = styled.section`
+const Container = styled.section``;
+
+const Playlist = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
   grid-gap: 1rem;
@@ -35,4 +37,4 @@ const EmptyTitle = styled.h3`
   font-family: 'BMHANNAPro', sans-serif;
 `;
 
-export default { Container, Title, EmptyWrapper, EmptyTitle };
+export default { Container, Playlist, Title, EmptyWrapper, EmptyTitle };
