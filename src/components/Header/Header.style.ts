@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { STYLE } from '../../constants';
 import { DEVICE } from '../../constants/device';
@@ -7,7 +8,7 @@ const Container = styled.header`
   top: 0;
   width: ${STYLE.HEADER_WIDTH};
   height: 100vh;
-  padding-top: 30px;
+  padding: 30px 10px 0 10px;
   z-index: 50;
   background: ${({ theme }) => theme.header};
   display: flex;
@@ -20,14 +21,25 @@ const Container = styled.header`
     align-items: center;
     width: 100%;
     height: ${STYLE.HEADER_HEIGHT};
-    padding-top: 0px;
     padding: 0 50px;
 
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   }
 `;
 
-const LogoImgWrapper = styled.div`
+const LogoLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    font-weight: bold;
+    font-family: 'BMHANNAPro', sans-serif;
+    font-size: 1.5rem;
+  }
+`;
+
+const LogoImgWrapper = styled.span`
   width: 45px;
   height: 45px;
   border-radius: 50%;
@@ -37,40 +49,18 @@ const LogoImgWrapper = styled.div`
   fill: ${({ theme }) => theme.body};
 `;
 
-const LogoText = styled.p`
+const LogoText = styled.span`
+  margin-left: 8px;
   color: ${({ theme }) => theme.navTextPrimary};
-`;
-
-const LogoWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  align-self: center;
-  justify-content: center;
-  p {
-    font-weight: bold;
-    font-family: 'BMHANNAPro', sans-serif;
-    font-size: 1.5rem;
-    margin-left: 15px;
-  }
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  @media ${DEVICE.DESKTOP} {
-    width: auto;
-  }
 
   @media ${DEVICE.MOBILE} {
-    p {
-      display: none;
-    }
+    display: none;
   }
 `;
 
 export default {
   Container,
-  LogoWrapper,
+  LogoLink,
   LogoText,
   LogoImgWrapper,
 };
