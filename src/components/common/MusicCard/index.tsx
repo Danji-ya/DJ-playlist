@@ -33,12 +33,12 @@ function MusicCard({
       <Styled.Contents>
         <Styled.Profile
           onClick={() => handleSelectMusic(item)}
-          aria-label="music play button"
+          aria-label="music play"
         >
           <LazyImage src={item.url} alt="thumbnail" />
-          <Styled.Button>
+          <Styled.PlayBtnWrapper>
             <icons.PlayBtn width="45px" height="45px" />
-          </Styled.Button>
+          </Styled.PlayBtnWrapper>
         </Styled.Profile>
 
         <Styled.Title>{item.title}</Styled.Title>

@@ -13,19 +13,35 @@ const Contents = styled.div`
   border: ${({ theme }) => `1px solid ${theme.border}`};
 `;
 
-const Profile = styled.div`
+const PlayBtnWrapper = styled.div`
+  position: absolute;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  fill: #fff;
+`;
+
+const Profile = styled.button`
   position: relative;
   display: flex;
   height: 200px;
+  padding: 0;
+  border: none;
+  background: none;
 
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     img {
       filter: brightness(0.31);
     }
 
-    button {
+    ${PlayBtnWrapper} {
       visibility: visible;
     }
   }
@@ -54,26 +70,11 @@ const Subtitle = styled.p`
   margin: 5px 0;
 `;
 
-const Button = styled.button`
-  position: absolute;
-  visibility: hidden;
-  outline: none;
-  border: none;
-  background: none;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  fill: #fff;
-`;
-
 export default {
   Container,
   Contents,
   Profile,
   Title,
   Subtitle,
-  Button,
+  PlayBtnWrapper,
 };
