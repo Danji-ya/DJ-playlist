@@ -34,7 +34,7 @@ const InputBox = styled.input`
   font-size: 15px;
 `;
 
-const BtnWrapper = styled.div`
+const BtnWrapper = styled.button`
   position: absolute;
   top: 0;
   right: 0;
@@ -51,7 +51,8 @@ const BtnWrapper = styled.div`
     stroke: white;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     opacity: 0.5;
   }
 `;
@@ -59,12 +60,13 @@ const BtnWrapper = styled.div`
 const HistoryContainer = styled.ul<{ isShow: boolean }>`
   position: absolute;
   width: 100%;
-  top: 50px;
+  top: 45px;
   padding: 8px;
-  border-radius: 4px;
+  border: 1px solid #dbdbdb;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
   background-color: #fff;
   color: black;
-  border: 1px solid #dbdbdb;
   box-shadow: 0 4px 6px 0 rgb(82 91 97 / 18%);
   z-index: 10;
 
@@ -73,11 +75,17 @@ const HistoryContainer = styled.ul<{ isShow: boolean }>`
 
 const List = styled.li`
   position: relative;
-  padding: 9px 5px;
-  border-radius: 4px;
   font-size: 15px;
+`;
 
-  &:hover {
+const KeywordBtn = styled.button`
+  width: 90%;
+  padding: 10px 5px;
+  background: transparent;
+  text-align: left;
+
+  &:hover,
+  &:focus {
     background: #f7f8fa;
     cursor: pointer;
   }
@@ -89,14 +97,14 @@ const CloseBtn = styled.button`
   top: 50%;
   transform: translateY(-50%);
   background: none;
-  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 10px;
 
-  &:hover {
-    cursor: pointer;
+  cursor: pointer;
+  &:hover,
+  &:focus {
     path {
       fill: #757575;
     }
@@ -111,25 +119,17 @@ const Title = styled.h3`
 
 const SearchResultWrapper = styled.section``;
 
-const SearchResultContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-height: 350px;
-`;
-
-const SearchResultGrid = styled.div`
+const SearchResultGrid = styled.ul`
   align-self: center;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1rem;
+  justify-items: center;
+  grid-gap: 3rem;
   min-height: 300px;
-  width: 80%;
-  @media ${DEVICE.MOBILE} {
-    width: 100%;
-  }
+  padding: 0 15px;
 `;
 
-const MainTitle = styled.h2`
+const MainTitle = styled.h3`
   font-weight: 600;
   padding: 20px 0;
 `;
@@ -159,10 +159,10 @@ export default {
   BtnWrapper,
   HistoryContainer,
   List,
+  KeywordBtn,
   CloseBtn,
   Title,
   SearchResultWrapper,
-  SearchResultContainer,
   SearchResultGrid,
   MainTitle,
   SearchResultEmptyWrapper,

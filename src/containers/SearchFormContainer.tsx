@@ -15,7 +15,7 @@ function SearchFormContainer({
   handleSearchKeyword,
   refProp: searchFormRef,
 }: Props) {
-  const [serachHistory, setSearchHistory] = useRecoilState(searchHistoryState);
+  const [searchHistory, setSearchHistory] = useRecoilState(searchHistoryState);
 
   const delSearchHistory = (idx: number) => {
     setSearchHistory((prevHistory) => [
@@ -27,7 +27,7 @@ function SearchFormContainer({
   return (
     <Form
       keyword={keyword}
-      serachHistory={serachHistory}
+      searchHistory={searchHistory}
       ref={searchFormRef}
       handleSearchKeyword={handleSearchKeyword}
       delSearchHistory={delSearchHistory}

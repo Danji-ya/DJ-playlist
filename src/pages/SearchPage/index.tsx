@@ -1,13 +1,12 @@
-import Layout from '../../components/common/Layout';
-import Sidebar from '../../components/Sidebar';
 import SearchContainer from '../../containers/SearchContainer';
+import { H2A11Y } from '../../styles/common';
 
 function SearchPage() {
   return (
-    <Layout>
-      <Sidebar />
+    <article>
+      <H2A11Y>검색 본문</H2A11Y>
       <SearchContainer />
-    </Layout>
+    </article>
   );
 }
 

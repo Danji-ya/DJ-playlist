@@ -4,6 +4,7 @@ import { MESSAGE } from '../constants/messages';
 import useToast from '../services/hooks/useToast';
 import { playerState } from '../store/playerState';
 import { playlistState } from '../store/playlistState';
+import { isEmptyObj } from '../utils/common';
 import PlayerControlContainer from './PlayerControlContainer';
 
 function PlayerContainer() {
@@ -13,7 +14,7 @@ function PlayerContainer() {
   const { selectedMusic, shuffle } = player;
 
   const isIncludeDjplaylist =
-    Object.keys(selectedMusic).length !== 0 &&
+    !isEmptyObj(selectedMusic) &&
     playlist.filter((item: IMusic) => item.videoId === selectedMusic.videoId)
       .length > 0;
 

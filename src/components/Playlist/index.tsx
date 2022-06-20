@@ -3,13 +3,14 @@ import { images } from '../../constants';
 import Styled from './Playlist.style';
 import { IMusic } from '../../@types/music';
 import { MESSAGE } from '../../constants/messages';
+import { H3A11Y } from '../../styles/common';
 
 interface Props {
   djPlaylist: IMusic[];
   handleSelectMusic: (music: IMusic) => void;
-  handleDragStart: (e: React.DragEvent<HTMLDivElement>) => void;
-  handleDragOver: (e: React.DragEvent<HTMLDivElement>) => void;
-  handleDrop: (e: React.DragEvent<HTMLDivElement>) => void;
+  handleDragStart: (e: React.DragEvent<HTMLLIElement>) => void;
+  handleDragOver: (e: React.DragEvent<HTMLLIElement>) => void;
+  handleDrop: (e: React.DragEvent<HTMLLIElement>) => void;
 }
 
 function Playlist({
@@ -20,9 +21,10 @@ function Playlist({
   handleDrop,
 }: Props) {
   return (
-    <>
+    <Styled.Container>
+      <H3A11Y>플레이리스트</H3A11Y>
       {djPlaylist.length > 0 ? (
-        <Styled.Container>
+        <Styled.Playlist>
           {djPlaylist.map((item: IMusic, idx: number) => (
             <MusicCard
               key={item.videoId}
@@ -35,14 +37,14 @@ function Playlist({
               idx={idx}
             />
           ))}
-        </Styled.Container>
+        </Styled.Playlist>
       ) : (
         <Styled.EmptyWrapper>
           <images.Cat2 width={350} height={350} />
           <Styled.EmptyTitle>{MESSAGE.EMPTY_PLAYLIST}</Styled.EmptyTitle>
         </Styled.EmptyWrapper>
       )}
-    </>
+    </Styled.Container>
   );
 }
 

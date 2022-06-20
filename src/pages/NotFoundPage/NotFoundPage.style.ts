@@ -32,7 +32,6 @@ const Home = styled.button`
   background: ${({ theme }) => theme.navTextPrimary};
   color: ${({ theme }) => theme.sameColor};
   outline: none;
-  border: none;
   border-radius: 10px;
   padding: 10px 15px;
 

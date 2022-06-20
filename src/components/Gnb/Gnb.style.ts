@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { DEVICE } from '../../constants/device';
 
@@ -12,20 +13,27 @@ const Container = styled.nav`
 const List = styled.ul`
   display: flex;
   flex-direction: column;
-  align-items: center;
 
   @media ${DEVICE.DESKTOP} {
     flex-direction: row;
   }
 `;
 
-const Item = styled.li<{ active: boolean }>`
-  width: 90%;
-  height: 35px;
-  border-radius: 5px;
+const Item = styled.li`
+  @media ${DEVICE.DESKTOP} {
+    &:first-child {
+      margin-right: 5px;
+    }
+  }
+`;
 
+const NavLink = styled(Link)<{ active: string }>`
   display: flex;
   align-items: center;
+  height: 35px;
+  margin: 5px 0;
+  border-radius: 5px;
+
   font-size: 14px;
   font-weight: 700;
   color: ${({ theme }) => theme.navTextSecondary};
@@ -33,7 +41,7 @@ const Item = styled.li<{ active: boolean }>`
 
   // active일 때,
   ${({ active, theme }) =>
-    active &&
+    active === 'true' &&
     css`
       color: ${theme.navTextPrimary};
       fill: ${theme.navTextPrimary};
@@ -45,45 +53,31 @@ const Item = styled.li<{ active: boolean }>`
     fill: ${({ theme }) => theme.navTextPrimary};
     cursor: pointer;
   }
-  margin: 3px 0;
-  &:first-of-type {
-    margin-top: 0;
-  }
-  &:last-of-type {
-    margin-bottom: 0;
-  }
 
   @media ${DEVICE.DESKTOP} {
     justify-content: center;
-    margin: 0 0;
     width: 50px;
     height: 50px;
+    margin: 0 0;
     border-radius: 50%;
-
-    p {
-      display: none;
-    }
   }
 `;
 
-const IconWrapper = styled.div`
+const IconWrapper = styled.span`
   margin: 0 5%;
 `;
 
-const Icon = styled.img.attrs((props) => ({
-  src: props.src,
-  alt: '',
-}))`
-  margin: 1% 10%;
-  width: 20px;
-  height: 20px;
-  object-fit: cover;
+const Text = styled.span`
+  @media ${DEVICE.DESKTOP} {
+    display: none;
+  }
 `;
 
 export default {
   Container,
   List,
   Item,
+  NavLink,
   IconWrapper,
-  Icon,
+  Text,
 };

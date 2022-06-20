@@ -1,5 +1,6 @@
 import Styled from './Player.style';
 import { formatTime } from '../../utils/common';
+import { LabelA11Y } from '../../styles/common';
 
 interface Props {
   currentTime: number;
@@ -18,7 +19,9 @@ function Progress({
 }: Props) {
   return (
     <Styled.ProgressContainer>
-      <Styled.ProgressBar
+      <LabelA11Y htmlFor="progress">진행바</LabelA11Y>
+      <Styled.CustomInputRange
+        id="progress"
         type="range"
         value={currentTime}
         min="0"

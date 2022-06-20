@@ -23,15 +23,12 @@ function Controls({
     <Styled.Controls>
       <Styled.PrevButton
         onClick={() => handleChangeMusic({ music: selectedMusic })}
-        aria-label="music play prev button"
+        aria-label="music play prev"
       >
         <icons.Prev size={30} />
       </Styled.PrevButton>
 
-      <Styled.MainButton
-        onClick={handleState}
-        aria-label="music play state button"
-      >
+      <Styled.MainButton onClick={handleState} aria-label="music play state">
         {paused ? (
           <icons.Play width={35} height={35} />
         ) : (
@@ -43,14 +40,14 @@ function Controls({
         onClick={() =>
           handleChangeMusic({ music: selectedMusic, isNext: true })
         }
-        aria-label="music play next button"
+        aria-label="music play next"
       >
         <icons.Next />
       </Styled.NextButton>
       <Styled.ShuffleButton
         shuffle={shuffle}
         onClick={() => handleShuffle()}
-        aria-label="shuffle button"
+        aria-label="shuffle"
       >
         <icons.Shuffle width={22} height={22} />
       </Styled.ShuffleButton>

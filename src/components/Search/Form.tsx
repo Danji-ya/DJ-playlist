@@ -3,10 +3,11 @@ import { ISearchKeyword } from '../../@types/search';
 import { icons } from '../../constants';
 import Styled from './Search.style';
 import History from './History';
+import { LabelA11Y } from '../../styles/common';
 
 interface Props {
   keyword: string;
-  serachHistory: string[];
+  searchHistory: string[];
   handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
   delSearchHistory: (idx: number) => void;
 }
@@ -16,7 +17,7 @@ export interface ModalHandle {
 }
 
 const Form = React.forwardRef<ModalHandle, Props>(
-  ({ keyword, serachHistory, handleSearchKeyword, delSearchHistory }, ref) => {
+  ({ keyword, searchHistory, handleSearchKeyword, delSearchHistory }, ref) => {
     const [query, setQuery] = useState(keyword);
     const [isShow, setIsShow] = useState(false);
     const inputRef = useRef<HTMLDivElement>(null);
@@ -31,52 +32,55 @@ const Form = React.forwardRef<ModalHandle, Props>(
       },
     }));
 
-    const handleSubmit = (
-      e: React.FormEvent<HTMLFormElement> | React.MouseEvent<HTMLDivElement>,
-    ) => {
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
       e.preventDefault();
       if (query.length === 0) return;
       if (keyword === query) return;
 
-      const trimedValue = query.trim();
-      handleSearchKeyword({ value: trimedValue });
+      const trimmedValue = query.trim();
+      handleSearchKeyword({ value: trimmedValue });
+    };
+
+    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+      if (inputRef.current?.contains(e.relatedTarget)) return;
+
+      setIsShow(false);
     };
 
     useEffect(() => {
-      const handleOutofRange = (e: MouseEvent) => {
+      const handleOutOfRange = (e: MouseEvent) => {
         if (!inputRef.current?.contains(e.target as Node)) {
           setIsShow(false);
         }
       };
 
-      window.addEventListener('mousedown', handleOutofRange);
+      window.addEventListener('mousedown', handleOutOfRange);
 
       return () => {
-        window.removeEventListener('mousedown', handleOutofRange);
+        window.removeEventListener('mousedown', handleOutOfRange);
       };
     }, []);
 
     return (
-      <Styled.Container ref={inputRef}>
-        <Styled.SearchFormWrapper onSubmit={(e) => handleSubmit(e)}>
+      <Styled.Container ref={inputRef} onBlur={handleBlur}>
+        <Styled.SearchFormWrapper autoComplete="off" onSubmit={handleSubmit}>
+          <LabelA11Y htmlFor="searchInput">검색창</LabelA11Y>
           <Styled.InputBox
+            id="searchInput"
             type="text"
             placeholder="검색어를 입력해주세요"
             value={query}
             onChange={(e) => handleChange(e.target.value)}
             onFocus={() => setIsShow(true)}
           />
-          <Styled.BtnWrapper
-            onClick={(e) => handleSubmit(e)}
-            aria-label="search button"
-          >
+          <Styled.BtnWrapper type="submit" aria-label="search button">
             <icons.Search />
           </Styled.BtnWrapper>
         </Styled.SearchFormWrapper>
         <History
           handleSearchKeyword={handleSearchKeyword}
           delSearchHistory={delSearchHistory}
-          serachHistory={serachHistory}
+          searchHistory={searchHistory}
           isShow={isShow && query === ''}
         />
       </Styled.Container>

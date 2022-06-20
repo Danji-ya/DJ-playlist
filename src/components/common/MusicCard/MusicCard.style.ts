@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+const Container = styled.li``;
+
+const Contents = styled.div`
   justify-self: center;
   align-self: center;
   padding: 10px;
@@ -9,22 +11,35 @@ const Container = styled.div`
 
   background: ${({ theme }) => theme.cardBg};
   border: ${({ theme }) => `1px solid ${theme.border}`};
-  margin: 10px;
 `;
 
-const Profile = styled.div`
+const PlayBtnWrapper = styled.div`
+  position: absolute;
+  visibility: hidden;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  fill: #fff;
+`;
+
+const Profile = styled.button`
   position: relative;
   display: flex;
   height: 200px;
+  background: none;
 
   cursor: pointer;
 
-  &:hover {
+  &:hover,
+  &:focus {
     img {
       filter: brightness(0.31);
     }
 
-    button {
+    ${PlayBtnWrapper} {
       visibility: visible;
     }
   }
@@ -53,25 +68,11 @@ const Subtitle = styled.p`
   margin: 5px 0;
 `;
 
-const Button = styled.button`
-  position: absolute;
-  visibility: hidden;
-  outline: none;
-  border: none;
-  background: none;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  fill: #fff;
-`;
-
 export default {
   Container,
+  Contents,
   Profile,
   Title,
   Subtitle,
-  Button,
+  PlayBtnWrapper,
 };

@@ -12,31 +12,29 @@ interface Props {
 
 function Result({ musicList, handleSelectMusic, isLoading }: Props) {
   return (
-    <Styled.SearchResultContainer>
-      <Styled.SearchResultGrid>
-        {isLoading ? (
-          Array.from({ length: 8 }, (_v, i) => i + 1).map((item) => (
-            <Skeleton key={item} />
-          ))
-        ) : (
-          <>
-            {musicList && musicList.length > 0 ? (
-              <>
-                {musicList.map((item: IMusic) => (
-                  <MusicCard
-                    item={item}
-                    handleSelectMusic={handleSelectMusic}
-                    key={item.videoId}
-                  />
-                ))}
-              </>
-            ) : (
-              musicList && <ResultEmpty />
-            )}
-          </>
-        )}
-      </Styled.SearchResultGrid>
-    </Styled.SearchResultContainer>
+    <Styled.SearchResultGrid>
+      {isLoading ? (
+        Array.from({ length: 8 }, (_v, i) => i + 1).map((item) => (
+          <Skeleton key={item} />
+        ))
+      ) : (
+        <>
+          {musicList && musicList.length > 0 ? (
+            <>
+              {musicList.map((item: IMusic) => (
+                <MusicCard
+                  item={item}
+                  handleSelectMusic={handleSelectMusic}
+                  key={item.videoId}
+                />
+              ))}
+            </>
+          ) : (
+            musicList && <ResultEmpty />
+          )}
+        </>
+      )}
+    </Styled.SearchResultGrid>
   );
 }
 

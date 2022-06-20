@@ -1,5 +1,7 @@
 import { ReactNode } from 'react';
-import HeaderContainer from '../../../containers/HeaderContainer';
+import PlayerContainer from '../../../containers/PlayerContainer';
+import Header from '../../Header';
+import Sidebar from '../../Sidebar';
 import Styled from './Layout.style';
 
 interface Props {
@@ -9,8 +11,12 @@ interface Props {
 function Layout({ children }: Props) {
   return (
     <>
-      <HeaderContainer />
-      <Styled.Container>{children}</Styled.Container>
+      <Header />
+      <Styled.Container>
+        {children}
+        <PlayerContainer />
+      </Styled.Container>
+      <Sidebar />
     </>
   );
 }

@@ -117,7 +117,6 @@ const Progress = styled.div<{
 
 const CloseBtn = styled.button`
   background: none;
-  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
