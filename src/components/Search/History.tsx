@@ -28,6 +28,14 @@ function History({
     }
   };
 
+  const handleKeyDown = (
+    e: React.KeyboardEvent<HTMLButtonElement>,
+    keyword: string,
+  ) => {
+    if (e.key !== 'Enter') return;
+    handleSearchKeyword({ value: keyword, isAutoKeyword: true });
+  };
+
   const handleClose = (idx: number) => {
     delSearchHistory(idx);
   };
@@ -38,7 +46,10 @@ function History({
       {searchHistory &&
         searchHistory.map((keyword, idx) => (
           <Styled.List key={`${keyword}-${idx}`}>
-            <Styled.KeywordBtn onClick={(e) => handleClick(e, keyword)}>
+            <Styled.KeywordBtn
+              onClick={(e) => handleClick(e, keyword)}
+              onKeyDown={(e) => handleKeyDown(e, keyword)}
+            >
               {keyword}
             </Styled.KeywordBtn>
             <Styled.CloseBtn
