@@ -55,13 +55,15 @@ const AlbumWrapper = styled.li`
   }
 `;
 
-const AlbumDiv = styled.div`
+const AlbumBtn = styled.button`
   display: flex;
   flex-direction: column;
   border-radius: 10px;
   background: ${({ theme }) => theme.cardBg};
   border: ${({ theme }) => `1px solid ${theme.border}`};
   overflow: hidden;
+
+  color: ${({ theme }) => theme.text};
 
   cursor: pointer;
   &:hover {
@@ -91,7 +93,7 @@ const AlbumTitle = styled.p`
   margin: 4% 2%;
 `;
 
-const SliderBtns = styled.button`
+const SliderBtn = styled.button`
   position: relative;
   width: 40px;
   height: 40px;
@@ -104,26 +106,17 @@ const SliderBtns = styled.button`
   pointer-events: visible;
   cursor: pointer;
 
-  &:hover::after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    opacity: 0.2;
-    background: #222222;
+  &:focus {
+    opacity: 1;
   }
 `;
 
-const PrevBtn = styled(SliderBtns)`
-  ${SliderBtns};
+const PrevBtn = styled(SliderBtn)`
+  margin-left: 2px;
 `;
 
-const NextBtn = styled(SliderBtns)`
-  ${SliderBtns};
+const NextBtn = styled(SliderBtn)`
+  margin-right: 2px;
 `;
 
 const ControlContainer = styled.div`
@@ -144,11 +137,11 @@ export default {
   SliderItemsContainer,
   ControlContainer,
   AlbumWrapper,
-  AlbumDiv,
+  AlbumBtn,
   AlbumImgWrapper,
   AlbumImg,
   AlbumTitle,
-  SliderBtns,
+  SliderBtn,
   PrevBtn,
   NextBtn,
 };
