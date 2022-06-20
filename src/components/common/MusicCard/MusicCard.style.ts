@@ -29,8 +29,6 @@ const Profile = styled.button`
   position: relative;
   display: flex;
   height: 200px;
-  padding: 0;
-  border: none;
   background: none;
 
   cursor: pointer;

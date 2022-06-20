@@ -13,7 +13,7 @@ function Dibs({ dibs, selectedMusic, handleDjplaylist }: Props) {
     <Styled.AddButton
       dibs={dibs}
       onClick={() => handleDjplaylist(selectedMusic)}
-      aria-label="dibs button"
+      aria-label="dibs"
     >
       <icons.Heart />
     </Styled.AddButton>

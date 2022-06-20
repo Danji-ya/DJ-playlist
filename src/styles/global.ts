@@ -28,6 +28,11 @@ const GlobalStyles = createGlobalStyle`
     transition: all 0.5s linear;
     user-select: none;
   }
+
+  button {
+    border: none;
+    padding: 0;
+  }
 `;
 
 export default GlobalStyles;

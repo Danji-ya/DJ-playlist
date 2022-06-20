@@ -89,7 +89,6 @@ const CloseBtn = styled.button`
   top: 50%;
   transform: translateY(-50%);
   background: none;
-  border: none;
   display: flex;
   align-items: center;
   justify-content: center;

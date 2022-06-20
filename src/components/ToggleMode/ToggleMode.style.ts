@@ -2,7 +2,6 @@ import styled from 'styled-components';
 
 const Container = styled.button<{ lightTheme: boolean }>`
   position: relative;
-  border: none;
   background: transparent;
   width: 45px;
   height: 45px;

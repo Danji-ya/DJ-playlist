@@ -81,16 +81,21 @@ const Controls = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0 5%;
 
-  @media ${DEVICE.DESKTOP} {
-    margin: 0 0;
+  button {
+    margin: 0 5px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
   }
 `;
 
 const PrevButton = styled.button`
-  border: none;
-  outline: none;
   color: white;
   background: transparent;
 
@@ -105,8 +110,6 @@ const PrevButton = styled.button`
 const NextButton = styled(PrevButton)``;
 
 const ShuffleButton = styled.button<{ shuffle: boolean }>`
-  border: none;
-  outline: none;
   color: white;
   background: transparent;
 
@@ -121,12 +124,8 @@ const ShuffleButton = styled.button<{ shuffle: boolean }>`
 `;
 
 const MainButton = styled.button`
-  border: none;
-  outline: none;
   width: 35px;
   height: 35px;
-  margin: 0 10px;
-  padding: 0;
   border-radius: 50%;
   background: transparent;
   svg {
@@ -157,7 +156,7 @@ const ProgressTime = styled.p`
   margin-top: 15px;
 `;
 
-const ProgressBar = styled.input.attrs(
+const CustomInputRange = styled.input.attrs(
   ({ value, max }: { value: number; max: number }) => ({
     style: {
       backgroundSize: `${(value / max) * 100}% 100%`,
@@ -184,7 +183,8 @@ const ProgressBar = styled.input.attrs(
     border-radius: 100%;
     opacity: 0;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     &::-webkit-slider-thumb {
       opacity: 1;
     }
@@ -208,49 +208,19 @@ const SoundControl = styled.div`
   }
 `;
 
+const VolumeWrapper = styled.button`
+  padding: 0;
+  background-color: transparent;
+  cursor: pointer;
+`;
+
 const YoutubeIframe = styled.div`
   position: fixed;
   bottom: -1000px;
-`;
-
-const Input = styled.input.attrs(({ value }: { value: number }) => ({
-  style: {
-    backgroundSize: `${value * 100}% 100%`,
-  },
-}))`
-  border-radius: 5px;
-  background: ${({ theme }) => `${theme.playerSubColor}`};
-  background-image: ${({ theme }) =>
-    `linear-gradient(${theme.playerMainColor}, ${theme.playerMainColor})`};
-
-  background-repeat: no-repeat;
-
-  width: 100px;
-  height: 5px;
-  border-radius: 5px;
-  cursor: pointer;
-
-  &::-webkit-slider-thumb {
-    position: relative;
-    appearance: none;
-    height: 12px;
-    width: 12px;
-    background: ${({ theme }) => `${theme.playerMainColor}`};
-    border-radius: 100%;
-    opacity: 0;
-  }
-  &:hover {
-    &::-webkit-slider-thumb {
-      opacity: 1;
-    }
-  }
-
-  -webkit-appearance: none;
+  visibility: hidden;
 `;
 
 const AddButton = styled.button<{ dibs: boolean }>`
-  border: none;
-  outline: none;
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -282,10 +252,10 @@ export default {
   ShuffleButton,
   MainButton,
   ProgressContainer,
-  ProgressBar,
+  CustomInputRange,
   ProgressTime,
   SoundControl,
-  Input,
+  VolumeWrapper,
   YoutubeIframe,
   AddButton,
 };
