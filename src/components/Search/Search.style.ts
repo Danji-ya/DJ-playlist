@@ -79,7 +79,7 @@ const List = styled.li`
 `;
 
 const KeywordBtn = styled.button`
-  width: 90%;
+  width: 100%;
   padding: 10px 5px;
   background: transparent;
   text-align: left;
