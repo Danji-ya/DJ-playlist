@@ -1,3 +1,4 @@
+import React from 'react';
 import { IMusic } from '../../../@types/music';
 import { icons } from '../../../constants';
 import Styled from './MusicCard.style';
@@ -22,6 +23,11 @@ function MusicCard({
   handleDragOver,
   handleDrop,
 }: Props) {
+  const handleProfileClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.currentTarget.blur();
+    handleSelectMusic(item);
+  };
+
   return (
     <Styled.Container
       draggable={draggAble ? 'true' : 'false'}
@@ -31,10 +37,7 @@ function MusicCard({
       data-idx={idx}
     >
       <Styled.Contents>
-        <Styled.Profile
-          onClick={() => handleSelectMusic(item)}
-          aria-label="music play"
-        >
+        <Styled.Profile onClick={handleProfileClick} aria-label="music play">
           <LazyImage src={item.url} alt="thumbnail" />
           <Styled.PlayBtnWrapper>
             <icons.PlayBtn width="45px" height="45px" />
