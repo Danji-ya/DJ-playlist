@@ -49,9 +49,8 @@ const Form = React.forwardRef<ModalHandle, Props>(
 
     useEffect(() => {
       const handleOutOfRange = (e: MouseEvent) => {
-        if (!inputRef.current?.contains(e.target as Node)) {
-          setIsShow(false);
-        }
+        if (inputRef.current?.contains(e.target as Node)) return;
+        setIsShow(false);
       };
 
       window.addEventListener('mousedown', handleOutOfRange);
