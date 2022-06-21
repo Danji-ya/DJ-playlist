@@ -9,7 +9,7 @@ const Container = styled.div`
   max-width: 400px;
 
   @media ${DEVICE.DESKTOP} {
-    align-self: center;
+    margin: 0 auto;
   }
 `;
 
