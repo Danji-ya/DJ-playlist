@@ -21,11 +21,7 @@ function History({
     e: React.MouseEvent<HTMLButtonElement>,
     keyword: string,
   ) => {
-    const element = e.target as HTMLButtonElement;
-
-    if (element.tagName === 'LI') {
-      handleSearchKeyword({ value: keyword, isAutoKeyword: true });
-    }
+    handleSearchKeyword({ value: keyword, isAutoKeyword: true });
   };
 
   const handleKeyDown = (
@@ -41,7 +37,7 @@ function History({
   };
 
   return (
-    <Styled.HistoryContainer isShow={isShow} tabIndex={0}>
+    <Styled.HistoryContainer isShow={isShow}>
       <Styled.Title>최근 검색어</Styled.Title>
       {searchHistory &&
         searchHistory.map((keyword, idx) => (
