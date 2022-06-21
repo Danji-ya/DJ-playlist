@@ -19,7 +19,7 @@ export interface ModalHandle {
 const Form = React.forwardRef<ModalHandle, Props>(
   ({ keyword, searchHistory, handleSearchKeyword, delSearchHistory }, ref) => {
     const [query, setQuery] = useState(keyword);
-    const [isShow, setIsShow] = useState(false);
+    const [isActiveHistory, activeHistory] = useState(false);
     const inputRef = useRef<HTMLDivElement>(null);
 
     const handleChange = (value: string) => {
@@ -41,16 +41,16 @@ const Form = React.forwardRef<ModalHandle, Props>(
       handleSearchKeyword({ value: trimmedValue });
     };
 
-    const handleBlur = (e: React.FocusEvent<HTMLInputElement>) => {
+    const handleBlur = (e: React.FocusEvent<HTMLElement>) => {
       if (inputRef.current?.contains(e.relatedTarget)) return;
 
-      setIsShow(false);
+      activeHistory(false);
     };
 
     useEffect(() => {
       const handleOutOfRange = (e: MouseEvent) => {
         if (inputRef.current?.contains(e.target as Node)) return;
-        setIsShow(false);
+        activeHistory(false);
       };
 
       window.addEventListener('mousedown', handleOutOfRange);
@@ -70,7 +70,7 @@ const Form = React.forwardRef<ModalHandle, Props>(
             placeholder="검색어를 입력해주세요"
             value={query}
             onChange={(e) => handleChange(e.target.value)}
-            onFocus={() => setIsShow(true)}
+            onFocus={() => activeHistory(true)}
           />
           <Styled.BtnWrapper type="submit" aria-label="search button">
             <icons.Search />
@@ -80,7 +80,7 @@ const Form = React.forwardRef<ModalHandle, Props>(
           handleSearchKeyword={handleSearchKeyword}
           delSearchHistory={delSearchHistory}
           searchHistory={searchHistory}
-          isShow={isShow && query === ''}
+          isShow={isActiveHistory && query === ''}
         />
       </Styled.Container>
     );
