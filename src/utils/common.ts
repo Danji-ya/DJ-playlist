@@ -55,7 +55,7 @@ export const debounce = (callback: () => void, waitTime = 500) => {
   };
 };
 
-export const thorttle = (callback: () => void, waitTime = 1000) => {
+export const throttle = (callback: () => void, waitTime = 1000) => {
   let timer: NodeJS.Timeout | null;
 
   return () => {
