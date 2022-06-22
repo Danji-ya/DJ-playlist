@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { debounce, thorttle } from '../../utils/common';
+import { debounce, throttle } from '../../utils/common';
 
 interface Props {
   type: 'debounce' | 'throttle';
@@ -17,7 +17,7 @@ function useResize({ type }: Props) {
 
       case 'throttle':
       default:
-        return thorttle;
+        return throttle;
     }
   }, [type]);
 

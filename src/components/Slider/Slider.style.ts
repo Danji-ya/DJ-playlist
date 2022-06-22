@@ -10,24 +10,20 @@ const SliderHeader = styled.h3`
 
 const SliderContent = styled.div`
   position: relative;
+`;
 
-  &:hover {
-    button {
-      opacity: 1;
-    }
-  }
+const SliderMargin = styled.div`
+  margin: 0 15px;
+  overflow: hidden;
 
-  @media ${DEVICE.MAX_MOBILE} {
-    button {
-      opacity: 1;
-    }
+  @media ${DEVICE.TABLET} {
+    margin: 0 5px;
   }
 `;
 
 const SliderItemsContainer = styled.ul<{ position: number }>`
   display: flex;
   transition: all 0.3s ease;
-  margin: 15px 0;
   transform: ${({ position }) =>
     `translateX(calc(-${SLIDER.DEFAULT_WIDTH}*${position}))`};
 
@@ -35,7 +31,7 @@ const SliderItemsContainer = styled.ul<{ position: number }>`
     transform: ${({ position }) => `translateX(calc(-50%*${position}))`};
   }
 
-  @media screen and (max-width: ${'550px'}) {
+  @media ${DEVICE.MAX_MOBILE} {
     transform: ${({ position }) => `translateX(calc(-100%*${position}))`};
   }
 `;
@@ -43,14 +39,15 @@ const SliderItemsContainer = styled.ul<{ position: number }>`
 const AlbumWrapper = styled.li`
   display: flex;
   flex-shrink: 0;
-  padding: 0 1rem;
+  padding: 0 10px;
   width: ${SLIDER.DEFAULT_WIDTH};
 
   @media ${DEVICE.TABLET} {
     width: 50%;
+    padding: 0 5px;
   }
 
-  @media screen and (max-width: ${'550px'}) {
+  @media ${DEVICE.MAX_MOBILE} {
     width: 100%;
   }
 `;
@@ -78,9 +75,7 @@ const AlbumImgWrapper = styled.div`
   overflow: hidden;
 `;
 
-const AlbumImg = styled.img.attrs((props) => ({
-  src: props.src,
-}))`
+const AlbumImg = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -91,51 +86,44 @@ const AlbumTitle = styled.p`
   font-weight: 600;
   font-size: 0.85rem;
   margin: 4% 2%;
+
+  @media ${DEVICE.TABLET} {
+    font-size: 0.75rem;
+  }
 `;
 
 const SliderBtn = styled.button`
-  position: relative;
+  position: absolute;
+  top: 50%;
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: none;
   font-size: 1rem;
   background: ${({ theme }) => theme.searchBtn};
   color: white;
-  opacity: 0;
-  pointer-events: visible;
   cursor: pointer;
+  z-index: 1;
+  transform: translateY(-50%);
 
-  &:focus {
-    opacity: 1;
+  @media ${DEVICE.TABLET} {
+    width: 35px;
+    height: 35px;
   }
 `;
 
 const PrevBtn = styled(SliderBtn)`
-  margin-left: 2px;
+  left: 0px;
 `;
 
 const NextBtn = styled(SliderBtn)`
-  margin-right: 2px;
-`;
-
-const ControlContainer = styled.div`
-  position: absolute;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
+  right: 0px;
 `;
 
 export default {
   SliderHeader,
   SliderContent,
+  SliderMargin,
   SliderItemsContainer,
-  ControlContainer,
   AlbumWrapper,
   AlbumBtn,
   AlbumImgWrapper,

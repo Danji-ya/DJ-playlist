@@ -9,7 +9,7 @@ const Container = styled.div`
   max-width: 400px;
 
   @media ${DEVICE.DESKTOP} {
-    align-self: center;
+    margin: 0 auto;
   }
 `;
 
@@ -124,6 +124,7 @@ const SearchResultGrid = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-items: center;
+  justify-content: center;
   grid-gap: 3rem;
   min-height: 300px;
   padding: 0 15px;
