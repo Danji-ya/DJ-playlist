@@ -124,6 +124,7 @@ const SearchResultGrid = styled.ul`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-items: center;
+  justify-content: center;
   grid-gap: 3rem;
   min-height: 300px;
   padding: 0 15px;

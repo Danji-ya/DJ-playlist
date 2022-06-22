@@ -8,6 +8,7 @@ const Playlist = styled.ul`
   grid-gap: 3rem;
   width: 100%;
   justify-items: center;
+  justify-content: center;
 `;
 
 const Title = styled.div`
