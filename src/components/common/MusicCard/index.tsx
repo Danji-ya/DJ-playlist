@@ -31,9 +31,9 @@ function MusicCard({
   return (
     <Styled.Container
       draggable={draggAble ? 'true' : 'false'}
-      onDragStart={(e) => handleDragStart && handleDragStart(e)}
-      onDragOver={(e) => handleDragOver && handleDragOver(e)}
-      onDrop={(e) => handleDrop && handleDrop(e)}
+      onDragStart={handleDragStart}
+      onDragOver={handleDragOver}
+      onDrop={handleDrop}
       data-idx={idx}
     >
       <Styled.Contents>

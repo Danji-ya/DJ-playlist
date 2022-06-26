@@ -27,7 +27,7 @@ function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
     <Styled.SliderContent>
       <Styled.PrevBtn
         name="prev"
-        onClick={(e) => handleSlider(e)}
+        onClick={handleSlider}
         aria-label="slider prev"
       >
         &#10094;
@@ -48,7 +48,7 @@ function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
 
       <Styled.NextBtn
         name="next"
-        onClick={(e) => handleSlider(e)}
+        onClick={handleSlider}
         aria-label="slider next"
       >
         &#10095;
