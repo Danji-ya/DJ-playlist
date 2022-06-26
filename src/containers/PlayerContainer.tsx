@@ -13,28 +13,39 @@ function PlayerContainer() {
   const toast = useToast();
   const { selectedMusic, shuffle } = player;
 
-  const isIncludeDjplaylist =
+  const isIncludeDjPlaylist =
     !isEmptyObj(selectedMusic) &&
     playlist.filter((item: IMusic) => item.videoId === selectedMusic.videoId)
       .length > 0;
 
-  const handleDjplaylist = (music: IMusic) => {
+  function deleteMusicFromDjPlaylist(music: IMusic) {
+    const newPlaylist = playlist.filter(
+      (item) => item.videoId !== music.videoId,
+    );
+    toast({
+      type: 'error',
+      title: '',
+      message: MESSAGE.DELETE_MUSIC_SUCCESS,
+    });
+
+    return newPlaylist;
+  }
+
+  function addMusicFromDjPlaylist(music: IMusic) {
+    // 1 level deep copy
+    const newPlaylist = [{ ...music }, ...playlist];
+    toast({
+      title: '',
+      message: MESSAGE.ADD_MUSIC_SUCCESS,
+    });
+
+    return newPlaylist;
+  }
+
+  const handleDjPlaylist = (music: IMusic) => {
     let newPlaylist: IMusic[];
-    if (isIncludeDjplaylist) {
-      newPlaylist = playlist.filter((item) => item.videoId !== music.videoId);
-      toast({
-        type: 'error',
-        title: '',
-        message: MESSAGE.DELETE_MUSIC_SUCCESS,
-      });
-    } else {
-      // 1 level deep copy
-      newPlaylist = [{ ...music }, ...playlist];
-      toast({
-        title: '',
-        message: MESSAGE.ADD_MUSIC_SUCCESS,
-      });
-    }
+    if (isIncludeDjPlaylist) newPlaylist = deleteMusicFromDjPlaylist(music);
+    else newPlaylist = addMusicFromDjPlaylist(music);
 
     setPlaylist(newPlaylist);
   };
@@ -42,9 +53,9 @@ function PlayerContainer() {
   return (
     <PlayerControlContainer
       shuffle={shuffle}
-      dibs={isIncludeDjplaylist}
+      dibs={isIncludeDjPlaylist}
       selectedMusic={selectedMusic}
-      handleDjplaylist={handleDjplaylist}
+      handleDjPlaylist={handleDjPlaylist}
     />
   );
 }

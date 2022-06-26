@@ -21,7 +21,7 @@ interface Props {
   dibs: boolean;
   shuffle: boolean;
   selectedMusic: IMusic;
-  handleDjplaylist: (music: IMusic) => void;
+  handleDjPlaylist: (music: IMusic) => void;
   handleStateChange: (e: YT.OnStateChangeEvent) => void;
   handleMouse: (isDown?: boolean) => void;
   handleState: () => void;
@@ -38,7 +38,7 @@ const Player = forwardRef(
       shuffle,
       dibs,
       selectedMusic,
-      handleDjplaylist,
+      handleDjPlaylist,
       handleStateChange,
       handleMouse,
       handleState,
@@ -88,7 +88,7 @@ const Player = forwardRef(
             <Dibs
               dibs={dibs}
               selectedMusic={selectedMusic}
-              handleDjplaylist={handleDjplaylist}
+              handleDjPlaylist={handleDjPlaylist}
             />
           </>
         )}

@@ -10,14 +10,14 @@ interface Props {
   shuffle: boolean;
   dibs: boolean;
   selectedMusic: IMusic;
-  handleDjplaylist: (music: IMusic) => void;
+  handleDjPlaylist: (music: IMusic) => void;
 }
 
 function PlayerControlContainer({
   shuffle,
   dibs,
   selectedMusic,
-  handleDjplaylist,
+  handleDjPlaylist,
 }: Props) {
   const player = useRef<any>(null);
   const timer: { current: NodeJS.Timeout | null } = useRef(null);
@@ -191,7 +191,7 @@ function PlayerControlContainer({
       dibs={dibs}
       shuffle={shuffle}
       selectedMusic={selectedMusic}
-      handleDjplaylist={handleDjplaylist}
+      handleDjPlaylist={handleDjPlaylist}
       handleStateChange={handleStateChange}
       handleMouse={handleMouse}
       handleState={handleState}
