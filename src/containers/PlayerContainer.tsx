@@ -55,6 +55,7 @@ function PlayerContainer() {
       shuffle={shuffle}
       dibs={isIncludeDjPlaylist}
       selectedMusic={selectedMusic}
+      playlist={playlist}
       handleDjPlaylist={handleDjPlaylist}
     />
   );

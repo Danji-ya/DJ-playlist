@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { useRecoilValue, useSetRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 import { IMusic, IMusicChange, IMusicVolume } from '../@types/music';
+import Youtube from '../components/common/Youtube';
 import Player from '../components/Player';
 import { NOT_INCLUDE_DJPLAYLIST, PLAYER_STATE } from '../constants/player';
 import { playerState } from '../store/playerState';
-import { playlistState } from '../store/playlistState';
 
 interface Props {
   shuffle: boolean;
   dibs: boolean;
   selectedMusic: IMusic;
+  playlist: IMusic[];
   handleDjPlaylist: (music: IMusic) => void;
 }
 
@@ -17,12 +18,12 @@ function PlayerControlContainer({
   shuffle,
   dibs,
   selectedMusic,
+  playlist,
   handleDjPlaylist,
 }: Props) {
-  const player = useRef<any>(null);
-  const timer: { current: NodeJS.Timeout | null } = useRef(null);
+  const player = useRef<Youtube | null>(null);
+  const timer = useRef<NodeJS.Timeout | null>(null);
   const isClick = useRef<boolean>(false);
-  const playlist = useRecoilValue(playlistState);
   const setPlayer = useSetRecoilState(playerState);
 
   const [volume, setVolume] = useState(0.5);
@@ -180,7 +181,7 @@ function PlayerControlContainer({
   const handleProgress = (target: HTMLInputElement) => {
     const willUpdateCurrentTime = parseFloat(target.value);
 
-    player.current?.player?.seekTo(willUpdateCurrentTime);
+    player.current?.player?.seekTo(willUpdateCurrentTime, true);
     setCurrentTime(willUpdateCurrentTime);
   };
 
