@@ -8,7 +8,7 @@ module.exports = {
     app: './src/index.tsx'
   },
   output: {
-    path: path.resolve(__dirname, './build'),
+    path: path.resolve(__dirname, '../build'),
     filename: '[name].[chunkhash].js',
     publicPath: '/',
     clean: true,
