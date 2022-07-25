@@ -33,9 +33,7 @@ function PlayerControlContainer({
 
   useEffect(() => {
     if (!player.current?.player) return undefined;
-    player.current.player.seekTo(0);
     setCurrentTime(0);
-
     return () => {
       clearInterval(timer.current as NodeJS.Timeout);
     };
@@ -104,8 +102,6 @@ function PlayerControlContainer({
   };
 
   const setPlayerSeekInit = () => {
-    setPaused(true);
-    player.current?.player?.seekTo(0);
     setCurrentTime(0);
     handleChangeMusic({ music: selectedMusic, isNext: true });
   };
@@ -130,6 +126,16 @@ function PlayerControlContainer({
       case PLAYER_STATE.ENDED: {
         if (isClick.current) break;
         setPlayerSeekInit();
+        break;
+      }
+
+      case PLAYER_STATE.BUFFERING: {
+        setPaused(false);
+        break;
+      }
+
+      case PLAYER_STATE.PAUSED: {
+        setPaused(true);
         break;
       }
 
