@@ -2,8 +2,8 @@
   "name": "dj-playlist",
   "version": "1.2.0",
   "scripts": {
-    "start": "webpack serve --config webpack.dev.js --progress --open --hot",
-    "build": "webpack --config webpack.prod.js"
+    "start": "webpack serve --config config/webpack.dev.js --progress --open --hot",
+    "build": "webpack --config config/webpack.prod.js"
   },
   "dependencies": {
     "axios": "^0.26.0",
