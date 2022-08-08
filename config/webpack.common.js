@@ -33,7 +33,9 @@ module.exports = {
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
   },
   plugins: [
-    new Dotenv(),
+    new Dotenv({
+      systemvars: true
+    }),
 	  new webpack.ProvidePlugin({
       React: 'react',
     }),
