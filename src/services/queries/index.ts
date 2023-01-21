@@ -11,6 +11,7 @@ const axiosInstance = axios.create({
     type: 'video',
     maxResults: 50,
     videoEmbeddable: true,
+    eventType: ['completed', 'upcoming'],
     key: process.env.YOUTUBE_DATA_KEY,
   },
 });
