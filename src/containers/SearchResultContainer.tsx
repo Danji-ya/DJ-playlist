@@ -20,7 +20,9 @@ function SearchResultContainer({ keyword, handleSelectMusic }: Props) {
   });
 
   const musicList = useMemo(() => {
-    return data?.items.map((item: object) => restructuring(item));
+    return data?.items
+      .map((item: object) => restructuring(item))
+      .filter(({ liveBroadcastContent }) => liveBroadcastContent !== 'live');
   }, [data]);
 
   return (

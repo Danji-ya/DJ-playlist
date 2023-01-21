@@ -23,10 +23,11 @@ export const restructuring = (music: any) => {
       thumbnails: {
         high: { url },
       },
+      liveBroadcastContent,
     },
   } = music;
 
-  return { videoId, title, subtitle, url };
+  return { videoId, title, subtitle, url, liveBroadcastContent };
 };
 
 export const uuidv4 = () => {

@@ -7,11 +7,10 @@ const axiosInstance = axios.create({
   params: {
     part: 'snippet',
     fields:
-      'nextPageToken, items(id,snippet(title,channelTitle,description,thumbnails))',
+      'nextPageToken, items(id,snippet(title,channelTitle,description,thumbnails,liveBroadcastContent))',
     type: 'video',
     maxResults: 50,
     videoEmbeddable: true,
-    eventType: ['completed', 'upcoming'],
     key: process.env.YOUTUBE_DATA_KEY,
   },
 });
