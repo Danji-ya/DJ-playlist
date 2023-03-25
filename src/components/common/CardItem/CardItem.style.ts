@@ -1,8 +1,6 @@
 import styled from 'styled-components';
 
-const Container = styled.li``;
-
-const Contents = styled.div`
+const Container = styled.li`
   justify-self: center;
   align-self: center;
   padding: 10px;
@@ -70,7 +68,6 @@ const Subtitle = styled.p`
 
 export default {
   Container,
-  Contents,
   Profile,
   Title,
   Subtitle,

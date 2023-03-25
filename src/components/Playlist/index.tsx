@@ -1,9 +1,9 @@
-import MusicCard from '../common/MusicCard';
 import { images } from '../../constants';
 import Styled from './Playlist.style';
 import { IMusic } from '../../@types/music';
 import { MESSAGE } from '../../constants/messages';
 import { H3A11Y } from '../../styles/common';
+import CardItem from '../common/CardItem';
 
 interface Props {
   djPlaylist: IMusic[];
@@ -26,16 +26,24 @@ function Playlist({
       {djPlaylist.length > 0 ? (
         <Styled.Playlist>
           {djPlaylist.map((item: IMusic, idx: number) => (
-            <MusicCard
+            <CardItem
               key={item.videoId}
-              item={item}
-              draggAble
-              handleSelectMusic={handleSelectMusic}
-              handleDragStart={handleDragStart}
-              handleDragOver={handleDragOver}
-              handleDrop={handleDrop}
+              draggable
+              onDragStart={handleDragStart}
+              onDragOver={handleDragOver}
+              onDrop={handleDrop}
               idx={idx}
-            />
+            >
+              <CardItem.Thumbnail
+                item={item}
+                onClick={handleSelectMusic}
+                url={item.url}
+              />
+              <CardItem.Body>
+                <CardItem.Title>{item.title}</CardItem.Title>
+                <CardItem.SubTitle>{item.subtitle}</CardItem.SubTitle>
+              </CardItem.Body>
+            </CardItem>
           ))}
         </Styled.Playlist>
       ) : (

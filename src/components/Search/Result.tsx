@@ -1,8 +1,8 @@
 import { IMusic } from '../../@types/music';
 import Styled from './Search.style';
-import MusicCard from '../common/MusicCard';
 import ResultEmpty from './ResultEmpty';
 import Skeleton from '../Skeleton';
+import CardItem from '../common/CardItem';
 
 interface Props {
   musicList: undefined | IMusic[];
@@ -22,11 +22,17 @@ function Result({ musicList, handleSelectMusic, isLoading }: Props) {
           {musicList && musicList.length > 0 ? (
             <>
               {musicList.map((item: IMusic) => (
-                <MusicCard
-                  item={item}
-                  handleSelectMusic={handleSelectMusic}
-                  key={item.videoId}
-                />
+                <CardItem key={item.videoId}>
+                  <CardItem.Thumbnail
+                    item={item}
+                    onClick={handleSelectMusic}
+                    url={item.url}
+                  />
+                  <CardItem.Body>
+                    <CardItem.Title>{item.title}</CardItem.Title>
+                    <CardItem.SubTitle>{item.subtitle}</CardItem.SubTitle>
+                  </CardItem.Body>
+                </CardItem>
               ))}
             </>
           ) : (

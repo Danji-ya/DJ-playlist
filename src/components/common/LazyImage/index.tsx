@@ -3,10 +3,11 @@ import useIntersection from '../../../services/hooks/useIntersection';
 
 interface Props {
   src: string;
+  rounded?: boolean;
   alt: string;
 }
 
-function LazyImage({ src, alt }: Props) {
+function LazyImage({ src, rounded = false, alt }: Props) {
   const ref = useIntersection({
     callback: (
       entries: IntersectionObserverEntry[],
@@ -26,7 +27,7 @@ function LazyImage({ src, alt }: Props) {
     threshold: 0.5,
   });
 
-  return <Styled.Img ref={ref} />;
+  return <Styled.Img rounded={rounded} ref={ref} />;
 }
 
 export default LazyImage;
