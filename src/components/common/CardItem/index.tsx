@@ -19,11 +19,13 @@ function CardItem({
 }: Props) {
   return (
     <Styled.Container
-      {...(draggable && { draggable })}
-      onDragStart={onDragStart}
-      onDragOver={onDragOver}
-      onDrop={onDrop}
-      data-idx={idx}
+      {...(draggable && {
+        draggable,
+        onDragStart,
+        onDragOver,
+        onDrop,
+        'data-idx': idx,
+      })}
     >
       {children}
     </Styled.Container>
