@@ -1,14 +1,17 @@
+import { DarkLight } from '../../@types/theme';
 import Styled from './ToggleMode.style';
 
 interface Props {
-  mode: boolean;
+  mode: DarkLight;
   toggleMode: () => void;
 }
 
 function ToggleMode({ mode, toggleMode }: Props) {
+  const isLight = mode === 'light';
+
   return (
     <Styled.Container
-      lightTheme={mode}
+      lightTheme={isLight}
       onClick={toggleMode}
       aria-label="theme toggle"
     >
