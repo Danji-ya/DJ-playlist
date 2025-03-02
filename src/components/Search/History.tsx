@@ -38,7 +38,7 @@ function History({
 
   return (
     <Styled.HistoryContainer isShow={isShow}>
-      <Styled.Title>최근 검색어</Styled.Title>
+      <Styled.Title>Recent searched</Styled.Title>
       {searchHistory &&
         searchHistory.map((keyword, idx) => (
           <Styled.List key={`${keyword}-${idx}`}>

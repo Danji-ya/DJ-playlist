@@ -1,11 +1,11 @@
-# 큰 파일 제외
+# node_modules
 node_modules
 
-# webpack build 관련
+# webpack build
 dist/*
 build/*
 
-# 비밀공간
+# env
 .env
 
 # .vscode

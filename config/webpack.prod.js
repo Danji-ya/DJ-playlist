@@ -23,10 +23,10 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    // REMOVE: production 디버깅
+    // REMOVE: production debugging
     // new BundleAnalyzerPlugin()
   ],
-  // REMOVE: production 디버깅
+  // REMOVE: production debugging
   // devtool: 'source-map',
   optimization: {
     splitChunks: {

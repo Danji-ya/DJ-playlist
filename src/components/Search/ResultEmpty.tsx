@@ -6,7 +6,7 @@ function ResultEmpty() {
     <Styled.SearchResultEmptyWrapper>
       <Styled.CatFaceIcon src={icons.catFace} alt="catFace" />
       <Styled.SearchResultEmptyText>
-        앗! 찾으시는 결과가 없네요.
+        Oops, not the result you were looking for.
       </Styled.SearchResultEmptyText>
     </Styled.SearchResultEmptyWrapper>
   );

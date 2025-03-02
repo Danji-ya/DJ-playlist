@@ -39,7 +39,6 @@ const NavLink = styled(Link)<{ active: string }>`
   color: ${({ theme }) => theme.navTextSecondary};
   fill: ${({ theme }) => theme.navTextSecondary};
 
-  // active일 때,
   ${({ active, theme }) =>
     active === 'true' &&
     css`

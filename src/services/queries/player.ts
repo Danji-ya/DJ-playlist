@@ -19,7 +19,7 @@ const getPlaylist = async (
   try {
     const { data } = await axiosInstance.get<IMusicData>('/search', {
       params: {
-        q: `${query} 플레이리스트`,
+        q: `${query} playlist`,
         pageToken: token || '',
       },
     });

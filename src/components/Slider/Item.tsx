@@ -18,7 +18,7 @@ function Item({ item, isShow, handleSearchKeyword }: Props) {
         }
       >
         <Styled.AlbumImgWrapper>
-          <Styled.AlbumImg src={item.src} alt={`${item.title} 이미지`} />
+          <Styled.AlbumImg src={item.src} alt={`${item.title} image`} />
         </Styled.AlbumImgWrapper>
         <Styled.AlbumTitle>{item.title}</Styled.AlbumTitle>
       </Styled.AlbumBtn>
