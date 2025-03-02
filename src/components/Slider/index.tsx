@@ -1,13 +1,10 @@
 /* eslint-disable @typescript-eslint/naming-convention */
 import React from 'react';
-import { ISearchKeyword, ITopSearched } from '../../@types/search';
+import Item from '@components/Slider/Item';
+import { getNumberOfItemsToShow, sliderItemShowReader } from '@utils/slider';
+import useResize from '@services/hooks/useResize';
 import Styled from './Slider.style';
-import Item from './Item';
-import {
-  getNumberOfItemsToShow,
-  sliderItemShowReader,
-} from '../../utils/slider';
-import useResize from '../../services/hooks/useResize';
+import { ISearchKeyword, ITopSearched } from '../../@types/search';
 
 interface Props {
   data: ITopSearched[];

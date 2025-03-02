@@ -1,5 +1,5 @@
 import styled, { css } from 'styled-components';
-import { DEVICE } from '../../constants/device';
+import { DEVICE } from '@constants/device';
 
 const flexStyle = css`
   display: flex;

@@ -1,8 +1,8 @@
-import { IMusic } from '../../@types/music';
-import Styled from './Search.style';
+import Skeleton from '@components/Skeleton';
+import CardItem from '@components/common/CardItem';
 import ResultEmpty from './ResultEmpty';
-import Skeleton from '../Skeleton';
-import CardItem from '../common/CardItem';
+import Styled from './Search.style';
+import { IMusic } from '../../@types/music';
 
 interface Props {
   musicList: undefined | IMusic[];

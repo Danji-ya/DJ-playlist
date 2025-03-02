@@ -1,11 +1,11 @@
 import { useRecoilState, useRecoilValue } from 'recoil';
-import { IMusic } from '../@types/music';
-import { MESSAGE } from '../constants/messages';
-import useToast from '../services/hooks/useToast';
-import { playerState } from '../store/playerState';
-import { playlistState } from '../store/playlistState';
-import { isEmptyObj } from '../utils/common';
+import { MESSAGE } from '@constants/messages';
+import useToast from '@services/hooks/useToast';
+import { playerState } from '@store/playerState';
+import { playlistState } from '@store/playlistState';
+import { isEmptyObj } from '@utils/common';
 import PlayerControlContainer from './PlayerControlContainer';
+import { IMusic } from '../@types/music';
 
 function PlayerContainer() {
   const [playlist, setPlaylist] = useRecoilState(playlistState);

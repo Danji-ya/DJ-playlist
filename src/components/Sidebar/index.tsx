@@ -1,5 +1,5 @@
-import ToggleModeContainer from '../../containers/ToggleModeContainer';
-import { H2A11Y } from '../../styles/common';
+import ToggleModeContainer from '@containers/ToggleModeContainer';
+import { H2A11Y } from '@styles/common';
 import Styled from './Sidebar.style';
 
 function Sidebar() {

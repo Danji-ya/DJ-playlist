@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { debounce, throttle } from '../../utils/common';
+import { debounce, throttle } from '@utils/common';
 
 interface Props {
   type: 'debounce' | 'throttle';

@@ -1,5 +1,5 @@
-import { IMusic } from '../../@types/music';
 import Styled from './Player.style';
+import { IMusic } from '../../@types/music';
 
 interface Props {
   selectedMusic: IMusic;

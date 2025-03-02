@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
-import { SIZE } from '../constants/device';
-import reset from './reset';
+import { SIZE } from '@constants/device';
+import reset from '@styles/reset';
 
 const GlobalStyles = createGlobalStyle`
   ${reset}

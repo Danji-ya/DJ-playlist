@@ -1,5 +1,5 @@
-import { icons } from '../../../constants';
-import LazyImage from '../LazyImage';
+import icons from '@constants/icons';
+import LazyImage from '@components/common/LazyImage';
 import Styled from './CardItem.style';
 import {
   Props,

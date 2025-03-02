@@ -1,7 +1,7 @@
-import { IMusicVolume } from '../../@types/music';
-import { icons } from '../../constants';
-import { LabelA11Y } from '../../styles/common';
+import { LabelA11Y } from '@styles/common';
+import icons from '@constants/icons';
 import Styled from './Player.style';
+import { IMusicVolume } from '../../@types/music';
 
 interface Props {
   volume: number;

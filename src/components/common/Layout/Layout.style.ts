@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { STYLE } from '../../../constants';
-import { DEVICE, SIZE } from '../../../constants/device';
+import { DEVICE, SIZE } from '@constants/device';
+import { LAYOUT } from '@constants/layout';
 
 const Container = styled.main`
   position: relative;
@@ -11,12 +11,12 @@ const Container = styled.main`
   max-width: ${SIZE.MAX_DESKTOP};
   padding-top: 30px;
   padding-right: 55px;
-  padding-bottom: calc(30px + ${STYLE.PLAYER_HEIGHT});
-  padding-left: ${() => `calc(${STYLE.HEADER_WIDTH} + 55px)`};
+  padding-bottom: calc(30px + ${LAYOUT.PLAYER_HEIGHT});
+  padding-left: ${() => `calc(${LAYOUT.HEADER_WIDTH} + 55px)`};
   margin: 0 auto;
 
   @media ${DEVICE.DESKTOP} {
-    padding-top: calc(30px + ${STYLE.HEADER_HEIGHT});
+    padding-top: calc(30px + ${LAYOUT.HEADER_HEIGHT});
     padding-left: 55px;
   }
 `;

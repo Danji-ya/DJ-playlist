@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { DEVICE } from '../../constants/device';
+import { DEVICE } from '@constants/device';
 
 const Container = styled.div`
   position: relative;

@@ -1,6 +1,6 @@
-import { icons } from '../../constants';
-import { H1A11Y } from '../../styles/common';
-import Gnb from '../Gnb';
+import Gnb from '@components/Gnb';
+import icons from '@constants/icons';
+import { H1A11Y } from '@styles/common';
 import Styled from './Header.style';
 
 function Header() {

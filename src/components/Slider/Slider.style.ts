@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { DEVICE } from '../../constants/device';
-import { SLIDER } from '../../constants/slider';
+import { DEVICE } from '@constants/device';
+import { SLIDER } from '@constants/slider';
 
 const SliderHeader = styled.h3`
   margin-top: 50px;

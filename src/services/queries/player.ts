@@ -1,9 +1,9 @@
 import { useQuery } from 'react-query';
+import { QUERY_KEYS } from '@constants/queryKeys';
+import CustomError from '@utils/customError';
+import { MESSAGE } from '@constants/messages';
+import axiosInstance from '@services/queries/base';
 import { IMusicData } from '../../@types/music';
-import { QUERY_KEYS } from '../../constants/queryKeys';
-import axiosInstance from '.';
-import CustomError from '../../utils/customError';
-import { MESSAGE } from '../../constants/messages';
 
 interface CustomQueryParams {
   query: string;

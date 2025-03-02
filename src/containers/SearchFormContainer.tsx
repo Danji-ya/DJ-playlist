@@ -1,8 +1,8 @@
 import { Ref } from 'react';
 import { useRecoilState } from 'recoil';
+import Form, { ModalHandle } from '@components/Search/Form';
+import { searchHistoryState } from '@store/searchHistoryState';
 import { ISearchKeyword } from '../@types/search';
-import Form, { ModalHandle } from '../components/Search/Form';
-import { searchHistoryState } from '../store/searchHistoryState';
 
 interface Props {
   keyword: string;

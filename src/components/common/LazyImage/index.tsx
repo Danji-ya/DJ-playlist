@@ -1,5 +1,5 @@
+import useIntersection from '@services/hooks/useIntersection';
 import Styled from './LazyImage.style';
-import useIntersection from '../../../services/hooks/useIntersection';
 
 interface Props {
   src: string;

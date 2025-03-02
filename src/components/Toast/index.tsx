@@ -1,4 +1,4 @@
-import { icons } from '../../constants';
+import icons from '@constants/icons';
 import Styled from './Toast.style';
 
 interface Props {

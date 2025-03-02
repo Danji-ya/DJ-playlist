@@ -1,5 +1,5 @@
-import SearchContainer from '../../containers/SearchContainer';
-import { H2A11Y } from '../../styles/common';
+import SearchContainer from '@containers/SearchContainer';
+import { H2A11Y } from '@styles/common';
 
 function SearchPage() {
   return (

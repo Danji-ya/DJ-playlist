@@ -1,4 +1,4 @@
-import { SIZE } from '../constants/device';
+import { SIZE } from '@constants/device';
 
 export function isMinMaxSlider(pos: number, numberOfSliderItem: number) {
   return pos >= numberOfSliderItem - 1 || pos < 0;

@@ -1,9 +1,9 @@
 import { useRecoilState } from 'recoil';
+import Toast from '@components/Toast';
+import CreateToastPortal from '@components/Toast/CreateToastPotal';
+import { toastState } from '@store/toastState';
+import Styled from '@components/Toast/Toast.style';
 import { IToastState } from '../@types/toast';
-import Toast from '../components/Toast';
-import CreateToastPortal from '../components/Toast/CreateToastPotal';
-import { toastState } from '../store/toastState';
-import Styled from '../components/Toast/Toast.style';
 
 function ToastContainer() {
   const [toasts, setToasts] = useRecoilState<IToastState[]>(toastState);

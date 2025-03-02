@@ -1,6 +1,6 @@
-import { IMusic, IMusicChange } from '../../@types/music';
-import { icons } from '../../constants';
+import icons from '@constants/icons';
 import Styled from './Player.style';
+import { IMusic, IMusicChange } from '../../@types/music';
 
 interface Props {
   paused: boolean;

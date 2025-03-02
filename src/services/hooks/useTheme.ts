@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { themeState } from '../../store/themeState';
+import { themeState } from '@store/themeState';
 
 const preferDarkQuery = '(prefers-color-scheme: dark)';
 

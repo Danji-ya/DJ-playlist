@@ -1,12 +1,12 @@
-import { IMusic } from '../../@types/music';
-import { ISearchKeyword } from '../../@types/search';
-import SearchFormContainer from '../../containers/SearchFormContainer';
-import SearchResultContainer from '../../containers/SearchResultContainer';
-import SliderContainer from '../../containers/SliderContainer';
-import ErrorBoundary from '../common/ErrorBoundary';
-import Error from '../Error';
+import SearchFormContainer from '@containers/SearchFormContainer';
+import SearchResultContainer from '@containers/SearchResultContainer';
+import SliderContainer from '@containers/SliderContainer';
+import ErrorBoundary from '@components/common/ErrorBoundary';
+import Error from '@components/Error';
 import { ModalHandle } from './Form';
 import Styled from './Search.style';
+import { ISearchKeyword } from '../../@types/search';
+import { IMusic } from '../../@types/music';
 
 interface Props {
   keyword: string;

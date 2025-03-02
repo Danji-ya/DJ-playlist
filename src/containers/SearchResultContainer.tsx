@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
+import Result from '@components/Search/Result';
+import useToast from '@services/hooks/useToast';
+import { useGetPlaylist } from '@services/queries/player';
+import { restructuring } from '@utils/common';
 import { IMusic } from '../@types/music';
-import Result from '../components/Search/Result';
-import useToast from '../services/hooks/useToast';
-import { useGetPlaylist } from '../services/queries/player';
-import { restructuring } from '../utils/common';
 
 interface Props {
   keyword: string;
