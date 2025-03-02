@@ -23,7 +23,7 @@ function Sound({ volume, muted, handleVolume }: Props) {
           <icons.VolumeUp aria-label="music volumeOff" />
         )}
       </Styled.VolumeWrapper>
-      <LabelA11Y htmlFor="musicVolume">음악볼륨 조절</LabelA11Y>
+      <LabelA11Y htmlFor="musicVolume">Volume control</LabelA11Y>
       <Styled.CustomInputRange
         id="musicVolume"
         type="range"

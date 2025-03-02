@@ -63,11 +63,11 @@ const Form = React.forwardRef<ModalHandle, Props>(
     return (
       <Styled.Container ref={inputRef} onBlur={handleBlur}>
         <Styled.SearchFormWrapper autoComplete="off" onSubmit={handleSubmit}>
-          <LabelA11Y htmlFor="searchInput">검색창</LabelA11Y>
+          <LabelA11Y htmlFor="searchInput">Search input</LabelA11Y>
           <Styled.InputBox
             id="searchInput"
             type="text"
-            placeholder="검색어를 입력해주세요"
+            placeholder="Please enter your search query"
             value={query}
             onChange={(e) => handleChange(e.target.value)}
             onFocus={() => activeHistory(true)}

@@ -22,7 +22,7 @@ function Playlist({
 }: Props) {
   return (
     <Styled.Container>
-      <H3A11Y>플레이리스트</H3A11Y>
+      <H3A11Y>Playlist</H3A11Y>
       {djPlaylist.length > 0 ? (
         <Styled.Playlist>
           {djPlaylist.map((item: IMusic, idx: number) => (

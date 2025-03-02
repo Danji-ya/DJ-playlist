@@ -4,7 +4,7 @@ import { H2A11Y } from '@styles/common';
 function SearchPage() {
   return (
     <article>
-      <H2A11Y>검색 본문</H2A11Y>
+      <H2A11Y>Search content</H2A11Y>
       <SearchContainer />
     </article>
   );

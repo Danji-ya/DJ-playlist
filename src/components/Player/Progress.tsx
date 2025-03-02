@@ -19,7 +19,7 @@ function Progress({
 }: Props) {
   return (
     <Styled.ProgressContainer>
-      <LabelA11Y htmlFor="progress">진행바</LabelA11Y>
+      <LabelA11Y htmlFor="progress">ProgressBar</LabelA11Y>
       <Styled.CustomInputRange
         id="progress"
         type="range"

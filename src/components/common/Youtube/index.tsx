@@ -146,7 +146,7 @@ class Youtube extends Component<Props, State> {
         },
       });
     } catch (err) {
-      console.log('Player를 생성할 수 없습니다.');
+      console.log('Cannot load Youtube API');
     }
   }
 

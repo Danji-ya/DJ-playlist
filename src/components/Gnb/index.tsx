@@ -10,14 +10,14 @@ function Gnb() {
 
   const navItems = [
     {
-      name: '홈',
+      name: 'Home',
       path: PATH.MAIN,
       Icon: (props: { width: string; height: string }) => (
         <icons.Home {...props} />
       ),
     },
     {
-      name: '검색하기',
+      name: 'Search',
       path: PATH.SEARCH,
       Icon: (props: { width: string; height: string }) => (
         <icons.Search {...props} />
@@ -27,7 +27,7 @@ function Gnb() {
 
   return (
     <Styled.Container>
-      <H2A11Y>메뉴</H2A11Y>
+      <H2A11Y>Menu</H2A11Y>
       <Styled.List>
         {navItems.map((item) => {
           return (

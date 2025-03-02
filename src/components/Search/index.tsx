@@ -29,11 +29,11 @@ function Search({
         handleSearchKeyword={handleSearchKeyword}
       />
       <Styled.SliderWrapper>
-        <Styled.MainTitle>인기 검색어</Styled.MainTitle>
+        <Styled.MainTitle>Top searched</Styled.MainTitle>
         <SliderContainer handleSearchKeyword={handleSearchKeyword} />
       </Styled.SliderWrapper>
       <Styled.SearchResultWrapper>
-        <Styled.MainTitle>검색 결과</Styled.MainTitle>
+        <Styled.MainTitle>Search result</Styled.MainTitle>
         <ErrorBoundary fallback={<Error />}>
           <SearchResultContainer
             keyword={keyword}

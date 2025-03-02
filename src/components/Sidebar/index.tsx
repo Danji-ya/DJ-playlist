@@ -5,7 +5,7 @@ import Styled from './Sidebar.style';
 function Sidebar() {
   return (
     <Styled.Container>
-      <H2A11Y>편의기능</H2A11Y>
+      <H2A11Y>Sidebar</H2A11Y>
       <ToggleModeContainer />
     </Styled.Container>
   );
