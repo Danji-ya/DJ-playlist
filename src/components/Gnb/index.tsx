@@ -1,9 +1,9 @@
 /* eslint-disable react/no-unstable-nested-components */
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { PATH } from '@constants/path';
+import icons from '@constants/icons';
+import { H2A11Y } from '@styles/common';
 import Styled from './Gnb.style';
-import { PATH } from '../../constants/path';
-import { icons } from '../../constants';
-import { H2A11Y } from '../../styles/common';
 
 function Gnb() {
   const { pathname: path } = useLocation();

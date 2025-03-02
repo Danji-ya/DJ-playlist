@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 /* eslint-disable react/state-in-constructor */
 import React, { Component, ErrorInfo, ReactElement, ReactNode } from 'react';
-import CustomError from '../../../utils/customError';
+import CustomError from '@utils/customError';
 
 interface Props {
   children: ReactNode;

@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 /* eslint-disable class-methods-use-this */
 import React, { Component } from 'react';
-import { PLAYER_DEFAULT_OPTS } from '../../../constants/player';
-import { loadIFrameApi } from '../../../utils/loadScript';
+import { PLAYER_DEFAULT_OPTS } from '@constants/player';
+import { loadIFrameApi } from '@utils/loadScript';
 
 interface CustomProps {
   videoId: string;

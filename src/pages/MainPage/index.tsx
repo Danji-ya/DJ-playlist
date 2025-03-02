@@ -1,5 +1,5 @@
-import PlaylistContainer from '../../containers/PlaylistContainer';
-import { H2A11Y } from '../../styles/common';
+import PlaylistContainer from '@containers/PlaylistContainer';
+import { H2A11Y } from '@styles/common';
 
 function MainPage() {
   return (

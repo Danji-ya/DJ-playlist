@@ -1,4 +1,4 @@
-import { IMusic } from '../../@types/music';
+import type { IMusic } from '@typings/music';
 import Styled from './Player.style';
 
 interface Props {

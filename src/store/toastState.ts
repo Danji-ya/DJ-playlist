@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { IToastState } from '../@types/toast';
+import { IToastState } from '@typings/toast';
 
 export const toastState = atom({
   key: 'toastState',

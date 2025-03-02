@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-expressions */
-import { getItem, removeState, setItem } from '../utils/localstorage';
+import { getItem, removeState, setItem } from '@utils/localstorage';
 
 const localStorageEffect =
   <T>(key: string) =>

@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import Slider from '../components/Slider';
-import { SLIDER } from '../constants/slider';
+import Slider from '@components/Slider';
+import { SLIDER } from '@constants/slider';
+import { isMinMaxSlider } from '@utils/slider';
 import {
   ISearchKeyword,
   ITopSearched,
   SliderButtonType,
   SLIDER_BUTTON_TYPE_LIST,
-} from '../@types/search';
-import { isMinMaxSlider } from '../utils/slider';
+} from '@typings/search';
 
 interface Props {
   handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;

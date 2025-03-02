@@ -1,4 +1,4 @@
-import { images } from '../../constants';
+import images from '@constants/images';
 import Styled from './Error.style';
 
 interface Props {

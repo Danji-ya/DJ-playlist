@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import PlayerContainer from '../../../containers/PlayerContainer';
-import Header from '../../Header';
-import Sidebar from '../../Sidebar';
+import PlayerContainer from '@containers/PlayerContainer';
+import Header from '@components/Header';
+import Sidebar from '@components/Sidebar';
 import Styled from './Layout.style';
 
 interface Props {

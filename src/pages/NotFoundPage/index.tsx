@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
-import { icons } from '../../constants';
-import { PATH } from '../../constants/path';
-import useResize from '../../services/hooks/useResize';
+import icons from '@constants/icons';
+import { PATH } from '@constants/path';
+import useResize from '@services/hooks/useResize';
 import Styled from './NotFoundPage.style';
 
 const MAX_WIDTH = 768;

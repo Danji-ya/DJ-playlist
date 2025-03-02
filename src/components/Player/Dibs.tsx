@@ -1,5 +1,5 @@
-import { IMusic } from '../../@types/music';
-import { icons } from '../../constants';
+import icons from '@constants/icons';
+import { IMusic } from '@typings/music';
 import Styled from './Player.style';
 
 interface Props {

@@ -1,9 +1,9 @@
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { ISearchKeyword } from '../../@types/search';
-import { icons } from '../../constants';
-import Styled from './Search.style';
+import { LabelA11Y } from '@styles/common';
+import icons from '@constants/icons';
+import { ISearchKeyword } from '@typings/search';
 import History from './History';
-import { LabelA11Y } from '../../styles/common';
+import Styled from './Search.style';
 
 interface Props {
   keyword: string;

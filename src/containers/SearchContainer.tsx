@@ -1,15 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { IMusic } from '../@types/music';
-import { ISearchKeyword } from '../@types/search';
-import Search from '../components/Search';
-import Form from '../components/Search/Form';
-import { PATH } from '../constants/path';
-import { keywordState } from '../store/keywordState';
-import { playerState } from '../store/playerState';
-import { searchHistoryState } from '../store/searchHistoryState';
-import { customSearchHistory } from '../utils/common';
+import Search from '@components/Search';
+import Form from '@components/Search/Form';
+import { PATH } from '@constants/path';
+import { keywordState } from '@store/keywordState';
+import { playerState } from '@store/playerState';
+import { searchHistoryState } from '@store/searchHistoryState';
+import { customSearchHistory } from '@utils/common';
+import { IMusic } from '@typings/music';
+import { ISearchKeyword } from '@typings/search';
 
 function SearchContainer() {
   const [keyword, setKeyword] = useRecoilState(keywordState);
@@ -19,7 +19,6 @@ function SearchContainer() {
   const navigate = useNavigate();
   const { search } = useLocation();
 
-  // url 유지
   useEffect(() => {
     const searchParams = new URLSearchParams(search);
     if (keyword && !searchParams.get('query')) {

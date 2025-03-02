@@ -1,5 +1,5 @@
 import { ComponentType, lazy } from 'react';
-import { getItem, setItem } from './localstorage';
+import { getItem, setItem } from '@utils/localstorage';
 
 const KEY = 'PAGE_RELOAD';
 

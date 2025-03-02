@@ -1,10 +1,10 @@
-import { IMusic } from '../../@types/music';
-import { ISearchKeyword } from '../../@types/search';
-import SearchFormContainer from '../../containers/SearchFormContainer';
-import SearchResultContainer from '../../containers/SearchResultContainer';
-import SliderContainer from '../../containers/SliderContainer';
-import ErrorBoundary from '../common/ErrorBoundary';
-import Error from '../Error';
+import SearchFormContainer from '@containers/SearchFormContainer';
+import SearchResultContainer from '@containers/SearchResultContainer';
+import SliderContainer from '@containers/SliderContainer';
+import ErrorBoundary from '@components/common/ErrorBoundary';
+import Error from '@components/Error';
+import { ISearchKeyword } from '@typings/search';
+import { IMusic } from '@typings/music';
 import { ModalHandle } from './Form';
 import Styled from './Search.style';
 

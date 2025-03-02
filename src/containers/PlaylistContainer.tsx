@@ -1,9 +1,9 @@
 import { useCallback, useRef } from 'react';
 import { useRecoilState, useSetRecoilState } from 'recoil';
-import { IMusic, ISwapRoute } from '../@types/music';
-import Playlist from '../components/Playlist';
-import { playerState } from '../store/playerState';
-import { playlistState } from '../store/playlistState';
+import Playlist from '@components/Playlist';
+import { playerState } from '@store/playerState';
+import { playlistState } from '@store/playlistState';
+import { IMusic, ISwapRoute } from '@typings/music';
 
 function PlaylistContainer() {
   const [playlist, setPlaylist] = useRecoilState(playlistState);

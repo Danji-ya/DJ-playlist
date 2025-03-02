@@ -1,9 +1,9 @@
-import { images } from '../../constants';
+import CardItem from '@components/common/CardItem';
+import { MESSAGE } from '@constants/messages';
+import { H3A11Y } from '@styles/common';
+import images from '@constants/images';
+import { IMusic } from '@typings/music';
 import Styled from './Playlist.style';
-import { IMusic } from '../../@types/music';
-import { MESSAGE } from '../../constants/messages';
-import { H3A11Y } from '../../styles/common';
-import CardItem from '../common/CardItem';
 
 interface Props {
   djPlaylist: IMusic[];

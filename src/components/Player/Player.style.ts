@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import { STYLE } from '../../constants';
-import { DEVICE } from '../../constants/device';
+import { LAYOUT } from '@constants/layout';
+import { DEVICE } from '@constants/device';
 
 const Container = styled.article`
   background: ${({ theme }) => `${theme.playerBg}`};
@@ -11,7 +11,7 @@ const Container = styled.article`
   left: 0;
   bottom: 0;
   width: 100%;
-  height: ${STYLE.PLAYER_HEIGHT};
+  height: ${LAYOUT.PLAYER_HEIGHT};
   padding: 10px 50px;
   align-items: center;
   justify-content: space-around;

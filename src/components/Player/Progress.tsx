@@ -1,6 +1,6 @@
+import { formatTime } from '@utils/common';
+import { LabelA11Y } from '@styles/common';
 import Styled from './Player.style';
-import { formatTime } from '../../utils/common';
-import { LabelA11Y } from '../../styles/common';
 
 interface Props {
   currentTime: number;

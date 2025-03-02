@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
-import { IMusic } from '../@types/music';
-import localStorageEffect from './localStorageEffect';
+import localStorageEffect from '@store/localStorageEffect';
+import { IMusic } from '@typings/music';
 
 const KEY = 'djplaylist';
 

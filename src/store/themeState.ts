@@ -1,6 +1,6 @@
 import { atom } from 'recoil';
-import localStorageEffect from './localStorageEffect';
-import { ThemeState } from '../@types/theme';
+import localStorageEffect from '@store/localStorageEffect';
+import { ThemeState } from '@typings/theme';
 
 const KEY = 'dj-theme';
 

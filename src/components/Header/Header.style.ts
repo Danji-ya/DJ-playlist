@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import { STYLE } from '../../constants';
-import { DEVICE } from '../../constants/device';
+import { DEVICE } from '@constants/device';
+import { LAYOUT } from '@constants/layout';
 
 const Container = styled.header`
   position: fixed;
   top: 0;
-  width: ${STYLE.HEADER_WIDTH};
+  width: ${LAYOUT.HEADER_WIDTH};
   height: 100vh;
   padding: 30px 10px 0 10px;
   z-index: 50;
@@ -20,7 +20,7 @@ const Container = styled.header`
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    height: ${STYLE.HEADER_HEIGHT};
+    height: ${LAYOUT.HEADER_HEIGHT};
     padding: 0 50px;
 
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
