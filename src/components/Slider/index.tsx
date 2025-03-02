@@ -3,8 +3,8 @@ import React from 'react';
 import Item from '@components/Slider/Item';
 import { getNumberOfItemsToShow, sliderItemShowReader } from '@utils/slider';
 import useResize from '@services/hooks/useResize';
+import { ISearchKeyword, ITopSearched } from '@typings/search';
 import Styled from './Slider.style';
-import { ISearchKeyword, ITopSearched } from '../../@types/search';
 
 interface Props {
   data: ITopSearched[];

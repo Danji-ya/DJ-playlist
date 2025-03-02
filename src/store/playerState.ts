@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import { IMusic } from '../@types/music';
+import { IMusic } from '@typings/music';
 
 export const playerState = atom({
   key: 'playerState',

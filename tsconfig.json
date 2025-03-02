@@ -11,6 +11,7 @@
       "@store/*": ["store/*"],
       "@styles/*": ["styles/*"],
       "@utils/*": ["utils/*"],
+      "@typings/*": ["typings/*"],
     },
     "jsx": "react-jsx",
     "target": "ES2015",

@@ -1,4 +1,4 @@
-import { IMusic } from '../../../@types/music';
+import { IMusic } from '@typings/music';
 
 export interface Props {
   draggable?: boolean;

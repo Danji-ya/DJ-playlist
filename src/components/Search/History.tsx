@@ -1,8 +1,8 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import icons from '@constants/icons';
+import { ISearchKeyword } from '@typings/search';
 import Styled from './Search.style';
-import { ISearchKeyword } from '../../@types/search';
 
 interface Props {
   handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;

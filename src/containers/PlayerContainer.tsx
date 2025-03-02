@@ -4,8 +4,8 @@ import useToast from '@services/hooks/useToast';
 import { playerState } from '@store/playerState';
 import { playlistState } from '@store/playlistState';
 import { isEmptyObj } from '@utils/common';
+import { IMusic } from '@typings/music';
 import PlayerControlContainer from './PlayerControlContainer';
-import { IMusic } from '../@types/music';
 
 function PlayerContainer() {
   const [playlist, setPlaylist] = useRecoilState(playlistState);

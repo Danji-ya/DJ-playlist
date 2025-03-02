@@ -1,5 +1,5 @@
+import { ISearchKeyword, ITopSearched } from '@typings/search';
 import Styled from './Slider.style';
-import { ISearchKeyword, ITopSearched } from '../../@types/search';
 
 interface Props {
   item: ITopSearched;

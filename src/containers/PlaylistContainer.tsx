@@ -3,7 +3,7 @@ import { useRecoilState, useSetRecoilState } from 'recoil';
 import Playlist from '@components/Playlist';
 import { playerState } from '@store/playerState';
 import { playlistState } from '@store/playlistState';
-import { IMusic, ISwapRoute } from '../@types/music';
+import { IMusic, ISwapRoute } from '@typings/music';
 
 function PlaylistContainer() {
   const [playlist, setPlaylist] = useRecoilState(playlistState);

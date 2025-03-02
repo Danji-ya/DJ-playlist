@@ -1,5 +1,5 @@
+import { DarkLight } from '@typings/theme';
 import Styled from './ToggleMode.style';
-import { DarkLight } from '../../@types/theme';
 
 interface Props {
   mode: DarkLight;

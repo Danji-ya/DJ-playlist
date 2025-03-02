@@ -3,7 +3,7 @@ import Result from '@components/Search/Result';
 import useToast from '@services/hooks/useToast';
 import { useGetPlaylist } from '@services/queries/player';
 import { restructuring } from '@utils/common';
-import { IMusic } from '../@types/music';
+import { IMusic } from '@typings/music';
 
 interface Props {
   keyword: string;

@@ -1,7 +1,7 @@
 import { useSetRecoilState } from 'recoil';
 import { toastState } from '@store/toastState';
 import { uuidv4 } from '@utils/common';
-import { IToast } from '../../@types/toast';
+import { IToast } from '@typings/toast';
 
 function useToast() {
   const setToasts = useSetRecoilState(toastState);

@@ -3,7 +3,7 @@ import { QUERY_KEYS } from '@constants/queryKeys';
 import CustomError from '@utils/customError';
 import { MESSAGE } from '@constants/messages';
 import axiosInstance from '@services/queries/base';
-import { IMusicData } from '../../@types/music';
+import { IMusicData } from '@typings/music';
 
 interface CustomQueryParams {
   query: string;

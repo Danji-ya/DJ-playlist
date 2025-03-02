@@ -8,8 +8,8 @@ import { keywordState } from '@store/keywordState';
 import { playerState } from '@store/playerState';
 import { searchHistoryState } from '@store/searchHistoryState';
 import { customSearchHistory } from '@utils/common';
-import { IMusic } from '../@types/music';
-import { ISearchKeyword } from '../@types/search';
+import { IMusic } from '@typings/music';
+import { ISearchKeyword } from '@typings/search';
 
 function SearchContainer() {
   const [keyword, setKeyword] = useRecoilState(keywordState);

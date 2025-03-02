@@ -3,10 +3,10 @@ import SearchResultContainer from '@containers/SearchResultContainer';
 import SliderContainer from '@containers/SliderContainer';
 import ErrorBoundary from '@components/common/ErrorBoundary';
 import Error from '@components/Error';
+import { ISearchKeyword } from '@typings/search';
+import { IMusic } from '@typings/music';
 import { ModalHandle } from './Form';
 import Styled from './Search.style';
-import { ISearchKeyword } from '../../@types/search';
-import { IMusic } from '../../@types/music';
 
 interface Props {
   keyword: string;

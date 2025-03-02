@@ -7,7 +7,7 @@ import {
   ITopSearched,
   SliderButtonType,
   SLIDER_BUTTON_TYPE_LIST,
-} from '../@types/search';
+} from '@typings/search';
 
 interface Props {
   handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;

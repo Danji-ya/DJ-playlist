@@ -2,8 +2,8 @@ import CardItem from '@components/common/CardItem';
 import { MESSAGE } from '@constants/messages';
 import { H3A11Y } from '@styles/common';
 import images from '@constants/images';
+import { IMusic } from '@typings/music';
 import Styled from './Playlist.style';
-import { IMusic } from '../../@types/music';
 
 interface Props {
   djPlaylist: IMusic[];

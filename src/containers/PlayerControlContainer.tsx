@@ -4,7 +4,7 @@ import Youtube from '@components/common/Youtube';
 import Player from '@components/Player';
 import { NOT_INCLUDE_DJPLAYLIST, PLAYER_STATE } from '@constants/player';
 import { playerState } from '@store/playerState';
-import { IMusic, IMusicChange, IMusicVolume } from '../@types/music';
+import { IMusic, IMusicChange, IMusicVolume } from '@typings/music';
 
 interface Props {
   shuffle: boolean;

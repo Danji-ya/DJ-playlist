@@ -2,13 +2,13 @@ import { forwardRef, LegacyRef } from 'react';
 import { isEmptyObj } from '@utils/common';
 import Youtube from '@components/common/Youtube';
 import { H2A11Y } from '@styles/common';
+import { IMusic, IMusicChange, IMusicVolume } from '@typings/music';
 import Profile from './Profile';
 import Progress from './Progress';
 import Styled from './Player.style';
 import Controls from './Controls';
 import Sound from './Sound';
 import Dibs from './Dibs';
-import { IMusic, IMusicChange, IMusicVolume } from '../../@types/music';
 
 interface Props {
   playerProps: {
