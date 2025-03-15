@@ -21,6 +21,8 @@ interface Props {
 
 interface State {}
 
+const PLAYER_ID = 'dj-playlist_player';
+
 class Youtube extends Component<Props, State> {
   public player: YT.Player | undefined = undefined;
 
@@ -132,7 +134,7 @@ class Youtube extends Component<Props, State> {
     try {
       const YT = await loadIFrameApi();
 
-      this.player = new YT.Player('DJ-playlist-player', {
+      this.player = new YT.Player(PLAYER_ID, {
         videoId,
         height,
         width,
@@ -151,7 +153,7 @@ class Youtube extends Component<Props, State> {
   }
 
   render() {
-    return <div id="DJ-playlist-player" />;
+    return <div id={PLAYER_ID} />;
   }
 }
 
