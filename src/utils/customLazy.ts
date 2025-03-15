@@ -3,9 +3,13 @@ import { getItem, setItem } from '@utils/localstorage';
 
 const KEY = 'PAGE_RELOAD';
 
-type ComponentPromise<T = any> = Promise<{ default: ComponentType<T> }>;
+type ComponentPromise<Props = unknown> = Promise<{
+  default: ComponentType<Props>;
+}>;
 
-const checkReload = async (fn: () => ComponentPromise) => {
+const checkReload = async <Props = unknown>(
+  fn: () => ComponentPromise<Props>,
+): Promise<{ default: ComponentType<Props> }> => {
   const isReloaded = JSON.parse(getItem(KEY) || 'false');
 
   try {
@@ -24,9 +28,9 @@ const checkReload = async (fn: () => ComponentPromise) => {
   }
 };
 
-function customLazy(
-  component: () => ComponentPromise,
-): React.LazyExoticComponent<React.ComponentType<any>> {
+function customLazy<Props = unknown>(
+  component: () => ComponentPromise<Props>,
+): React.LazyExoticComponent<ComponentType<Props>> {
   return lazy(() => checkReload(component));
 }
 
