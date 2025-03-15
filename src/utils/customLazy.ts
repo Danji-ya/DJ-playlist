@@ -1,7 +1,7 @@
 import { ComponentType, lazy } from 'react';
 import { getItem, setItem } from '@utils/localstorage';
 
-const KEY = 'PAGE_RELOAD';
+const LOCAL_STORAGE_KEY = 'dj-page_reload';
 
 type ComponentPromise<Props = unknown> = Promise<{
   default: ComponentType<Props>;
@@ -10,16 +10,16 @@ type ComponentPromise<Props = unknown> = Promise<{
 const checkReload = async <Props = unknown>(
   fn: () => ComponentPromise<Props>,
 ): Promise<{ default: ComponentType<Props> }> => {
-  const isReloaded = JSON.parse(getItem(KEY) || 'false');
+  const isReloaded = JSON.parse(getItem(LOCAL_STORAGE_KEY) || 'false');
 
   try {
     const component = await fn();
-    setItem(KEY, 'false');
+    setItem(LOCAL_STORAGE_KEY, 'false');
 
     return component;
   } catch (error) {
     if (!isReloaded) {
-      setItem(KEY, 'true');
+      setItem(LOCAL_STORAGE_KEY, 'true');
 
       window.location.reload();
     }

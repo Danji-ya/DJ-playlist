@@ -2,7 +2,7 @@ import { atom } from 'recoil';
 import localStorageEffect from '@store/localStorageEffect';
 import { ThemeState } from '@typings/theme';
 
-const KEY = 'dj-theme';
+const LOCAL_STORAGE_KEY = 'dj-theme';
 
 const initialState: ThemeState = {
   userTheme: 'default',
@@ -12,5 +12,5 @@ const initialState: ThemeState = {
 export const themeState = atom({
   key: 'themeState',
   default: initialState,
-  effects: [localStorageEffect(KEY)],
+  effects: [localStorageEffect(LOCAL_STORAGE_KEY)],
 });
