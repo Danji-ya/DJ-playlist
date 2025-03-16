@@ -1,4 +1,5 @@
 import { DarkLight } from '@typings/theme';
+import { THEME_MODE } from '@constants/theme';
 import Styled from './ToggleThemeMode.style';
 
 interface Props {
@@ -7,7 +8,7 @@ interface Props {
 }
 
 function ToggleThemeMode({ mode, toggleThemeMode }: Props) {
-  const isLight = mode === 'light';
+  const isLight = mode === THEME_MODE.LIGHT;
 
   return (
     <Styled.Container

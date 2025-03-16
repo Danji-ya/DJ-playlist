@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { themeState } from '@store/themeState';
+import { THEME_MODE } from '@constants/theme';
 
 const preferDarkQuery = '(prefers-color-scheme: dark)';
 
@@ -8,14 +9,16 @@ const useTheme = () => {
   const [themes, setThemes] = useRecoilState(themeState);
 
   const theme = (() => {
-    if (themes.userTheme !== 'default') return themes.userTheme;
+    if (themes.userTheme !== THEME_MODE.DEFAULT) return themes.userTheme;
 
-    if (themes.systemTheme === 'no-preference') return 'light';
+    if (themes.systemTheme === THEME_MODE.NO_PREFERENCE)
+      return THEME_MODE.LIGHT;
     return themes.systemTheme;
   })();
 
   const handleUserTheme = () => {
-    const nextUserTheme = themes.userTheme === 'dark' ? 'light' : 'dark';
+    const nextUserTheme =
+      themes.userTheme === THEME_MODE.DARK ? THEME_MODE.LIGHT : THEME_MODE.DARK;
 
     setThemes((lp) => {
       return { ...lp, userTheme: nextUserTheme };
@@ -30,7 +33,10 @@ const useTheme = () => {
       const { matches } = event;
 
       setThemes((prevThemes) => {
-        return { ...prevThemes, systemTheme: matches ? 'dark' : 'light' };
+        return {
+          ...prevThemes,
+          systemTheme: matches ? THEME_MODE.DARK : THEME_MODE.LIGHT,
+        };
       });
     };
 
@@ -39,7 +45,7 @@ const useTheme = () => {
     setThemes((prevThemes) => {
       return {
         ...prevThemes,
-        systemTheme: systemPrefersDark ? 'dark' : 'light',
+        systemTheme: systemPrefersDark ? THEME_MODE.DARK : THEME_MODE.LIGHT,
       };
     });
 
