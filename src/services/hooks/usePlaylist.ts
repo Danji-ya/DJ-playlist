@@ -21,7 +21,7 @@ interface UsePlaylistReturn {
   isIncludeDjPlaylist: (music: IMusic) => boolean;
 }
 
-export function usePlaylist(): UsePlaylistReturn {
+function usePlaylist(): UsePlaylistReturn {
   const [playlist, setPlaylist] = useRecoilState(playlistState);
   const setPlayer = useSetRecoilState(playerState);
   const toast = useToast();
@@ -121,3 +121,5 @@ export function usePlaylist(): UsePlaylistReturn {
     isIncludeDjPlaylist,
   };
 }
+
+export default usePlaylist;

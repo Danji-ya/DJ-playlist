@@ -4,7 +4,7 @@ import Error from '@components/common/Error';
 import useSearchForm from '@services/hooks/useSearchForm';
 import useSearchHistory from '@services/hooks/useSearchHistory';
 import useSearchResult from '@services/hooks/useSearchResult';
-import { usePlaylist } from '@services/hooks/usePlaylist';
+import usePlaylist from '@services/hooks/usePlaylist';
 import Result from './Result';
 import Form from './Form';
 import Styled from './Search.style';

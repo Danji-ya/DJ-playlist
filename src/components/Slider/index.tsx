@@ -2,8 +2,8 @@ import React from 'react';
 import Item from '@components/Slider/Item';
 import { getNumberOfItemsToShow, sliderItemShowReader } from '@utils/slider';
 import useResize from '@services/hooks/useResize';
+import useSlider from '@services/hooks/useSlider';
 import { ISearchKeyword, ITopSearched } from '@typings/search';
-import { useSlider } from '@services/hooks/useSlider';
 import Styled from './Slider.style';
 
 interface Props {

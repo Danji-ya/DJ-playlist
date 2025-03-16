@@ -7,7 +7,7 @@ import {
   SLIDER_BUTTON_TYPE_LIST,
 } from '@typings/search';
 
-export function useSlider() {
+function useSlider() {
   const [position, setPosition] = useState(0);
   const [topSearchedData] = useState<ITopSearched[]>(SLIDER.INIT_DATA);
 
@@ -35,3 +35,5 @@ export function useSlider() {
     onMoveSlider,
   };
 }
+
+export default useSlider;

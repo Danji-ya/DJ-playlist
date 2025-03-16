@@ -3,7 +3,7 @@ import { MESSAGE } from '@constants/messages';
 import { H3A11Y } from '@styles/common';
 import images from '@constants/images';
 import { IMusic } from '@typings/music';
-import { usePlaylist } from '@services/hooks/usePlaylist';
+import usePlaylist from '@services/hooks/usePlaylist';
 import Styled from './Playlist.style';
 
 function Playlist() {

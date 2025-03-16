@@ -28,7 +28,7 @@ interface UsePlayerReturn {
   };
 }
 
-export function usePlayer(): UsePlayerReturn {
+function usePlayer(): UsePlayerReturn {
   const [playlist] = useRecoilState(playlistState);
   const [player, setPlayer] = useRecoilState(playerState);
   const { selectedMusic, shuffle } = player;
@@ -204,3 +204,5 @@ export function usePlayer(): UsePlayerReturn {
     },
   };
 }
+
+export default usePlayer;

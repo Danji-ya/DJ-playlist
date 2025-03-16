@@ -1,6 +1,6 @@
 import Youtube from '@components/Youtube';
-import { usePlayer } from '@services/hooks/usePlayer';
-import { usePlaylist } from '@services/hooks/usePlaylist';
+import usePlayer from '@services/hooks/usePlayer';
+import usePlaylist from '@services/hooks/usePlaylist';
 import { isEmptyObj } from '@utils/common';
 import { H2A11Y } from '@styles/common';
 import Profile from './Profile';
