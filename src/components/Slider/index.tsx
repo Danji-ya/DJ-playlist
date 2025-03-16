@@ -1,25 +1,18 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import React from 'react';
 import Item from '@components/Slider/Item';
 import { getNumberOfItemsToShow, sliderItemShowReader } from '@utils/slider';
 import useResize from '@services/hooks/useResize';
 import { ISearchKeyword, ITopSearched } from '@typings/search';
+import { useSlider } from '@services/hooks/useSlider';
 import Styled from './Slider.style';
 
 interface Props {
-  data: ITopSearched[];
-  onMoveSlider: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  position: number;
   onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
 }
 
-function Slider({
-  data,
-  onMoveSlider,
-  position,
-  onSearchKeywordChange,
-}: Props) {
-  const [windowWidth, _] = useResize({ type: 'throttle' });
+function Slider({ onSearchKeywordChange }: Props) {
+  const { data, position, onMoveSlider } = useSlider();
+  const [windowWidth] = useResize({ type: 'throttle' });
   const isShowCurrentItem = sliderItemShowReader(
     position,
     getNumberOfItemsToShow(windowWidth),

@@ -1,6 +1,6 @@
 import SearchFormContainer from '@containers/SearchFormContainer';
 import SearchResultContainer from '@containers/SearchResultContainer';
-import SliderContainer from '@containers/SliderContainer';
+import Slider from '@components/Slider';
 import ErrorBoundary from '@components/common/ErrorBoundary';
 import Error from '@components/common/Error';
 import { ISearchKeyword } from '@typings/search';
@@ -30,7 +30,7 @@ function Search({
       />
       <Styled.SliderWrapper>
         <Styled.MainTitle>인기 검색어</Styled.MainTitle>
-        <SliderContainer onSearchKeywordChange={onSearchKeywordChange} />
+        <Slider onSearchKeywordChange={onSearchKeywordChange} />
       </Styled.SliderWrapper>
       <Styled.SearchResultWrapper>
         <Styled.MainTitle>검색 결과</Styled.MainTitle>
