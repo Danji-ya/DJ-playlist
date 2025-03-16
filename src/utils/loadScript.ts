@@ -1,6 +1,6 @@
 const PROTOCOL = window.location.protocol === 'http:' ? 'http:' : 'https:';
 
-function load(src: string, cb: (err: Error) => void) {
+const load = (src: string, cb: (err: Error) => void) => {
   const firstScript = document.getElementsByTagName('script')[0];
   const script = document.createElement('script');
   script.src = src;
@@ -16,9 +16,9 @@ function load(src: string, cb: (err: Error) => void) {
   else {
     document.head.appendChild(script);
   }
-}
+};
 
-function loadIFrameApi(): Promise<typeof YT> {
+export const loadIFrameApi = (): Promise<typeof YT> => {
   return new Promise((resolve, reject) => {
     if (typeof window.YT === 'object') {
       resolve(window.YT);
@@ -33,6 +33,4 @@ function loadIFrameApi(): Promise<typeof YT> {
       resolve(window.YT);
     };
   });
-}
-
-export { loadIFrameApi };
+};
