@@ -1,5 +1,3 @@
-const QUERY_KEYS = {
+export const QUERY_KEYS = {
   PLAYLIST: 'playlist',
 };
-
-export { QUERY_KEYS };

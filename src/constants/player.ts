@@ -1,4 +1,4 @@
-const PLAYER_STATE = {
+export const PLAYER_STATE = {
   UNSTARTED: -1,
   ENDED: 0,
   PLAYING: 1,
@@ -7,7 +7,7 @@ const PLAYER_STATE = {
   CUED: 5,
 };
 
-const PLAYER_DEFAULT_OPTS = {
+export const PLAYER_DEFAULT_OPTS = {
   playsinline: 1,
   disablekb: 1,
   fs: 0,
@@ -15,6 +15,4 @@ const PLAYER_DEFAULT_OPTS = {
   iv_load_policy: 3,
 };
 
-const NOT_INCLUDE_DJPLAYLIST = -1;
-
-export { PLAYER_STATE, PLAYER_DEFAULT_OPTS, NOT_INCLUDE_DJPLAYLIST };
+export const NOT_INCLUDE_DJPLAYLIST = -1;
