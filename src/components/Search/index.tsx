@@ -1,32 +1,38 @@
-import SearchFormContainer from '@containers/SearchFormContainer';
-import SearchResultContainer from '@containers/SearchResultContainer';
 import Slider from '@components/Slider';
 import ErrorBoundary from '@components/common/ErrorBoundary';
 import Error from '@components/common/Error';
-import { ISearchKeyword } from '@typings/search';
-import { IMusic } from '@typings/music';
-import { ModalHandle } from './Form';
+import useSearchForm from '@services/hooks/useSearchForm';
+import useSearchHistory from '@services/hooks/useSearchHistory';
+import useSearchResult from '@services/hooks/useSearchResult';
+import { usePlaylist } from '@services/hooks/usePlaylist';
+import Result from './Result';
+import Form from './Form';
 import Styled from './Search.style';
 
-interface Props {
-  keyword: string;
-  refProp: React.Ref<ModalHandle>;
-  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
-  onSelectMusic: (selectedMusic: IMusic) => void;
-}
+function Search() {
+  const { searchHistory, onAddSearchHistory, onDeleteSearchHistory } =
+    useSearchHistory();
 
-function Search({
-  keyword,
-  refProp,
-  onSearchKeywordChange,
-  onSelectMusic,
-}: Props) {
+  const { keyword, formRef, onSearchKeywordChange } = useSearchForm({
+    onAddSearchHistory,
+  });
+
+  const {
+    playlistControls: { onSelectMusic },
+  } = usePlaylist();
+
+  const { isLoading, musicList } = useSearchResult({
+    keyword,
+  });
+
   return (
     <>
-      <SearchFormContainer
+      <Form
+        ref={formRef}
         keyword={keyword}
-        refProp={refProp}
+        searchHistory={searchHistory}
         onSearchKeywordChange={onSearchKeywordChange}
+        onDeleteSearchHistory={onDeleteSearchHistory}
       />
       <Styled.SliderWrapper>
         <Styled.MainTitle>인기 검색어</Styled.MainTitle>
@@ -35,8 +41,9 @@ function Search({
       <Styled.SearchResultWrapper>
         <Styled.MainTitle>검색 결과</Styled.MainTitle>
         <ErrorBoundary fallback={<Error />}>
-          <SearchResultContainer
-            keyword={keyword}
+          <Result
+            isLoading={isLoading}
+            musicList={musicList}
             onSelectMusic={onSelectMusic}
           />
         </ErrorBoundary>

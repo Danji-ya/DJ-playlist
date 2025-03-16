@@ -1,16 +1,13 @@
 import { useMemo } from 'react';
-import Result from '@components/Search/Result';
 import useToast from '@services/hooks/useToast';
 import { useGetPlaylist } from '@services/queries/player';
 import { restructuring } from '@utils/common';
-import { IMusic } from '@typings/music';
 
-interface Props {
+interface UseSearchResultProps {
   keyword: string;
-  onSelectMusic: (music: IMusic) => void;
 }
 
-function SearchResultContainer({ keyword, onSelectMusic }: Props) {
+export const useSearchResult = ({ keyword }: UseSearchResultProps) => {
   const toast = useToast();
 
   const { data, isLoading } = useGetPlaylist({
@@ -25,13 +22,10 @@ function SearchResultContainer({ keyword, onSelectMusic }: Props) {
       .filter(({ liveBroadcastContent }) => liveBroadcastContent !== 'live');
   }, [data]);
 
-  return (
-    <Result
-      isLoading={isLoading}
-      musicList={musicList}
-      onSelectMusic={onSelectMusic}
-    />
-  );
-}
+  return {
+    isLoading,
+    musicList,
+  };
+};
 
-export default SearchResultContainer;
+export default useSearchResult;
