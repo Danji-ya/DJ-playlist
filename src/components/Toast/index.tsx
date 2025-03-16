@@ -1,12 +1,8 @@
 import icons from '@constants/icons';
+import { IToastState } from '@typings/toast';
 import Styled from './Toast.style';
 
-interface Props {
-  id: string;
-  title: string;
-  message: string;
-  duration?: number;
-  type?: 'success' | 'error' | 'info';
+interface Props extends IToastState {
   onHideToast: (id: string) => void;
 }
 
