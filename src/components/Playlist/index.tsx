@@ -3,29 +3,22 @@ import { MESSAGE } from '@constants/messages';
 import { H3A11Y } from '@styles/common';
 import images from '@constants/images';
 import { IMusic } from '@typings/music';
+import { usePlaylist } from '@services/hooks/usePlaylist';
 import Styled from './Playlist.style';
 
-interface Props {
-  djPlaylist: IMusic[];
-  onSelectMusic: (music: IMusic) => void;
-  onDragStart: (e: React.DragEvent<HTMLLIElement>) => void;
-  onDragOver: (e: React.DragEvent<HTMLLIElement>) => void;
-  onDragDrop: (e: React.DragEvent<HTMLLIElement>) => void;
-}
+function Playlist() {
+  const {
+    playlist,
+    dragControls: { onDragStart, onDragOver, onDragDrop },
+    playlistControls: { onSelectMusic },
+  } = usePlaylist();
 
-function Playlist({
-  djPlaylist,
-  onSelectMusic,
-  onDragStart,
-  onDragOver,
-  onDragDrop,
-}: Props) {
   return (
     <Styled.Container>
       <H3A11Y>플레이리스트</H3A11Y>
-      {djPlaylist.length > 0 ? (
+      {playlist.length > 0 ? (
         <Styled.Playlist>
-          {djPlaylist.map((item: IMusic, idx: number) => (
+          {playlist.map((item: IMusic, idx: number) => (
             <Card
               key={item.videoId}
               draggable
