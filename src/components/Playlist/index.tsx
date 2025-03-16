@@ -1,4 +1,4 @@
-import CardItem from '@components/common/CardItem';
+import Card from '@components/common/Card';
 import { MESSAGE } from '@constants/messages';
 import { H3A11Y } from '@styles/common';
 import images from '@constants/images';
@@ -26,7 +26,7 @@ function Playlist({
       {djPlaylist.length > 0 ? (
         <Styled.Playlist>
           {djPlaylist.map((item: IMusic, idx: number) => (
-            <CardItem
+            <Card
               key={item.videoId}
               draggable
               onDragStart={handleDragStart}
@@ -34,16 +34,16 @@ function Playlist({
               onDrop={handleDrop}
               idx={idx}
             >
-              <CardItem.Thumbnail
+              <Card.Thumbnail
                 item={item}
                 onClick={handleSelectMusic}
                 url={item.url}
               />
-              <CardItem.Body>
-                <CardItem.Title>{item.title}</CardItem.Title>
-                <CardItem.SubTitle>{item.subtitle}</CardItem.SubTitle>
-              </CardItem.Body>
-            </CardItem>
+              <Card.Body>
+                <Card.Title>{item.title}</Card.Title>
+                <Card.SubTitle>{item.subtitle}</Card.SubTitle>
+              </Card.Body>
+            </Card>
           ))}
         </Styled.Playlist>
       ) : (

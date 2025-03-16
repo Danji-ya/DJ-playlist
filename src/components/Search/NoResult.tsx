@@ -1,15 +1,15 @@
 import icons from '@constants/icons';
 import Styled from './Search.style';
 
-function ResultEmpty() {
+function NoResult() {
   return (
-    <Styled.SearchResultEmptyWrapper>
+    <Styled.SearchNoResultWrapper>
       <Styled.CatFaceIcon src={icons.catFace} alt="catFace" />
-      <Styled.SearchResultEmptyText>
+      <Styled.SearchNoResultText>
         앗! 찾으시는 결과가 없네요.
-      </Styled.SearchResultEmptyText>
-    </Styled.SearchResultEmptyWrapper>
+      </Styled.SearchNoResultText>
+    </Styled.SearchNoResultWrapper>
   );
 }
 
-export default ResultEmpty;
+export default NoResult;

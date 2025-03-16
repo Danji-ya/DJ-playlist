@@ -2,7 +2,7 @@ import SearchFormContainer from '@containers/SearchFormContainer';
 import SearchResultContainer from '@containers/SearchResultContainer';
 import SliderContainer from '@containers/SliderContainer';
 import ErrorBoundary from '@components/common/ErrorBoundary';
-import Error from '@components/Error';
+import Error from '@components/common/Error';
 import { ISearchKeyword } from '@typings/search';
 import { IMusic } from '@typings/music';
 import { ModalHandle } from './Form';

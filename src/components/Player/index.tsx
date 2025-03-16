@@ -1,6 +1,6 @@
 import { forwardRef, LegacyRef } from 'react';
 import { isEmptyObj } from '@utils/common';
-import Youtube from '@components/common/Youtube';
+import Youtube from '@components/Youtube';
 import { H2A11Y } from '@styles/common';
 import { IMusic, IMusicChange, IMusicVolume } from '@typings/music';
 import Profile from './Profile';

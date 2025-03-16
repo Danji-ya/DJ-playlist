@@ -1,15 +1,15 @@
 import icons from '@constants/icons';
 import LazyImage from '@components/common/LazyImage';
-import Styled from './CardItem.style';
+import Styled from './Card.style';
 import {
   Props,
   BodyProps,
   SubTitleProps,
   TitleProps,
   TumbnailProps,
-} from './CardItem.types';
+} from './Card.types';
 
-function CardItem({
+function Card({
   draggable,
   onDragStart,
   onDragOver,
@@ -59,9 +59,10 @@ function CardSubTitle({ children }: SubTitleProps) {
   return <Styled.Subtitle>{children}</Styled.Subtitle>;
 }
 
-CardItem.Thumbnail = CardThumbnail;
-CardItem.Body = CardBody;
-CardItem.Title = CardTitle;
-CardItem.SubTitle = CardSubTitle;
+Card.Thumbnail = CardThumbnail;
+Card.Body = CardBody;
+Card.Title = CardTitle;
+Card.SubTitle = CardSubTitle;
 
-export default CardItem;
+export default Card;
+export { default as CardSkeleton } from './CardSkeleton';

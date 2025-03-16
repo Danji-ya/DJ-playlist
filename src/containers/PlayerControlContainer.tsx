@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { useSetRecoilState } from 'recoil';
-import Youtube from '@components/common/Youtube';
+import Youtube from '@components/Youtube';
 import Player from '@components/Player';
 import { NOT_INCLUDE_DJPLAYLIST, PLAYER_STATE } from '@constants/player';
 import { playerState } from '@store/playerState';

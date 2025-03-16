@@ -135,7 +135,7 @@ const MainTitle = styled.h3`
   padding: 20px 0;
 `;
 
-const SearchResultEmptyWrapper = styled.div`
+const SearchNoResultWrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -148,7 +148,7 @@ const CatFaceIcon = styled.img`
   border-radius: 15px;
   margin-bottom: 15px;
 `;
-const SearchResultEmptyText = styled.p`
+const SearchNoResultText = styled.p`
   font-size: 1rem;
 `;
 
@@ -166,7 +166,7 @@ export default {
   SearchResultWrapper,
   SearchResultGrid,
   MainTitle,
-  SearchResultEmptyWrapper,
+  SearchNoResultWrapper,
   CatFaceIcon,
-  SearchResultEmptyText,
+  SearchNoResultText,
 };

@@ -1,6 +1,5 @@
-/* eslint-disable @typescript-eslint/no-empty-interface */
 /* eslint-disable class-methods-use-this */
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { PLAYER_DEFAULT_OPTS } from '@constants/player';
 import { loadIFrameApi } from '@utils/loadScript';
 
@@ -19,11 +18,9 @@ interface Props {
   stateChangeHandler: (event: YT.OnStateChangeEvent) => void;
 }
 
-interface State {}
-
 const PLAYER_ID = 'dj-playlist_player';
 
-class Youtube extends Component<Props, State> {
+class Youtube extends Component<Props> {
   public player: YT.Player | undefined = undefined;
 
   constructor(props: Props) {
