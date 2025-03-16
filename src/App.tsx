@@ -1,13 +1,13 @@
 import { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from 'styled-components';
+import useTheme from '@services/hooks/useTheme';
 import ErrorBoundary from '@components/common/ErrorBoundary';
 import Layout from '@components/common/Layout';
 import Error from '@components/common/Error';
+import ToastManager from '@components/ToastManager';
 import { ROUTE } from '@constants/route';
 import { THEME_MODE } from '@constants/theme';
-import ToastContainer from '@containers/ToastContainer';
-import useTheme from '@services/hooks/useTheme';
 import GlobalStyles from '@styles/global';
 import { lightTheme, darkTheme } from '@styles/theme';
 
@@ -36,7 +36,7 @@ function App() {
           ))}
         </Routes>
       </Router>
-      <ToastContainer />
+      <ToastManager />
     </ThemeProvider>
   );
 }
