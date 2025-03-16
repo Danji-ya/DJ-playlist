@@ -11,7 +11,7 @@ interface Props {
   dibs: boolean;
   selectedMusic: IMusic;
   playlist: IMusic[];
-  handleDjPlaylist: (music: IMusic) => void;
+  onToggleDibs: (music: IMusic) => void;
 }
 
 function PlayerControlContainer({
@@ -19,7 +19,7 @@ function PlayerControlContainer({
   dibs,
   selectedMusic,
   playlist,
-  handleDjPlaylist,
+  onToggleDibs,
 }: Props) {
   const player = useRef<Youtube | null>(null);
   const timer = useRef<NodeJS.Timeout | null>(null);
@@ -55,7 +55,7 @@ function PlayerControlContainer({
     return copiedPlaylist;
   };
 
-  const handleShuffle = () => {
+  const onToggleShuffle = () => {
     setPlayer((prev) => ({
       ...prev,
       shuffle: !prev.shuffle,
@@ -70,7 +70,7 @@ function PlayerControlContainer({
     curMusic: IMusic;
   }) => newPlaylist.findIndex((item) => item.videoId === curMusic.videoId);
 
-  const handleChangeMusic = ({ music, isNext }: IMusicChange) => {
+  const onMusicChange = ({ music, isNext }: IMusicChange) => {
     const playlistLen = playlist.length - 1;
     const newPlaylist = shuffle ? shufflePlaylist(playlist) : playlist;
 
@@ -104,7 +104,7 @@ function PlayerControlContainer({
 
   const setPlayerSeekInit = () => {
     setCurrentTime(0);
-    handleChangeMusic({ music: selectedMusic, isNext: true });
+    onMusicChange({ music: selectedMusic, isNext: true });
   };
 
   const handleSync = (target: YT.Player) => {
@@ -112,7 +112,7 @@ function PlayerControlContainer({
     setDuration(target.getDuration());
   };
 
-  const handleStateChange = (e: YT.OnStateChangeEvent) => {
+  const onStateChange = (e: YT.OnStateChangeEvent) => {
     const { data: state } = e;
     clearInterval(timer.current as NodeJS.Timeout);
 
@@ -144,7 +144,7 @@ function PlayerControlContainer({
     }
   };
 
-  const handleMouse = (isDown?: boolean) => {
+  const onMouseStateChange = (isDown?: boolean) => {
     if (isDown) {
       isClick.current = true;
       return;
@@ -155,11 +155,11 @@ function PlayerControlContainer({
     isClick.current = false;
   };
 
-  const handleState = () => {
+  const onToggleState = () => {
     setPaused((prev) => !prev);
   };
 
-  const handleVolume = ({ value, isTurnOff }: IMusicVolume) => {
+  const onVolumeChange = ({ value, isTurnOff }: IMusicVolume) => {
     if (isTurnOff) {
       setVolume(0);
       setMuted(true);
@@ -178,7 +178,7 @@ function PlayerControlContainer({
     setVolume(valueToNumber);
   };
 
-  const handleProgress = (target: HTMLInputElement) => {
+  const onProgressChange = (target: HTMLInputElement) => {
     const willUpdateCurrentTime = parseFloat(target.value);
 
     player.current?.player?.seekTo(willUpdateCurrentTime, true);
@@ -198,14 +198,14 @@ function PlayerControlContainer({
       dibs={dibs}
       shuffle={shuffle}
       selectedMusic={selectedMusic}
-      handleDjPlaylist={handleDjPlaylist}
-      handleStateChange={handleStateChange}
-      handleMouse={handleMouse}
-      handleState={handleState}
-      handleVolume={handleVolume}
-      handleProgress={handleProgress}
-      handleChangeMusic={handleChangeMusic}
-      handleShuffle={handleShuffle}
+      onToggleDibs={onToggleDibs}
+      onStateChange={onStateChange}
+      onMouseStateChange={onMouseStateChange}
+      onToggleState={onToggleState}
+      onVolumeChange={onVolumeChange}
+      onProgressChange={onProgressChange}
+      onMusicChange={onMusicChange}
+      onToggleShuffle={onToggleShuffle}
     />
   );
 }

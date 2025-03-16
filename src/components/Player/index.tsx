@@ -21,14 +21,14 @@ interface Props {
   dibs: boolean;
   shuffle: boolean;
   selectedMusic: IMusic;
-  handleDjPlaylist: (music: IMusic) => void;
-  handleStateChange: (e: YT.OnStateChangeEvent) => void;
-  handleMouse: (isDown?: boolean) => void;
-  handleState: () => void;
-  handleVolume: ({ value, isTurnOff }: IMusicVolume) => void;
-  handleProgress: (target: HTMLInputElement) => void;
-  handleChangeMusic: ({ music, isNext }: IMusicChange) => void;
-  handleShuffle: () => void;
+  onToggleDibs: (music: IMusic) => void;
+  onStateChange: (e: YT.OnStateChangeEvent) => void;
+  onMouseStateChange: (isDown?: boolean) => void;
+  onToggleState: () => void;
+  onVolumeChange: ({ value, isTurnOff }: IMusicVolume) => void;
+  onProgressChange: (target: HTMLInputElement) => void;
+  onMusicChange: ({ music, isNext }: IMusicChange) => void;
+  onToggleShuffle: () => void;
 }
 
 const Player = forwardRef(
@@ -38,14 +38,14 @@ const Player = forwardRef(
       shuffle,
       dibs,
       selectedMusic,
-      handleDjPlaylist,
-      handleStateChange,
-      handleMouse,
-      handleState,
-      handleVolume,
-      handleProgress,
-      handleChangeMusic,
-      handleShuffle,
+      onToggleDibs,
+      onStateChange,
+      onMouseStateChange,
+      onToggleState,
+      onVolumeChange,
+      onProgressChange,
+      onMusicChange,
+      onToggleShuffle,
     }: Props,
     ref: LegacyRef<Youtube>,
   ) => {
@@ -70,25 +70,28 @@ const Player = forwardRef(
               paused={paused}
               selectedMusic={selectedMusic}
               shuffle={shuffle}
-              handleChangeMusic={handleChangeMusic}
-              handleState={handleState}
-              handleShuffle={handleShuffle}
+              onMusicChange={onMusicChange}
+              onToggleState={onToggleState}
+              onToggleShuffle={onToggleShuffle}
             />
 
             <Progress
               duration={duration}
               currentTime={currentTime}
-              handleProgress={handleProgress}
-              handleMouseDown={() => handleMouse(true)}
-              handleMouseUp={() => handleMouse()}
+              onProgressChange={onProgressChange}
+              onMouseStateChange={onMouseStateChange}
             />
 
-            <Sound volume={volume} muted={muted} handleVolume={handleVolume} />
+            <Sound
+              volume={volume}
+              muted={muted}
+              onVolumeChange={onVolumeChange}
+            />
 
             <Dibs
               dibs={dibs}
               selectedMusic={selectedMusic}
-              handleDjPlaylist={handleDjPlaylist}
+              onToggleDibs={onToggleDibs}
             />
           </>
         )}
@@ -96,7 +99,7 @@ const Player = forwardRef(
           <Youtube
             ref={ref}
             customProps={customProps}
-            stateChangeHandler={handleStateChange}
+            stateChangeHandler={onStateChange}
             autoplay
           />
         </Styled.YoutubeIframe>

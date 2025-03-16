@@ -6,16 +6,16 @@ import Styled from './Player.style';
 interface Props {
   volume: number;
   muted: boolean;
-  handleVolume: ({ value, isTurnOff }: IMusicVolume) => void;
+  onVolumeChange: ({ value, isTurnOff }: IMusicVolume) => void;
 }
 
-function Sound({ volume, muted, handleVolume }: Props) {
+function Sound({ volume, muted, onVolumeChange }: Props) {
   const isVolumeOff = muted || volume === 0;
 
   return (
     <Styled.SoundControl>
       <Styled.VolumeWrapper
-        onClick={() => handleVolume({ value: '', isTurnOff: !isVolumeOff })}
+        onClick={() => onVolumeChange({ value: '', isTurnOff: !isVolumeOff })}
       >
         {isVolumeOff ? (
           <icons.VolumeOff aria-label="music volumeUp" />
@@ -32,7 +32,7 @@ function Sound({ volume, muted, handleVolume }: Props) {
         min="0"
         max="1"
         step="0.05"
-        onChange={(e) => handleVolume({ value: e.target.value })}
+        onChange={(e) => onVolumeChange({ value: e.target.value })}
       />
     </Styled.SoundControl>
   );

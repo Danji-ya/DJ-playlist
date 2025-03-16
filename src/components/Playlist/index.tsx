@@ -7,18 +7,18 @@ import Styled from './Playlist.style';
 
 interface Props {
   djPlaylist: IMusic[];
-  handleSelectMusic: (music: IMusic) => void;
-  handleDragStart: (e: React.DragEvent<HTMLLIElement>) => void;
-  handleDragOver: (e: React.DragEvent<HTMLLIElement>) => void;
-  handleDrop: (e: React.DragEvent<HTMLLIElement>) => void;
+  onSelectMusic: (music: IMusic) => void;
+  onDragStart: (e: React.DragEvent<HTMLLIElement>) => void;
+  onDragOver: (e: React.DragEvent<HTMLLIElement>) => void;
+  onDragDrop: (e: React.DragEvent<HTMLLIElement>) => void;
 }
 
 function Playlist({
   djPlaylist,
-  handleSelectMusic,
-  handleDragStart,
-  handleDragOver,
-  handleDrop,
+  onSelectMusic,
+  onDragStart,
+  onDragOver,
+  onDragDrop,
 }: Props) {
   return (
     <Styled.Container>
@@ -29,14 +29,14 @@ function Playlist({
             <Card
               key={item.videoId}
               draggable
-              onDragStart={handleDragStart}
-              onDragOver={handleDragOver}
-              onDrop={handleDrop}
+              onDragStart={onDragStart}
+              onDragOver={onDragOver}
+              onDrop={onDragDrop}
               idx={idx}
             >
               <Card.Thumbnail
                 item={item}
-                onClick={handleSelectMusic}
+                onClick={onSelectMusic}
                 url={item.url}
               />
               <Card.Body>

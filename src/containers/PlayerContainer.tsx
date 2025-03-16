@@ -42,7 +42,7 @@ function PlayerContainer() {
     return newPlaylist;
   }
 
-  const handleDjPlaylist = (music: IMusic) => {
+  const onToggleDibs = (music: IMusic) => {
     let newPlaylist: IMusic[];
     if (isIncludeDjPlaylist) newPlaylist = deleteMusicFromDjPlaylist(music);
     else newPlaylist = addMusicFromDjPlaylist(music);
@@ -56,7 +56,7 @@ function PlayerContainer() {
       dibs={isIncludeDjPlaylist}
       selectedMusic={selectedMusic}
       playlist={playlist}
-      handleDjPlaylist={handleDjPlaylist}
+      onToggleDibs={onToggleDibs}
     />
   );
 }

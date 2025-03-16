@@ -7,10 +7,10 @@ import { IMusic } from '@typings/music';
 
 interface Props {
   keyword: string;
-  handleSelectMusic: (music: IMusic) => void;
+  onSelectMusic: (music: IMusic) => void;
 }
 
-function SearchResultContainer({ keyword, handleSelectMusic }: Props) {
+function SearchResultContainer({ keyword, onSelectMusic }: Props) {
   const toast = useToast();
 
   const { data, isLoading } = useGetPlaylist({
@@ -29,7 +29,7 @@ function SearchResultContainer({ keyword, handleSelectMusic }: Props) {
     <Result
       isLoading={isLoading}
       musicList={musicList}
-      handleSelectMusic={handleSelectMusic}
+      onSelectMusic={onSelectMusic}
     />
   );
 }

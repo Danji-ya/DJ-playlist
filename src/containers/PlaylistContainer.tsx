@@ -10,7 +10,7 @@ function PlaylistContainer() {
   const setPlayer = useSetRecoilState(playerState);
   const startEl = useRef<any>(null);
 
-  const handleSelectMusic = (selectedMusic: IMusic) => {
+  const onSelectMusic = (selectedMusic: IMusic) => {
     setPlayer((prev) => ({
       ...prev,
       selectedMusic,
@@ -33,15 +33,15 @@ function PlaylistContainer() {
     [playlist, setPlaylist],
   );
 
-  const handleDragStart = useCallback((e: React.DragEvent<HTMLLIElement>) => {
+  const onDragStart = useCallback((e: React.DragEvent<HTMLLIElement>) => {
     startEl.current = e.target;
   }, []);
 
-  const handleDragOver = useCallback((e: React.DragEvent<HTMLLIElement>) => {
+  const onDragOver = useCallback((e: React.DragEvent<HTMLLIElement>) => {
     e.preventDefault();
   }, []);
 
-  const handleDrop = useCallback(
+  const onDragDrop = useCallback(
     (e: React.DragEvent<HTMLLIElement>) => {
       const desIdx = Number(e.currentTarget.dataset.idx);
 
@@ -61,10 +61,10 @@ function PlaylistContainer() {
   return (
     <Playlist
       djPlaylist={playlist}
-      handleSelectMusic={handleSelectMusic}
-      handleDragStart={handleDragStart}
-      handleDragOver={handleDragOver}
-      handleDrop={handleDrop}
+      onSelectMusic={onSelectMusic}
+      onDragStart={onDragStart}
+      onDragOver={onDragOver}
+      onDragDrop={onDragDrop}
     />
   );
 }

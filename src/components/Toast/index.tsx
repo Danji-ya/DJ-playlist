@@ -7,7 +7,7 @@ interface Props {
   message: string;
   duration?: number;
   type?: 'success' | 'error' | 'info';
-  hideToast: (id: string) => void;
+  onHideToast: (id: string) => void;
 }
 
 function Toast({
@@ -16,15 +16,15 @@ function Toast({
   message,
   duration = 5000,
   type = 'success',
-  hideToast,
+  onHideToast,
 }: Props) {
   const handleAnimationEnd = () => {
-    hideToast(id);
+    onHideToast(id);
   };
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    hideToast(id);
+    onHideToast(id);
   };
 
   return (

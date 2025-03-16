@@ -6,18 +6,18 @@ import { ISearchKeyword } from '@typings/search';
 
 interface Props {
   keyword: string;
-  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
   refProp: Ref<ModalHandle>;
 }
 
 function SearchFormContainer({
   keyword,
-  handleSearchKeyword,
+  onSearchKeywordChange,
   refProp: searchFormRef,
 }: Props) {
   const [searchHistory, setSearchHistory] = useRecoilState(searchHistoryState);
 
-  const delSearchHistory = (idx: number) => {
+  const onDeleteSearchHistory = (idx: number) => {
     setSearchHistory((prevHistory) => [
       ...prevHistory.slice(0, idx),
       ...prevHistory.slice(idx + 1),
@@ -29,8 +29,8 @@ function SearchFormContainer({
       keyword={keyword}
       searchHistory={searchHistory}
       ref={searchFormRef}
-      handleSearchKeyword={handleSearchKeyword}
-      delSearchHistory={delSearchHistory}
+      onSearchKeywordChange={onSearchKeywordChange}
+      onDeleteSearchHistory={onDeleteSearchHistory}
     />
   );
 }

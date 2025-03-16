@@ -8,7 +8,7 @@ import { IToastState } from '@typings/toast';
 function ToastContainer() {
   const [toasts, setToasts] = useRecoilState<IToastState[]>(toastState);
 
-  const hideToast = (toastId: string) => {
+  const onHideToast = (toastId: string) => {
     setToasts((prevToasts) => prevToasts.filter(({ id }) => id !== toastId));
   };
 
@@ -16,7 +16,7 @@ function ToastContainer() {
     <CreateToastPortal>
       <Styled.Container>
         {toasts.map((toast) => (
-          <Toast key={toast.id} hideToast={hideToast} {...toast} />
+          <Toast key={toast.id} onHideToast={onHideToast} {...toast} />
         ))}
       </Styled.Container>
     </CreateToastPortal>

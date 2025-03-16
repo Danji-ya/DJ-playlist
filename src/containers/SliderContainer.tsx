@@ -10,14 +10,12 @@ import {
 } from '@typings/search';
 
 interface Props {
-  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
 }
 
-function SliderContainer({ handleSearchKeyword }: Props) {
+function SliderContainer({ onSearchKeywordChange }: Props) {
   const [position, setPosition] = useState(0);
-  const [topSearchedData, setTopSearchedData] = useState<ITopSearched[]>(
-    SLIDER.INIT_DATA,
-  );
+  const [topSearchedData] = useState<ITopSearched[]>(SLIDER.INIT_DATA);
 
   const moveSlider = (type: SliderButtonType) => {
     const handleType = { prev: SLIDER.PREV, next: SLIDER.NEXT };
@@ -30,7 +28,7 @@ function SliderContainer({ handleSearchKeyword }: Props) {
     setPosition(nextPosition);
   };
 
-  const handleSlider = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const onMoveSlider = (e: React.MouseEvent<HTMLButtonElement>) => {
     const { name } = e.target as HTMLButtonElement;
     if (!SLIDER_BUTTON_TYPE_LIST.some((type) => type === name)) return;
 
@@ -41,8 +39,8 @@ function SliderContainer({ handleSearchKeyword }: Props) {
     <Slider
       data={topSearchedData}
       position={position}
-      handleSlider={handleSlider}
-      handleSearchKeyword={handleSearchKeyword}
+      onMoveSlider={onMoveSlider}
+      onSearchKeywordChange={onSearchKeywordChange}
     />
   );
 }

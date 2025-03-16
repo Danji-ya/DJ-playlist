@@ -8,8 +8,8 @@ import Styled from './Search.style';
 interface Props {
   keyword: string;
   searchHistory: string[];
-  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
-  delSearchHistory: (idx: number) => void;
+  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onDeleteSearchHistory: (idx: number) => void;
 }
 
 export interface ModalHandle {
@@ -17,7 +17,10 @@ export interface ModalHandle {
 }
 
 const Form = React.forwardRef<ModalHandle, Props>(
-  ({ keyword, searchHistory, handleSearchKeyword, delSearchHistory }, ref) => {
+  (
+    { keyword, searchHistory, onSearchKeywordChange, onDeleteSearchHistory },
+    ref,
+  ) => {
     const [query, setQuery] = useState(keyword);
     const [isActiveHistory, activeHistory] = useState(false);
     const inputRef = useRef<HTMLDivElement>(null);
@@ -38,7 +41,7 @@ const Form = React.forwardRef<ModalHandle, Props>(
       if (keyword === query) return;
 
       const trimmedValue = query.trim();
-      handleSearchKeyword({ value: trimmedValue });
+      onSearchKeywordChange({ value: trimmedValue });
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLElement>) => {
@@ -77,8 +80,8 @@ const Form = React.forwardRef<ModalHandle, Props>(
           </Styled.BtnWrapper>
         </Styled.SearchFormWrapper>
         <History
-          handleSearchKeyword={handleSearchKeyword}
-          delSearchHistory={delSearchHistory}
+          onSearchKeywordChange={onSearchKeywordChange}
+          onDeleteSearchHistory={onDeleteSearchHistory}
           searchHistory={searchHistory}
           isShow={isActiveHistory && query === ''}
         />

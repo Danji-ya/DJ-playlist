@@ -11,33 +11,33 @@ import Styled from './Search.style';
 interface Props {
   keyword: string;
   refProp: React.Ref<ModalHandle>;
-  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
-  handleSelectMusic: (selectedMusic: IMusic) => void;
+  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onSelectMusic: (selectedMusic: IMusic) => void;
 }
 
 function Search({
   keyword,
   refProp,
-  handleSearchKeyword,
-  handleSelectMusic,
+  onSearchKeywordChange,
+  onSelectMusic,
 }: Props) {
   return (
     <>
       <SearchFormContainer
         keyword={keyword}
         refProp={refProp}
-        handleSearchKeyword={handleSearchKeyword}
+        onSearchKeywordChange={onSearchKeywordChange}
       />
       <Styled.SliderWrapper>
         <Styled.MainTitle>인기 검색어</Styled.MainTitle>
-        <SliderContainer handleSearchKeyword={handleSearchKeyword} />
+        <SliderContainer onSearchKeywordChange={onSearchKeywordChange} />
       </Styled.SliderWrapper>
       <Styled.SearchResultWrapper>
         <Styled.MainTitle>검색 결과</Styled.MainTitle>
         <ErrorBoundary fallback={<Error />}>
           <SearchResultContainer
             keyword={keyword}
-            handleSelectMusic={handleSelectMusic}
+            onSelectMusic={onSelectMusic}
           />
         </ErrorBoundary>
       </Styled.SearchResultWrapper>

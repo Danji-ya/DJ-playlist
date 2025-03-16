@@ -30,7 +30,7 @@ function SearchContainer() {
       navigate(PATH.SEARCH, { replace: true });
   }, [keyword, search, navigate]);
 
-  const handleSearchKeyword = ({ value, isAutoKeyword }: ISearchKeyword) => {
+  const onSearchKeywordChange = ({ value, isAutoKeyword }: ISearchKeyword) => {
     if (isAutoKeyword) FormRef.current?.handleQuery(value);
 
     setKeyword(value);
@@ -38,7 +38,7 @@ function SearchContainer() {
     navigate(`${PATH.SEARCH}?query=${value}`, { replace: true });
   };
 
-  const handleSelectMusic = (selectedMusic: IMusic) => {
+  const onSelectMusic = (selectedMusic: IMusic) => {
     setPlayer((prev) => ({
       ...prev,
       selectedMusic,
@@ -49,8 +49,8 @@ function SearchContainer() {
     <Search
       keyword={keyword}
       refProp={FormRef}
-      handleSearchKeyword={handleSearchKeyword}
-      handleSelectMusic={handleSelectMusic}
+      onSearchKeywordChange={onSearchKeywordChange}
+      onSelectMusic={onSelectMusic}
     />
   );
 }

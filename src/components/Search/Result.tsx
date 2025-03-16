@@ -4,7 +4,7 @@ import NoResult from './NoResult';
 import Styled from './Search.style';
 
 interface BaseProps {
-  handleSelectMusic: (music: IMusic) => void;
+  onSelectMusic: (music: IMusic) => void;
 }
 
 interface Props extends BaseProps {
@@ -24,17 +24,13 @@ function LoadingSkeleton() {
 
 function MusicCards({
   musicList,
-  handleSelectMusic,
+  onSelectMusic,
 }: BaseProps & { musicList: IMusic[] }) {
   return (
     <>
       {musicList.map((item: IMusic) => (
         <Card key={item.videoId}>
-          <Card.Thumbnail
-            item={item}
-            onClick={handleSelectMusic}
-            url={item.url}
-          />
+          <Card.Thumbnail item={item} onClick={onSelectMusic} url={item.url} />
           <Card.Body>
             <Card.Title>{item.title}</Card.Title>
             <Card.SubTitle>{item.subtitle}</Card.SubTitle>
@@ -45,28 +41,20 @@ function MusicCards({
   );
 }
 
-function SearchResult({
-  musicList,
-  handleSelectMusic,
-}: Omit<Props, 'isLoading'>) {
+function SearchResult({ musicList, onSelectMusic }: Omit<Props, 'isLoading'>) {
   if (musicList === undefined) return null;
   if (musicList.length === 0) return <NoResult />;
 
-  return (
-    <MusicCards musicList={musicList} handleSelectMusic={handleSelectMusic} />
-  );
+  return <MusicCards musicList={musicList} onSelectMusic={onSelectMusic} />;
 }
 
-function Result({ musicList, handleSelectMusic, isLoading }: Props) {
+function Result({ musicList, onSelectMusic, isLoading }: Props) {
   return (
     <Styled.SearchResultGrid>
       {isLoading ? (
         <LoadingSkeleton />
       ) : (
-        <SearchResult
-          musicList={musicList}
-          handleSelectMusic={handleSelectMusic}
-        />
+        <SearchResult musicList={musicList} onSelectMusic={onSelectMusic} />
       )}
     </Styled.SearchResultGrid>
   );

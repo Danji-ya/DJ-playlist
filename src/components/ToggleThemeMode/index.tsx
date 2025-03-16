@@ -4,16 +4,16 @@ import Styled from './ToggleThemeMode.style';
 
 interface Props {
   mode: DarkLight;
-  toggleThemeMode: () => void;
+  onToggleThemeMode: () => void;
 }
 
-function ToggleThemeMode({ mode, toggleThemeMode }: Props) {
+function ToggleThemeMode({ mode, onToggleThemeMode }: Props) {
   const isLight = mode === THEME_MODE.LIGHT;
 
   return (
     <Styled.Container
       lightTheme={isLight}
-      onClick={toggleThemeMode}
+      onClick={onToggleThemeMode}
       aria-label="theme toggle"
     >
       <svg

@@ -5,17 +5,15 @@ import Styled from './Player.style';
 interface Props {
   currentTime: number;
   duration: number;
-  handleProgress: (target: HTMLInputElement) => void;
-  handleMouseDown: () => void;
-  handleMouseUp: () => void;
+  onProgressChange: (target: HTMLInputElement) => void;
+  onMouseStateChange: (isDown?: boolean) => void;
 }
 
 function Progress({
   currentTime,
   duration,
-  handleProgress,
-  handleMouseDown,
-  handleMouseUp,
+  onProgressChange,
+  onMouseStateChange,
 }: Props) {
   return (
     <Styled.ProgressContainer>
@@ -26,9 +24,9 @@ function Progress({
         value={currentTime}
         min="0"
         max={duration || 0}
-        onChange={(e) => handleProgress(e.target)}
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
+        onChange={(e) => onProgressChange(e.target)}
+        onMouseDown={() => onMouseStateChange(true)}
+        onMouseUp={() => onMouseStateChange(false)}
       />
       <Styled.ProgressTime>
         {formatTime(currentTime)} / {formatTime(duration)}

@@ -8,12 +8,17 @@ import Styled from './Slider.style';
 
 interface Props {
   data: ITopSearched[];
-  handleSlider: (e: React.MouseEvent<HTMLButtonElement>) => void;
+  onMoveSlider: (e: React.MouseEvent<HTMLButtonElement>) => void;
   position: number;
-  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
 }
 
-function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
+function Slider({
+  data,
+  onMoveSlider,
+  position,
+  onSearchKeywordChange,
+}: Props) {
   const [windowWidth, _] = useResize({ type: 'throttle' });
   const isShowCurrentItem = sliderItemShowReader(
     position,
@@ -24,7 +29,7 @@ function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
     <Styled.SliderContent>
       <Styled.PrevBtn
         name="prev"
-        onClick={handleSlider}
+        onClick={onMoveSlider}
         aria-label="slider prev"
       >
         &#10094;
@@ -37,7 +42,7 @@ function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
               isShow={isShowCurrentItem(idx)}
               key={item.id}
               item={item}
-              handleSearchKeyword={handleSearchKeyword}
+              onSearchKeywordChange={onSearchKeywordChange}
             />
           ))}
         </Styled.SliderItemsContainer>
@@ -45,7 +50,7 @@ function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
 
       <Styled.NextBtn
         name="next"
-        onClick={handleSlider}
+        onClick={onMoveSlider}
         aria-label="slider next"
       >
         &#10095;
