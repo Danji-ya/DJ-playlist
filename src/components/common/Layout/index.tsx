@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import PlayerContainer from '@containers/PlayerContainer';
 import Header from '@components/Header';
-import Sidebar from '@components/Sidebar';
+import Player from '@components/Player';
+import SideNavigationBar from '@components/SideNavigationBar';
 import Styled from './Layout.style';
 
 interface Props {
@@ -14,9 +14,9 @@ function Layout({ children }: Props) {
       <Header />
       <Styled.Container>
         {children}
-        <PlayerContainer />
+        <Player />
       </Styled.Container>
-      <Sidebar />
+      <SideNavigationBar />
     </>
   );
 }

@@ -5,22 +5,24 @@ import { toastState } from '@store/toastState';
 import Styled from '@components/Toast/Toast.style';
 import { IToastState } from '@typings/toast';
 
-function ToastContainer() {
+function ToastManager() {
   const [toasts, setToasts] = useRecoilState<IToastState[]>(toastState);
 
-  const hideToast = (toastId: string) => {
+  const onHideToast = (toastId: string) => {
     setToasts((prevToasts) => prevToasts.filter(({ id }) => id !== toastId));
   };
+
+  if (toasts.length === 0) return null;
 
   return (
     <CreateToastPortal>
       <Styled.Container>
         {toasts.map((toast) => (
-          <Toast key={toast.id} hideToast={hideToast} {...toast} />
+          <Toast key={toast.id} onHideToast={onHideToast} {...toast} />
         ))}
       </Styled.Container>
     </CreateToastPortal>
   );
 }
 
-export default ToastContainer;
+export default ToastManager;

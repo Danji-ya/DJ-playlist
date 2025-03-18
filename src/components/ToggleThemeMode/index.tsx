@@ -1,18 +1,15 @@
-import { DarkLight } from '@typings/theme';
-import Styled from './ToggleMode.style';
+import useTheme from '@services/hooks/useTheme';
+import { THEME_MODE } from '@constants/theme';
+import Styled from './ToggleThemeMode.style';
 
-interface Props {
-  mode: DarkLight;
-  toggleMode: () => void;
-}
-
-function ToggleMode({ mode, toggleMode }: Props) {
-  const isLight = mode === 'light';
+function ToggleThemeMode() {
+  const { theme, setTheme } = useTheme();
+  const isLightTheme = theme === THEME_MODE.LIGHT;
 
   return (
     <Styled.Container
-      lightTheme={isLight}
-      onClick={toggleMode}
+      lightTheme={isLightTheme}
+      onClick={setTheme}
       aria-label="theme toggle"
     >
       <svg
@@ -35,4 +32,4 @@ function ToggleMode({ mode, toggleMode }: Props) {
   );
 }
 
-export default ToggleMode;
+export default ToggleThemeMode;

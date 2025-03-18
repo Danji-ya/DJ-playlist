@@ -4,17 +4,17 @@ import Styled from './Slider.style';
 interface Props {
   item: ITopSearched;
   isShow: boolean;
-  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
 }
 
-function Item({ item, isShow, handleSearchKeyword }: Props) {
+function Item({ item, isShow, onSearchKeywordChange }: Props) {
   return (
     <Styled.AlbumWrapper key={`${item.id}`}>
       <Styled.AlbumBtn
         tabIndex={isShow ? undefined : -1}
         aria-hidden={!isShow}
         onClick={() =>
-          handleSearchKeyword({ value: item.title, isAutoKeyword: true })
+          onSearchKeywordChange({ value: item.title, isAutoKeyword: true })
         }
       >
         <Styled.AlbumImgWrapper>

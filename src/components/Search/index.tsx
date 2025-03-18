@@ -1,43 +1,50 @@
-import SearchFormContainer from '@containers/SearchFormContainer';
-import SearchResultContainer from '@containers/SearchResultContainer';
-import SliderContainer from '@containers/SliderContainer';
+import Slider from '@components/Slider';
 import ErrorBoundary from '@components/common/ErrorBoundary';
-import Error from '@components/Error';
-import { ISearchKeyword } from '@typings/search';
-import { IMusic } from '@typings/music';
-import { ModalHandle } from './Form';
+import Error from '@components/common/Error';
+import useSearchForm from '@services/hooks/useSearchForm';
+import useSearchHistory from '@services/hooks/useSearchHistory';
+import useSearchResult from '@services/hooks/useSearchResult';
+import usePlaylist from '@services/hooks/usePlaylist';
+import Result from './Result';
+import Form from './Form';
 import Styled from './Search.style';
 
-interface Props {
-  keyword: string;
-  refProp: React.Ref<ModalHandle>;
-  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
-  handleSelectMusic: (selectedMusic: IMusic) => void;
-}
+function Search() {
+  const { searchHistory, onAddSearchHistory, onDeleteSearchHistory } =
+    useSearchHistory();
 
-function Search({
-  keyword,
-  refProp,
-  handleSearchKeyword,
-  handleSelectMusic,
-}: Props) {
+  const { keyword, formRef, onSearchKeywordChange } = useSearchForm({
+    onAddSearchHistory,
+  });
+
+  const {
+    playlistControls: { onSelectMusic },
+  } = usePlaylist();
+
+  const { isLoading, musicList } = useSearchResult({
+    keyword,
+  });
+
   return (
     <>
-      <SearchFormContainer
+      <Form
+        ref={formRef}
         keyword={keyword}
-        refProp={refProp}
-        handleSearchKeyword={handleSearchKeyword}
+        searchHistory={searchHistory}
+        onSearchKeywordChange={onSearchKeywordChange}
+        onDeleteSearchHistory={onDeleteSearchHistory}
       />
       <Styled.SliderWrapper>
         <Styled.MainTitle>인기 검색어</Styled.MainTitle>
-        <SliderContainer handleSearchKeyword={handleSearchKeyword} />
+        <Slider onSearchKeywordChange={onSearchKeywordChange} />
       </Styled.SliderWrapper>
       <Styled.SearchResultWrapper>
         <Styled.MainTitle>검색 결과</Styled.MainTitle>
         <ErrorBoundary fallback={<Error />}>
-          <SearchResultContainer
-            keyword={keyword}
-            handleSelectMusic={handleSelectMusic}
+          <Result
+            isLoading={isLoading}
+            musicList={musicList}
+            onSelectMusic={onSelectMusic}
           />
         </ErrorBoundary>
       </Styled.SearchResultWrapper>

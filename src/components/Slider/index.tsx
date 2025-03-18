@@ -1,20 +1,18 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import React from 'react';
 import Item from '@components/Slider/Item';
 import { getNumberOfItemsToShow, sliderItemShowReader } from '@utils/slider';
 import useResize from '@services/hooks/useResize';
+import useSlider from '@services/hooks/useSlider';
 import { ISearchKeyword, ITopSearched } from '@typings/search';
 import Styled from './Slider.style';
 
 interface Props {
-  data: ITopSearched[];
-  handleSlider: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  position: number;
-  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
 }
 
-function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
-  const [windowWidth, _] = useResize({ type: 'throttle' });
+function Slider({ onSearchKeywordChange }: Props) {
+  const { data, position, onMoveSlider } = useSlider();
+  const [windowWidth] = useResize({ type: 'throttle' });
   const isShowCurrentItem = sliderItemShowReader(
     position,
     getNumberOfItemsToShow(windowWidth),
@@ -24,7 +22,7 @@ function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
     <Styled.SliderContent>
       <Styled.PrevBtn
         name="prev"
-        onClick={handleSlider}
+        onClick={onMoveSlider}
         aria-label="slider prev"
       >
         &#10094;
@@ -37,7 +35,7 @@ function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
               isShow={isShowCurrentItem(idx)}
               key={item.id}
               item={item}
-              handleSearchKeyword={handleSearchKeyword}
+              onSearchKeywordChange={onSearchKeywordChange}
             />
           ))}
         </Styled.SliderItemsContainer>
@@ -45,7 +43,7 @@ function Slider({ data, handleSlider, position, handleSearchKeyword }: Props) {
 
       <Styled.NextBtn
         name="next"
-        onClick={handleSlider}
+        onClick={onMoveSlider}
         aria-label="slider next"
       >
         &#10095;

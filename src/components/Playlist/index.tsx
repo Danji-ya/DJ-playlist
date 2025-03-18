@@ -1,49 +1,42 @@
-import CardItem from '@components/common/CardItem';
+import Card from '@components/common/Card';
 import { MESSAGE } from '@constants/messages';
 import { H3A11Y } from '@styles/common';
 import images from '@constants/images';
 import { IMusic } from '@typings/music';
+import usePlaylist from '@services/hooks/usePlaylist';
 import Styled from './Playlist.style';
 
-interface Props {
-  djPlaylist: IMusic[];
-  handleSelectMusic: (music: IMusic) => void;
-  handleDragStart: (e: React.DragEvent<HTMLLIElement>) => void;
-  handleDragOver: (e: React.DragEvent<HTMLLIElement>) => void;
-  handleDrop: (e: React.DragEvent<HTMLLIElement>) => void;
-}
+function Playlist() {
+  const {
+    playlist,
+    dragControls: { onDragStart, onDragOver, onDragDrop },
+    playlistControls: { onSelectMusic },
+  } = usePlaylist();
 
-function Playlist({
-  djPlaylist,
-  handleSelectMusic,
-  handleDragStart,
-  handleDragOver,
-  handleDrop,
-}: Props) {
   return (
     <Styled.Container>
       <H3A11Y>플레이리스트</H3A11Y>
-      {djPlaylist.length > 0 ? (
+      {playlist.length > 0 ? (
         <Styled.Playlist>
-          {djPlaylist.map((item: IMusic, idx: number) => (
-            <CardItem
+          {playlist.map((item: IMusic, idx: number) => (
+            <Card
               key={item.videoId}
               draggable
-              onDragStart={handleDragStart}
-              onDragOver={handleDragOver}
-              onDrop={handleDrop}
+              onDragStart={onDragStart}
+              onDragOver={onDragOver}
+              onDrop={onDragDrop}
               idx={idx}
             >
-              <CardItem.Thumbnail
+              <Card.Thumbnail
                 item={item}
-                onClick={handleSelectMusic}
+                onClick={onSelectMusic}
                 url={item.url}
               />
-              <CardItem.Body>
-                <CardItem.Title>{item.title}</CardItem.Title>
-                <CardItem.SubTitle>{item.subtitle}</CardItem.SubTitle>
-              </CardItem.Body>
-            </CardItem>
+              <Card.Body>
+                <Card.Title>{item.title}</Card.Title>
+                <Card.SubTitle>{item.subtitle}</Card.SubTitle>
+              </Card.Body>
+            </Card>
           ))}
         </Styled.Playlist>
       ) : (

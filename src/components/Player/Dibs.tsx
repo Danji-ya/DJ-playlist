@@ -5,14 +5,14 @@ import Styled from './Player.style';
 interface Props {
   dibs: boolean;
   selectedMusic: IMusic;
-  handleDjPlaylist: (music: IMusic) => void;
+  onToggleDibs: (music: IMusic) => void;
 }
 
-function Dibs({ dibs, selectedMusic, handleDjPlaylist }: Props) {
+function Dibs({ dibs, selectedMusic, onToggleDibs }: Props) {
   return (
     <Styled.AddButton
       dibs={dibs}
-      onClick={() => handleDjPlaylist(selectedMusic)}
+      onClick={() => onToggleDibs(selectedMusic)}
       aria-label="dibs"
     >
       <icons.Heart />

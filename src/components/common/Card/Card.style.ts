@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const Container = styled.li`
   justify-self: center;
@@ -66,10 +66,73 @@ const Subtitle = styled.p`
   margin: 5px 0;
 `;
 
+const loading = keyframes`
+  0% {
+    transform: translateX(-150%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+`;
+
+const Element = css`
+  overflow: hidden;
+  position: relative;
+  background: ${({ theme }) => theme.skeletonBg};
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: ${({ theme }) => theme.skeletonLoading};
+    animation: ${loading} 1.5s infinite;
+  }
+`;
+
+const ContainerSkeleton = styled.div`
+  position: relative;
+  align-self: center;
+  justify-self: center;
+  width: 250px;
+  border-radius: 15px;
+  padding: 10px;
+  margin: 10px;
+
+  background: ${({ theme }) => theme.cardBg};
+  border: ${({ theme }) => `1px solid ${theme.border}`};
+`;
+
+const ThumnailSkeleton = styled.div`
+  width: 100%;
+  height: 200px;
+  ${Element}
+`;
+
+const TitleSkeleton = styled.p`
+  margin: 7px 0;
+  width: 150px;
+  height: 10px;
+  ${Element}
+`;
+
+const SubtitleSkeleton = styled.p`
+  margin: 5px 0;
+  width: 50px;
+  height: 10px;
+  ${Element}
+`;
+
 export default {
   Container,
   Profile,
   Title,
   Subtitle,
   PlayBtnWrapper,
+  ContainerSkeleton,
+  ThumnailSkeleton,
+  TitleSkeleton,
+  SubtitleSkeleton,
 };

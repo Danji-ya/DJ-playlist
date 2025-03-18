@@ -1,4 +1,4 @@
-const SLIDER = {
+export const SLIDER = {
   PREV: -1,
   NEXT: 1,
   DEFAULT_WIDTH: '33.4%',
@@ -55,5 +55,3 @@ const SLIDER = {
     },
   ],
 };
-
-export { SLIDER };

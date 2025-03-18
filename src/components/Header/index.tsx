@@ -1,4 +1,4 @@
-import Gnb from '@components/Gnb';
+import GlobalNavigationBar from '@components/GlobalNavigationBar';
 import icons from '@constants/icons';
 import { H1A11Y } from '@styles/common';
 import Styled from './Header.style';
@@ -15,7 +15,7 @@ function Header() {
         <Styled.LogoText>DJ playlist</Styled.LogoText>
       </Styled.LogoLink>
 
-      <Gnb />
+      <GlobalNavigationBar />
     </Styled.Container>
   );
 }

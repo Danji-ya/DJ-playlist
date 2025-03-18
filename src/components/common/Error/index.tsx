@@ -5,7 +5,7 @@ interface Props {
   refresh?: () => void;
 }
 
-export default function Error({ refresh }: Props) {
+function Error({ refresh }: Props) {
   function handleClick() {
     if (refresh) refresh();
   }
@@ -22,3 +22,5 @@ export default function Error({ refresh }: Props) {
     </Styled.Background>
   );
 }
+
+export default Error;

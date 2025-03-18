@@ -1,10 +1,10 @@
 import { atom } from 'recoil';
 import localStorageEffect from '@store/localStorageEffect';
 
-const KEY = 'searchHistory';
+const LOCAL_STORAGE_KEY = 'dj-search_history';
 
 export const searchHistoryState = atom<string[]>({
   key: 'searchHistoryState',
   default: [],
-  effects: [localStorageEffect(KEY)],
+  effects: [localStorageEffect(LOCAL_STORAGE_KEY)],
 });

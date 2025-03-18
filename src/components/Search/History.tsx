@@ -5,15 +5,15 @@ import { ISearchKeyword } from '@typings/search';
 import Styled from './Search.style';
 
 interface Props {
-  handleSearchKeyword: ({ value, isAutoKeyword }: ISearchKeyword) => void;
-  delSearchHistory: (idx: number) => void;
+  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onDeleteSearchHistory: (idx: number) => void;
   searchHistory: string[];
   isShow: boolean;
 }
 
 function History({
-  handleSearchKeyword,
-  delSearchHistory,
+  onSearchKeywordChange,
+  onDeleteSearchHistory,
   searchHistory,
   isShow,
 }: Props) {
@@ -21,7 +21,7 @@ function History({
     e: React.MouseEvent<HTMLButtonElement>,
     keyword: string,
   ) => {
-    handleSearchKeyword({ value: keyword, isAutoKeyword: true });
+    onSearchKeywordChange({ value: keyword, isAutoKeyword: true });
   };
 
   const handleKeyDown = (
@@ -29,11 +29,11 @@ function History({
     keyword: string,
   ) => {
     if (e.key !== 'Enter') return;
-    handleSearchKeyword({ value: keyword, isAutoKeyword: true });
+    onSearchKeywordChange({ value: keyword, isAutoKeyword: true });
   };
 
   const handleClose = (idx: number) => {
-    delSearchHistory(idx);
+    onDeleteSearchHistory(idx);
   };
 
   return (

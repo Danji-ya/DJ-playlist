@@ -1,44 +1,60 @@
-import Skeleton from '@components/Skeleton';
-import CardItem from '@components/common/CardItem';
+import Card, { CardSkeleton } from '@components/common/Card';
 import { IMusic } from '@typings/music';
-import ResultEmpty from './ResultEmpty';
+import NoResult from './NoResult';
 import Styled from './Search.style';
 
-interface Props {
+interface BaseProps {
+  onSelectMusic: (music: IMusic) => void;
+}
+
+interface Props extends BaseProps {
   musicList: undefined | IMusic[];
-  handleSelectMusic: (music: IMusic) => void;
   isLoading: boolean;
 }
 
-function Result({ musicList, handleSelectMusic, isLoading }: Props) {
+function LoadingSkeleton() {
+  return (
+    <>
+      {Array.from({ length: 8 }, (_v, i) => i + 1).map((item) => (
+        <CardSkeleton key={item} />
+      ))}
+    </>
+  );
+}
+
+function MusicCards({
+  musicList,
+  onSelectMusic,
+}: BaseProps & { musicList: IMusic[] }) {
+  return (
+    <>
+      {musicList.map((item: IMusic) => (
+        <Card key={item.videoId}>
+          <Card.Thumbnail item={item} onClick={onSelectMusic} url={item.url} />
+          <Card.Body>
+            <Card.Title>{item.title}</Card.Title>
+            <Card.SubTitle>{item.subtitle}</Card.SubTitle>
+          </Card.Body>
+        </Card>
+      ))}
+    </>
+  );
+}
+
+function SearchResult({ musicList, onSelectMusic }: Omit<Props, 'isLoading'>) {
+  if (musicList === undefined) return null;
+  if (musicList.length === 0) return <NoResult />;
+
+  return <MusicCards musicList={musicList} onSelectMusic={onSelectMusic} />;
+}
+
+function Result({ musicList, onSelectMusic, isLoading }: Props) {
   return (
     <Styled.SearchResultGrid>
       {isLoading ? (
-        Array.from({ length: 8 }, (_v, i) => i + 1).map((item) => (
-          <Skeleton key={item} />
-        ))
+        <LoadingSkeleton />
       ) : (
-        <>
-          {musicList && musicList.length > 0 ? (
-            <>
-              {musicList.map((item: IMusic) => (
-                <CardItem key={item.videoId}>
-                  <CardItem.Thumbnail
-                    item={item}
-                    onClick={handleSelectMusic}
-                    url={item.url}
-                  />
-                  <CardItem.Body>
-                    <CardItem.Title>{item.title}</CardItem.Title>
-                    <CardItem.SubTitle>{item.subtitle}</CardItem.SubTitle>
-                  </CardItem.Body>
-                </CardItem>
-              ))}
-            </>
-          ) : (
-            musicList && <ResultEmpty />
-          )}
-        </>
+        <SearchResult musicList={musicList} onSelectMusic={onSelectMusic} />
       )}
     </Styled.SearchResultGrid>
   );

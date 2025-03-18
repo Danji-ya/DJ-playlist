@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 import { PATH } from '@constants/path';
 import icons from '@constants/icons';
 import { H2A11Y } from '@styles/common';
-import Styled from './Gnb.style';
+import Styled from './GlobalNavigationBar.style';
 
-function Gnb() {
+function GlobalNavigationBar() {
   const { pathname: path } = useLocation();
 
   const navItems = [
@@ -49,4 +49,4 @@ function Gnb() {
   );
 }
 
-export default Gnb;
+export default GlobalNavigationBar;

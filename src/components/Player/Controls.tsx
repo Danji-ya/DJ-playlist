@@ -6,29 +6,29 @@ interface Props {
   paused: boolean;
   selectedMusic: IMusic;
   shuffle: boolean;
-  handleState: () => void;
-  handleChangeMusic: ({ music, isNext }: IMusicChange) => void;
-  handleShuffle: () => void;
+  onToggleState: () => void;
+  onMusicChange: ({ music, isNext }: IMusicChange) => void;
+  onToggleShuffle: () => void;
 }
 
 function Controls({
   paused,
   selectedMusic,
   shuffle,
-  handleChangeMusic,
-  handleState,
-  handleShuffle,
+  onMusicChange,
+  onToggleState,
+  onToggleShuffle,
 }: Props) {
   return (
     <Styled.Controls>
       <Styled.PrevButton
-        onClick={() => handleChangeMusic({ music: selectedMusic })}
+        onClick={() => onMusicChange({ music: selectedMusic })}
         aria-label="music play prev"
       >
         <icons.Prev size={30} />
       </Styled.PrevButton>
 
-      <Styled.MainButton onClick={handleState} aria-label="music play state">
+      <Styled.MainButton onClick={onToggleState} aria-label="music play state">
         {paused ? (
           <icons.Play width={35} height={35} />
         ) : (
@@ -37,16 +37,14 @@ function Controls({
       </Styled.MainButton>
 
       <Styled.NextButton
-        onClick={() =>
-          handleChangeMusic({ music: selectedMusic, isNext: true })
-        }
+        onClick={() => onMusicChange({ music: selectedMusic, isNext: true })}
         aria-label="music play next"
       >
         <icons.Next />
       </Styled.NextButton>
       <Styled.ShuffleButton
         shuffle={shuffle}
-        onClick={() => handleShuffle()}
+        onClick={onToggleShuffle}
         aria-label="shuffle"
       >
         <icons.Shuffle width={22} height={22} />
