@@ -3,10 +3,10 @@ import Toast from '@components/Toast';
 import CreateToastPortal from '@components/Toast/CreateToastPotal';
 import { toastState } from '@store/toastState';
 import Styled from '@components/Toast/Toast.style';
-import { IToastState } from '@typings/toast';
+import { ToastState } from '@typings/toast';
 
 function ToastManager() {
-  const [toasts, setToasts] = useRecoilState<IToastState[]>(toastState);
+  const [toasts, setToasts] = useRecoilState<ToastState[]>(toastState);
 
   const onHideToast = (toastId: string) => {
     setToasts((prevToasts) => prevToasts.filter(({ id }) => id !== toastId));

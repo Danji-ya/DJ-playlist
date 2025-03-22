@@ -1,13 +1,16 @@
 import { useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
+import SearchFormContextProvider from '@contexts/SearchFormContext';
+import useSearchHistory from '@services/hooks/useSearchHistory';
 import Search from '@components/Search';
 import { keywordState } from '@store/keywordState';
 import { PATH } from '@constants/path';
 import { H2A11Y } from '@styles/common';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 function SearchPage() {
   const [keyword] = useRecoilState(keywordState);
+  const { onAddSearchHistory } = useSearchHistory();
   const navigate = useNavigate();
   const { search } = useLocation();
 
@@ -28,7 +31,9 @@ function SearchPage() {
   return (
     <article>
       <H2A11Y>검색 본문</H2A11Y>
-      <Search />
+      <SearchFormContextProvider onKeywordChangeCallback={onAddSearchHistory}>
+        <Search />
+      </SearchFormContextProvider>
     </article>
   );
 }

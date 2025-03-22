@@ -1,11 +1,11 @@
 import { atom } from 'recoil';
 import localStorageEffect from '@store/localStorageEffect';
-import { IMusic } from '@typings/music';
+import { Music } from '@typings/music';
 
 const LOCAL_STORAGE_KEY = 'dj-playlist';
 
-export const playlistState = atom({
+export const playlistState = atom<Music[]>({
   key: 'playlistState',
-  default: [] as IMusic[],
+  default: [],
   effects: [localStorageEffect(LOCAL_STORAGE_KEY)],
 });

@@ -1,10 +1,12 @@
-export interface IToast {
+export interface Toast {
   title: string;
   message: string;
   duration?: number;
-  type?: 'success' | 'error' | 'info';
+  type?: ToastType;
 }
 
-export interface IToastState extends IToast {
+export interface ToastState extends Toast {
   id: string;
 }
+
+export type ToastType = 'success' | 'error' | 'info';

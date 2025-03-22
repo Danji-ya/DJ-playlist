@@ -1,26 +1,11 @@
-export interface IMusic {
+export interface Music {
   videoId: string;
   title: string;
   subtitle: string;
   url: string;
 }
 
-export interface ISwapRoute {
-  oriIdx: number;
-  desIdx: number;
-}
-
-export interface IMusicData {
+export interface YouTubeSearchResponse {
   nextPageToken: string;
-  items: IMusic[];
-}
-
-export interface IMusicChange {
-  music: IMusic;
-  isNext?: boolean;
-}
-
-export interface IMusicVolume {
-  value: string;
-  isTurnOff?: boolean;
+  items: Music[];
 }

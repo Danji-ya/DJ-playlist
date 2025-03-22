@@ -137,6 +137,7 @@ const MainTitle = styled.h3`
 
 const SearchNoResultWrapper = styled.div`
   display: flex;
+  min-height: 300px;
   flex-direction: column;
   justify-content: center;
   align-items: center;

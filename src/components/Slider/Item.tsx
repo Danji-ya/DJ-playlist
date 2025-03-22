@@ -1,21 +1,23 @@
-import { ISearchKeyword, ITopSearched } from '@typings/search';
+import { useSearchForm } from '@contexts/SearchFormContext';
+import { TopSearchItem } from '@typings/search';
 import Styled from './Slider.style';
 
 interface Props {
-  item: ITopSearched;
+  item: TopSearchItem;
   isShow: boolean;
-  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
 }
 
-function Item({ item, isShow, onSearchKeywordChange }: Props) {
+function Item({ item, isShow }: Props) {
+  const {
+    searchControls: { onSearchKeywordChange },
+  } = useSearchForm();
+
   return (
     <Styled.AlbumWrapper key={`${item.id}`}>
       <Styled.AlbumBtn
         tabIndex={isShow ? undefined : -1}
         aria-hidden={!isShow}
-        onClick={() =>
-          onSearchKeywordChange({ value: item.title, isAutoKeyword: true })
-        }
+        onClick={() => onSearchKeywordChange(item.title)}
       >
         <Styled.AlbumImgWrapper>
           <Styled.AlbumImg src={item.src} alt={`${item.title} 이미지`} />

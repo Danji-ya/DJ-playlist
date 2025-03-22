@@ -1,24 +1,12 @@
 import icons from '@constants/icons';
-import { IMusic, IMusicChange } from '@typings/music';
+import { usePlayer } from '@contexts/PlayerContext';
 import Styled from './Player.style';
 
-interface Props {
-  paused: boolean;
-  selectedMusic: IMusic;
-  shuffle: boolean;
-  onToggleState: () => void;
-  onMusicChange: ({ music, isNext }: IMusicChange) => void;
-  onToggleShuffle: () => void;
-}
+function Controls() {
+  const { playerState, playerControls } = usePlayer();
+  const { paused, selectedMusic, shuffle } = playerState;
+  const { onMusicChange, onToggleState, onToggleShuffle } = playerControls;
 
-function Controls({
-  paused,
-  selectedMusic,
-  shuffle,
-  onMusicChange,
-  onToggleState,
-  onToggleShuffle,
-}: Props) {
   return (
     <Styled.Controls>
       <Styled.PrevButton

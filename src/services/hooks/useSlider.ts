@@ -2,14 +2,14 @@ import { useState } from 'react';
 import { SLIDER } from '@constants/slider';
 import { isMinMaxSlider } from '@utils/slider';
 import {
-  ITopSearched,
+  TopSearchItem,
   SliderButtonType,
   SLIDER_BUTTON_TYPE_LIST,
 } from '@typings/search';
 
 function useSlider() {
   const [position, setPosition] = useState(0);
-  const [topSearchedData] = useState<ITopSearched[]>(SLIDER.INIT_DATA);
+  const [topSearchedData] = useState<TopSearchItem[]>(SLIDER.INIT_DATA);
 
   const moveSlider = (type: SliderButtonType) => {
     const handleType = { prev: SLIDER.PREV, next: SLIDER.NEXT };

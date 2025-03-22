@@ -1,10 +1,10 @@
 import { atom } from 'recoil';
-import { IMusic } from '@typings/music';
+import { Music } from '@typings/music';
 
 export const playerState = atom({
   key: 'playerState',
   default: {
-    selectedMusic: {} as IMusic,
+    selectedMusic: {} as Music,
     volume: 0.5,
     shuffle: false,
   },

@@ -3,32 +3,28 @@ import { useRecoilState } from 'recoil';
 import { playerState } from '@store/playerState';
 import { playlistState } from '@store/playlistState';
 import { NOT_INCLUDE_DJPLAYLIST, PLAYER_STATE } from '@constants/player';
-import { IMusic, IMusicChange, IMusicVolume } from '@typings/music';
+import { Music } from '@typings/music';
 import Youtube from '@components/Youtube';
+import createContext from '@services/hooks/useContext';
+import {
+  MusicChangeHandler,
+  MusicMouseStateChangeHandler,
+  MusicOnStateChangeHandler,
+  MusicProgressChangeHandler,
+  MusicToggleShuffleHandler,
+  MusicToggleStateHandler,
+  MusicVolumeChangeHandler,
+  PlayerContextValue,
+  PlayerProviderProps,
+} from './PlayerContext.types';
 
-interface UsePlayerReturn {
-  playerRef: React.RefObject<Youtube>;
-  playerState: {
-    currentTime: number;
-    duration: number;
-    volume: number;
-    muted: boolean;
-    paused: boolean;
-    selectedMusic: IMusic;
-    shuffle: boolean;
-  };
-  playerControls: {
-    onStateChange: (e: YT.OnStateChangeEvent) => void;
-    onMouseStateChange: (isDown?: boolean) => void;
-    onToggleState: () => void;
-    onVolumeChange: (params: IMusicVolume) => void;
-    onProgressChange: (target: HTMLInputElement) => void;
-    onMusicChange: (params: IMusicChange) => void;
-    onToggleShuffle: () => void;
-  };
-}
+const [PlayerProvider, usePlayer] = createContext<PlayerContextValue>({
+  name: 'PlayerContext',
+  hookName: 'usePlayer',
+  providerName: 'PlayerProvider',
+});
 
-function usePlayer(): UsePlayerReturn {
+function PlayerContextProvider({ children }: PlayerProviderProps) {
   const [playlist] = useRecoilState(playlistState);
   const [player, setPlayer] = useRecoilState(playerState);
   const { selectedMusic, shuffle } = player;
@@ -51,7 +47,7 @@ function usePlayer(): UsePlayerReturn {
     };
   }, [selectedMusic]);
 
-  const shufflePlaylist = (oriPlaylist: IMusic[]) => {
+  const shufflePlaylist = (oriPlaylist: Music[]) => {
     const copiedPlaylist = [...oriPlaylist];
     for (let i = copiedPlaylist.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -67,11 +63,11 @@ function usePlayer(): UsePlayerReturn {
     newPlaylist,
     curMusic,
   }: {
-    newPlaylist: IMusic[];
-    curMusic: IMusic;
+    newPlaylist: Music[];
+    curMusic: Music;
   }) => newPlaylist.findIndex((item) => item.videoId === curMusic.videoId);
 
-  const onMusicChange = ({ music, isNext }: IMusicChange) => {
+  const onMusicChange: MusicChangeHandler = ({ music, isNext }) => {
     const playlistLen = playlist.length - 1;
     const newPlaylist = shuffle ? shufflePlaylist(playlist) : playlist;
     const curPlayMusicIdx = getCurrentMusicIdx({
@@ -112,7 +108,7 @@ function usePlayer(): UsePlayerReturn {
     setDuration(target.getDuration());
   };
 
-  const onStateChange = (e: YT.OnStateChangeEvent) => {
+  const onStateChange: MusicOnStateChangeHandler = (e) => {
     const { data: state } = e;
     clearInterval(timer.current as NodeJS.Timeout);
 
@@ -140,7 +136,7 @@ function usePlayer(): UsePlayerReturn {
     }
   };
 
-  const onMouseStateChange = (isDown?: boolean) => {
+  const onMouseStateChange: MusicMouseStateChangeHandler = (isDown) => {
     if (isDown) {
       isClick.current = true;
       return;
@@ -149,11 +145,11 @@ function usePlayer(): UsePlayerReturn {
     isClick.current = false;
   };
 
-  const onToggleState = () => {
+  const onToggleState: MusicToggleStateHandler = () => {
     setPaused((prev) => !prev);
   };
 
-  const onVolumeChange = ({ value, isTurnOff }: IMusicVolume) => {
+  const onVolumeChange: MusicVolumeChangeHandler = ({ value, isTurnOff }) => {
     if (isTurnOff) {
       setVolume(0);
       setMuted(true);
@@ -169,20 +165,20 @@ function usePlayer(): UsePlayerReturn {
     setVolume(valueToNumber);
   };
 
-  const onProgressChange = (target: HTMLInputElement) => {
+  const onProgressChange: MusicProgressChangeHandler = (target) => {
     const willUpdateCurrentTime = parseFloat(target.value);
     playerRef.current?.player?.seekTo(willUpdateCurrentTime, true);
     setCurrentTime(willUpdateCurrentTime);
   };
 
-  const onToggleShuffle = () => {
+  const onToggleShuffle: MusicToggleShuffleHandler = () => {
     setPlayer((prev) => ({
       ...prev,
       shuffle: !prev.shuffle,
     }));
   };
 
-  return {
+  const value: PlayerContextValue = {
     playerRef,
     playerState: {
       currentTime,
@@ -203,6 +199,9 @@ function usePlayer(): UsePlayerReturn {
       onToggleShuffle,
     },
   };
+
+  return <PlayerProvider value={value}>{children}</PlayerProvider>;
 }
 
-export default usePlayer;
+export { usePlayer };
+export default PlayerContextProvider;
