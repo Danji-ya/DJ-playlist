@@ -31,7 +31,7 @@ function Form() {
 
     if (currentValue.length === 0 || keyword === currentValue) return;
 
-    onSearchKeywordChange({ value: currentValue });
+    onSearchKeywordChange(currentValue);
   };
 
   const handleFocus = () => {

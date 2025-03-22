@@ -1,38 +1,22 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { playerState } from '@store/playerState';
 import { playlistState } from '@store/playlistState';
 import { NOT_INCLUDE_DJPLAYLIST, PLAYER_STATE } from '@constants/player';
-import { Music, MusicVolumeChangeHandler } from '@typings/music';
+import { Music } from '@typings/music';
 import Youtube from '@components/Youtube';
 import createContext from '@services/hooks/useContext';
-
-export type MusicChangeHandler = (params: {
-  music: Music;
-  isNext?: boolean;
-}) => void;
-
-interface PlayerContextValue {
-  playerRef: React.RefObject<Youtube>;
-  playerState: {
-    currentTime: number;
-    duration: number;
-    volume: number;
-    muted: boolean;
-    paused: boolean;
-    selectedMusic: Music;
-    shuffle: boolean;
-  };
-  playerControls: {
-    onStateChange: (e: YT.OnStateChangeEvent) => void;
-    onMouseStateChange: (isDown?: boolean) => void;
-    onToggleState: () => void;
-    onVolumeChange: MusicVolumeChangeHandler;
-    onProgressChange: (target: HTMLInputElement) => void;
-    onMusicChange: MusicChangeHandler;
-    onToggleShuffle: () => void;
-  };
-}
+import {
+  MusicChangeHandler,
+  MusicMouseStateChangeHandler,
+  MusicOnStateChangeHandler,
+  MusicProgressChangeHandler,
+  MusicToggleShuffleHandler,
+  MusicToggleStateHandler,
+  MusicVolumeChangeHandler,
+  PlayerContextValue,
+  PlayerProviderProps,
+} from './PlayerContext.types';
 
 const [PlayerProvider, usePlayer] = createContext<PlayerContextValue>({
   name: 'PlayerContext',
@@ -40,11 +24,7 @@ const [PlayerProvider, usePlayer] = createContext<PlayerContextValue>({
   providerName: 'PlayerProvider',
 });
 
-interface PlayerProviderProps {
-  children: ReactNode;
-}
-
-export function PlayerContextProvider({ children }: PlayerProviderProps) {
+function PlayerContextProvider({ children }: PlayerProviderProps) {
   const [playlist] = useRecoilState(playlistState);
   const [player, setPlayer] = useRecoilState(playerState);
   const { selectedMusic, shuffle } = player;
@@ -128,7 +108,7 @@ export function PlayerContextProvider({ children }: PlayerProviderProps) {
     setDuration(target.getDuration());
   };
 
-  const onStateChange = (e: YT.OnStateChangeEvent) => {
+  const onStateChange: MusicOnStateChangeHandler = (e) => {
     const { data: state } = e;
     clearInterval(timer.current as NodeJS.Timeout);
 
@@ -156,7 +136,7 @@ export function PlayerContextProvider({ children }: PlayerProviderProps) {
     }
   };
 
-  const onMouseStateChange = (isDown?: boolean) => {
+  const onMouseStateChange: MusicMouseStateChangeHandler = (isDown) => {
     if (isDown) {
       isClick.current = true;
       return;
@@ -165,7 +145,7 @@ export function PlayerContextProvider({ children }: PlayerProviderProps) {
     isClick.current = false;
   };
 
-  const onToggleState = () => {
+  const onToggleState: MusicToggleStateHandler = () => {
     setPaused((prev) => !prev);
   };
 
@@ -185,13 +165,13 @@ export function PlayerContextProvider({ children }: PlayerProviderProps) {
     setVolume(valueToNumber);
   };
 
-  const onProgressChange = (target: HTMLInputElement) => {
+  const onProgressChange: MusicProgressChangeHandler = (target) => {
     const willUpdateCurrentTime = parseFloat(target.value);
     playerRef.current?.player?.seekTo(willUpdateCurrentTime, true);
     setCurrentTime(willUpdateCurrentTime);
   };
 
-  const onToggleShuffle = () => {
+  const onToggleShuffle: MusicToggleShuffleHandler = () => {
     setPlayer((prev) => ({
       ...prev,
       shuffle: !prev.shuffle,

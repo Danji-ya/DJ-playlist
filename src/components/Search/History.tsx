@@ -19,7 +19,7 @@ function History({ isShow }: Props) {
     e: React.MouseEvent<HTMLButtonElement>,
     keyword: string,
   ) => {
-    onSearchKeywordChange({ value: keyword, isAutoKeyword: true });
+    onSearchKeywordChange(keyword);
   };
 
   const handleKeyDown = (
@@ -27,7 +27,7 @@ function History({ isShow }: Props) {
     keyword: string,
   ) => {
     if (e.key !== 'Enter') return;
-    onSearchKeywordChange({ value: keyword, isAutoKeyword: true });
+    onSearchKeywordChange(keyword);
   };
 
   const handleClose = (idx: number) => {

@@ -17,9 +17,7 @@ function Item({ item, isShow }: Props) {
       <Styled.AlbumBtn
         tabIndex={isShow ? undefined : -1}
         aria-hidden={!isShow}
-        onClick={() =>
-          onSearchKeywordChange({ value: item.title, isAutoKeyword: true })
-        }
+        onClick={() => onSearchKeywordChange(item.title)}
       >
         <Styled.AlbumImgWrapper>
           <Styled.AlbumImg src={item.src} alt={`${item.title} 이미지`} />

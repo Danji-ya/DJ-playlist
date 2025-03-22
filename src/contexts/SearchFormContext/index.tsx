@@ -1,15 +1,11 @@
 import { ReactNode } from 'react';
 import { useRecoilState } from 'recoil';
 import { keywordState } from '@store/keywordState';
-import { SearchKeywordChangeHandler } from '@typings/search';
 import createContext from '@services/hooks/useContext';
-
-interface SearchFormContextValue {
-  keyword: string;
-  searchControls: {
-    onSearchKeywordChange: SearchKeywordChangeHandler;
-  };
-}
+import {
+  SearchFormContextValue,
+  SearchKeywordChangeHandler,
+} from './SearchContext.types';
 
 const [SearchFormProvider, useSearchForm] =
   createContext<SearchFormContextValue>({
@@ -29,7 +25,7 @@ export function SearchFormContextProvider({
 }: SearchFormProviderProps) {
   const [keyword, setKeyword] = useRecoilState(keywordState);
 
-  const onSearchKeywordChange: SearchKeywordChangeHandler = ({ value }) => {
+  const onSearchKeywordChange: SearchKeywordChangeHandler = (value) => {
     if (keyword !== value) {
       setKeyword(value);
       onKeywordChangeCallback?.(value);
