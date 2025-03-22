@@ -1,14 +1,14 @@
 import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
 import { LabelA11Y } from '@styles/common';
 import icons from '@constants/icons';
-import { ISearchKeyword } from '@typings/search';
+import { SearchKeywordChangeHandler } from '@typings/search';
 import History from './History';
 import Styled from './Search.style';
 
 interface Props {
   keyword: string;
   searchHistory: string[];
-  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onSearchKeywordChange: SearchKeywordChangeHandler;
   onDeleteSearchHistory: (idx: number) => void;
 }
 

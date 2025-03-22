@@ -1,10 +1,10 @@
-import { ISearchKeyword, ITopSearched } from '@typings/search';
+import { SearchKeywordChangeHandler, TopSearchItem } from '@typings/search';
 import Styled from './Slider.style';
 
 interface Props {
-  item: ITopSearched;
+  item: TopSearchItem;
   isShow: boolean;
-  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onSearchKeywordChange: SearchKeywordChangeHandler;
 }
 
 function Item({ item, isShow, onSearchKeywordChange }: Props) {

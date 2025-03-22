@@ -1,11 +1,11 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import icons from '@constants/icons';
-import { ISearchKeyword } from '@typings/search';
+import { SearchKeywordChangeHandler } from '@typings/search';
 import Styled from './Search.style';
 
 interface Props {
-  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onSearchKeywordChange: SearchKeywordChangeHandler;
   onDeleteSearchHistory: (idx: number) => void;
   searchHistory: string[];
   isShow: boolean;

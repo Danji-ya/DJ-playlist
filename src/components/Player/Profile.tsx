@@ -1,8 +1,8 @@
-import type { IMusic } from '@typings/music';
+import type { Music } from '@typings/music';
 import Styled from './Player.style';
 
 interface Props {
-  selectedMusic: IMusic;
+  selectedMusic: Music;
 }
 
 function Profile({ selectedMusic }: Props) {

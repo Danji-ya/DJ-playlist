@@ -1,11 +1,11 @@
 import icons from '@constants/icons';
-import { IMusic } from '@typings/music';
+import { Music } from '@typings/music';
 import Styled from './Player.style';
 
 interface Props {
   dibs: boolean;
-  selectedMusic: IMusic;
-  onToggleDibs: (music: IMusic) => void;
+  selectedMusic: Music;
+  onToggleDibs: (music: Music) => void;
 }
 
 function Dibs({ dibs, selectedMusic, onToggleDibs }: Props) {

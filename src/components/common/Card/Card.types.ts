@@ -1,4 +1,4 @@
-import { IMusic } from '@typings/music';
+import { Music } from '@typings/music';
 
 export interface Props {
   draggable?: boolean;
@@ -10,8 +10,8 @@ export interface Props {
 }
 
 export interface TumbnailProps {
-  item: IMusic;
-  onClick: (music: IMusic) => void;
+  item: Music;
+  onClick: (music: Music) => void;
   rounded?: boolean;
   url: string;
 }

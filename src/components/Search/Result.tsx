@@ -1,14 +1,14 @@
 import Card, { CardSkeleton } from '@components/common/Card';
-import { IMusic } from '@typings/music';
+import { Music } from '@typings/music';
 import NoResult from './NoResult';
 import Styled from './Search.style';
 
 interface BaseProps {
-  onSelectMusic: (music: IMusic) => void;
+  onSelectMusic: (music: Music) => void;
 }
 
 interface Props extends BaseProps {
-  musicList: undefined | IMusic[];
+  musicList: undefined | Music[];
   isLoading: boolean;
 }
 
@@ -25,10 +25,10 @@ function LoadingSkeleton() {
 function MusicCards({
   musicList,
   onSelectMusic,
-}: BaseProps & { musicList: IMusic[] }) {
+}: BaseProps & { musicList: Music[] }) {
   return (
     <>
-      {musicList.map((item: IMusic) => (
+      {musicList.map((item: Music) => (
         <Card key={item.videoId}>
           <Card.Thumbnail item={item} onClick={onSelectMusic} url={item.url} />
           <Card.Body>

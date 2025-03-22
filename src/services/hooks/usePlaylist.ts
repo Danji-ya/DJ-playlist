@@ -4,21 +4,21 @@ import { playlistState } from '@store/playlistState';
 import { playerState } from '@store/playerState';
 import useToast from '@services/hooks/useToast';
 import { MESSAGE } from '@constants/messages';
-import { IMusic, ISwapRoute } from '@typings/music';
+import { Music } from '@typings/music';
 import { isEmptyObj } from '@utils/common';
 
 interface UsePlaylistReturn {
-  playlist: IMusic[];
+  playlist: Music[];
   dragControls: {
     onDragStart: (e: React.DragEvent<HTMLLIElement>) => void;
     onDragOver: (e: React.DragEvent<HTMLLIElement>) => void;
     onDragDrop: (e: React.DragEvent<HTMLLIElement>) => void;
   };
   playlistControls: {
-    onToggleDibs: (music: IMusic) => void;
-    onSelectMusic: (selectedMusic: IMusic) => void;
+    onToggleDibs: (music: Music) => void;
+    onSelectMusic: (selectedMusic: Music) => void;
   };
-  isIncludeDjPlaylist: (music: IMusic) => boolean;
+  isIncludeDjPlaylist: (music: Music) => boolean;
 }
 
 function usePlaylist(): UsePlaylistReturn {
@@ -27,12 +27,11 @@ function usePlaylist(): UsePlaylistReturn {
   const toast = useToast();
   const startEl = useRef<HTMLLIElement | null>(null);
 
-  const isIncludeDjPlaylist = (music: IMusic) =>
+  const isIncludeDjPlaylist = (music: Music) =>
     !isEmptyObj(music) &&
-    playlist.filter((item: IMusic) => item.videoId === music.videoId).length >
-      0;
+    playlist.filter((item: Music) => item.videoId === music.videoId).length > 0;
 
-  const deleteMusicFromDjPlaylist = (music: IMusic) => {
+  const deleteMusicFromDjPlaylist = (music: Music) => {
     const newPlaylist = playlist.filter(
       (item) => item.videoId !== music.videoId,
     );
@@ -44,7 +43,7 @@ function usePlaylist(): UsePlaylistReturn {
     return newPlaylist;
   };
 
-  const addMusicFromDjPlaylist = (music: IMusic) => {
+  const addMusicFromDjPlaylist = (music: Music) => {
     const newPlaylist = [{ ...music }, ...playlist];
     toast({
       title: '',
@@ -53,14 +52,14 @@ function usePlaylist(): UsePlaylistReturn {
     return newPlaylist;
   };
 
-  const onToggleDibs = (music: IMusic) => {
+  const onToggleDibs = (music: Music) => {
     const newPlaylist = isIncludeDjPlaylist(music)
       ? deleteMusicFromDjPlaylist(music)
       : addMusicFromDjPlaylist(music);
     setPlaylist(newPlaylist);
   };
 
-  const onSelectMusic = (selectedMusic: IMusic) => {
+  const onSelectMusic = (selectedMusic: Music) => {
     setPlayer((prev) => ({
       ...prev,
       selectedMusic,
@@ -68,7 +67,7 @@ function usePlaylist(): UsePlaylistReturn {
   };
 
   const handleSwapDjplayList = useCallback(
-    (route: ISwapRoute) => {
+    (route: { oriIdx: number; desIdx: number }) => {
       const { oriIdx, desIdx } = route || {};
       if (oriIdx == null || desIdx == null) return;
 

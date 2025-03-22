@@ -1,13 +1,13 @@
-export interface ITopSearched {
+export interface TopSearchItem {
   id: string;
   src: string;
   title: string;
 }
 
-export interface ISearchKeyword {
+export type SearchKeywordChangeHandler = (params: {
   value: string;
   isAutoKeyword?: boolean;
-}
+}) => void;
 
 export const SLIDER_BUTTON_TYPE_LIST = ['prev', 'next'] as const;
 

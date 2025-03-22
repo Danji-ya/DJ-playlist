@@ -2,7 +2,7 @@ import Card from '@components/common/Card';
 import { MESSAGE } from '@constants/messages';
 import { H3A11Y } from '@styles/common';
 import images from '@constants/images';
-import { IMusic } from '@typings/music';
+import { Music } from '@typings/music';
 import usePlaylist from '@services/hooks/usePlaylist';
 import Styled from './Playlist.style';
 
@@ -18,7 +18,7 @@ function Playlist() {
       <H3A11Y>플레이리스트</H3A11Y>
       {playlist.length > 0 ? (
         <Styled.Playlist>
-          {playlist.map((item: IMusic, idx: number) => (
+          {playlist.map((item: Music, idx: number) => (
             <Card
               key={item.videoId}
               draggable

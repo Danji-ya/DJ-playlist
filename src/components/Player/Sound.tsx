@@ -1,12 +1,12 @@
 import { LabelA11Y } from '@styles/common';
 import icons from '@constants/icons';
-import { IMusicVolume } from '@typings/music';
+import { MusicVolumeChangeHandler } from '@typings/music';
 import Styled from './Player.style';
 
 interface Props {
   volume: number;
   muted: boolean;
-  onVolumeChange: ({ value, isTurnOff }: IMusicVolume) => void;
+  onVolumeChange: MusicVolumeChangeHandler;
 }
 
 function Sound({ volume, muted, onVolumeChange }: Props) {

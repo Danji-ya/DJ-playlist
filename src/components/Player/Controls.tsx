@@ -1,13 +1,13 @@
 import icons from '@constants/icons';
-import { IMusic, IMusicChange } from '@typings/music';
+import { Music, MusicChangeHandler } from '@typings/music';
 import Styled from './Player.style';
 
 interface Props {
   paused: boolean;
-  selectedMusic: IMusic;
+  selectedMusic: Music;
   shuffle: boolean;
   onToggleState: () => void;
-  onMusicChange: ({ music, isNext }: IMusicChange) => void;
+  onMusicChange: MusicChangeHandler;
   onToggleShuffle: () => void;
 }
 

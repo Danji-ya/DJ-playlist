@@ -3,11 +3,11 @@ import Item from '@components/Slider/Item';
 import { getNumberOfItemsToShow, sliderItemShowReader } from '@utils/slider';
 import useResize from '@services/hooks/useResize';
 import useSlider from '@services/hooks/useSlider';
-import { ISearchKeyword, ITopSearched } from '@typings/search';
+import { SearchKeywordChangeHandler, TopSearchItem } from '@typings/search';
 import Styled from './Slider.style';
 
 interface Props {
-  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
+  onSearchKeywordChange: SearchKeywordChangeHandler;
 }
 
 function Slider({ onSearchKeywordChange }: Props) {
@@ -30,7 +30,7 @@ function Slider({ onSearchKeywordChange }: Props) {
 
       <Styled.SliderMargin>
         <Styled.SliderItemsContainer position={position}>
-          {data.map((item: ITopSearched, idx: number) => (
+          {data.map((item: TopSearchItem, idx: number) => (
             <Item
               isShow={isShowCurrentItem(idx)}
               key={item.id}

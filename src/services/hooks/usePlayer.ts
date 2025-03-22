@@ -3,7 +3,11 @@ import { useRecoilState } from 'recoil';
 import { playerState } from '@store/playerState';
 import { playlistState } from '@store/playlistState';
 import { NOT_INCLUDE_DJPLAYLIST, PLAYER_STATE } from '@constants/player';
-import { IMusic, IMusicChange, IMusicVolume } from '@typings/music';
+import {
+  Music,
+  MusicChangeHandler,
+  MusicVolumeChangeHandler,
+} from '@typings/music';
 import Youtube from '@components/Youtube';
 
 interface UsePlayerReturn {
@@ -14,16 +18,16 @@ interface UsePlayerReturn {
     volume: number;
     muted: boolean;
     paused: boolean;
-    selectedMusic: IMusic;
+    selectedMusic: Music;
     shuffle: boolean;
   };
   playerControls: {
     onStateChange: (e: YT.OnStateChangeEvent) => void;
     onMouseStateChange: (isDown?: boolean) => void;
     onToggleState: () => void;
-    onVolumeChange: (params: IMusicVolume) => void;
+    onVolumeChange: MusicVolumeChangeHandler;
     onProgressChange: (target: HTMLInputElement) => void;
-    onMusicChange: (params: IMusicChange) => void;
+    onMusicChange: MusicChangeHandler;
     onToggleShuffle: () => void;
   };
 }
@@ -51,7 +55,7 @@ function usePlayer(): UsePlayerReturn {
     };
   }, [selectedMusic]);
 
-  const shufflePlaylist = (oriPlaylist: IMusic[]) => {
+  const shufflePlaylist = (oriPlaylist: Music[]) => {
     const copiedPlaylist = [...oriPlaylist];
     for (let i = copiedPlaylist.length - 1; i > 0; i -= 1) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -67,11 +71,11 @@ function usePlayer(): UsePlayerReturn {
     newPlaylist,
     curMusic,
   }: {
-    newPlaylist: IMusic[];
-    curMusic: IMusic;
+    newPlaylist: Music[];
+    curMusic: Music;
   }) => newPlaylist.findIndex((item) => item.videoId === curMusic.videoId);
 
-  const onMusicChange = ({ music, isNext }: IMusicChange) => {
+  const onMusicChange: MusicChangeHandler = ({ music, isNext }) => {
     const playlistLen = playlist.length - 1;
     const newPlaylist = shuffle ? shufflePlaylist(playlist) : playlist;
     const curPlayMusicIdx = getCurrentMusicIdx({
@@ -153,7 +157,7 @@ function usePlayer(): UsePlayerReturn {
     setPaused((prev) => !prev);
   };
 
-  const onVolumeChange = ({ value, isTurnOff }: IMusicVolume) => {
+  const onVolumeChange: MusicVolumeChangeHandler = ({ value, isTurnOff }) => {
     if (isTurnOff) {
       setVolume(0);
       setMuted(true);
