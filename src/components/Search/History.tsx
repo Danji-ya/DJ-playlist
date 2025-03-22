@@ -1,22 +1,20 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import icons from '@constants/icons';
-import { SearchKeywordChangeHandler } from '@typings/search';
+import { useSearchForm } from '@contexts/SearchFormContext';
+import useSearchHistory from '@services/hooks/useSearchHistory';
 import Styled from './Search.style';
 
 interface Props {
-  onSearchKeywordChange: SearchKeywordChangeHandler;
-  onDeleteSearchHistory: (idx: number) => void;
-  searchHistory: string[];
   isShow: boolean;
 }
 
-function History({
-  onSearchKeywordChange,
-  onDeleteSearchHistory,
-  searchHistory,
-  isShow,
-}: Props) {
+function History({ isShow }: Props) {
+  const {
+    searchControls: { onSearchKeywordChange },
+  } = useSearchForm();
+  const { searchHistory, onDeleteSearchHistory } = useSearchHistory();
+
   const handleClick = (
     e: React.MouseEvent<HTMLButtonElement>,
     keyword: string,

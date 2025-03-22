@@ -1,20 +1,13 @@
+import { usePlayer } from '@contexts/PlayerContext';
 import { formatTime } from '@utils/common';
 import { LabelA11Y } from '@styles/common';
 import Styled from './Player.style';
 
-interface Props {
-  currentTime: number;
-  duration: number;
-  onProgressChange: (target: HTMLInputElement) => void;
-  onMouseStateChange: (isDown?: boolean) => void;
-}
+function Progress() {
+  const { playerState, playerControls } = usePlayer();
+  const { currentTime, duration } = playerState;
+  const { onProgressChange, onMouseStateChange } = playerControls;
 
-function Progress({
-  currentTime,
-  duration,
-  onProgressChange,
-  onMouseStateChange,
-}: Props) {
   return (
     <Styled.ProgressContainer>
       <LabelA11Y htmlFor="progress">진행바</LabelA11Y>

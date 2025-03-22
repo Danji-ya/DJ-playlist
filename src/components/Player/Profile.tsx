@@ -1,11 +1,10 @@
-import type { Music } from '@typings/music';
+import { usePlayer } from '@contexts/PlayerContext';
 import Styled from './Player.style';
 
-interface Props {
-  selectedMusic: Music;
-}
+function Profile() {
+  const { playerState } = usePlayer();
+  const { selectedMusic } = playerState;
 
-function Profile({ selectedMusic }: Props) {
   return (
     <Styled.Profile>
       <Styled.ProfileImage>

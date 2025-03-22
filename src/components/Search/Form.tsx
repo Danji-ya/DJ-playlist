@@ -1,93 +1,70 @@
-import React, { useEffect, useImperativeHandle, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { LabelA11Y } from '@styles/common';
 import icons from '@constants/icons';
-import { SearchKeywordChangeHandler } from '@typings/search';
+import { useSearchForm } from '@contexts/SearchFormContext';
+import { useClickOutside } from '@services/hooks/useClickOutside';
 import History from './History';
 import Styled from './Search.style';
 
-interface Props {
-  keyword: string;
-  searchHistory: string[];
-  onSearchKeywordChange: SearchKeywordChangeHandler;
-  onDeleteSearchHistory: (idx: number) => void;
-}
+function Form() {
+  const {
+    keyword,
+    searchControls: { onSearchKeywordChange },
+  } = useSearchForm();
+  const [currentInputValue, setCurrentInputValue] = useState(keyword || '');
+  const [isActiveHistory, setIsActiveHistory] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-export interface ModalHandle {
-  handleQuery: (value: string) => void;
-}
+  const { handleBlur } = useClickOutside(containerRef, {
+    onOutsideClick: () => setIsActiveHistory(false),
+    onOutsideBlur: () => setIsActiveHistory(false),
+    enabled: isActiveHistory,
+  });
 
-const Form = React.forwardRef<ModalHandle, Props>(
-  (
-    { keyword, searchHistory, onSearchKeywordChange, onDeleteSearchHistory },
-    ref,
-  ) => {
-    const [query, setQuery] = useState(keyword);
-    const [isActiveHistory, activeHistory] = useState(false);
-    const inputRef = useRef<HTMLDivElement>(null);
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setCurrentInputValue(e.target.value);
+  };
 
-    const handleChange = (value: string) => {
-      setQuery(value);
-    };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const currentValue = currentInputValue.trim();
 
-    useImperativeHandle(ref, () => ({
-      handleQuery(value) {
-        setQuery(value);
-      },
-    }));
+    if (currentValue.length === 0 || keyword === currentValue) return;
 
-    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault();
-      if (query.length === 0) return;
-      if (keyword === query) return;
+    onSearchKeywordChange({ value: currentValue });
+  };
 
-      const trimmedValue = query.trim();
-      onSearchKeywordChange({ value: trimmedValue });
-    };
+  const handleFocus = () => {
+    setIsActiveHistory(true);
+  };
 
-    const handleBlur = (e: React.FocusEvent<HTMLElement>) => {
-      if (inputRef.current?.contains(e.relatedTarget)) return;
+  useEffect(() => {
+    if (keyword) {
+      setCurrentInputValue(keyword);
+    }
+  }, [keyword]);
 
-      activeHistory(false);
-    };
+  const shouldShowHistory = isActiveHistory && currentInputValue === '';
 
-    useEffect(() => {
-      const handleOutOfRange = (e: MouseEvent) => {
-        if (inputRef.current?.contains(e.target as Node)) return;
-        activeHistory(false);
-      };
-
-      window.addEventListener('mousedown', handleOutOfRange);
-
-      return () => {
-        window.removeEventListener('mousedown', handleOutOfRange);
-      };
-    }, []);
-
-    return (
-      <Styled.Container ref={inputRef} onBlur={handleBlur}>
-        <Styled.SearchFormWrapper autoComplete="off" onSubmit={handleSubmit}>
-          <LabelA11Y htmlFor="searchInput">검색창</LabelA11Y>
-          <Styled.InputBox
-            id="searchInput"
-            type="text"
-            placeholder="검색어를 입력해주세요"
-            value={query}
-            onChange={(e) => handleChange(e.target.value)}
-            onFocus={() => activeHistory(true)}
-          />
-          <Styled.BtnWrapper type="submit" aria-label="search button">
-            <icons.Search />
-          </Styled.BtnWrapper>
-        </Styled.SearchFormWrapper>
-        <History
-          onSearchKeywordChange={onSearchKeywordChange}
-          onDeleteSearchHistory={onDeleteSearchHistory}
-          searchHistory={searchHistory}
-          isShow={isActiveHistory && query === ''}
+  return (
+    <Styled.Container ref={containerRef} onBlur={handleBlur}>
+      <Styled.SearchFormWrapper autoComplete="off" onSubmit={handleSubmit}>
+        <LabelA11Y htmlFor="searchInput">검색창</LabelA11Y>
+        <Styled.InputBox
+          id="searchInput"
+          type="text"
+          placeholder="검색어를 입력해주세요"
+          value={currentInputValue}
+          onChange={handleInputChange}
+          onFocus={handleFocus}
         />
-      </Styled.Container>
-    );
-  },
-);
+        <Styled.BtnWrapper type="submit" aria-label="search button">
+          <icons.Search />
+        </Styled.BtnWrapper>
+      </Styled.SearchFormWrapper>
+      <History isShow={shouldShowHistory} />
+    </Styled.Container>
+  );
+}
 
 export default Form;

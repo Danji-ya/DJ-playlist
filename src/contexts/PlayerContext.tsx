@@ -1,16 +1,18 @@
-import { useEffect, useRef, useState } from 'react';
+import { ReactNode, useEffect, useRef, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { playerState } from '@store/playerState';
 import { playlistState } from '@store/playlistState';
 import { NOT_INCLUDE_DJPLAYLIST, PLAYER_STATE } from '@constants/player';
-import {
-  Music,
-  MusicChangeHandler,
-  MusicVolumeChangeHandler,
-} from '@typings/music';
+import { Music, MusicVolumeChangeHandler } from '@typings/music';
 import Youtube from '@components/Youtube';
+import createContext from '@services/hooks/useContext';
 
-interface UsePlayerReturn {
+export type MusicChangeHandler = (params: {
+  music: Music;
+  isNext?: boolean;
+}) => void;
+
+interface PlayerContextValue {
   playerRef: React.RefObject<Youtube>;
   playerState: {
     currentTime: number;
@@ -32,7 +34,17 @@ interface UsePlayerReturn {
   };
 }
 
-function usePlayer(): UsePlayerReturn {
+const [PlayerProvider, usePlayer] = createContext<PlayerContextValue>({
+  name: 'PlayerContext',
+  hookName: 'usePlayer',
+  providerName: 'PlayerProvider',
+});
+
+interface PlayerProviderProps {
+  children: ReactNode;
+}
+
+export function PlayerContextProvider({ children }: PlayerProviderProps) {
   const [playlist] = useRecoilState(playlistState);
   const [player, setPlayer] = useRecoilState(playerState);
   const { selectedMusic, shuffle } = player;
@@ -186,7 +198,7 @@ function usePlayer(): UsePlayerReturn {
     }));
   };
 
-  return {
+  const value: PlayerContextValue = {
     playerRef,
     playerState: {
       currentTime,
@@ -207,6 +219,9 @@ function usePlayer(): UsePlayerReturn {
       onToggleShuffle,
     },
   };
+
+  return <PlayerProvider value={value}>{children}</PlayerProvider>;
 }
 
-export default usePlayer;
+export { usePlayer };
+export default PlayerContextProvider;

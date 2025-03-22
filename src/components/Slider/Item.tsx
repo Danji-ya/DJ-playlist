@@ -1,13 +1,17 @@
-import { SearchKeywordChangeHandler, TopSearchItem } from '@typings/search';
+import { useSearchForm } from '@contexts/SearchFormContext';
+import { TopSearchItem } from '@typings/search';
 import Styled from './Slider.style';
 
 interface Props {
   item: TopSearchItem;
   isShow: boolean;
-  onSearchKeywordChange: SearchKeywordChangeHandler;
 }
 
-function Item({ item, isShow, onSearchKeywordChange }: Props) {
+function Item({ item, isShow }: Props) {
+  const {
+    searchControls: { onSearchKeywordChange },
+  } = useSearchForm();
+
   return (
     <Styled.AlbumWrapper key={`${item.id}`}>
       <Styled.AlbumBtn

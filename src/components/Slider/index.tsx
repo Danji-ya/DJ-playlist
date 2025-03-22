@@ -1,16 +1,11 @@
-import React from 'react';
-import Item from '@components/Slider/Item';
-import { getNumberOfItemsToShow, sliderItemShowReader } from '@utils/slider';
 import useResize from '@services/hooks/useResize';
 import useSlider from '@services/hooks/useSlider';
-import { SearchKeywordChangeHandler, TopSearchItem } from '@typings/search';
+import Item from '@components/Slider/Item';
+import { getNumberOfItemsToShow, sliderItemShowReader } from '@utils/slider';
+import { TopSearchItem } from '@typings/search';
 import Styled from './Slider.style';
 
-interface Props {
-  onSearchKeywordChange: SearchKeywordChangeHandler;
-}
-
-function Slider({ onSearchKeywordChange }: Props) {
+function Slider() {
   const { data, position, onMoveSlider } = useSlider();
   const [windowWidth] = useResize({ type: 'throttle' });
   const isShowCurrentItem = sliderItemShowReader(
@@ -31,12 +26,7 @@ function Slider({ onSearchKeywordChange }: Props) {
       <Styled.SliderMargin>
         <Styled.SliderItemsContainer position={position}>
           {data.map((item: TopSearchItem, idx: number) => (
-            <Item
-              isShow={isShowCurrentItem(idx)}
-              key={item.id}
-              item={item}
-              onSearchKeywordChange={onSearchKeywordChange}
-            />
+            <Item isShow={isShowCurrentItem(idx)} key={item.id} item={item} />
           ))}
         </Styled.SliderItemsContainer>
       </Styled.SliderMargin>

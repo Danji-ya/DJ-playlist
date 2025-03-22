@@ -9,6 +9,7 @@ interface CustomQueryParams {
   query: string;
   token?: string;
   errorHandler: (message: string) => void;
+  suspense?: boolean;
 }
 
 const getPlaylist = async (
@@ -34,6 +35,7 @@ export const useGetPlaylist = ({
   query,
   token,
   errorHandler,
+  suspense,
 }: CustomQueryParams) => {
   return useQuery<YouTubeSearchResponse>(
     [QUERY_KEYS.PLAYLIST, query],
@@ -44,6 +46,7 @@ export const useGetPlaylist = ({
       refetchOnWindowFocus: false,
       retry: false,
       useErrorBoundary: true,
+      suspense,
     },
   );
 };
