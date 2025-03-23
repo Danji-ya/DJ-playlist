@@ -7,9 +7,7 @@ import NoResult from './NoResult';
 import Styled from './Search.style';
 
 function MusicCards({ musicList }: { musicList: Music[] }) {
-  const {
-    playlistControls: { onSelectMusic },
-  } = usePlaylist();
+  const { onSelectMusic } = usePlaylist();
 
   return (
     <>

@@ -5,9 +5,8 @@ import Styled from './Player.style';
 
 function Dibs() {
   const { playerState } = usePlayer();
-  const { playlistControls, isIncludeDjPlaylist } = usePlaylist();
+  const { onToggleDibs, isIncludeDjPlaylist } = usePlaylist();
   const { selectedMusic } = playerState;
-  const { onToggleDibs } = playlistControls;
 
   const dibs = isIncludeDjPlaylist(selectedMusic);
 
