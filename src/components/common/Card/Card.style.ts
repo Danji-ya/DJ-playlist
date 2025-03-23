@@ -1,14 +1,26 @@
-import styled, { css, keyframes } from 'styled-components';
+import styled, { css } from 'styled-components';
+import SkeletonStyled from '@styles/skeleton';
+
+const commonStyles = {
+  cardBase: css`
+    padding: 10px;
+    width: 250px;
+    border-radius: 15px;
+    background: ${({ theme }) => theme.cardBg};
+    border: ${({ theme }) => `1px solid ${theme.border}`};
+  `,
+  titleBase: css`
+    margin: 7px 0;
+  `,
+  subtitleBase: css`
+    font-weight: lighter;
+  `,
+};
 
 const Container = styled.li`
   justify-self: center;
   align-self: center;
-  padding: 10px;
-  border-radius: 15px;
-  width: 250px;
-
-  background: ${({ theme }) => theme.cardBg};
-  border: ${({ theme }) => `1px solid ${theme.border}`};
+  ${commonStyles.cardBase}
 `;
 
 const PlayBtnWrapper = styled.div`
@@ -52,7 +64,7 @@ const Title = styled.p`
   -webkit-box-orient: vertical;
   line-height: 1.2rem;
   overflow: hidden;
-  margin: 7px 0;
+  ${commonStyles.titleBase}
 `;
 
 const Subtitle = styled.p`
@@ -63,66 +75,35 @@ const Subtitle = styled.p`
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  margin: 5px 0;
-`;
-
-const loading = keyframes`
-  0% {
-    transform: translateX(-150%);
-  }
-  100% {
-    transform: translateX(150%);
-  }
-`;
-
-const Element = css`
-  overflow: hidden;
-  position: relative;
-  background: ${({ theme }) => theme.skeletonBg};
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: ${({ theme }) => theme.skeletonLoading};
-    animation: ${loading} 1.5s infinite;
-  }
+  ${commonStyles.subtitleBase}
 `;
 
 const ContainerSkeleton = styled.div`
   position: relative;
   align-self: center;
   justify-self: center;
-  width: 250px;
-  border-radius: 15px;
-  padding: 10px;
+  ${commonStyles.cardBase}
   margin: 10px;
-
-  background: ${({ theme }) => theme.cardBg};
-  border: ${({ theme }) => `1px solid ${theme.border}`};
 `;
 
 const ThumnailSkeleton = styled.div`
   width: 100%;
   height: 200px;
-  ${Element}
+  ${SkeletonStyled.skeletonElement}
 `;
 
 const TitleSkeleton = styled.p`
-  margin: 7px 0;
+  ${commonStyles.titleBase}
   width: 150px;
   height: 10px;
-  ${Element}
+  ${SkeletonStyled.skeletonElement}
 `;
 
 const SubtitleSkeleton = styled.p`
-  margin: 5px 0;
+  ${commonStyles.subtitleBase}
   width: 50px;
   height: 10px;
-  ${Element}
+  ${SkeletonStyled.skeletonElement}
 `;
 
 export default {
