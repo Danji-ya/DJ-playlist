@@ -3,22 +3,35 @@ import { DEVICE, SIZE } from '@constants/device';
 import { LAYOUT } from '@constants/layout';
 
 const Container = styled.main`
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-areas:
+    'sidebar content'
+    'player player';
+  grid-template-columns: ${LAYOUT.HEADER_WIDTH} 1fr;
+  grid-template-rows: 1fr auto;
   min-height: 100vh;
-  min-width: ${SIZE.MIN_MOBILE};
-  max-width: ${SIZE.MAX_DESKTOP};
-  padding-top: 30px;
-  padding-right: 55px;
-  padding-bottom: calc(30px + ${LAYOUT.PLAYER_HEIGHT});
-  padding-left: ${() => `calc(${LAYOUT.HEADER_WIDTH} + 55px)`};
-  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  padding-bottom: ${LAYOUT.PLAYER_HEIGHT};
 
   @media ${DEVICE.DESKTOP} {
-    padding-top: calc(30px + ${LAYOUT.HEADER_HEIGHT});
-    padding-left: 55px;
+    grid-template-areas:
+      'header header'
+      'content content'
+      'player player';
+    grid-template-columns: 1fr;
+    grid-template-rows: ${LAYOUT.HEADER_HEIGHT} 1fr auto;
   }
 `;
 
-export default { Container };
+const ContentArea = styled.section`
+  grid-area: content;
+  padding: 32px 64px;
+  position: relative;
+  max-width: ${SIZE.MAX_DESKTOP};
+  margin: 0 auto;
+  width: 100%;
+  overflow-y: auto;
+`;
+
+export default { Container, ContentArea };

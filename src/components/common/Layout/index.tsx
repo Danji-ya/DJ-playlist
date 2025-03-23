@@ -11,16 +11,16 @@ interface Props {
 
 function Layout({ children }: Props) {
   return (
-    <>
+    <Styled.Container>
       <Header />
-      <Styled.Container>
+      <Styled.ContentArea>
         {children}
-        <PlayerContextProvider>
-          <Player />
-        </PlayerContextProvider>
-      </Styled.Container>
-      <SideNavigationBar />
-    </>
+        <SideNavigationBar />
+      </Styled.ContentArea>
+      <PlayerContextProvider>
+        <Player />
+      </PlayerContextProvider>
+    </Styled.Container>
   );
 }
 

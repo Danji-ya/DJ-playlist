@@ -3,18 +3,19 @@ import { LAYOUT } from '@constants/layout';
 import { DEVICE } from '@constants/device';
 
 const Container = styled.article`
+  grid-area: player;
   background: ${({ theme }) => `${theme.playerBg}`};
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   display: flex;
-  position: fixed;
-  z-index: 998;
-  left: 0;
-  bottom: 0;
   width: 100%;
   height: ${LAYOUT.PLAYER_HEIGHT};
   padding: 10px 50px;
   align-items: center;
   justify-content: space-around;
+  z-index: 50;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 
   @media ${DEVICE.DESKTOP} {
     justify-content: space-between;
@@ -215,7 +216,7 @@ const VolumeWrapper = styled.button`
 `;
 
 const YoutubeIframe = styled.div`
-  position: fixed;
+  position: absolute;
   bottom: -1000px;
   visibility: hidden;
 `;
