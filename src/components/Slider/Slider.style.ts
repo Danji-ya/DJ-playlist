@@ -41,6 +41,7 @@ const AlbumWrapper = styled.li`
   flex-shrink: 0;
   padding: 0 10px;
   width: ${SLIDER.DEFAULT_WIDTH};
+  max-height: 275px;
 
   @media ${DEVICE.TABLET} {
     width: 50%;
