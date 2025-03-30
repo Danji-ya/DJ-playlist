@@ -26,7 +26,6 @@ const Container = styled.main`
 
 const ContentArea = styled.section`
   grid-area: content;
-  padding: 32px 64px;
   position: relative;
   max-width: ${SIZE.MAX_DESKTOP};
   margin: 0 auto;
