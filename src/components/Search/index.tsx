@@ -1,20 +1,17 @@
 import { Suspense } from 'react';
-import Slider from '@components/Slider';
 import ErrorBoundary from '@components/common/ErrorBoundary';
 import Error from '@components/common/Error';
 import Form from './Form';
 import ResultLoading from './ResultLoading';
 import Result from './Result';
+import Carousel from './Carousel';
 import Styled from './Search.style';
 
 function Search() {
   return (
     <>
       <Form />
-      <Styled.SliderWrapper>
-        <Styled.MainTitle>인기 검색어</Styled.MainTitle>
-        <Slider />
-      </Styled.SliderWrapper>
+      <Carousel title={<Styled.MainTitle>인기 검색어</Styled.MainTitle>} />
       <Styled.SearchResultWrapper>
         <Styled.MainTitle>검색 결과</Styled.MainTitle>
         <ErrorBoundary fallback={<Error />}>
