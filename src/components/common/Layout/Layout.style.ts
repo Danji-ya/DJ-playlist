@@ -27,11 +27,19 @@ const Container = styled.main`
 const ContentArea = styled.section`
   grid-area: content;
   position: relative;
-  max-width: ${SIZE.MAX_DESKTOP};
-  margin: 0 auto;
-  padding: 33px 0;
   width: 100%;
   overflow-y: auto;
+  height: calc(100vh - ${LAYOUT.PLAYER_HEIGHT});
+  padding: 33px 0;
+
+  > * {
+    max-width: ${SIZE.MAX_DESKTOP};
+    margin: 0 auto;
+  }
+
+  @media ${DEVICE.DESKTOP} {
+    height: calc(100vh - ${LAYOUT.HEADER_HEIGHT} - ${LAYOUT.PLAYER_HEIGHT});
+  }
 `;
 
 export default { Container, ContentArea };
