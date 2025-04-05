@@ -4,6 +4,7 @@ export const lightTheme = {
   bodySecondary: 'rgb(24,24,24)',
   border: '#e0e0e0',
   text: '#363537',
+  subText: 'rgba(0, 0, 0, 0.5)',
   toggleBorder: '#FFF',
   gradient: '#FFA000',
 
@@ -42,6 +43,7 @@ export const darkTheme = {
   bodySecondary: 'rgb(24,24,24)',
   border: 'rgb(48, 54, 61)',
   text: '#FAFAFA',
+  subText: 'rgba(255, 255, 255, 0.5)',
   toggleBorder: '#fff',
   gradient: '#868E96',
 

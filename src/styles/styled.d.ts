@@ -7,6 +7,7 @@ declare module 'styled-components' {
     bodySecondary: string;
     border: string;
     text: string;
+    subText: string;
     toggleBorder: string;
     gradient: string;
 
