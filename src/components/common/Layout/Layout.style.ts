@@ -29,6 +29,7 @@ const ContentArea = styled.section`
   position: relative;
   max-width: ${SIZE.MAX_DESKTOP};
   margin: 0 auto;
+  padding: 33px 0;
   width: 100%;
   overflow-y: auto;
 `;
