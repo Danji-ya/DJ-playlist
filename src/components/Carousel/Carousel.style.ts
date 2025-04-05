@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 
-const Container = styled.div`
+const Container = styled.section`
   width: 100%;
+  margin: 16px 0;
 `;
 
 const Header = styled.div`
@@ -41,7 +42,6 @@ const Button = styled.button`
 
 const CarouselWrapper = styled.div`
   width: 100%;
-  padding: 10px 0 20px;
 `;
 
 const SearchItemList = styled.ul`

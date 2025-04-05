@@ -28,6 +28,10 @@ const InputBox = styled.input`
   height: 100%;
   padding: 14px 20px;
   font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-right: 70px;
 `;
 
 const BtnWrapper = styled.button`
