@@ -14,11 +14,6 @@ const Container = styled.div`
   }
 `;
 
-const SliderWrapper = styled.section`
-  position: relative;
-  overflow: hidden;
-`;
-
 const SearchFormWrapper = styled.form`
   position: relative;
   width: 100%;
@@ -158,7 +153,6 @@ const SearchNoResultText = styled.p`
 
 export default {
   Container,
-  SliderWrapper,
   SearchFormWrapper,
   InputBox,
   BtnWrapper,
