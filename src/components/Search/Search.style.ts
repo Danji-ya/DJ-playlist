@@ -7,15 +7,11 @@ const Container = styled.div`
   width: 30vw;
   min-width: 250px;
   max-width: 400px;
+  padding: 0 16px;
 
   @media ${DEVICE.DESKTOP} {
     margin: 0 auto;
   }
-`;
-
-const SliderWrapper = styled.section`
-  position: relative;
-  overflow: hidden;
 `;
 
 const SearchFormWrapper = styled.form`
@@ -32,6 +28,10 @@ const InputBox = styled.input`
   height: 100%;
   padding: 14px 20px;
   font-size: 15px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  padding-right: 70px;
 `;
 
 const BtnWrapper = styled.button`
@@ -117,7 +117,9 @@ const Title = styled.h3`
   color: #757575;
 `;
 
-const SearchResultWrapper = styled.section``;
+const SearchResultWrapper = styled.section`
+  padding: 0 16px;
+`;
 
 const SearchResultGrid = styled.ul`
   align-self: center;
@@ -127,7 +129,7 @@ const SearchResultGrid = styled.ul`
   justify-content: center;
   grid-gap: 3rem;
   min-height: 300px;
-  padding: 0 15px;
+  padding: 0 55px;
 `;
 
 const MainTitle = styled.h3`
@@ -137,6 +139,7 @@ const MainTitle = styled.h3`
 
 const SearchNoResultWrapper = styled.div`
   display: flex;
+  min-height: 300px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -154,7 +157,6 @@ const SearchNoResultText = styled.p`
 
 export default {
   Container,
-  SliderWrapper,
   SearchFormWrapper,
   InputBox,
   BtnWrapper,

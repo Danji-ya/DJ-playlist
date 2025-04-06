@@ -1,15 +1,15 @@
-# 큰 파일 제외
+# dependencies
 node_modules
 
-# webpack build 관련
+# build files
 dist/*
 build/*
 
-# 비밀공간
+# env
 .env
 
 # .vscode
-.vscode
+.vscode/*
 
 # .cursor
 .cursor/*

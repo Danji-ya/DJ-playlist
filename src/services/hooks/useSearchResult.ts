@@ -14,6 +14,7 @@ export const useSearchResult = ({ keyword }: UseSearchResultProps) => {
     query: keyword,
     errorHandler: (message) =>
       toast({ title: '', message, type: 'error', duration: 5000 }),
+    suspense: true,
   });
 
   const musicList = useMemo(() => {

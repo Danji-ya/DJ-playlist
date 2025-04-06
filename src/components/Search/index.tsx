@@ -1,51 +1,23 @@
-import Slider from '@components/Slider';
+import { Suspense } from 'react';
 import ErrorBoundary from '@components/common/ErrorBoundary';
 import Error from '@components/common/Error';
-import useSearchForm from '@services/hooks/useSearchForm';
-import useSearchHistory from '@services/hooks/useSearchHistory';
-import useSearchResult from '@services/hooks/useSearchResult';
-import usePlaylist from '@services/hooks/usePlaylist';
-import Result from './Result';
+import Carousel from '@components/Carousel';
 import Form from './Form';
+import ResultLoading from './ResultLoading';
+import Result from './Result';
 import Styled from './Search.style';
 
 function Search() {
-  const { searchHistory, onAddSearchHistory, onDeleteSearchHistory } =
-    useSearchHistory();
-
-  const { keyword, formRef, onSearchKeywordChange } = useSearchForm({
-    onAddSearchHistory,
-  });
-
-  const {
-    playlistControls: { onSelectMusic },
-  } = usePlaylist();
-
-  const { isLoading, musicList } = useSearchResult({
-    keyword,
-  });
-
   return (
     <>
-      <Form
-        ref={formRef}
-        keyword={keyword}
-        searchHistory={searchHistory}
-        onSearchKeywordChange={onSearchKeywordChange}
-        onDeleteSearchHistory={onDeleteSearchHistory}
-      />
-      <Styled.SliderWrapper>
-        <Styled.MainTitle>인기 검색어</Styled.MainTitle>
-        <Slider onSearchKeywordChange={onSearchKeywordChange} />
-      </Styled.SliderWrapper>
+      <Form />
+      <Carousel title={<Styled.MainTitle>Popular Searches</Styled.MainTitle>} />
       <Styled.SearchResultWrapper>
-        <Styled.MainTitle>검색 결과</Styled.MainTitle>
+        <Styled.MainTitle>Search Results</Styled.MainTitle>
         <ErrorBoundary fallback={<Error />}>
-          <Result
-            isLoading={isLoading}
-            musicList={musicList}
-            onSelectMusic={onSelectMusic}
-          />
+          <Suspense fallback={<ResultLoading />}>
+            <Result />
+          </Suspense>
         </ErrorBoundary>
       </Styled.SearchResultWrapper>
     </>

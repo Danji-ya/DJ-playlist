@@ -3,12 +3,13 @@ import { QUERY_KEYS } from '@constants/queryKeys';
 import CustomError from '@utils/customError';
 import { MESSAGE } from '@constants/messages';
 import axiosInstance from '@services/queries/base';
-import { IMusicData } from '@typings/music';
+import { YouTubeSearchResponse } from '@typings/music';
 
 interface CustomQueryParams {
   query: string;
   token?: string;
   errorHandler: (message: string) => void;
+  suspense?: boolean;
 }
 
 const getPlaylist = async (
@@ -17,9 +18,9 @@ const getPlaylist = async (
   errorHandler: (message: string) => void,
 ) => {
   try {
-    const { data } = await axiosInstance.get<IMusicData>('/search', {
+    const { data } = await axiosInstance.get<YouTubeSearchResponse>('/search', {
       params: {
-        q: `${query} 플레이리스트`,
+        q: `${query} playlist`,
         pageToken: token || '',
       },
     });
@@ -34,8 +35,9 @@ export const useGetPlaylist = ({
   query,
   token,
   errorHandler,
+  suspense,
 }: CustomQueryParams) => {
-  return useQuery<IMusicData | undefined>(
+  return useQuery<YouTubeSearchResponse>(
     [QUERY_KEYS.PLAYLIST, query],
     () => getPlaylist(query, token, errorHandler),
     {
@@ -44,6 +46,7 @@ export const useGetPlaylist = ({
       refetchOnWindowFocus: false,
       retry: false,
       useErrorBoundary: true,
+      suspense,
     },
   );
 };

@@ -65,4 +65,4 @@ Card.Title = CardTitle;
 Card.SubTitle = CardSubTitle;
 
 export default Card;
-export { default as CardSkeleton } from './CardSkeleton';
+export { default as CardSkeleton } from './Card.skeleton';

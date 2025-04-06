@@ -1,8 +1,8 @@
 import icons from '@constants/icons';
-import { IToastState } from '@typings/toast';
+import { ToastState } from '@typings/toast';
 import Styled from './Toast.style';
 
-interface Props extends IToastState {
+interface Props extends ToastState {
   onHideToast: (id: string) => void;
 }
 

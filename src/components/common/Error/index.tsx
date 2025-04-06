@@ -14,9 +14,9 @@ function Error({ refresh }: Props) {
     <Styled.Background>
       <Styled.Container>
         <images.Cat2 width={350} height={350} />
-        <Styled.Title>에러가 발생했습니다</Styled.Title>
+        <Styled.Title>An error occurred</Styled.Title>
         <Styled.Button onClick={() => handleClick()} aria-label="reload">
-          새로고침
+          Refresh
         </Styled.Button>
       </Styled.Container>
     </Styled.Background>

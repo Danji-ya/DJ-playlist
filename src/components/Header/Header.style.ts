@@ -4,10 +4,9 @@ import { DEVICE } from '@constants/device';
 import { LAYOUT } from '@constants/layout';
 
 const Container = styled.header`
-  position: fixed;
-  top: 0;
+  grid-area: sidebar;
   width: ${LAYOUT.HEADER_WIDTH};
-  height: 100vh;
+  height: 100%;
   padding: 30px 10px 0 10px;
   z-index: 50;
   background: ${({ theme }) => theme.header};
@@ -16,14 +15,17 @@ const Container = styled.header`
   transition: background 0.5s linear;
 
   @media ${DEVICE.DESKTOP} {
+    grid-area: header;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     height: ${LAYOUT.HEADER_HEIGHT};
     padding: 0 50px;
-
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    position: fixed;
+    top: 0;
+    left: 0;
   }
 `;
 

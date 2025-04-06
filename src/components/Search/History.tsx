@@ -1,27 +1,25 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
 import icons from '@constants/icons';
-import { ISearchKeyword } from '@typings/search';
+import { useSearchForm } from '@contexts/SearchFormContext';
+import useSearchHistory from '@services/hooks/useSearchHistory';
 import Styled from './Search.style';
 
 interface Props {
-  onSearchKeywordChange: ({ value, isAutoKeyword }: ISearchKeyword) => void;
-  onDeleteSearchHistory: (idx: number) => void;
-  searchHistory: string[];
   isShow: boolean;
 }
 
-function History({
-  onSearchKeywordChange,
-  onDeleteSearchHistory,
-  searchHistory,
-  isShow,
-}: Props) {
+function History({ isShow }: Props) {
+  const {
+    searchControls: { onSearchKeywordChange },
+  } = useSearchForm();
+  const { searchHistory, onDeleteSearchHistory } = useSearchHistory();
+
   const handleClick = (
     e: React.MouseEvent<HTMLButtonElement>,
     keyword: string,
   ) => {
-    onSearchKeywordChange({ value: keyword, isAutoKeyword: true });
+    onSearchKeywordChange(keyword);
   };
 
   const handleKeyDown = (
@@ -29,7 +27,7 @@ function History({
     keyword: string,
   ) => {
     if (e.key !== 'Enter') return;
-    onSearchKeywordChange({ value: keyword, isAutoKeyword: true });
+    onSearchKeywordChange(keyword);
   };
 
   const handleClose = (idx: number) => {
@@ -38,7 +36,7 @@ function History({
 
   return (
     <Styled.HistoryContainer isShow={isShow}>
-      <Styled.Title>최근 검색어</Styled.Title>
+      <Styled.Title>Recent Searches</Styled.Title>
       {searchHistory &&
         searchHistory.map((keyword, idx) => (
           <Styled.List key={`${keyword}-${idx}`}>

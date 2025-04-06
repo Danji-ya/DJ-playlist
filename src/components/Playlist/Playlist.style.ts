@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-const Container = styled.section``;
+const Container = styled.section`
+  padding: 0;
+`;
 
 const Playlist = styled.ul`
   display: grid;
@@ -9,6 +11,7 @@ const Playlist = styled.ul`
   width: 100%;
   justify-items: center;
   justify-content: center;
+  padding: 0 55px;
 `;
 
 const Title = styled.div`

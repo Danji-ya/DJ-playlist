@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import PlayerContextProvider from '@contexts/PlayerContext';
 import Header from '@components/Header';
 import Player from '@components/Player';
 import SideNavigationBar from '@components/SideNavigationBar';
@@ -10,14 +11,16 @@ interface Props {
 
 function Layout({ children }: Props) {
   return (
-    <>
+    <Styled.Container>
       <Header />
-      <Styled.Container>
+      <Styled.ContentArea>
         {children}
+        <SideNavigationBar />
+      </Styled.ContentArea>
+      <PlayerContextProvider>
         <Player />
-      </Styled.Container>
-      <SideNavigationBar />
-    </>
+      </PlayerContextProvider>
+    </Styled.Container>
   );
 }
 

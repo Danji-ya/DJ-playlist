@@ -16,9 +16,9 @@ function NotFoundPage() {
     <Styled.Background>
       <Styled.Container>
         <icons.Error width={width > MAX_WIDTH ? MAX_WIDTH / 2 : width / 2} />
-        <Styled.Title>잘못된 경로입니다</Styled.Title>
+        <Styled.Title>Invalid Path</Styled.Title>
         <Styled.Home onClick={() => handleClick()} aria-label="home">
-          홈으로
+          Go to Home
         </Styled.Home>
       </Styled.Container>
     </Styled.Background>

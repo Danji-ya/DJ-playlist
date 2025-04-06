@@ -1,14 +1,15 @@
 import icons from '@constants/icons';
-import { IMusic } from '@typings/music';
+import usePlaylist from '@services/hooks/usePlaylist';
+import { usePlayer } from '@contexts/PlayerContext';
 import Styled from './Player.style';
 
-interface Props {
-  dibs: boolean;
-  selectedMusic: IMusic;
-  onToggleDibs: (music: IMusic) => void;
-}
+function Dibs() {
+  const { playerState } = usePlayer();
+  const { onToggleDibs, isIncludeDjPlaylist } = usePlaylist();
+  const { selectedMusic } = playerState;
 
-function Dibs({ dibs, selectedMusic, onToggleDibs }: Props) {
+  const dibs = isIncludeDjPlaylist(selectedMusic);
+
   return (
     <Styled.AddButton
       dibs={dibs}
