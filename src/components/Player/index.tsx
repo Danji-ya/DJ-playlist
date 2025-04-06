@@ -25,9 +25,9 @@ function Player() {
 
   return (
     <Styled.Container>
-      <H2A11Y>플레이어</H2A11Y>
+      <H2A11Y>Player</H2A11Y>
       {isEmptyObj(selectedMusic) ? (
-        <Styled.Empty>재생중인 음악이 없습니다</Styled.Empty>
+        <Styled.Empty>No music is playing</Styled.Empty>
       ) : (
         <>
           <Profile />

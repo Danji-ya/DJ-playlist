@@ -11,9 +11,9 @@ function Search() {
   return (
     <>
       <Form />
-      <Carousel title={<Styled.MainTitle>인기 검색어</Styled.MainTitle>} />
+      <Carousel title={<Styled.MainTitle>Popular Searches</Styled.MainTitle>} />
       <Styled.SearchResultWrapper>
-        <Styled.MainTitle>검색 결과</Styled.MainTitle>
+        <Styled.MainTitle>Search Results</Styled.MainTitle>
         <ErrorBoundary fallback={<Error />}>
           <Suspense fallback={<ResultLoading />}>
             <Result />

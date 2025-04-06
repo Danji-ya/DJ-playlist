@@ -49,11 +49,11 @@ function Form() {
   return (
     <Styled.Container ref={containerRef} onBlur={handleBlur}>
       <Styled.SearchFormWrapper autoComplete="off" onSubmit={handleSubmit}>
-        <LabelA11Y htmlFor="searchInput">검색창</LabelA11Y>
+        <LabelA11Y htmlFor="searchInput">Search Input</LabelA11Y>
         <Styled.InputBox
           id="searchInput"
           type="text"
-          placeholder="검색어를 입력해주세요"
+          placeholder="Search for songs, albums, and artists"
           value={currentInputValue}
           onChange={handleInputChange}
           onFocus={handleFocus}

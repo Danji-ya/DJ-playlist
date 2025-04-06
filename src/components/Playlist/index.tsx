@@ -13,7 +13,7 @@ function Playlist() {
 
   return (
     <Styled.Container>
-      <H3A11Y>플레이리스트</H3A11Y>
+      <H3A11Y>Playlist</H3A11Y>
       {playlist.length > 0 ? (
         <Styled.Playlist>
           {playlist.map((item: Music, idx: number) => (

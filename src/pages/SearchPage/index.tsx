@@ -30,7 +30,7 @@ function SearchPage() {
 
   return (
     <article>
-      <H2A11Y>검색 본문</H2A11Y>
+      <H2A11Y>Search Content</H2A11Y>
       <SearchFormContextProvider onKeywordChangeCallback={onAddSearchHistory}>
         <Search />
       </SearchFormContextProvider>

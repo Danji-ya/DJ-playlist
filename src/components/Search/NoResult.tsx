@@ -6,7 +6,7 @@ function NoResult() {
     <Styled.SearchNoResultWrapper>
       <Styled.CatFaceIcon src={icons.catFace} alt="catFace" />
       <Styled.SearchNoResultText>
-        앗! 찾으시는 결과가 없네요.
+        Oops! No results found.
       </Styled.SearchNoResultText>
     </Styled.SearchNoResultWrapper>
   );

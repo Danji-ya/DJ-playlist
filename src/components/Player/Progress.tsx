@@ -10,7 +10,7 @@ function Progress() {
 
   return (
     <Styled.ProgressContainer>
-      <LabelA11Y htmlFor="progress">진행바</LabelA11Y>
+      <LabelA11Y htmlFor="progress">Progress Bar</LabelA11Y>
       <Styled.CustomInputRange
         id="progress"
         type="range"
