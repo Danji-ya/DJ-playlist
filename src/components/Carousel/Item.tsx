@@ -13,8 +13,22 @@ function Item({ id, genre, image, title }: SearchItemProps) {
     searchControls: { onSearchKeywordChange },
   } = useSearchForm();
 
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onSearchKeywordChange(title);
+    }
+  };
+
   return (
-    <Styled.SearchItem key={id} onClick={() => onSearchKeywordChange(title)}>
+    <Styled.SearchItem
+      key={id}
+      onClick={() => onSearchKeywordChange(title)}
+      onKeyDown={handleKeyPress}
+      tabIndex={0}
+      role="button"
+      aria-label={`Search for ${title}`}
+    >
       <Styled.ImageContainer>
         <Styled.SearchItemImage src={image} alt={title} />
         <Styled.ImageOverlay />
