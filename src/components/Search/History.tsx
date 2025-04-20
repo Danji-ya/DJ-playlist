@@ -15,23 +15,32 @@ function History({ isShow }: Props) {
   } = useSearchForm();
   const { searchHistory, onDeleteSearchHistory } = useSearchHistory();
 
-  const handleClick = (
-    e: React.MouseEvent<HTMLButtonElement>,
+  const handleKeyword = (
+    e:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLButtonElement>,
     keyword: string,
   ) => {
-    onSearchKeywordChange(keyword);
+    if (
+      e.type === 'click' ||
+      (e.type === 'keydown' && (e as React.KeyboardEvent).key === 'Enter')
+    ) {
+      onSearchKeywordChange(keyword);
+    }
   };
 
-  const handleKeyDown = (
-    e: React.KeyboardEvent<HTMLButtonElement>,
-    keyword: string,
+  const handleDelete = (
+    e:
+      | React.MouseEvent<HTMLButtonElement>
+      | React.KeyboardEvent<HTMLButtonElement>,
+    idx: number,
   ) => {
-    if (e.key !== 'Enter') return;
-    onSearchKeywordChange(keyword);
-  };
-
-  const handleClose = (idx: number) => {
-    onDeleteSearchHistory(idx);
+    if (
+      e.type === 'click' ||
+      (e.type === 'keydown' && (e as React.KeyboardEvent).key === 'Enter')
+    ) {
+      onDeleteSearchHistory(idx);
+    }
   };
 
   return (
@@ -41,14 +50,16 @@ function History({ isShow }: Props) {
         searchHistory.map((keyword, idx) => (
           <Styled.List key={`${keyword}-${idx}`}>
             <Styled.KeywordBtn
-              onClick={(e) => handleClick(e, keyword)}
-              onKeyDown={(e) => handleKeyDown(e, keyword)}
+              onClick={(e) => handleKeyword(e, keyword)}
+              onKeyDown={(e) => handleKeyword(e, keyword)}
+              aria-label={`Search for ${keyword}`}
             >
               {keyword}
             </Styled.KeywordBtn>
             <Styled.CloseBtn
-              onClick={() => handleClose(idx)}
-              aria-label="close"
+              onClick={(e) => handleDelete(e, idx)}
+              onKeyDown={(e) => handleDelete(e, idx)}
+              aria-label={`Remove ${keyword} from search history`}
             >
               <icons.Close />
             </Styled.CloseBtn>
