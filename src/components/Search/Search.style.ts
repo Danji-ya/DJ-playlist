@@ -1,22 +1,17 @@
 import styled from 'styled-components';
-import { DEVICE } from '@constants/device';
 
-const Container = styled.div`
+const FormContainer = styled.div`
   position: relative;
   display: flex;
   width: 30vw;
-  min-width: 250px;
+  min-width: 300px;
   max-width: 400px;
-  padding: 0 16px;
-
-  @media ${DEVICE.DESKTOP} {
-    margin: 0 auto;
-  }
 `;
 
-const SearchFormWrapper = styled.form`
+const InputWrapper = styled.form`
   position: relative;
   width: 100%;
+  padding: 0 16px;
 `;
 
 const InputBox = styled.input`
@@ -59,8 +54,9 @@ const BtnWrapper = styled.button`
 
 const HistoryContainer = styled.ul<{ isShow: boolean }>`
   position: absolute;
-  width: 100%;
+  width: calc(100% - 16px);
   top: 45px;
+  left: 16px;
   padding: 8px;
   border: 1px solid #dbdbdb;
   border-bottom-left-radius: 4px;
@@ -156,8 +152,8 @@ const SearchNoResultText = styled.p`
 `;
 
 export default {
-  Container,
-  SearchFormWrapper,
+  FormContainer,
+  InputWrapper,
   InputBox,
   BtnWrapper,
   HistoryContainer,
