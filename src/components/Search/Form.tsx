@@ -47,8 +47,8 @@ function Form() {
   const shouldShowHistory = isActiveHistory && currentInputValue === '';
 
   return (
-    <Styled.Container ref={containerRef} onBlur={handleBlur}>
-      <Styled.SearchFormWrapper autoComplete="off" onSubmit={handleSubmit}>
+    <Styled.FormContainer ref={containerRef} onBlur={handleBlur}>
+      <Styled.InputWrapper autoComplete="off" onSubmit={handleSubmit}>
         <LabelA11Y htmlFor="searchInput">Search Input</LabelA11Y>
         <Styled.InputBox
           id="searchInput"
@@ -61,9 +61,9 @@ function Form() {
         <Styled.BtnWrapper type="submit" aria-label="search button">
           <icons.Search />
         </Styled.BtnWrapper>
-      </Styled.SearchFormWrapper>
+      </Styled.InputWrapper>
       <History isShow={shouldShowHistory} />
-    </Styled.Container>
+    </Styled.FormContainer>
   );
 }
 
