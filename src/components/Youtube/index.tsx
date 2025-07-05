@@ -125,7 +125,7 @@ class Youtube extends Component<Props> {
       width = '100',
       height = '100',
       autoplay,
-      customProps: { videoId },
+      customProps: { videoId = '' },
     } = this.props;
 
     try {
@@ -145,7 +145,7 @@ class Youtube extends Component<Props> {
         },
       });
     } catch (err) {
-      console.log('Cannot create Player.');
+      console.log('Cannot create Player.', err);
     }
   }
 
