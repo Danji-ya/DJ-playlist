@@ -24,7 +24,7 @@ function Player() {
   };
 
   return (
-    <Styled.Container>
+    <Styled.Container data-testid="player">
       <H2A11Y>Player</H2A11Y>
       {isEmptyObj(selectedMusic) ? (
         <Styled.Empty>No music is playing</Styled.Empty>

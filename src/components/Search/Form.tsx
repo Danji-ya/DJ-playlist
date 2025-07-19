@@ -57,6 +57,7 @@ function Form() {
           value={currentInputValue}
           onChange={handleInputChange}
           onFocus={handleFocus}
+          data-testid="search-input"
         />
         <Styled.BtnWrapper type="submit" aria-label="search button">
           <icons.Search />

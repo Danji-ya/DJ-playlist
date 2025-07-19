@@ -32,7 +32,7 @@ function Result() {
   if (musicList.length === 0) return <NoResult />;
 
   return (
-    <Styled.SearchResultGrid>
+    <Styled.SearchResultGrid data-testid="search-result">
       <MusicCards musicList={musicList} />
     </Styled.SearchResultGrid>
   );

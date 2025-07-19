@@ -16,7 +16,11 @@ function Controls() {
         <icons.Prev size={30} />
       </Styled.PrevButton>
 
-      <Styled.MainButton onClick={onToggleState} aria-label="music play state">
+      <Styled.MainButton
+        onClick={onToggleState}
+        aria-label="music play state"
+        data-testid={paused ? 'play-button' : 'pause-button'}
+      >
         {paused ? (
           <icons.Play width={35} height={35} />
         ) : (
