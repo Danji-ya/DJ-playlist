@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { LabelA11Y } from '@styles/common';
-import icons from '@constants/icons';
 import { useSearchForm } from '@contexts/SearchFormContext';
 import { useClickOutside } from '@services/hooks/useClickOutside';
+import icons from '@constants/icons';
+import { testId, toTestIdProps } from '@constants/testId';
 import History from './History';
 import Styled from './Search.style';
 
@@ -57,7 +58,7 @@ function Form() {
           value={currentInputValue}
           onChange={handleInputChange}
           onFocus={handleFocus}
-          data-testid="search-input"
+          {...toTestIdProps(testId.search.input)}
         />
         <Styled.BtnWrapper type="submit" aria-label="search button">
           <icons.Search />

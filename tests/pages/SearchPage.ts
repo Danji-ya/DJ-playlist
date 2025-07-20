@@ -1,4 +1,5 @@
 import { expect, Page } from '@playwright/test';
+import { testId, toTestIdSelector } from '@constants/testId';
 
 export class SearchPage {
   constructor(private page: Page) {}
@@ -11,30 +12,34 @@ export class SearchPage {
     await searchLink.click();
     await this.page.waitForLoadState('networkidle');
 
-    const searchInput = this.page.locator('[data-testid="search-input"]');
+    const searchInput = this.page.locator(
+      toTestIdSelector(testId.search.input),
+    );
     await searchInput.fill(searchTerm);
     await searchInput.press('Enter');
 
-    await this.page.waitForSelector('[data-testid="search-result"]', {
+    await this.page.waitForSelector(toTestIdSelector(testId.search.result), {
       timeout: 10000,
     });
   }
 
   async loadFirstMusic() {
     const firstResult = this.page
-      .locator('[data-testid="search-result"] li')
+      .locator(`${toTestIdSelector(testId.search.result)} li`)
       .first();
     const thumbnail = firstResult.locator('button').first();
     await thumbnail.click();
 
-    await this.page.waitForSelector('[data-testid="player"]', {
+    await this.page.waitForSelector(toTestIdSelector(testId.player.container), {
       timeout: 10000,
     });
     await this.page.waitForTimeout(3000);
   }
 
   async clickPause() {
-    const pauseButton = this.page.locator('[data-testid="pause-button"]');
+    const pauseButton = this.page.locator(
+      toTestIdSelector(testId.player.pauseButton),
+    );
     await pauseButton.click();
   }
 
@@ -44,12 +49,16 @@ export class SearchPage {
   }
 
   async verifyPauseButtonVisible() {
-    const pauseButton = this.page.locator('[data-testid="pause-button"]');
+    const pauseButton = this.page.locator(
+      toTestIdSelector(testId.player.pauseButton),
+    );
     await expect(pauseButton).toBeVisible({ timeout: 10000 });
   }
 
   async verifyPlayButtonVisible() {
-    const playButton = this.page.locator('[data-testid="play-button"]');
+    const playButton = this.page.locator(
+      toTestIdSelector(testId.player.playButton),
+    );
     await expect(playButton).toBeVisible({ timeout: 10000 });
   }
 }

@@ -3,6 +3,7 @@ import usePlaylist from '@services/hooks/usePlaylist';
 import useSearchResult from '@services/hooks/useSearchResult';
 import Card from '@components/common/Card';
 import { Music } from '@typings/music';
+import { testId, toTestIdProps } from '@constants/testId';
 import NoResult from './NoResult';
 import Styled from './Search.style';
 
@@ -32,7 +33,7 @@ function Result() {
   if (musicList.length === 0) return <NoResult />;
 
   return (
-    <Styled.SearchResultGrid data-testid="search-result">
+    <Styled.SearchResultGrid {...toTestIdProps(testId.search.result)}>
       <MusicCards musicList={musicList} />
     </Styled.SearchResultGrid>
   );

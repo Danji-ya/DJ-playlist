@@ -1,5 +1,6 @@
-import icons from '@constants/icons';
 import { usePlayer } from '@contexts/PlayerContext';
+import icons from '@constants/icons';
+import { testId, toTestIdProps } from '@constants/testId';
 import Styled from './Player.style';
 
 function Controls() {
@@ -19,7 +20,9 @@ function Controls() {
       <Styled.MainButton
         onClick={onToggleState}
         aria-label="music play state"
-        data-testid={paused ? 'play-button' : 'pause-button'}
+        {...toTestIdProps(
+          paused ? testId.player.playButton : testId.player.pauseButton,
+        )}
       >
         {paused ? (
           <icons.Play width={35} height={35} />
