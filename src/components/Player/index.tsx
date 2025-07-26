@@ -2,7 +2,6 @@ import Youtube from '@components/Youtube';
 import { usePlayer } from '@contexts/PlayerContext';
 import { isEmptyObj } from '@utils/common';
 import { H2A11Y } from '@styles/common';
-import { testId, toTestIdProps } from '@constants/testId';
 import Profile from './Profile';
 import Progress from './Progress';
 import Styled from './Player.style';
@@ -25,7 +24,7 @@ function Player() {
   };
 
   return (
-    <Styled.Container {...toTestIdProps(testId.player.container)}>
+    <Styled.Container>
       <H2A11Y>Player</H2A11Y>
       {isEmptyObj(selectedMusic) ? (
         <Styled.Empty>No music is playing</Styled.Empty>

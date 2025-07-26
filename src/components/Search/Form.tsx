@@ -3,7 +3,6 @@ import { LabelA11Y } from '@styles/common';
 import { useSearchForm } from '@contexts/SearchFormContext';
 import { useClickOutside } from '@services/hooks/useClickOutside';
 import icons from '@constants/icons';
-import { testId, toTestIdProps } from '@constants/testId';
 import History from './History';
 import Styled from './Search.style';
 
@@ -58,7 +57,7 @@ function Form() {
           value={currentInputValue}
           onChange={handleInputChange}
           onFocus={handleFocus}
-          {...toTestIdProps(testId.search.input)}
+          aria-label="Search for songs, albums, and artists"
         />
         <Styled.BtnWrapper type="submit" aria-label="search button">
           <icons.Search />
