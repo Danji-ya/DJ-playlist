@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { LabelA11Y } from '@styles/common';
-import icons from '@constants/icons';
 import { useSearchForm } from '@contexts/SearchFormContext';
 import { useClickOutside } from '@services/hooks/useClickOutside';
+import icons from '@constants/icons';
 import History from './History';
 import Styled from './Search.style';
 
@@ -57,6 +57,7 @@ function Form() {
           value={currentInputValue}
           onChange={handleInputChange}
           onFocus={handleFocus}
+          aria-label="Search for songs, albums, and artists"
         />
         <Styled.BtnWrapper type="submit" aria-label="search button">
           <icons.Search />

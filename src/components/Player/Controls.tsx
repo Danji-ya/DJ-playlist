@@ -1,5 +1,5 @@
-import icons from '@constants/icons';
 import { usePlayer } from '@contexts/PlayerContext';
+import icons from '@constants/icons';
 import Styled from './Player.style';
 
 function Controls() {
@@ -16,7 +16,10 @@ function Controls() {
         <icons.Prev size={30} />
       </Styled.PrevButton>
 
-      <Styled.MainButton onClick={onToggleState} aria-label="music play state">
+      <Styled.MainButton
+        onClick={onToggleState}
+        aria-label={paused ? 'play' : 'pause'}
+      >
         {paused ? (
           <icons.Play width={35} height={35} />
         ) : (
